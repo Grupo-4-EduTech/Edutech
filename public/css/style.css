@@ -1,0 +1,696 @@
+/* -- GERAL -- */
+
+body {
+    margin: 0;
+}
+
+.imgDeFundo {
+    background-image: url(../assets/StockCake-Global\ Digital\ Education_1724004042\ 2.svg);
+    background-repeat: no-repeat;
+    background-position-y: -55px;
+    background-size: cover;
+    height: 655px;
+}
+
+/* -- HEADER -- */
+
+.header {
+    height: 90px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.26);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    height: 80px;
+    margin-top: 12px;
+    margin-left: 50px;
+}
+
+.imgLogo {
+    width: 220px;
+}
+
+.navBar {
+    width: 450px;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    margin-left: 120px;
+}
+
+.textoNavBar {
+    height: 20px;
+    color: #FFF;
+    font-size: 18px;
+}
+
+.textoNavBar:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    transition: all 0.4s;
+}
+
+.loginCadastro {
+    width: 290px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.btnLogin {
+    width: 100px;
+    height: 40px;
+    background-color: #00000000;
+    border-color: #FFF;
+    border-radius: 30px;
+    color: #FFF;
+    font-size: 18px;
+}
+
+.btnLogin:hover {
+    background-color: #FFF;
+    color: #000;
+    border-color: #00000000;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.textoCadastro {
+    color: #FFF;
+    font-size: 18px;
+}
+
+.textoCadastro:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    transition: all 0.4s;
+}
+
+.texto {
+    color: #FFF;
+    font-size: 18px;
+}
+
+/* -- BANNER -- */
+
+.banner {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 115px;
+}
+
+.tituloBanner {
+    color: #FFF;
+    font-size: 40px;
+    font-weight: 550;
+    text-align: center;
+    border-bottom: 30px;
+    line-height: 55px;
+}
+
+.textoBanner {
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 25px;
+}
+
+.btnSaibaMais {
+    width: 180px;
+    height: 43px;
+    border-radius: 35px;
+    background-color: #0598CE;
+    border-color: #0598ce00;
+    color: #FFF;
+    font-size: 18px;
+}
+
+.btnSaibaMais:hover {
+    background-color: #005f81;
+    border-color: #005f8100;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+/* -- PRINCIPAL -- */
+
+.corpoDescubraMais {
+    width: 100%;
+    height: 640px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerTextoDescubraMais {
+    background-color: #113768;
+    height: 600px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.textoDescubraMais {
+    height: 170px;
+    width: 400px;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 22.5px;
+}
+
+.descubraMais {
+    width: 180px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 220px;
+}
+
+.txtDescubraMais {
+    width: 160px;
+    height: 25px;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 550;
+}
+
+.setaDescubraMais {
+    width: 50px;
+    height: 20px;
+    background-image: url(../assets/Arrow\ 75.svg);
+    background-repeat: no-repeat;
+}
+
+.setaDescubraMais:hover {
+    cursor: pointer;
+}
+
+.tituloDescubraMais {
+    color: #FFF;
+    font-size: 28px;
+    font-weight: 550;
+    width: 400px;
+}
+
+.imgDescubraMais {
+    height: 450px;
+    width: 600px;
+    background-image: url(../assets/image\ 7.svg);
+    background-size: cover;
+}
+
+.quemSomos {
+    height: 540px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.textoQuemSomos {
+    height: 300px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tituloQuemSomos{
+    color: #068EC2;
+    font-size: 38px;
+    font-weight: 550;
+    margin-top: 30px;
+}
+
+.txtQuemSomos {
+    line-height: 25px;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.imgQuemSomos {
+    height: 350px;
+    width: 600px;
+    background-image: url(../assets/image\ 9.svg);
+    background-size: cover;
+}
+
+.nossosValores {
+    height: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.tituloNossosValores{
+    color: #068EC2;
+    font-size: 38px;
+    font-weight: 550;
+    margin-top: 90px;
+}
+
+.txtNossosValores {
+    line-height: 25px;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.imgNossosValores {
+    height: 350px;
+    width: 600px;
+    background-image: url(../assets/image\ 10.svg);
+    background-size: cover;
+}
+
+.textoNossosValores {
+    background-color: #FFF;
+    height: 400px;
+    width: 600px;
+}
+
+.contato {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tituloContato {
+    color: #068EC2;
+    font-size: 35px;
+    font-weight: 550;
+}
+
+.textoContato {
+    line-height: 25px;
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.formulario {
+    height: 600px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.infoContato {
+    background-color: #113768;
+    height: 480px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fileiraCima {
+    width: 600px;
+    height: 100px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.email {
+    width: 300px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.imgEmail {
+    width: 40px;
+    height: 40px;
+    background-image: url(../assets/mail.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.textoEmail {
+    width: 220px;
+    height: 20px;
+    color: #FFF;
+    margin-left: 10px;
+}
+
+.telefone {
+    width: 300px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 60px;
+}
+
+.imgTelefone {
+    width: 40px;
+    height: 40px;
+    background-image: url(../assets/call.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.textoTelefone {
+    width: 220px;
+    height: 20px;
+    color: #FFF;
+    margin-left: 10px;
+}
+
+.fileiraBaixo {
+    width: 600px;
+    height: 100px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.localizacao {
+    width: 300px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.imgLocalizacao {
+    width: 40px;
+    height: 40px;
+    background-image: url(../assets/location_on.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.textoLocalizacao {
+    width: 220px;
+    height: 55px;
+    line-height: 20px;
+    color: #FFF;
+    margin-left: 10px;
+}
+
+.numero {
+    width: 300px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 60px;
+}
+
+.imgNumero {
+    width: 40px;
+    height: 40px;
+    background-image: url(../assets/zap.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.textoNumero {
+    width: 220px;
+    height: 20px;
+    color: #FFF;
+    margin-left: 10px;
+}
+
+.redesSocias {
+    width: 600px;
+    height: 100px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.tituloRedesSocias {
+    color: #FFF;
+    font-size: 30px;
+}
+
+.imagens {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.imgRedeSocialLkdin {
+    width: 43px;
+    height: 43px;
+    background-image: url(../assets/PikPng.com_linkedin-logo-png_598156\ 1.svg);
+    background-size: cover;
+}
+
+.imgRedeSocialLkdin:hover {
+    cursor: pointer;
+    width: 46px;
+    height: 46px;
+    transition: all 0.4s;
+}
+
+.imgRedeSocialInsta {
+    width: 43px;
+    height: 43px;
+    background-image: url(../assets/insta.svg);
+    background-size: cover;
+}
+
+.imgRedeSocialInsta:hover {
+    cursor: pointer;
+    width: 46px;
+    height: 46px;
+    transition: all 0.4s;
+}
+
+
+.imgRedeSocialX {
+    width: 43px;
+    height: 43px;
+    background-image: url(../assets/PikPng.com_twitter-png-logo_1011861\ 1.svg);
+    background-size: cover;
+}
+
+.imgRedeSocialX:hover {
+    cursor: pointer;
+    width: 46px;
+    height: 46px;
+    transition: all 0.4s;
+}
+
+.imgRedeSocialFace {
+    width: 43px;
+    height: 43px;
+    background-image: url(../assets/facebook.svg);
+    background-size: cover;
+}
+
+.imgRedeSocialFace:hover {
+    cursor: pointer;
+    width: 46px;
+    height: 46px;
+    transition: all 0.4s;
+}
+
+.formularioContato {
+    width: 600px;
+    height: 600px;
+    background-color: #F1F4F5;
+    box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.2), 
+    0 8px 16px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.tituloFormulario {
+    width: 450px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 550;
+}
+
+.tituloInput {
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.nome {
+    width: 450px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.primeiroNome {
+    width: 225px;
+    height: 60px;
+}
+
+.inputNome {
+    width: 210px;
+    height: 25px;
+    border:solid 1px #000;
+}
+
+.sobrenome {
+    width: 225px;
+    height: 60px;
+}
+
+.emailFormulario {
+    width: 450px;
+    height: 60px;
+}
+
+.inputPadrao {
+    width: 440px;
+    height: 25px;
+    border:solid 1px #000;
+}
+
+.nomeEscola {
+    width: 450px;
+    height: 60px;
+}
+
+.mensagem {
+    width: 450px;
+    height: 150px;
+}
+
+.inputMensagem {
+    width: 450px;
+    height: 135px;
+    text-align: center;
+    border:solid 1px #000;
+}
+
+.btnFormulario {
+    background-color: #113768;
+    border: solid 0.5px #000;
+    color: #FFF;
+    font-size: 18px;
+    width: 120px;
+    height: 35px;
+}
+
+.btnFormulario:hover {
+    cursor: pointer;
+    background-color: #0f5ec5;
+    transition: all 0.4s;
+}
+
+.faixa {
+    background-color: #113768;
+    height: 480px;
+    width: 160px;
+}
+
+/* -- FOOTER -- */
+
+.footer {
+    height: 250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.navBarFooter {
+    background-color: #1E1E1E;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.textoNavBarFooter {
+    height: 20px;
+    color: #FFF;
+    font-size: 14px;
+}
+
+.textoNavBarFooter:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    transition: all 0.4s;
+}
+
+.btnLoginFooter {
+    width: 100px;
+    height: 40px;
+    background-color: #00000000;
+    color: #FFF;
+    font-size: 14px;
+    border-color: #00000000;
+}
+
+.btnLoginFooter:hover {
+    transition: all 0.4s;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.textoCadastroFooter {
+    color: #FFF;
+    font-size: 14px;
+    margin-right: 25px;
+}
+
+.textoCadastroFooter:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    transition: all 0.4s;
+}
+
+.tradeMark {
+    background-color: #2B2B2B;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textoTrademark {
+    color: #FFF;
+    font-size: 11px;
+}
