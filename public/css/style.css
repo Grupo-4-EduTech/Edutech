@@ -782,7 +782,7 @@ body {
 .cardFoto {
     height: 350px;
     width: 250px;
-    background-color: red;
+    background: linear-gradient(to bottom, #0790C2, #113768);
     display: flex;
     flex-direction: column;
     align-items: center;
