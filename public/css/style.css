@@ -694,3 +694,151 @@ body {
     color: #FFF;
     font-size: 11px;
 }
+
+/* -- SOBRE A EDU TECH -- */
+
+.imgDeFundoSobre {
+    background-image: url(../assets/StockCake-Data\ Monitoring\ Team_1724620214\ 1.svg);
+    background-repeat: no-repeat;
+    background-position-y: -55px;
+    background-size: cover;
+    height: 400px;
+}
+
+.tituloBannerSobre {
+    color: #FFF;
+    font-size: 40px;
+    font-weight: 550;
+    text-align: center;
+}
+
+.sobreEduTech {
+    background-color: red;
+    width: 100%;
+    height: 300px;
+}
+
+.imgSobreEduTech {
+    background-color: blue;
+    height: 330px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.classroomLearning {
+    background-image: url(../assets/StockCake-Classroom\ Learning\ Session_1724622032\ 1.svg);
+    background-size: cover; 
+    width: 1000px;
+    height: 310px;
+}
+
+.nossosProjetos {
+    width: 100%;
+    height: 650px;
+    background-color: green;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.textoProjetos {
+    width: 700px;
+    height: 500px;
+    background-color: blue;
+}
+
+.imgProjetos {
+    height: 450px;
+    width: 400px;
+    background-color: yellow;
+    background-image: url(../assets/Visual\ data-bro\ 1.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.fileiraCimaNossaEquipe {
+    width: 100%;
+    height: 400px;
+    background-color: #000;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+.fileiraBaixoNossaEquipe {
+    width: 100%;
+    height: 400px;
+    background-color: #000;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+.cardFoto {
+    height: 350px;
+    width: 250px;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.contatos {
+    width: 200px;
+    height: 55px;
+    background-color: darkorchid;
+}
+
+.nomeEquipe {
+    width: 200px;
+    height: 20px;
+    background-color: violet;
+}
+
+.fotoAnthony {
+    width: 200px;
+    height: 200px;
+    background-color: fuchsia;
+}
+
+.fotoBrenno {
+    width: 200px;
+    height: 200px;
+    background-color: fuchsia;
+}
+
+.fotoErick {
+    width: 200px;
+    height: 200px;
+    background-color: fuchsia;
+}
+
+.fotoJuliana {
+    width: 200px;
+    height: 200px;
+    background-color: fuchsia;
+}
+
+.fotoSamuel {
+    width: 200px;
+    height: 200px;
+    background-color: fuchsia;
+}
+
+.fotoYasmin {
+    width: 200px;
+    height: 200px;
+    background-color: fuchsia;
+}
+
+.entreEmContato {
+    width: 100%;
+    height: 50px;
+    background-color: gray;
+}
