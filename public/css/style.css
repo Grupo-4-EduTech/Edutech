@@ -754,8 +754,7 @@ body {
 
 .nossosProjetos {
     width: 100%;
-    height: 650px;
-    background-color: green;
+    height: 1050px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -763,15 +762,58 @@ body {
 }
 
 .textoProjetos {
-    width: 700px;
-    height: 500px;
-    background-color: blue;
+    width: 600px;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.tituloProjetos {
+    width: 300px;
+    height: 50px;
+    color: #068EC2;
+    font-size: 45px;
+    font-weight: 450;
+}
+
+.tituloAnalise {
+    width: 400px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 650;
+}
+
+.textoNossosProjetos {
+    width: 500px;
+    height: 320px;
+    font-size: 20px;
+    line-height: 35px;
+}
+
+.botaoParticipar {
+    width: 200px;
+    height: 50px;
+    background-color: darkcyan;
+    display: flex;
+    flex-direction: row;
+}
+
+.btnParticipar {
+    width: 150px;
+    height: 50px;
+    background-color: red;
+}
+
+.seta {
+    width: 50px;
+    height: 50px;
+    background-color: purple;
 }
 
 .imgProjetos {
-    height: 450px;
-    width: 400px;
-    background-color: yellow;
+    height: 600px;
+    width: 550px;
     background-image: url(../assets/Visual\ data-bro\ 1.svg);
     background-size: contain;
     background-repeat: no-repeat;
