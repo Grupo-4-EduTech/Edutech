@@ -12,7 +12,18 @@ body {
     height: 655px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* -- HEADER -- */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
 
 .header {
     height: 90px;
@@ -110,7 +121,6 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    margin-top: 115px;
 }
 
 .tituloBanner {
@@ -120,6 +130,7 @@ body {
     text-align: center;
     border-bottom: 30px;
     line-height: 55px;
+    margin-top: 200px;
 }
 
 .textoBanner {
@@ -138,6 +149,7 @@ body {
     border-color: #0598ce00;
     color: #FFF;
     font-size: 18px;
+    margin-top: 30px;
 }
 
 .btnSaibaMais:hover {
@@ -470,6 +482,7 @@ body {
     height: 43px;
     background-image: url(../assets/PikPng.com_linkedin-logo-png_598156\ 1.svg);
     background-size: cover;
+    transition: all 0.4s;
 }
 
 .imgRedeSocialLkdin:hover {
@@ -484,6 +497,7 @@ body {
     height: 43px;
     background-image: url(../assets/insta.svg);
     background-size: cover;
+    transition: all 0.4s;
 }
 
 .imgRedeSocialInsta:hover {
@@ -499,6 +513,7 @@ body {
     height: 43px;
     background-image: url(../assets/PikPng.com_twitter-png-logo_1011861\ 1.svg);
     background-size: cover;
+    transition: all 0.4s;
 }
 
 .imgRedeSocialX:hover {
@@ -513,12 +528,29 @@ body {
     height: 43px;
     background-image: url(../assets/facebook.svg);
     background-size: cover;
+    transition: all 0.4s;
 }
 
 .imgRedeSocialFace:hover {
     cursor: pointer;
     width: 46px;
     height: 46px;
+    transition: all 0.4s;
+}
+
+.imgRedeSocialGit {
+    width: 48px;
+    height: 48px;
+    background-image: url(../assets/fa6-brands_square-github.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: all 0.4s;
+}
+
+.imgRedeSocialGit:hover {
+    cursor: pointer;
+    width: 51px;
+    height: 51px;
     transition: all 0.4s;
 }
 
@@ -711,6 +743,7 @@ body {
     font-size: 40px;
     font-weight: 550;
     text-align: center;
+    margin-top: 200px;
 }
 
 .sobreEduTech {
@@ -724,16 +757,16 @@ body {
 .tituloSobreEduTech {
     width: 430px;
     height: 60px;
-    margin-left: 60px;
+    margin-left: 125px;
     font-size: 32px;
     color: #068EC2;
 }
 
 .textoSobreEduTech {
-    width: 1150px;
-    height: 200px;
-    margin-left: 60px;
-    font-size: 20px;
+    width: 1050px;
+    height: 170px;
+    margin-left: 125px;
+    font-size: 18px;
     line-height: 33px;
 }
 
@@ -775,6 +808,7 @@ body {
     color: #068EC2;
     font-size: 45px;
     font-weight: 450;
+    margin-left: 40px;
 }
 
 .tituloAnalise {
@@ -782,47 +816,77 @@ body {
     height: 50px;
     font-size: 20px;
     font-weight: 650;
+    margin-left: 40px;
 }
 
 .textoNossosProjetos {
     width: 500px;
-    height: 320px;
-    font-size: 20px;
+    height: 300px;
+    font-size: 18px;
     line-height: 35px;
+    margin-left: 40px;
 }
 
 .botaoParticipar {
-    width: 200px;
+    width: 178px;
     height: 50px;
-    background-color: darkcyan;
+    background-color: #0F93C3;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    justify-content: space-evenly;
+    transition: all 0.2s;
+    margin-left: 40px;
+}
+
+.botaoParticipar:hover {
+    cursor: pointer;
+    width: 184px;
+    height: 53px;
+    transition: all 0.2s;
 }
 
 .btnParticipar {
-    width: 150px;
-    height: 50px;
-    background-color: red;
+    width: 115px;
+    height: 22px;
+    background-color: #0F93C3;
+    color: #FFF;
+    font-size: 23PX;
+    font-weight: 450;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .seta {
-    width: 50px;
-    height: 50px;
-    background-color: purple;
+    width: 35px;
+    height: 15px;
+    background-color: #0F93C3;
+    background-image: url(../assets/Arrow\ 75.svg);
+    background-repeat: no-repeat;
+    margin-top: 3px;
 }
 
 .imgProjetos {
-    height: 600px;
-    width: 550px;
+    height: 550px;
+    width: 500px;
     background-image: url(../assets/Visual\ data-bro\ 1.svg);
     background-size: contain;
     background-repeat: no-repeat;
+    margin-top: 65px;
+}
+
+.nossaEquipe {
+    font-size: 35px;
+    font-weight: 550;
+    color: #068EC2;
+    margin-left: 125px;
 }
 
 .fileiraCimaNossaEquipe {
     width: 100%;
     height: 400px;
-    background-color: #000;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -832,7 +896,6 @@ body {
 .fileiraBaixoNossaEquipe {
     width: 100%;
     height: 400px;
-    background-color: #000;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -852,13 +915,21 @@ body {
 .contatos {
     width: 200px;
     height: 55px;
-    background-color: darkorchid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nomeEquipe {
     width: 200px;
     height: 20px;
-    background-color: violet;
+    color: #FFF;
+    font-size: 23px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .fotoAnthony {
@@ -897,8 +968,42 @@ body {
     background-color: fuchsia;
 }
 
-.entreEmContato {
+.containerContato {
     width: 100%;
-    height: 50px;
-    background-color: gray;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.entreEmContato {
+    width: 300px;
+    height: 50px;
+    background-color: #0F93C3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    transition: all 0.2s;
+}
+
+.entreEmContato:hover {
+    cursor: pointer;
+    width: 315px;
+    height: 58px;
+    transition: all 0.2s;
+}
+
+.btnContato {
+    width: 230px;
+    height: 45px;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 450;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
+}
+
