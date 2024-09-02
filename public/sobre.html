@@ -13,15 +13,23 @@
             <header>
                 <div class="header">
                     <div class="logo">
-                        <img class="imgLogo" src="assets/EduTechWhite1 1.svg">
+                        <a onclick="scrollToSection(0)">
+                            <img class="imgLogo" src="assets/EduTechWhite1 1.svg">
+                        </a>
                     </div>
                     <div class="navBar">
-                        <span class="textoNavBar">INICIO</span>
-                        <span class="textoNavBar">PROJETOS</span>
-                        <a href="sobre.html">
+                        <a onclick="scrollToSection(0)">
+                            <span class="textoNavBar">INICIO</span>
+                        </a>
+                        <a onclick="scrollToSection(1248)">
+                            <span class="textoNavBar">PROJETOS</span>
+                        </a>
+                        <a onclick="scrollToSection(234)">
                             <span class="textoNavBar">SOBRE</span>
                         </a>
-                        <span class="textoNavBar">CONTATO</span>
+                        <a href="index.html#contato">
+                            <span class="textoNavBar">CONTATO</span>
+                        </a>
                     </div>
                     <div class="loginCadastro">
                         <button class="btnLogin">
@@ -32,7 +40,7 @@
                     </div>
                 </div>
             </header>
-            <div class="tituloBannerSobre">
+            <div class="tituloBannerSobre"  id="sobre">
                 <span>
                     SOBRE A EDU TECH
                 </span>
@@ -61,14 +69,14 @@
     <div class="imgSobreEduTech">
         <div class="classroomLearning"></div>
     </div>
-    <div class="nossosProjetos">
+    <div class="nossosProjetos" id="projetos">
         <div class="textoProjetos">
             <div class="tituloProjetos">
                 <span>
                     Nossos projetos
                 </span>
             </div>
-            <div class="tituloAnalise">
+            <div class="tituloAnalise" id="projetos">
                 <span>
                     Análise de desempenho de alunos no SAEB
                 </span>
@@ -194,13 +202,23 @@
     <div class="footer">
         <div class="navBarFooter">
             <div class="logo">
-                <img class="imgLogo" src="assets/EduTechWhite1 1.svg">
+                <a onclick="scrollToSection(0)">
+                    <img class="imgLogo" src="assets/EduTechWhite1 1.svg">
+                </a>
             </div>
             <div class="navBar">
-                <span class="textoNavBarFooter">INICIO</span>
-                <span class="textoNavBarFooter">PROJETOS</span>
-                <span class="textoNavBarFooter">SOBRE</span>
-                <span class="textoNavBarFooter">CONTATO</span>
+                <a onclick="scrollToSection(0)">
+                    <span class="textoNavBarFooter">INICIO</span>
+                </a>
+                <a onclick="scrollToSection(1295)">
+                    <span class="textoNavBarFooter">PROJETOS</span>
+                </a>
+                <a onclick="scrollToSection(304)">
+                    <span class="textoNavBarFooter">SOBRE</span>
+                </a>
+                <a href="index.html#contato">
+                    <span class="textoNavBarFooter">CONTATO</span>
+                </a>
             </div>
             <div class="loginCadastro">
                 <button class="btnLoginFooter">
@@ -217,3 +235,8 @@
     </div>
 </body>
 </html>
+<script>
+    function scrollToSection(to) {
+        window.scrollTo(0, to)
+    }
+</script>

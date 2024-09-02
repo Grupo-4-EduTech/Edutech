@@ -43,6 +43,10 @@ header {
     margin-left: 50px;
 }
 
+.logo:hover {
+    cursor: pointer;
+}
+
 .imgLogo {
     width: 220px;
 }
@@ -621,6 +625,7 @@ header {
     width: 440px;
     height: 25px;
     border:solid 1px #000;
+    font-family: 'Rubik';
 }
 
 .nomeEscola {
@@ -638,6 +643,7 @@ header {
     height: 135px;
     text-align: center;
     border:solid 1px #000;
+    font-family: 'Rubik';
 }
 
 .btnFormulario {
@@ -647,6 +653,7 @@ header {
     font-size: 18px;
     width: 120px;
     height: 35px;
+    font-family: 'Rubik';
 }
 
 .btnFormulario:hover {
@@ -1019,3 +1026,6 @@ header {
     margin-top: 4px;
 }
 
+a {
+    text-decoration: none;
+}
