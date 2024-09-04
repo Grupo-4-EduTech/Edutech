@@ -5,30 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial | Edu Tech</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
 </head>
 <body>
 <div class="imgDeFundo">
-    <div class="header">
-        <div class="logo">
-            <img class="imgLogo" src="assets/EduTechWhite1 1.svg">
-        </div>
-        <div class="navBar">
-            <span class="textoNavBar">INICIO</span>
-            <span class="textoNavBar">PROJETOS</span>
-            <a href="sobre.html">
-                <span class="textoNavBar">SOBRE</span>
-            </a>
-            <span class="textoNavBar">CONTATO</span>
-        </div>
-        <div class="loginCadastro">
-            <button class="btnLogin">
-                LOGIN
-            </button>
-            <span class="texto">|</span>
-            <span class="textoCadastro">CADASTRO</span>
-        </div>
-    </div>
     <div class="banner">
+        <header>
+            <div class="header">
+                <div class="logo">
+                    <a onclick="scrollToSection(0)">
+                        <img class="imgLogo" src="assets/EduTechWhite1 1.svg">
+                    </a>
+                </div>
+                <div class="navBar">
+                    <a onclick="scrollToSection(0)">
+                        <span class="textoNavBar">INICIO</span>
+                    </a>
+                    <a href="sobre.html#projetos">
+                        <span class="textoNavBar">PROJETOS</span>
+                    </a>
+                    <a href="sobre.html#sobre">
+                        <span class="textoNavBar">SOBRE</span>
+                    </a>
+                    <a onclick="scrollToSection(2629)">
+                        <span class="textoNavBar">CONTATO</span>
+                    </a>
+                </div>
+                <div class="loginCadastro">
+                    <button class="btnLogin">
+                        LOGIN
+                    </button>
+                    <span class="texto">|</span>
+                    <span class="textoCadastro">CADASTRO</span>
+                </div>
+            </div>
+        </header>
         <div class="tituloBanner">
             <span>
                 TRANSFORMANDO A
@@ -118,7 +129,7 @@
         </span>
     </div>
     <br><br><br><br><br><br>
-    <div class="formulario">
+    <div class="formulario" id="contato">
         <div class="infoContato">
             <div class="fileiraCima">
                 <div class="email">
@@ -202,13 +213,23 @@
     <div class="footer">
         <div class="navBarFooter">
             <div class="logo">
-                <img class="imgLogo" src="assets/EduTechWhite1 1.svg">
+                <a onclick="scrollToSection(0)">
+                    <img class="imgLogo" src="assets/EduTechWhite1 1.svg">
+                </a>
             </div>
             <div class="navBar">
-                <span class="textoNavBarFooter">INICIO</span>
-                <span class="textoNavBarFooter">PROJETOS</span>
-                <span class="textoNavBarFooter">SOBRE</span>
-                <span class="textoNavBarFooter">CONTATO</span>
+                <a onclick="scrollToSection(0)">
+                    <span class="textoNavBarFooter">INICIO</span>
+                </a>
+                <a href="sobre.html#projetos">
+                    <span class="textoNavBarFooter">PROJETOS</span>
+                </a>
+                <a href="sobre.html#sobre">
+                    <span class="textoNavBarFooter">SOBRE</span>
+                </a>
+                <a onclick="scrollToSection(2615)">
+                    <span class="textoNavBarFooter">CONTATO</span>
+                </a>
             </div>
             <div class="loginCadastro">
                 <button class="btnLoginFooter">
@@ -225,3 +246,8 @@
     </div>
 </body>
 </html>
+<script>
+    function scrollToSection(to) {
+        window.scrollTo(0, to)
+    }
+</script>

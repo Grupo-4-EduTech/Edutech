@@ -15,7 +15,19 @@ body {
     height: 655px;
 }
 
+html {
+    scroll-behavior: smooth;
+    font-family: 'Rubik';
+}
+
 /* -- HEADER -- */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
 
 .header {
     height: 90px;
@@ -34,6 +46,10 @@ body {
     height: 80px;
     margin-top: 12px;
     margin-left: 50px;
+}
+
+.logo:hover {
+    cursor: pointer;
 }
 
 .imgLogo {
@@ -119,7 +135,10 @@ a{
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
+<<<<<<< HEAD
     margin-top: 0;
+=======
+>>>>>>> 11c8f2371ec5c76daf1f76f4b9f3772ab03ddc54
 }
 
 .tituloBanner {
@@ -129,7 +148,11 @@ a{
     text-align: center;
     border-bottom: 30px;
     line-height: 55px;
+<<<<<<< HEAD
     top: 100px;
+=======
+    margin-top: 200px;
+>>>>>>> 11c8f2371ec5c76daf1f76f4b9f3772ab03ddc54
 }
 
 .textoBanner {
@@ -148,6 +171,7 @@ a{
     border-color: #0598ce00;
     color: #FFF;
     font-size: 18px;
+    margin-top: 30px;
 }
 
 .btnSaibaMais:hover {
@@ -246,8 +270,10 @@ a{
     align-items: flex-start;
 }
 
-.tituloQuemSomos{
-    color: #068EC2;
+.tituloQuemSomos {
+    background: linear-gradient(45deg, #068EC2, #03435C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 38px;
     font-weight: 550;
     margin-top: 30px;
@@ -276,8 +302,9 @@ a{
 }
 
 .tituloNossosValores{
-    color: #068EC2;
-    font-size: 38px;
+    color: #068EC2;background: linear-gradient(45deg, #068EC2, #03435C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;font-size: 38px;
     font-weight: 550;
     margin-top: 90px;
 }
@@ -311,7 +338,9 @@ a{
 }
 
 .tituloContato {
-    color: #068EC2;
+    background: linear-gradient(45deg, #068EC2, #03435C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 35px;
     font-weight: 550;
 }
@@ -480,6 +509,7 @@ a{
     height: 43px;
     background-image: url(../assets/PikPng.com_linkedin-logo-png_598156\ 1.svg);
     background-size: cover;
+    transition: all 0.4s;
 }
 
 .imgRedeSocialLkdin:hover {
@@ -494,6 +524,7 @@ a{
     height: 43px;
     background-image: url(../assets/insta.svg);
     background-size: cover;
+    transition: all 0.4s;
 }
 
 .imgRedeSocialInsta:hover {
@@ -509,6 +540,7 @@ a{
     height: 43px;
     background-image: url(../assets/PikPng.com_twitter-png-logo_1011861\ 1.svg);
     background-size: cover;
+    transition: all 0.4s;
 }
 
 .imgRedeSocialX:hover {
@@ -523,12 +555,29 @@ a{
     height: 43px;
     background-image: url(../assets/facebook.svg);
     background-size: cover;
+    transition: all 0.4s;
 }
 
 .imgRedeSocialFace:hover {
     cursor: pointer;
     width: 46px;
     height: 46px;
+    transition: all 0.4s;
+}
+
+.imgRedeSocialGit {
+    width: 48px;
+    height: 48px;
+    background-image: url(../assets/fa6-brands_square-github.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: all 0.4s;
+}
+
+.imgRedeSocialGit:hover {
+    cursor: pointer;
+    width: 51px;
+    height: 51px;
     transition: all 0.4s;
 }
 
@@ -594,6 +643,7 @@ a{
     width: 440px;
     height: 25px;
     border:solid 1px #000;
+    font-family: 'Rubik';
 }
 
 .nomeEscola {
@@ -611,6 +661,7 @@ a{
     height: 135px;
     text-align: center;
     border:solid 1px #000;
+    font-family: 'Rubik';
 }
 
 .btnFormulario {
@@ -620,6 +671,7 @@ a{
     font-size: 18px;
     width: 120px;
     height: 35px;
+    font-family: 'Rubik';
 }
 
 .btnFormulario:hover {
@@ -722,16 +774,36 @@ a{
     font-size: 40px;
     font-weight: 550;
     text-align: center;
+    margin-top: 200px;
 }
 
 .sobreEduTech {
-    background-color: red;
     width: 100%;
     height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tituloSobreEduTech {
+    width: 430px;
+    height: 60px;
+    margin-left: 125px;
+    font-size: 30px;
+    background: linear-gradient(45deg, #068EC2, #03435C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.textoSobreEduTech {
+    width: 1050px;
+    height: 170px;
+    margin-left: 125px;
+    font-size: 18px;
+    line-height: 33px;
 }
 
 .imgSobreEduTech {
-    background-color: blue;
     height: 330px;
     width: 100%;
     display: flex;
@@ -748,8 +820,7 @@ a{
 
 .nossosProjetos {
     width: 100%;
-    height: 650px;
-    background-color: green;
+    height: 1050px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -757,24 +828,102 @@ a{
 }
 
 .textoProjetos {
-    width: 700px;
-    height: 500px;
-    background-color: blue;
+    width: 600px;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.tituloProjetos {
+    width: 350px;
+    height: 50px;
+    background: linear-gradient(45deg, #068EC2, #03435C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 40px;
+    font-weight: 450;
+    margin-left: 40px;
+}
+
+.tituloAnalise {
+    width: 400px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 650;
+    margin-left: 40px;
+}
+
+.textoNossosProjetos {
+    width: 500px;
+    height: 300px;
+    font-size: 18px;
+    line-height: 35px;
+    margin-left: 40px;
+}
+
+.botaoParticipar {
+    width: 178px;
+    height: 50px;
+    background-color: #0F93C3;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    justify-content: space-evenly;
+    transition: all 0.2s;
+    margin-left: 40px;
+}
+
+.botaoParticipar:hover {
+    cursor: pointer;
+    width: 184px;
+    height: 53px;
+    transition: all 0.2s;
+}
+
+.btnParticipar {
+    width: 115px;
+    height: 22px;
+    background-color: #0F93C3;
+    color: #FFF;
+    font-size: 23PX;
+    font-weight: 450;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seta {
+    width: 35px;
+    height: 15px;
+    background-color: #0F93C3;
+    background-image: url(../assets/Arrow\ 75.svg);
+    background-repeat: no-repeat;
+    margin-top: 3px;
 }
 
 .imgProjetos {
-    height: 450px;
-    width: 400px;
-    background-color: yellow;
+    height: 550px;
+    width: 500px;
     background-image: url(../assets/Visual\ data-bro\ 1.svg);
     background-size: contain;
     background-repeat: no-repeat;
+    margin-top: 65px;
+}
+
+.nossaEquipe {
+    font-size: 30px;
+    font-weight: 550;
+    background: linear-gradient(45deg, #068EC2, #03435C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-left: 125px;
 }
 
 .fileiraCimaNossaEquipe {
     width: 100%;
     height: 400px;
-    background-color: #000;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -784,7 +933,6 @@ a{
 .fileiraBaixoNossaEquipe {
     width: 100%;
     height: 400px;
-    background-color: #000;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -804,13 +952,21 @@ a{
 .contatos {
     width: 200px;
     height: 55px;
-    background-color: darkorchid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nomeEquipe {
     width: 200px;
     height: 20px;
-    background-color: violet;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .fotoAnthony {
@@ -849,8 +1005,45 @@ a{
     background-color: fuchsia;
 }
 
-.entreEmContato {
+.containerContato {
     width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.entreEmContato {
+    width: 300px;
     height: 50px;
-    background-color: gray;
+    background-color: #0F93C3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    transition: all 0.2s;
+}
+
+.entreEmContato:hover {
+    cursor: pointer;
+    width: 315px;
+    height: 58px;
+    transition: all 0.2s;
+}
+
+.btnContato {
+    width: 230px;
+    height: 45px;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 450;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
+}
+
+a {
+    text-decoration: none;
 }
