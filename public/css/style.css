@@ -105,9 +105,30 @@ a{
 .btnLogin:hover {
     background-color: #FFF;
     color: #000;
+    transform: scale(1.2);
     border-color: #00000000;
     transition: all 0.5s;
     cursor: pointer;
+}
+
+.btnCadastro{
+    width: 115px;
+    height: 40px;
+    background-color: #00000000;
+    border-color: #ffffffae;
+    border-radius: 30px;
+    color: #FFF;
+    font-size: 18px;
+    transition: all 0.5s;
+}
+
+.btnCadastro:hover{
+    background-color: #FFF;
+    transform: scale(1.2);
+    color: #000;
+    border-color: #00000000;
+    transition: all 0.5s;
+    cursor: pointer;  
 }
 
 .textoCadastro {
@@ -135,10 +156,7 @@ a{
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-<<<<<<< HEAD
-    margin-top: 0;
-=======
->>>>>>> 11c8f2371ec5c76daf1f76f4b9f3772ab03ddc54
+
 }
 
 .tituloBanner {
@@ -148,11 +166,6 @@ a{
     text-align: center;
     border-bottom: 30px;
     line-height: 55px;
-<<<<<<< HEAD
-    top: 100px;
-=======
-    margin-top: 200px;
->>>>>>> 11c8f2371ec5c76daf1f76f4b9f3772ab03ddc54
 }
 
 .textoBanner {
