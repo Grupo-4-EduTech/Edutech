@@ -985,37 +985,43 @@ a{
 .fotoAnthony {
     width: 200px;
     height: 200px;
-    background-color: fuchsia;
+    background-image: url(../assets/ftoAnthony.svg);
+    background-size: cover;
 }
 
 .fotoBrenno {
     width: 200px;
     height: 200px;
     background-color: fuchsia;
+    background-size: cover;
 }
 
 .fotoErick {
     width: 200px;
     height: 200px;
-    background-color: fuchsia;
+    background-image: url(../assets/ftoErick.svg);
+    background-size: cover;
 }
 
 .fotoJuliana {
     width: 200px;
     height: 200px;
-    background-color: fuchsia;
+    background-image: url(../assets/ftoJuliana.svg);
+    background-size: cover;
 }
 
 .fotoSamuel {
     width: 200px;
     height: 200px;
     background-color: fuchsia;
+    background-size: cover;
 }
 
 .fotoYasmin {
     width: 200px;
     height: 200px;
-    background-color: fuchsia;
+    background-image: url(../assets/ftoYasmin.svg);
+    background-size: cover;
 }
 
 .containerContato {
@@ -1059,4 +1065,34 @@ a{
 
 a {
     text-decoration: none;
+}
+
+/* -- LOGIN & CADASTRO -- */
+
+.bodyCadastro {
+    display: flex;
+    flex-direction: row;
+}
+
+.containerInput {
+    background-color: red;
+    width: 50%;
+    height: 567px;
+}
+
+.containerLogo {
+    background: linear-gradient(to bottom, #0790C2, #081F45);
+    width: 50%;
+    height: 567px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoLogin {
+    width: 514px;
+    height: 319px;
+    background-image: url(../assets/a\ 1logo-Educare.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
