@@ -992,7 +992,7 @@ a{
 .fotoBrenno {
     width: 200px;
     height: 200px;
-    background-color: fuchsia;
+    background-image: url(../assets/ftoBrenno.svg);
     background-size: cover;
 }
 
@@ -1013,7 +1013,7 @@ a{
 .fotoSamuel {
     width: 200px;
     height: 200px;
-    background-color: fuchsia;
+    background-image: url(../assets/ftoSamuel.svg);
     background-size: cover;
 }
 
