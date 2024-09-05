@@ -640,6 +640,7 @@ a{
     width: 210px;
     height: 25px;
     border:solid 1px #000;
+    border-radius: 5px;
 }
 
 .sobrenome {
@@ -657,6 +658,7 @@ a{
     height: 25px;
     border:solid 1px #000;
     font-family: 'Rubik';
+    border-radius: 5px;
 }
 
 .nomeEscola {
@@ -675,6 +677,7 @@ a{
     text-align: center;
     border:solid 1px #000;
     font-family: 'Rubik';
+    border-radius: 5px;
 }
 
 .btnFormulario {
@@ -685,9 +688,11 @@ a{
     width: 120px;
     height: 35px;
     font-family: 'Rubik';
+    transition: all 0.4s;
 }
 
 .btnFormulario:hover {
+    width: 135px;
     cursor: pointer;
     background-color: #0f5ec5;
     transition: all 0.4s;
