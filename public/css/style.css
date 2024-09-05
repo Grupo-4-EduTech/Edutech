@@ -956,6 +956,7 @@ a{
     height: 350px;
     width: 250px;
     background: linear-gradient(to bottom, #0790C2, #113768);
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -987,6 +988,7 @@ a{
     height: 200px;
     background-image: url(../assets/ftoAnthony.svg);
     background-size: cover;
+    border-radius: 5px;
 }
 
 .fotoBrenno {
@@ -994,6 +996,7 @@ a{
     height: 200px;
     background-image: url(../assets/ftoBrenno.svg);
     background-size: cover;
+    border-radius: 5px;
 }
 
 .fotoErick {
@@ -1001,6 +1004,7 @@ a{
     height: 200px;
     background-image: url(../assets/ftoErick.svg);
     background-size: cover;
+    border-radius: 5px;
 }
 
 .fotoJuliana {
@@ -1008,6 +1012,7 @@ a{
     height: 200px;
     background-image: url(../assets/ftoJuliana.svg);
     background-size: cover;
+    border-radius: 5px;
 }
 
 .fotoSamuel {
@@ -1015,6 +1020,7 @@ a{
     height: 200px;
     background-image: url(../assets/ftoSamuel.svg);
     background-size: cover;
+    border-radius: 5px;
 }
 
 .fotoYasmin {
@@ -1022,6 +1028,7 @@ a{
     height: 200px;
     background-image: url(../assets/ftoYasmin.svg);
     background-size: cover;
+    border-radius: 5px;
 }
 
 .containerContato {
