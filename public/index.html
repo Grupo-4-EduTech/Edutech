@@ -33,12 +33,12 @@
                     </a>
                 </div>
                 <div class="loginCadastro">
-                    <button class="btnLogin">
+                    <button class="btnLogin" onclick="gotologim()">
                         LOGIN
                     </button>
                     <span class="texto">|</span>
                     <span class="textoCadastro">
-                        <Button class="btnCadastro">
+                        <Button class="btnCadastro" onclick="gotocadastro()">
                             CADASTRO
                         </Button>
                     </span>
@@ -254,5 +254,11 @@
 <script>
     function scrollToSection(to) {
         window.scrollTo(0, to)
+    }
+    function gotologim(){
+        window.location.href = "login.html"
+    }
+    function gotocadastro(){
+        window.location.href = "cadastro.html"
     }
 </script>

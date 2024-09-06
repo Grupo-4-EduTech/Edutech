@@ -9,9 +9,51 @@
     <link rel="icon" sizes="56X56" href="./assets/a 1logo-Educare.svg">
 </head>
 <body class="bodyCadastro">
-    <div class="containerInput"></div>
     <div class="containerLogo">
         <div class="logoCadastro"></div>
     </div>
+    <div class="containerInput">
+        <div class="inputsLogin">
+            <div class="tituloLogin">
+                <span>
+                    CADASTRO
+                </span>
+            </div>
+            <div class="inputEmail">
+                <span style="margin-left: 25px;">Email:</span>
+                <br><br>
+                <input class="inputCadastro" placeholder="Digite seu Email">
+            </div>
+            <div class="inputSenha">
+                <span style="margin-left: 25px;">Senha:</span>
+                <br><br>
+                <input type="password" class="inputCadastro" placeholder="Digite sua senha">
+            </div>
+            <div class="inputConfirmarsenha">
+                <span style="margin-left: 25px;">Confirmar Senha:</span>
+                <br><br>
+                <input type="password" class="inputCadastro" placeholder="Digite sua senha">
+            </div>
+            <div class="containerBtnEnviar">
+                <div class="btnEnviar">
+                    <button class="btnEnviar">
+                        Enviar
+                    </button>
+                </div>
+                <div class="TemConta">
+                    <span>
+                        Já tem uma conta ? <span style="color: #02759E; cursor: pointer;" onclick="gotologin()">
+                            entre em sua conta
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+<script>
+    function gotologin(){
+        window.location.href = "login.html"
+    }
+</script>
