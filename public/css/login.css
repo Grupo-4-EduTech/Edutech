@@ -1,0 +1,173 @@
+/* -- GERAL -- */
+
+body {
+    margin: 0;
+}
+
+.imgDeFundo {
+    background-image: url(../assets/StockCake-Global\ Digital\ Education_1724004042\ 2.svg);
+    background-repeat: no-repeat;
+    background-position-y: -55px;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 655px;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Rubik';
+}
+
+/* -- LOGIN & CADASTRO -- */
+
+.bodyCadastro {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Rubik';
+    height: 100vh;
+}
+
+.containerInput {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputsLogin {
+    height: 500px;
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tituloLogin {
+    width: 300px;
+    height: 50px;
+    background: linear-gradient(45deg, #068EC2, #03435C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputEmail {
+    width: 300px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+
+.inputCadastro {
+    width: 300px;
+    height: 40px;
+    border-radius: 25px;
+    background-color: #DEDEDE;
+    border-color: #dedede00;
+}
+
+.inputLogin {
+    width: 300px;
+    height: 40px;
+    border-radius: 25px;
+    background-color: #DEDEDE;
+    border-color: #dedede00;
+}
+
+.inputSenha {
+    width: 300px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.containerBtnEnviar {
+    width: 300px;
+    height: 80px;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.btnEnviar {
+    width: 300px;
+    height: 50px;
+    background-color: #0791C2;
+    border-color: #005f8100;
+    color: #FFF;
+    font-size: 18px;
+    border-radius: 25px;
+    transition: all 0.4s;
+}
+
+.btnEnviar:hover {
+    width: 310px;
+    background-color: #3fccff;
+    transition: all 0.4s;
+    cursor: pointer;
+}
+
+.naoTemConta {
+    width: 205px;
+    height: 20px;
+    font-size: 12px;
+}
+
+.TemConta {
+    width: 205px;
+    height: 20px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.containerLogo {
+    background: linear-gradient(to bottom, #0790C2, #081F45);
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btnHomeLogin {
+    background-image: url(../assets/botao-home.png);
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    margin-right: 45px;
+}
+
+.btnHomeLogin:hover {
+    cursor: pointer;
+}
+
+.logoLogin {
+    margin-right: 30px;
+    width: 410px;
+    height: 300px;
+    background-image: url(../assets/a\ 1logo-Educare.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.logoCadastro {
+    margin-left: 10px;
+    width: 410px;
+    height: 300px;
+    background-image: url(../assets/a\ 1logo-Educare.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}

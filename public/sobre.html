@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre | Edu EduTech</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sobre.css">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <link rel="icon" sizes="56X56" href="./assets/a 1logo-Educare.svg">
 </head>
@@ -33,11 +33,11 @@
                         </a>
                     </div>
                     <div class="loginCadastro">
-                        <button class="btnLogin">
+                        <button class="btnLoginCadastro btnLogin" onclick="gotologim()">
                             LOGIN
                         </button>
                         <span class="texto">|</span>
-                        <span class="textoCadastro">CADASTRO</span>
+                        <span class="textoCadastro" onclick="gotocadastro()">CADASTRO</span>
                     </div>
                 </div>
             </header>
@@ -108,84 +108,84 @@
     <br><br><br><br>
     <div class="fileiraCimaNossaEquipe">
         <div class="cardFoto">
-            <div class="fotoAnthony"></div>
+            <div class="fotoEquipe"><img src="./assets/ftoAnthony.svg"></div>
             <div class="nomeEquipe">
                 <span>
                     Anthony Lourenço
                 </span>
             </div>
             <div class="contatos">
-                <div class="imgRedeSocialGit"></div>
-                <div class="imgRedeSocialLkdin"></div>
-                <div class="imgRedeSocialInsta"></div>
+                <div class="imgRede"><img src="./assets/fa6-brands_square-github.svg"></div>
+                <div class="imgRede"><img src="./assets/PikPng.com_linkedin-logo-png_598156 1.svg"></div>
+                <div class="imgRede"><img src="./assets/insta.svg"></div>
             </div>
         </div>
         <div class="cardFoto">
-            <div class="fotoBrenno"></div>
+            <div class="fotoEquipe"><img src="./assets/ftoBrenno.svg"></div>
             <div class="nomeEquipe">
                 <span>
                     Brenno Santos
                 </span>
             </div>
             <div class="contatos">
-                <div class="imgRedeSocialGit"></div>
-                <div class="imgRedeSocialLkdin"></div>
-                <div class="imgRedeSocialInsta"></div>
+                <div class="imgRede"><img src="./assets/fa6-brands_square-github.svg"></div>
+                <div class="imgRede"><img src="./assets/PikPng.com_linkedin-logo-png_598156 1.svg"></div>
+                <div class="imgRede"><img src="./assets/insta.svg"></div>
             </div>
         </div>
         <div class="cardFoto">
-            <div class="fotoErick"></div>
+            <div class="fotoEquipe"><img src="./assets/ftoErick.svg"></div>
             <div class="nomeEquipe">
                 <span>
                     Erick Gomes
                 </span>
             </div>
             <div class="contatos">
-                <div class="imgRedeSocialGit"></div>
-                <div class="imgRedeSocialLkdin"></div>
-                <div class="imgRedeSocialInsta"></div>
+                <div class="imgRede"><img src="./assets/fa6-brands_square-github.svg"></div>
+                <div class="imgRede"><img src="./assets/PikPng.com_linkedin-logo-png_598156 1.svg"></div>
+                <div class="imgRede"><img src="./assets/insta.svg"></div>
             </div>
         </div>
     </div>
     <br><br>
     <div class="fileiraBaixoNossaEquipe">
         <div class="cardFoto">
-            <div class="fotoJuliana"></div>
+            <div class="fotoEquipe"><img src="./assets/ftoJuliana.svg"></div>
             <div class="nomeEquipe">
                 <span>
                     Juliana Murakami
                 </span>
             </div>
             <div class="contatos">
-                <div class="imgRedeSocialGit"></div>
-                <div class="imgRedeSocialLkdin"></div>
-                <div class="imgRedeSocialInsta"></div>
+                <div class="imgRede"><img src="./assets/fa6-brands_square-github.svg"></div>
+                <div class="imgRede"><img src="./assets/PikPng.com_linkedin-logo-png_598156 1.svg"></div>
+                <div class="imgRede"><img src="./assets/insta.svg"></div>
             </div>
         </div>
         <div class="cardFoto">
-            <div class="fotoSamuel"></div>
+            <div class="fotoEquipe"><img src="./assets/ftoSamuel.svg"></div>
             <div class="nomeEquipe">
                 <span>
                     Samuel Teodoro
                 </span>
             </div>
             <div class="contatos">
-                <div class="imgRedeSocialGit"></div>
-                <div class="imgRedeSocialLkdin"></div>
-                <div class="imgRedeSocialInsta"></div>
+                <div class="imgRede"><img src="./assets/fa6-brands_square-github.svg"></div>
+                <div class="imgRede"><img src="./assets/PikPng.com_linkedin-logo-png_598156 1.svg"></div>
+                <div class="imgRede"><img src="./assets/insta.svg"></div>
             </div>
         </div>
         <div class="cardFoto">
-            <div class="fotoYasmin"></div>
+            <div class="fotoEquipe"><img src="./assets/ftoYasmin.svg"></div>
             <div class="nomeEquipe">
                 <span>
                     Yasmin Guiniver
                 </span>
             </div>
             <div class="contatos">
-                <div class="imgRedeSocialGit"></div>
-                <div class="imgRedeSocialLkdin"></div>
-                <div class="imgRedeSocialInsta"></div>
+                <div class="imgRede"><img src="./assets/fa6-brands_square-github.svg"></div>
+                <div class="imgRede"><img src="./assets/PikPng.com_linkedin-logo-png_598156 1.svg"></div>
+                <div class="imgRede"><img src="./assets/insta.svg"></div>
             </div>
         </div>
     </div>
@@ -239,5 +239,11 @@
 <script>
     function scrollToSection(to) {
         window.scrollTo(0, to)
+    }
+    function gotologim(){
+        window.location.href = "login.html"
+    }
+    function gotocadastro(){
+        window.location.href = "cadastro.html"
     }
 </script>

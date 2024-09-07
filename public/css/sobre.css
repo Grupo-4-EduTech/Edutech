@@ -1,0 +1,562 @@
+/* -- GERAL -- */
+
+body {
+    margin: 0;
+}
+
+.imgDeFundo {
+    background-image: url(../assets/StockCake-Global\ Digital\ Education_1724004042\ 2.svg);
+    background-repeat: no-repeat;
+    background-position-y: -55px;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 655px;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Rubik';
+}
+
+/* -- HEADER -- */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.header {
+    height: 90px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.26);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+}
+
+.logo {
+    width: 100px;
+    height: 80px;
+    margin-top: 12px;
+    margin-left: 50px;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.imgLogo {
+    width: 220px;
+}
+
+.navBar {
+    width: 450px;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 120px;
+}
+
+.textoNavBar {
+    height: 20px;
+    color: #FFF;
+    font-size: 18px;
+    transition: all 0.6s;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.8s;
+}
+
+a:hover {
+    height: 22px;
+    border-radius: 5px;
+    background-color: #ffffff7a;
+    transition: all 0.6s;
+}
+
+.textoNavBar:hover {
+    cursor: pointer;
+    color: #000;
+    transition: all 0.6s;
+}
+
+.loginCadastro {
+    width: 290px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.btnLoginCadastro {
+    height: 40px;
+    background-color: #00000000;
+    border-color: #ffffffae;
+    border-radius: 30px;
+    color: #FFF;
+    font-size: 18px;
+    transition: all 0.5s;
+}
+
+.btnLogin {
+    width: 100px;
+}
+
+.textoCadastro {
+    color: #FFF;
+    font-size: 18px;
+}
+
+.textoCadastro:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    transition: all 0.4s;
+}
+
+.btnLogin:hover,
+.btnCadastro:hover {
+    background-color: #FFF;
+    color: #000;
+    transform: scale(1.2);
+    border-color: #00000000;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.texto {
+    color: #FFF;
+    font-size: 18px;
+}
+
+/* -- BANNER -- */
+.banner {
+    width: 100%;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    color: #FFF;
+    text-align: center;
+}
+
+.tituloBanner {
+    font-size: 40px;
+    font-weight: 550;
+    border-bottom: 30px;
+    line-height: 55px;
+}
+
+.textoBanner {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 25px;
+}
+
+.btnSaibaMais {
+    width: 180px;
+    height: 43px;
+    border-radius: 35px;
+    background-color: #0598CE;
+    border-color: #0598ce00;
+    color: #FFF;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.btnSaibaMais:hover {
+    background-color: #005f81;
+    border-color: #005f8100;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+/* -- SOBRE A EDU TECH -- */
+
+.imgDeFundoSobre {
+    background-image: url(../assets/StockCake-Data\ Monitoring\ Team_1724620214\ 1.svg);
+    background-repeat: no-repeat;
+    background-position-y: -55px;
+    background-size: cover;
+    height: 400px;
+}
+
+.tituloBannerSobre {
+    color: #FFF;
+    font-size: 40px;
+    font-weight: 550;
+    text-align: center;
+    margin-top: 200px;
+}
+
+.sobreEduTech {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tituloSobreEduTech {
+    width: 430px;
+    height: 60px;
+    margin-left: 125px;
+    font-size: 30px;
+    background: linear-gradient(45deg, #068EC2, #03435C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.textoSobreEduTech {
+    width: 1050px;
+    height: 170px;
+    margin-left: 125px;
+    font-size: 18px;
+    line-height: 33px;
+}
+
+.imgSobreEduTech {
+    height: 330px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.classroomLearning {
+    background-image: url(../assets/StockCake-Classroom\ Learning\ Session_1724622032\ 1.svg);
+    background-size: cover;
+    width: 1000px;
+    height: 310px;
+}
+
+.nossosProjetos {
+    width: 100%;
+    height: 1050px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.textoProjetos {
+    width: 600px;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.tituloProjetos {
+    width: 350px;
+    height: 50px;
+    background: linear-gradient(45deg, #068EC2, #03435C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 40px;
+    font-weight: 450;
+    margin-left: 40px;
+}
+
+.tituloAnalise {
+    width: 400px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 650;
+    margin-left: 40px;
+}
+
+.textoNossosProjetos {
+    width: 500px;
+    height: 300px;
+    font-size: 18px;
+    line-height: 35px;
+    margin-left: 40px;
+}
+
+.botaoParticipar {
+    width: 178px;
+    height: 50px;
+    background-color: #0F93C3;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    justify-content: space-evenly;
+    transition: all 0.2s;
+    margin-left: 40px;
+}
+
+.botaoParticipar:hover {
+    cursor: pointer;
+    width: 184px;
+    height: 53px;
+    transition: all 0.2s;
+}
+
+.btnParticipar {
+    width: 115px;
+    height: 22px;
+    background-color: #0F93C3;
+    color: #FFF;
+    font-size: 23PX;
+    font-weight: 450;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seta {
+    width: 35px;
+    height: 15px;
+    background-color: #0F93C3;
+    background-image: url(../assets/Arrow\ 75.svg);
+    background-repeat: no-repeat;
+    margin-top: 3px;
+}
+
+.imgProjetos {
+    height: 550px;
+    width: 500px;
+    background-image: url(../assets/Visual\ data-bro\ 1.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 65px;
+}
+
+.nossaEquipe {
+    font-size: 30px;
+    font-weight: 550;
+    background: linear-gradient(45deg, #068EC2, #03435C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-left: 125px;
+}
+
+.fileiraCimaNossaEquipe {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+.fileiraBaixoNossaEquipe {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+.cardFoto {
+    height: 350px;
+    width: 250px;
+    background: linear-gradient(to bottom, #0790C2, #113768);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.contatos {
+    width: 200px;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.redesSocias {
+    width: 600px;
+    height: 100px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.tituloRedesSocias {
+    color: #FFF;
+    font-size: 30px;
+}
+
+.imagens {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.imgRede img{
+    width: 43px;
+    height: 43px;
+    transition: all .4s;
+}
+
+.imgRede img:hover {
+    cursor: pointer;
+    width: 46px;
+    height: 46px;
+    transition: all 0.4s;
+}
+
+.nomeEquipe {
+    width: 200px;
+    height: 20px;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fotoEquipe{
+    width: 200px;
+    height: 200px;
+}
+
+.fotoEquipe img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.containerContato {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.entreEmContato {
+    width: 300px;
+    height: 50px;
+    background-color: #0F93C3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    transition: all 0.2s;
+}
+
+.entreEmContato:hover {
+    cursor: pointer;
+    width: 315px;
+    height: 58px;
+    transition: all 0.2s;
+}
+
+.btnContato {
+    width: 230px;
+    height: 45px;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 450;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* -- FOOTER -- */
+
+.footer {
+    height: 250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.navBarFooter {
+    background-color: #1E1E1E;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.textoNavBarFooter {
+    height: 20px;
+    color: #FFF;
+    font-size: 14px;
+}
+
+.textoNavBarFooter:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    transition: all 0.4s;
+}
+
+.btnLoginFooter {
+    width: 100px;
+    height: 40px;
+    background-color: #00000000;
+    color: #FFF;
+    font-size: 14px;
+    border-color: #00000000;
+}
+
+.btnLoginFooter:hover {
+    transition: all 0.4s;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.textoCadastroFooter {
+    color: #FFF;
+    font-size: 14px;
+    margin-right: 25px;
+}
+
+.textoCadastroFooter:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    transition: all 0.4s;
+}
+
+.tradeMark {
+    background-color: #2B2B2B;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textoTrademark {
+    color: #FFF;
+    font-size: 11px;
+}

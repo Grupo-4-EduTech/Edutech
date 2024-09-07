@@ -100,55 +100,31 @@ a:hover{
     margin-right: 20px;
 }
 
+.btnLoginCadastro {
+    height: 40px;
+    background-color: #00000000;
+    border-color: #ffffffae;
+    border-radius: 30px;
+    color: #FFF;
+    font-size: 18px;
+    transition: all 0.5s;
+}
+
 .btnLogin {
     width: 100px;
-    height: 40px;
-    background-color: #00000000;
-    border-color: #ffffffae;
-    border-radius: 30px;
-    color: #FFF;
-    font-size: 18px;
-    transition: all 0.5s;
 }
 
-.btnLogin:hover {
-    background-color: #FFF;
-    color: #000;
-    transform: scale(1.2);
-    border-color: #00000000;
-    transition: all 0.5s;
-    cursor: pointer;
-}
-
-.btnCadastro{
+.btnCadastro {
     width: 115px;
-    height: 40px;
-    background-color: #00000000;
-    border-color: #ffffffae;
-    border-radius: 30px;
-    color: #FFF;
-    font-size: 18px;
-    transition: all 0.5s;
 }
 
-.btnCadastro:hover{
+.btnLogin:hover, .btnCadastro:hover{
     background-color: #FFF;
-    transform: scale(1.2);
     color: #000;
+    transform: scale(1.2);
     border-color: #00000000;
     transition: all 0.5s;
-    cursor: pointer;  
-}
-
-.textoCadastro {
-    color: #FFF;
-    font-size: 18px;
-}
-
-.textoCadastro:hover {
     cursor: pointer;
-    text-decoration: underline;
-    transition: all 0.4s;
 }
 
 .texto {
@@ -165,23 +141,20 @@ a:hover{
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-
+    color: #FFF;
+    text-align: center;
 }
 
 .tituloBanner {
-    color: #FFF;
     font-size: 40px;
     font-weight: 550;
-    text-align: center;
     border-bottom: 30px;
     line-height: 55px;
 }
 
 .textoBanner {
-    color: #FFF;
     font-size: 20px;
     font-weight: 300;
-    text-align: center;
     line-height: 25px;
 }
 
@@ -526,80 +499,16 @@ a:hover{
     margin-top: 20px;
 }
 
-.imgRedeSocialLkdin {
+.imgRede{
     width: 43px;
     height: 43px;
-    background-image: url(../assets/PikPng.com_linkedin-logo-png_598156\ 1.svg);
-    background-size: cover;
-    transition: all 0.4s;
+    transition: all .4s;
 }
 
-.imgRedeSocialLkdin:hover {
+.imgRede:hover {
     cursor: pointer;
     width: 46px;
     height: 46px;
-    transition: all 0.4s;
-}
-
-.imgRedeSocialInsta {
-    width: 43px;
-    height: 43px;
-    background-image: url(../assets/insta.svg);
-    background-size: cover;
-    transition: all 0.4s;
-}
-
-.imgRedeSocialInsta:hover {
-    cursor: pointer;
-    width: 46px;
-    height: 46px;
-    transition: all 0.4s;
-}
-
-
-.imgRedeSocialX {
-    width: 43px;
-    height: 43px;
-    background-image: url(../assets/PikPng.com_twitter-png-logo_1011861\ 1.svg);
-    background-size: cover;
-    transition: all 0.4s;
-}
-
-.imgRedeSocialX:hover {
-    cursor: pointer;
-    width: 46px;
-    height: 46px;
-    transition: all 0.4s;
-}
-
-.imgRedeSocialFace {
-    width: 43px;
-    height: 43px;
-    background-image: url(../assets/facebook.svg);
-    background-size: cover;
-    transition: all 0.4s;
-}
-
-.imgRedeSocialFace:hover {
-    cursor: pointer;
-    width: 46px;
-    height: 46px;
-    transition: all 0.4s;
-}
-
-.imgRedeSocialGit {
-    width: 48px;
-    height: 48px;
-    background-image: url(../assets/fa6-brands_square-github.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    transition: all 0.4s;
-}
-
-.imgRedeSocialGit:hover {
-    cursor: pointer;
-    width: 51px;
-    height: 51px;
     transition: all 0.4s;
 }
 
@@ -785,462 +694,3 @@ a:hover{
     color: #FFF;
     font-size: 11px;
 }
-
-/* -- SOBRE A EDU TECH -- */
-
-.imgDeFundoSobre {
-    background-image: url(../assets/StockCake-Data\ Monitoring\ Team_1724620214\ 1.svg);
-    background-repeat: no-repeat;
-    background-position-y: -55px;
-    background-size: cover;
-    height: 400px;
-}
-
-.tituloBannerSobre {
-    color: #FFF;
-    font-size: 40px;
-    font-weight: 550;
-    text-align: center;
-    margin-top: 200px;
-}
-
-.sobreEduTech {
-    width: 100%;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.tituloSobreEduTech {
-    width: 430px;
-    height: 60px;
-    margin-left: 125px;
-    font-size: 30px;
-    background: linear-gradient(45deg, #068EC2, #03435C);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.textoSobreEduTech {
-    width: 1050px;
-    height: 170px;
-    margin-left: 125px;
-    font-size: 18px;
-    line-height: 33px;
-}
-
-.imgSobreEduTech {
-    height: 330px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.classroomLearning {
-    background-image: url(../assets/StockCake-Classroom\ Learning\ Session_1724622032\ 1.svg);
-    background-size: cover; 
-    width: 1000px;
-    height: 310px;
-}
-
-.nossosProjetos {
-    width: 100%;
-    height: 1050px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.textoProjetos {
-    width: 600px;
-    height: 650px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.tituloProjetos {
-    width: 350px;
-    height: 50px;
-    background: linear-gradient(45deg, #068EC2, #03435C);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 40px;
-    font-weight: 450;
-    margin-left: 40px;
-}
-
-.tituloAnalise {
-    width: 400px;
-    height: 50px;
-    font-size: 20px;
-    font-weight: 650;
-    margin-left: 40px;
-}
-
-.textoNossosProjetos {
-    width: 500px;
-    height: 300px;
-    font-size: 18px;
-    line-height: 35px;
-    margin-left: 40px;
-}
-
-.botaoParticipar {
-    width: 178px;
-    height: 50px;
-    background-color: #0F93C3;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    justify-content: space-evenly;
-    transition: all 0.2s;
-    margin-left: 40px;
-}
-
-.botaoParticipar:hover {
-    cursor: pointer;
-    width: 184px;
-    height: 53px;
-    transition: all 0.2s;
-}
-
-.btnParticipar {
-    width: 115px;
-    height: 22px;
-    background-color: #0F93C3;
-    color: #FFF;
-    font-size: 23PX;
-    font-weight: 450;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.seta {
-    width: 35px;
-    height: 15px;
-    background-color: #0F93C3;
-    background-image: url(../assets/Arrow\ 75.svg);
-    background-repeat: no-repeat;
-    margin-top: 3px;
-}
-
-.imgProjetos {
-    height: 550px;
-    width: 500px;
-    background-image: url(../assets/Visual\ data-bro\ 1.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-top: 65px;
-}
-
-.nossaEquipe {
-    font-size: 30px;
-    font-weight: 550;
-    background: linear-gradient(45deg, #068EC2, #03435C);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-left: 125px;
-}
-
-.fileiraCimaNossaEquipe {
-    width: 100%;
-    height: 400px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
-}
-
-.fileiraBaixoNossaEquipe {
-    width: 100%;
-    height: 400px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
-}
-
-.cardFoto {
-    height: 350px;
-    width: 250px;
-    background: linear-gradient(to bottom, #0790C2, #113768);
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    box-shadow: 
-    0 4px 8px rgba(0, 0, 0, 0.2), 
-    0 8px 16px rgba(0, 0, 0, 0.1); 
-}
-
-.contatos {
-    width: 200px;
-    height: 55px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nomeEquipe {
-    width: 200px;
-    height: 20px;
-    color: #FFF;
-    font-size: 20px;
-    font-weight: 500;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.fotoAnthony {
-    width: 200px;
-    height: 200px;
-    background-image: url(../assets/ftoAnthony.svg);
-    background-size: cover;
-    border-radius: 5px;
-}
-
-.fotoBrenno {
-    width: 200px;
-    height: 200px;
-    background-image: url(../assets/ftoBrenno.svg);
-    background-size: cover;
-    border-radius: 5px;
-}
-
-.fotoErick {
-    width: 200px;
-    height: 200px;
-    background-image: url(../assets/ftoErick.svg);
-    background-size: cover;
-    border-radius: 5px;
-}
-
-.fotoJuliana {
-    width: 200px;
-    height: 200px;
-    background-image: url(../assets/ftoJuliana.svg);
-    background-size: cover;
-    border-radius: 5px;
-}
-
-.fotoSamuel {
-    width: 200px;
-    height: 200px;
-    background-image: url(../assets/ftoSamuel.svg);
-    background-size: cover;
-    border-radius: 5px;
-}
-
-.fotoYasmin {
-    width: 200px;
-    height: 200px;
-    background-image: url(../assets/ftoYasmin.svg);
-    background-size: cover;
-    border-radius: 5px;
-}
-
-.containerContato {
-    width: 100%;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.entreEmContato {
-    width: 300px;
-    height: 50px;
-    background-color: #0F93C3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    transition: all 0.2s;
-}
-
-.entreEmContato:hover {
-    cursor: pointer;
-    width: 315px;
-    height: 58px;
-    transition: all 0.2s;
-}
-
-.btnContato {
-    width: 230px;
-    height: 45px;
-    color: #FFF;
-    font-size: 18px;
-    font-weight: 450;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 4px;
-}
-
-a {
-    text-decoration: none;
-}
-
-/* -- LOGIN & CADASTRO -- */
-
-.bodyCadastro {
-    display: flex;
-    flex-direction: row;
-    font-family: 'Rubik';
-}
-
-.containerInput {
-    width: 50%;
-    height: 567px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.inputsLogin {
-    height: 500px;
-    width: 450px;
-    display: flex;
-    justify-content: center;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-}
-
-.tituloLogin {
-    width: 300px;
-    height: 50px;
-    background: linear-gradient(45deg, #068EC2, #03435C);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.inputEmail {
-    width: 300px;
-    height: 70px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-
-.inputCadastro{
-    width: 300px;
-    height: 40px;
-    border-radius: 25px;
-    background-color: #DEDEDE;
-    border-color: #dedede00;
-}
-
-.inputLogin {
-    width: 300px;
-    height: 40px;
-    border-radius: 25px;
-    background-color: #DEDEDE;
-    border-color: #dedede00;
-}
-
-.inputSenha {
-    width: 300px;
-    height: 70px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.containerBtnEnviar {
-    width: 300px;
-    height: 80px;
-    background-color: #FFF;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.btnEnviar {
-    width: 300px;
-    height: 50px;
-    background-color: #0791C2;
-    border-color: #005f8100;
-    color: #FFF;
-    font-size: 18px;
-    border-radius: 25px;
-    transition: all 0.4s;
-}
-
-.btnEnviar:hover {
-    width: 310px;
-    background-color: #3fccff;
-    transition: all 0.4s;
-    cursor: pointer;
-}
-
-.naoTemConta {
-    width: 205px;
-    height: 20px;
-    font-size: 12px;
-}
-
-.TemConta{
-    width: 205px;
-    height: 20px;
-    font-size: 12px;
-    text-align: center;
-}
-
-.containerLogo {
-    background: linear-gradient(to bottom, #0790C2, #081F45);
-    width: 50%;
-    height: 567px;
-    display: flex;
-    justify-content: center;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-}
-
-.btnHomeLogin {
-    background-image: url(../assets/botao-home.png);
-    background-size: cover;
-    width: 50px;
-    height: 50px;
-    margin-right: 45px;
-}
-
-.btnHomeLogin:hover {
-    cursor: pointer;
-}
-
-.logoLogin {
-    margin-right: 30px;
-    width: 410px;
-    height: 300px;
-    background-image: url(../assets/a\ 1logo-Educare.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.logoCadastro {
-    margin-left: 10px;
-    width: 410px;
-    height: 300px;
-    background-image: url(../assets/a\ 1logo-Educare.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
