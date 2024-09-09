@@ -171,3 +171,25 @@ html {
     background-size: contain;
     background-repeat: no-repeat;
 }
+.logoMobile {
+    display: none;
+}
+
+/* RESPONSIVIDADE MOBILE */
+
+@media only screen and (max-width: 600px) {
+    .containerLogo {
+        display: none;
+    }
+
+    .containerInput {
+        width: 100vw;
+    }
+
+    .btnHomeLogin {
+        filter: brightness(0) saturate(100%) invert(53%) sepia(58%) saturate(3626%) hue-rotate(194deg) brightness(91%) contrast(97%);
+        position: fixed;
+        top: 5%;
+        left: 5%;
+    }
+}

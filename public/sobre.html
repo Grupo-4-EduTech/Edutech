@@ -40,6 +40,56 @@
                         <span class="textoCadastro" onclick="gotocadastro()">CADASTRO</span>
                     </div>
                 </div>
+                <div class="headerMobile">
+                    <header>
+                        <nav class="menu-hamburger">
+                    
+                            <input id="menu-hamburguer" type="checkbox" />
+                            <label for="menu-hamburguer">
+                                <div class="menu">
+                                    <span class="hamburguer"></span>
+                                </div>
+                            </label>
+                    
+                            <ul class="menu-hamburguer-elements show">
+                                <li>
+                                    <a onclick="scrollToSection(0)">
+                                        <span class="textoNavBar">INICIO</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onclick="scrollToSection(1248)">
+                                        <span class="textoNavBar">PROJETOS</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onclick="scrollToSection(234)">
+                                        <span class="textoNavBar">SOBRE</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="index.html#contato">
+                                        <span class="textoNavBar">CONTATO</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="loginCadastro">
+                                        <button class="btnLoginCadastro btnLogin" onclick="gotologim()">
+                                            LOGIN
+                                        </button>
+                                        <span class="texto">|</span>
+                                        <span class="textoCadastro" onclick="gotocadastro()">CADASTRO</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="logo">
+                            <a onclick="scrollToSection(0)">
+                                <img src="assets/EduTechSemTexto.svg">
+                            </a>
+                        </div>
+                    </header>
+                </div>
             </header>
             <div class="tituloBannerSobre"  id="sobre">
                 <span>
@@ -100,13 +150,14 @@
         </div>
         <div class="imgProjetos"></div>
     </div>
+    <div class="equipe">
+
     <div class="nossaEquipe">
         <span>
             Nossa Equipe
         </span>
     </div>
-    <br><br><br><br>
-    <div class="fileiraCimaNossaEquipe">
+    <div class="membrosEquipe">
         <div class="cardFoto">
             <div class="fotoEquipe"><img src="./assets/ftoAnthony.svg"></div>
             <div class="nomeEquipe">
@@ -146,9 +197,6 @@
                 <div class="imgRede"><img src="./assets/insta.svg"></div>
             </div>
         </div>
-    </div>
-    <br><br>
-    <div class="fileiraBaixoNossaEquipe">
         <div class="cardFoto">
             <div class="fotoEquipe"><img src="./assets/ftoJuliana.svg"></div>
             <div class="nomeEquipe">
@@ -189,7 +237,7 @@
             </div>
         </div>
     </div>
-    <br><br><br><br><br>
+    </div>
     <div class="containerContato">
         <div class="entreEmContato">
             <div class="btnContato">
@@ -222,13 +270,41 @@
                 </a>
             </div>
             <div class="loginCadastro">
-                <button class="btnLoginFooter">
+                <button class="btnLoginFooter" onclick="gotologim()">
                     LOGIN
                 </button>
                 <span class="texto">|</span>
-                <span class="textoCadastroFooter">CADASTRO</span>
+                <span class="textoCadastroFooter" onclick="gotocadastro()">CADASTRO</span>
             </div>
         </div>
+        </div>
+        <div class="footerMobile">
+            <div class="logo">
+                <a onclick="scrollToSection(0)">
+                    <img class="imgLogo" src="assets/EduTechWhite1 1.svg">
+                </a>
+            </div>
+            <h2>Navegação</h2>
+            <div class="navBar">
+                <a onclick="scrollToSection(0)">
+                    <span class="textoNavBarFooter">INICIO</span>
+                </a>
+                <a onclick="scrollToSection(1295)">
+                    <span class="textoNavBarFooter">PROJETOS</span>
+                </a>
+                <a onclick="scrollToSection(304)">
+                    <span class="textoNavBarFooter">SOBRE</span>
+                </a>
+                <a href="index.html#contato">
+                    <span class="textoNavBarFooter">CONTATO</span>
+                </a>
+            </div>
+            <div class="loginCadastro">
+                <span class="textoCadastroFooter" onclick="gotologim()">LOGIN</span>
+                <span class="texto">|</span>
+                <span class="textoCadastroFooter" onclick="gotocadastro()">CADASTRO</span>
+            </div>
+            </div>
         </div>
         <div class="tradeMark">
             <span class="textoTrademark">2024 ©️ EduTech Solutions. Todos os direitos reservados.</span>

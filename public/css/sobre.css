@@ -345,27 +345,16 @@ a:hover {
     margin-left: 125px;
 }
 
-.fileiraCimaNossaEquipe {
-    width: 100%;
-    height: 400px;
-    display: flex;
+.membrosEquipe {
+    display: grid;
+    grid-template-columns: repeat(3, 220px);
+    gap: 40px;
     justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
-}
-
-.fileiraBaixoNossaEquipe {
-    width: 100%;
-    height: 400px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
 }
 
 .cardFoto {
     height: 350px;
-    width: 250px;
+    width: 220px;
     background: linear-gradient(to bottom, #0790C2, #113768);
     border-radius: 15px;
     display: flex;
@@ -538,7 +527,6 @@ a {
 .textoCadastroFooter {
     color: #FFF;
     font-size: 14px;
-    margin-right: 25px;
 }
 
 .textoCadastroFooter:hover {
@@ -559,4 +547,229 @@ a {
 .textoTrademark {
     color: #FFF;
     font-size: 11px;
+}
+
+.headerMobile{
+    display: none;
+}
+
+.footerMobile{
+    display: none;
+}
+
+/* RESPONSIVIDADE CELULAR */
+
+@media only screen and (max-width: 600px){
+
+    .logo {
+            margin: 0;
+            width: fit-content;
+            height: auto;
+            margin-right: 5%;
+    }
+
+    /* HEADER */
+    .header{
+        display: none;
+    }
+
+    .headerMobile{
+        display: flex;
+    }
+
+    header {
+        width: 100vw;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: whitesmoke;
+        background-color: rgba(0, 0, 0, .26);
+    }
+    
+    .menu-hamburguer-elements li {
+        list-style: none;
+        font-size: 1.4rem;
+        margin: 2rem 0;
+        font-size: 1.4rem;
+        list-style: none;
+    }
+    
+    .menu-hamburguer-elements a {
+        color: white;
+        text-decoration: none;
+    }
+    
+    .menu-hamburguer-elements a:hover {
+        color: rgba(20, 20, 20, .8)
+    }
+
+    
+    /* BOTÃO MENU HAMBURGUER */
+    .menu {
+        width: 60px;
+        height: 60px;
+        margin: 1rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        display: none;
+    }
+    
+    .hamburguer {
+        position: relative;
+        display: block;
+        background: #fff;
+        width: 30px;
+        height: 2px;
+        top: 29px;
+        left: 15px;
+        transition: 0.5s ease-in-out;
+    }
+    
+    .hamburguer:before,
+    .hamburguer:after {
+        background: #ffff;
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transition: 0.5s ease-in-out;
+    }
+    
+    .hamburguer:before {
+        top: -10px;
+    }
+    
+    .hamburguer:after {
+        bottom: -10px;
+    }
+    
+    input {
+        display: none;
+    }
+    
+    /* rotação dos elementos do span */
+    input:checked~label .hamburguer {
+        transform: rotate(45deg);
+    }
+    
+    input:checked~label .hamburguer:before {
+        transform: rotate(90deg);
+        top: 0;
+    }
+    
+    input:checked~label .hamburguer:after {
+        transform: rotate(90deg);
+        bottom: 0;
+    }
+    
+    input:checked~.menu-hamburguer-elements {
+        left: 0;
+    }
+    
+    .menu-hamburguer-elements a:hover {
+        color: #ffffff7a;
+    }
+
+    .menu-hamburguer-elements {
+        margin:0;
+        padding-left: 0;
+        width: 45%;
+        height: 100%;
+        background-color: rgba(10, 10, 10, .9);
+        position: fixed;
+        left: -100%;
+        top: 0;
+
+        transition: left cubic-bezier(1, 0, 0, 1) .8s;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+
+        padding-top: 15vh;
+
+        z-index: -1;
+    }
+
+    .menu {
+        display: flex;
+        height: 60px;
+        width: 60px;
+    }
+
+    /* CONTEÚDO */
+
+    .imgDeFundoSobre{
+        background-position-y: 0;
+    }
+
+    .sobreEduTech,.nossosProjetos, .equipe{
+        margin: 60px auto !important;
+    }
+
+    .sobreEduTech,.tituloSobreEduTech, .textoSobreEduTech, .nossosProjetos, .textoProjetos,.tituloProjetos, .tituloAnalise, .textoNossosProjetos, .equipe,.nossaEquipe{
+        width: 80%;
+        height: fit-content;
+        margin: auto;
+    }
+
+    .tituloSobreEduTech, .tituloProjetos, .nossaEquipe{
+        margin-bottom: 60px;
+    }
+
+    .nossaEquipe{
+        width: 100%;
+    }
+
+    .imgProjetos{
+        display: none;
+    }
+
+    .botaoParticipar{
+        margin-left: 10%;
+    }
+
+    .membrosEquipe{
+        grid-template-columns: repeat(auto-fill, 220px);
+    }
+
+    .contatos{
+        width: 150px;
+    }
+
+    .imgRede img{
+        height: 30px;
+        width: 30px;
+    }
+
+    /* FOOTER */
+
+    .footer{
+        display: none;
+    }
+
+    .footerMobile{
+        display: flex;
+        background-color: #1E1E1E;
+        flex-direction: column;
+        padding: 5% 0 5% 5%;
+        color: #FFF;
+    }
+    .navBar{
+        flex-direction: column;
+        align-items: start;
+        margin: 0;
+        width: fit-content;
+    }
+    .loginCadastro{
+        justify-content: left;
+        margin: 0;
+        width: fit-content;
+    }
+    .texto{
+        margin: 5%;
+    }
 }
