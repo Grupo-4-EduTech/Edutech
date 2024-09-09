@@ -734,11 +734,14 @@ a:hover{
     }
     
     .menu-hamburguer-elements li {
+
         list-style: none;
         font-size: 1.4rem;
         margin: 2rem 0;
         font-size: 1.4rem;
         list-style: none;
+        display: flex;
+ 
     }
     
     .menu-hamburguer-elements a {
@@ -833,11 +836,12 @@ a:hover{
         display: flex;
         align-items: center;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
 
         padding-top: 15vh;
 
         z-index: -1;
+
     }
 
     .menu {
@@ -848,8 +852,16 @@ a:hover{
 
     /* CONTEÚDO */
 
-    .imgDeFundoSobre{
-        background-position-y: 0;
+    .imgDescubraMais,.imgQuemSomos{
+        display: none;
+    }
+
+    .textoQuemSomos {
+        height: 300px;
+        width: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .sobreEduTech,.nossosProjetos, .equipe{
