@@ -794,7 +794,7 @@ a:hover{
         bottom: -10px;
     }
     
-    input {
+    #menu-hamburguer{
         display: none;
     }
     
@@ -852,16 +852,109 @@ a:hover{
 
     /* CONTEÚDO */
 
-    .imgDescubraMais,.imgQuemSomos{
+    .imgDescubraMais{
         display: none;
+    }
+
+    .tituloQuemSomos{
+        text-align: start;
     }
 
     .textoQuemSomos {
         height: 300px;
-        width: 600px;
+        width: 80%;
+        display: flex;
+        text-align: start;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .imgQuemSomos{
+        width: 80%;
+        margin-top: 6vh;
+        border-radius: 5px;
+    }
+
+    .quemSomos {
+        height: 540px;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+    }
+
+    .nossosValores {
+        height: 680px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .textoNossosValores {
+        background-color: #FFF;
+        height: 400px;
+        width: 80%;
+    }
+ 
+    .imgNossosValores {
+        width: 80%;
+        margin-top: 6vh;
+        border-radius: 5px;
+    }
+
+    .contato{
+        width: 100%;
+    }
+
+    .textoContato{
+        width: 80%;
+    }
+
+    .formulario {
+        height: 600px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .faixa{
+        display: none;
+    }
+
+    .infoContato{
+        display: none;
+    }
+
+    .formularioContato{
+        height: 100%;
+        background-color: #113768;
+        color: white;
+    }
+
+    .tituloFormulario{
+        font-size: 6vw;
+    }
+
+    .primeiroNome {
+        width: 225px;
+        height: 60px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sobrenome{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .inputNome {
+        width: 200px;
+        height: 25px;
+        border:solid 1px #000;
+        border-radius: 5px;
     }
 
     .sobreEduTech,.nossosProjetos, .equipe{
