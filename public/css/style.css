@@ -889,6 +889,10 @@ a:hover{
         width: 100%;
         display: flex;
         flex-direction: column;
+    }
+
+    .tituloNossosValores{
+        display: flex;
         align-items: center;
         justify-content: center;
     }
@@ -955,45 +959,6 @@ a:hover{
         height: 25px;
         border:solid 1px #000;
         border-radius: 5px;
-    }
-
-    .sobreEduTech,.nossosProjetos, .equipe{
-        margin: 60px auto !important;
-    }
-
-    .sobreEduTech,.tituloSobreEduTech, .textoSobreEduTech, .nossosProjetos, .textoProjetos,.tituloProjetos, .tituloAnalise, .textoNossosProjetos, .equipe,.nossaEquipe{
-        width: 80%;
-        height: fit-content;
-        margin: auto;
-    }
-
-    .tituloSobreEduTech, .tituloProjetos, .nossaEquipe{
-        margin-bottom: 60px;
-    }
-
-    .nossaEquipe{
-        width: 100%;
-    }
-
-    .imgProjetos{
-        display: none;
-    }
-
-    .botaoParticipar{
-        margin-left: 10%;
-    }
-
-    .membrosEquipe{
-        grid-template-columns: repeat(auto-fill, 220px);
-    }
-
-    .contatos{
-        width: 150px;
-    }
-
-    .imgRede img{
-        height: 30px;
-        width: 30px;
     }
 
     /* FOOTER */
