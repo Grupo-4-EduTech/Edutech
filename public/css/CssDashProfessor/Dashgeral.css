@@ -1,0 +1,53 @@
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.navBarlateral{
+    height: 790px;
+    width: 20%;
+    display: flex;
+    background: linear-gradient(#0790C2,#113768);
+}
+
+.AreaLogo{
+    height: 130px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Logo{
+    height: 70px;
+    width: 250px;
+    background-image: url("../../assets/EduTechWhite1\ 1.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.Areadash{
+    height: 790px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.AreaKPITurma{
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.KPITurma{
+    height: 100px;
+    width: 90%;
+    border-radius: 20px;
+    background: linear-gradient(to bottom,#0790C2,#11abe3);
+    box-shadow: 
+    5px 4px 0px rgba(0, 0, 0, 0.2),
+    0px 4px 6px rgba(0, 0, 0, 0);
+}

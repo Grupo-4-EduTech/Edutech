@@ -106,23 +106,18 @@ a:hover{
     border-color: #ffffffae;
     border-radius: 30px;
     color: #FFF;
-    font-size: 18px;
+    font-size: 22px;
     transition: all 0.5s;
 }
 
 .btnLogin {
-    width: 100px;
+    width: 160px;
 }
 
-.btnCadastro {
-    width: 115px;
-}
-
-.btnLogin:hover, .btnCadastro:hover{
-    background-color: #FFF;
-    color: #000;
-    transform: scale(1.2);
-    border-color: #00000000;
+.btnLogin:hover{
+    background-color: #0598CE;
+    border-color: #0598CE;
+    transform: scale(1.1);
     transition: all 0.5s;
     cursor: pointer;
 }
