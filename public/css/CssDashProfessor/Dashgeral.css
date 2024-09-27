@@ -8,7 +8,7 @@ body{
     height: 790px;
     width: 20%;
     display: flex;
-    background: linear-gradient(#0790C2,#113768);
+    background: linear-gradient(160deg ,#18b4ed,#113768);
 }
 
 .AreaLogo{
@@ -44,10 +44,9 @@ body{
 
 .KPITurma{
     height: 100px;
-    width: 90%;
+    width: 95%;
     border-radius: 20px;
-    background: linear-gradient(to bottom,#0790C2,#11abe3);
+    background: linear-gradient(135deg,#0790C2,#87daf9);
     box-shadow: 
-    5px 4px 0px rgba(0, 0, 0, 0.2),
-    0px 4px 6px rgba(0, 0, 0, 0);
+    2px 8px 10px 1px rgba(0, 0, 0, 0.29);
 }
