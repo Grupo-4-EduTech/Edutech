@@ -110,6 +110,7 @@ body {
     background: linear-gradient(135deg,#0790C2,#87daf9);
     box-shadow: 
     2px 8px 10px 1px rgba(0, 0, 0, 0.29);
+    margin-top: 8vh;
 }
 
 .areaAdicaoPesquisa {
@@ -119,20 +120,82 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-top: 8vh;
 }
 
 .pesquisa {
-    background-color: black;
-    width: 400px;
+    width: 530px;
     height: 50px;
     margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tituloPesquisar {
+    width: 100px;
+    height: 20px;
+}
+
+.barras {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.barraPesquisa {
+    width: 300px;
+    height: 30px;
+}
+
+.inputPesquisa {
+    width: 300px;
+    height: 25px;
+    border:solid 1px #0790C2;
+    border-radius: 10px;
+    font-family: 'Rubik';
+}
+
+.filtro {
+    width: 200px;
+    height: 30px;
+}
+
+.inputFiltro {
+    width: 200px;
+    height: 30px;
+    border:solid 1px #0790C2;
+    border-radius: 10px;
+    background-color: #FFF;
+    font-family: 'Rubik';
 }
 
 .adicionar {
-    width: 300px;
+    width: 400px;
     height: 50px;
-    background-color: violet;
     margin-right: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btnAdicionar {
+    background-color: #068EC2;
+    color: #FFF;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    height: 35px;
+    width: 180px;
+    font-family: 'Rubik';
+    margin-top: 17px;
+    transition: all 0.4s;
+}
+
+.btnAdicionar:hover {
+    cursor: pointer;
+    background-color: #00b7ff;
+    transition: all 0.4s;
 }
 
 .areaProfessoresAdicionados {
