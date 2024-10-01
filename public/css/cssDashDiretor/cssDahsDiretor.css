@@ -33,56 +33,99 @@ body {
 .navegacaoTitulo {
     width: 200px;
     height: 40px;
-    background-color: yellow;
     margin-top: 40px;
+    display: flex;
+    justify-content: flex-start;
+    color: #FFF;
+    font-size: 17px;
+    margin-left: 30px;
 }
 
 .containerNavegacao {
-    width: 200px;
-    height: 240px;
-    background-color: red;
+    width: 150px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     margin-top: 15px;
+    margin-left: 20px;
 }
 
 .professoresTitulo {
-    width: 200px;
-    height: 30px;
-    background-color: yellow;
+    width: 128px;
+    height: 25px;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.imgMenuLateral {
+    width: 27px;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .turmasTitulo {
-    width: 200px;
-    height: 30px;
-    background-color: yellow;
+    width: 95px;
+    height: 25px;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .dashboardsTitulo {
-    width: 200px;
-    height: 30px;
-    background-color: yellow;
+    width: 130px;
+    height: 25px;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .descritoresTitulo {
-    width: 200px;
-    height: 30px;
-    background-color: yellow;
+    width: 126px;
+    height: 25px;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .suporteTitulo {
-    width: 200px;
-    height: 30px;
-    background-color: yellow;
+    width: 100px;
+    height: 25px;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .sair {
-    width: 200px;
+    width: 130px;
     height: 40px;
-    background-color: green;
     margin-top: 180px;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.imgSair {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.tituloSair {
+    width: 100px;
+    height: 40px;
+    color: #FFF;
+    display: flex;
+    align-items: center;
 }
 
 /* -- AREA PROFESSORES -- */
@@ -107,10 +150,42 @@ body {
     height: 100px;
     width: 95%;
     border-radius: 20px;
-    background: linear-gradient(135deg,#0790C2,#87daf9);
+    background: linear-gradient(135deg,#0790C2,#489ab8);
     box-shadow: 
     2px 8px 10px 1px rgba(0, 0, 0, 0.29);
     margin-top: 8vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tituloProfessor {
+    width: 200px;
+    height: 90px;
+    font-size: 25px;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 40px;
+}
+
+.areaUsuario {
+    width: 350px;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 45px;
+}
+
+.nomeDiretor {
+    width: 150px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    color: #FFF;
 }
 
 .areaAdicaoPesquisa {
@@ -233,23 +308,35 @@ body {
 .fotoProfessor {
     width: 80px;
     height: 80px;
-    background-color: black;
+    background-color: #0790C2;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nomeProfessor {
-    width: 200px;
+    width: 210px;
     height: 30px;
-    background-color: black;
+    font-size: 19px;
+    font-weight: 550;
+    text-align: center;
 }
 
 .disciplina {
-    width: 200px;
+    width: 215px;
     height: 30px;
-    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .turma {
-    width: 200px;
+    width: 180px;
     height: 30px;
-    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
 }
