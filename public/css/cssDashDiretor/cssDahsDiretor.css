@@ -340,3 +340,81 @@ body {
     align-items: center;
     justify-content: space-evenly;
 }
+
+/* -- CADASTRAR PROFESSOR -- */
+
+.bodyCadastro {
+    height: 100vh;
+}
+
+.areaCadastro {
+    margin-left: 230px;
+    width: calc(100% - 230px);
+    display: flex;
+    flex-direction: column;
+}
+
+.containerCadastrarProfessor {
+    width: 950px;
+    height: 420px;
+    border: solid 3px #068EC2;
+    border-radius: 15px;
+    margin-top: 50px;
+    margin-left: 95px;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tituloCadastrar {
+    width: 700px;
+    height: 40px;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+}
+
+.fileiraInput {
+    width: 700px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.divisaoInput {
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    font-size: 17px;
+}
+
+.inputCadastrarProfessor {
+    width: 300px;
+    height: 35px;
+    /* border-color:linear-gradient(to right, #113768, #0790C2);  */
+    border: solid 3px #113768;
+    border-radius: 50px;
+    padding: 10px; 
+}
+
+.proximo {
+    width: 300px;
+    height: 40px;
+    background-color: #068EC2;
+    border-radius: 25px;
+    border: none;
+    color: #FFF;
+    font-size: 20px;
+    transition: all 0.4s;
+}
+
+.proximo:hover {
+    cursor: pointer;
+    width: 315px;
+    background-color: #01425c;
+    transition: all 0.4s;
+}
