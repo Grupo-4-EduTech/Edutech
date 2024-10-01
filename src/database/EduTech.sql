@@ -10,9 +10,7 @@ CREATE TABLE diretoria(
 CREATE TABLE escola(
 	idEscola INT AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
-    posicao INT NOT NULL,
-    cidade VARCHAR(100) NOT NULL,
-    logradouro VARCHAR(100) NOT NULL,
+    cep CHAR(8) NOT NULL,
     numLog INT NOT NULL,
     fkDiretoria INT,
     FOREIGN KEY (fkDiretoria) REFERENCES diretoria(idDiretoria),
@@ -60,6 +58,17 @@ CREATE TABLE usuario(
     CONSTRAINT ProfessorTemMateria CHECK (fkCargo != 3 OR (fkMateria IS NOT NULL AND fkEscola IS NOT NULL)) -- Se for professor, fkEscola e fkMateria não podem ser nulas
 );
 
+CREATE TABLE prova(
+	idProva INT AUTO_INCREMENT,
+    dtProva DATE NOT NULL,
+    nota DECIMAL(5,2) NOT NULL, -- valor provisório
+    bloco INT NOT NULL,
+    fkAluno VARCHAR(20) NOT NULL,
+    fkEscola INT NOT NULL,
+    FOREIGN KEY (fkAluno, fkEscola) REFERENCES aluno(ra, fkEscola),
+    PRIMARY KEY (idProva, fkAluno)
+);
+
 CREATE TABLE questao(
 	idQuestao INT AUTO_INCREMENT,
     numero INT NOT NULL,
@@ -67,33 +76,11 @@ CREATE TABLE questao(
     respostaCorreta CHAR(1) NOT NULL,
     descritor VARCHAR(3) NOT NULL,
     fkMateria INT NOT NULL,
+    fkProva INT NOT NULL,
+    fkAluno VARCHAR(20) NOT NULL, 
     FOREIGN KEY (fkMateria) REFERENCES materia(idMateria),
-    PRIMARY KEY (idQuestao, fkMateria)
-);
-
-CREATE TABLE prova(
-	idProva INT AUTO_INCREMENT,
-    dtProva DATE NOT NULL,
-    nota DECIMAL(5,2) NOT NULL, -- valor provisório
-    bloco INT NOT NULL,
-	fkMateria INT NOT NULL,
-    fkQuestao INT NOT NULL,
-    fkAluno VARCHAR(20) NOT NULL,
-    fkEscola INT NOT NULL,
-    FOREIGN KEY (fkQuestao, fkMateria) REFERENCES questao(idQuestao, fkMateria),
-    FOREIGN KEY (fkAluno, fkEscola) REFERENCES aluno(ra, fkEscola),
-    PRIMARY KEY (idProva, fkMateria, fkQuestao, fkAluno)
-);
-
-CREATE TABLE desempenho(
-	idDesempenho INT AUTO_INCREMENT,
-	notaFinal DECIMAL(4,1) NOT NULL, -- valor provisório
-    fkAluno VARCHAR(20) NOT NULL,
-    fkEscola INT NOT NULL,
-    fkMateria INT NOT NULL,
-    FOREIGN KEY (fkAluno, fkEscola) REFERENCES aluno(ra, fkEscola),
-    FOREIGN KEY (fkMateria) REFERENCES materia(idMateria),
-    PRIMARY KEY (idDesempenho, fkAluno, fkMateria)
+    FOREIGN KEY (fkProva, fkAluno) REFERENCES prova(idProva, fkAluno),
+    PRIMARY KEY (idQuestao, fkMateria, fkProva, fkAluno)
 );
 
 CREATE TABLE contato(
@@ -117,7 +104,7 @@ insert into materia(nome)
 values ("Matemática"),("Português");
 
 insert into escola
-values (default, "Escola teste 1", 1, "São Paulo", "Rua Haddock Lobo", 1, 1),(default, "Escola teste 2", 2, "São Paulo", "Rua Haddock Lobo", 2, 1),(default, "Escola teste 3", 3, "São Paulo", "Rua Haddock Lobo", 3, 1);
+values (default, "Escola teste 1","00000000", 1, 1),(default, "Escola teste 2", "00000000", 2, 1),(default, "Escola teste 3","00000000", 3, 1);
 
 insert into usuario
 values (default, "Ministro Fulano","minfulano@saopaulo.com","123","11999999999",NOW(),1,null,null,null),(default, "Diretor Ciclano","dirciclano@escolaa.com","123","11999999999",NOW(),2,1,1,null),(default, "Professor Beltrano","profbeltrano@escolaa.com","123","11999999999",NOW(),3,1,1,1);
