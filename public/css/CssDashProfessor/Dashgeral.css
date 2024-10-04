@@ -138,17 +138,6 @@ body{
     height: 40px;
 }
 
-.AreaTextoLocal{
-    width: 120px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Rubik';
-    color: #FFF;
-    font-size: 23px;
-}
-
 .BotaoInterrogacao{
     width: 26px;
     height: 26px;
@@ -244,11 +233,6 @@ body{
     margin-right: 140px;
 }
 
-.EspacoKPI{
-    width: 630px;
-    height: 100%;
-}
-
 .AreaSinoNotificacao{
     width: 60px;
     height: 100%;
@@ -330,4 +314,14 @@ body{
 .CargoDoUsuario{
     color: #FFF;
     margin-left: 14px;
+}
+
+.AreaDeTrabalho{
+    margin-left: 224px;
+    height: 660px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    background-color: #000;
 }

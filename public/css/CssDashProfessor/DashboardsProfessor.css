@@ -1,0 +1,52 @@
+#AreaDetrabalhoDash{
+    justify-content: center;
+    align-items: center;
+}
+
+.AreaTextoLocal{
+    width: 220px;
+    height: 100%;
+    margin-left: 6px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    font-family: 'Rubik';
+    color: #FFF;
+    font-size: 23px;
+}
+
+.EspacoTextoLocal{
+    width: 10px;
+    height: 2px;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #FFF;
+}
+
+.EspacoKPI{
+    width: 530px;
+    height: 100%;
+}
+
+.FileiraKPI{
+    width: 90%;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: aquamarine;
+}
+
+.InfoKPIS{
+    width: 250px;
+    height: 90%;
+    background-color: #FFF;
+}
+
+.Dashboards{
+    width:90%;
+    height:420px;
+    background-color: rgb(100, 195, 59);
+}
