@@ -313,6 +313,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .nomeProfessor {
@@ -457,7 +458,7 @@ body {
     justify-content: space-evenly;
 }
 
-.turma {
+.cardTurma {
     background-color: #0790C2;
     border-radius: 6px;
     width: 70px;
@@ -470,4 +471,66 @@ body {
 
 .fechar {
     cursor: pointer;
+}
+
+/* -- PERFIL PROFESSOR -- */
+
+.containerPerfil {
+    width: 600px;
+    height: 400px;
+    border: solid 2px #0790C2;
+    border-radius: 15px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+    margin-left: 265px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nomeEmail {
+    width: 430px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.emailProfessor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tituloInfo {
+    width: 120px;
+    height: 30px;
+    font-weight: 600;
+    font-size: 19px;
+    margin-right: 230px;
+}
+
+.infoProfessor {
+    width: 300px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.fileiraInfo {
+    display: flex;
+    align-items: center;
+}
+
+
+.editarExcluir {
+    width: 100px;
+    height: 30px;
+    margin-left: 420px;
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-end;
 }
