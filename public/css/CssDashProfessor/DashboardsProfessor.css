@@ -31,34 +31,103 @@
 }
 
 .FileiraKPI{
-    width: 90%;
-    height: 200px;
+    width: 94%;
+    height: 160px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    background-color: aquamarine;
+    justify-content: space-around;
 }
 
 .InfoKPIS{
-    width: 230px;
-    height: 90%;
+    width: 229px;
+    height: 130px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 26px;
     background: linear-gradient(160deg ,#0790C2,#113768);
+    box-shadow: 
+    2px 8px 10px 1px rgba(0, 0, 0, 0.29);
+    transition: 0.4s;
+}
+
+.InfoKPIS:hover{
+    transform: scale(1.07);
+    transition: 0.4s;
 }
 
 .InfoKPISEnglobada{
-    width: 97.5%;
-    height: 97.5%;
-    border-radius: 20px;
+    width: 227px;
+    height: 127px;
+    border-radius: 25px;
     background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.TituloKPIEnglobada{
+    width: 100%;
+    height: 32%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rubik';
+}
+
+.AreaInfoKPI{
+    width: 100%;
+    height: 48%;
+    display: flex;
+    flex-direction: row;
+}
+
+.AreaFotoInfoKPI{
+    width: 45%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ImagemKPI{
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: linear-gradient(160deg ,#0790C2,#113768);
+}
+
+.IconIMG{
+    width: 70%;
+    height: 70%;
+}
+
+.AreaTextoInfoKPI{
+    width: 55%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-right: 8px;
+    font-family: 'Rubik';
+    text-align: center;
+}
+
+#AreaTextoComNumero{
+    font-size: 40px;
+    margin-left: 4px;
+}
+
+#AreaTextoSemNumero{
+    font-size: 20px;
 }
 
 .Dashboards{
     width:90%;
     height:420px;
-    background-color: rgb(100, 195, 59);
 }

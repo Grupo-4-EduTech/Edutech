@@ -323,5 +323,4 @@ body{
     display: flex;
     flex-direction: column;
     overflow: auto;
-    background-color: #000;
 }
