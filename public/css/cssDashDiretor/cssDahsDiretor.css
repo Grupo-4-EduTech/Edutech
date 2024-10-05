@@ -366,6 +366,7 @@ body {
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 }
 
 .tituloCadastrar {
@@ -427,4 +428,46 @@ body {
     width: 315px;
     background-color: #01425c;
     transition: all 0.4s;
+}
+
+/* -- ATRIBUIÇÃO DE TURMAS -- */
+
+.tituloAtribuir {
+    font-size: 24px;
+}
+
+.selectAtribuir {
+    width: 400px;
+    height:40px;
+    background-color: #FFF;
+    border: solid 3px #113768;
+    border-radius: 50px;
+    font-family: 'Rubik';
+}
+
+.containerPainelTurmas {
+    width: 500px;
+    height: 200px;
+    border: solid 3px #068EC2;
+    border-radius: 15px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    justify-content: space-evenly;
+}
+
+.turma {
+    background-color: #0790C2;
+    border-radius: 6px;
+    width: 70px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+}
+
+.fechar {
+    cursor: pointer;
 }
