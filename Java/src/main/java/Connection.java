@@ -10,7 +10,7 @@ public class Connection {
         BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setUrl("jdbc:mysql://localhost:3306/EduTech");
         basicDataSource.setUsername("root");
-        basicDataSource.setPassword("");
+        basicDataSource.setPassword("39151529");
 
         this.dataSource = basicDataSource;
     }
