@@ -579,9 +579,40 @@ body {
 }
 
 .containerGrafico {
-    width: 45%;
+    width: 48%; 
     height: 450px;
     border: solid 2px #0790C2;
     border-radius: 15px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.tituloGrafico {
+    width: 60%;
+    height: 30px;
+    text-align: center;
+}
+
+.areaGraficoBarras {
+    width: 430px; 
+    height: 350px;  
+}
+
+.areaGrafico {
+    width: 95%; 
+    height: 55%; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.legendaGrafico {
+    width: 70%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
 }
