@@ -1,0 +1,97 @@
+.kpi_estado_escola{
+    width: 95%;
+    height: 10.5vw;
+    /* background-color: brown; */
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 2.5%;
+}
+
+
+.mostra_estado{
+    width: 19.5%;
+    height: 90%;
+    border: solid 0.2vw #068EC2;
+    border-radius: 1.7vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo_estado{
+    width: 100%;
+    height: 40%;
+    /* background-color: blueviolet; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.valor_estado{
+    width: 100%;
+    height: 54%;
+    /* background-color: lightblue; */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-bottom: 9%;
+    
+}
+
+
+.valor_estado img{
+  height: 78%;
+  margin-right: -8%;
+}
+
+.valor_estado span{
+    font-size: 3.3vw;
+  }
+
+  .mostra_graficos{
+    height: 30vw;
+    width: 100%;
+    /* background-color: chartreuse; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .grafico_regiao{
+    width: 49%;
+    height: 85%;
+    /* background-color: darkblue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    flex-direction: column;
+    border: solid 0.2vw #068EC2;
+  }
+
+  .grafico_e_lateral{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* background-color: blueviolet; */
+
+  }
+
+
+  .texto_media_grafico{
+    transform: rotate(270deg);
+    white-space: nowrap;
+    margin-left:5%;
+  }
+
+
+  .grafico_regiao canvas{
+    margin-left: -10%;
+  
+  }
+
+  
