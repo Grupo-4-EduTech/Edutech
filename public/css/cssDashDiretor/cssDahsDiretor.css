@@ -51,6 +51,19 @@ body {
     margin-left: 20px;
 }
 
+.navegacao {
+    height: 30px;
+    width: 129px;
+    border-radius: 5px;
+    transition: all 0.4s;
+}
+
+.navegacao:hover {
+    background-color: #ffffff3b;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
 .professoresTitulo {
     width: 128px;
     height: 25px;
@@ -126,6 +139,12 @@ body {
     color: #FFF;
     display: flex;
     align-items: center;
+    transition: all 0.4s;
+}
+
+.tituloSair:hover {
+    cursor: pointer;
+    transition: all 0.4s;
 }
 
 /* -- AREA PROFESSORES -- */

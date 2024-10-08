@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
+
 <body class="bodyCadastro">
     <div class="menuLateral">
         <div class="logoEduTech"></div>
@@ -22,17 +24,17 @@
                     <img src="../assets/ph_chalkboard-teacher.svg" width="30px" height="30px">
                 </div>
                 <div class="tituloMenuLateral">
-                    <span>
+                    <span class="navegacao" onclick="gotoDashDiretor()">
                         Professores
                     </span>
                 </div>
             </div>
             <div class="turmasTitulo">
                 <div class="imgMenuLateral">
-                    <img src="../assets/chapeuBranco.svg"  width="32px" height="32px">
+                    <img src="../assets/chapeuBranco.svg" width="32px" height="32px">
                 </div>
                 <div class="tituloMenuLateral">
-                    <span>
+                    <span class="navegacao" onclick="gotoAtribuirTurmas()">
                         Turmas
                     </span>
                 </div>
@@ -42,7 +44,7 @@
                     <img src="../assets/mdi_graph-box.svg" width="30px" height="30px">
                 </div>
                 <div class="tituloMenuLateral">
-                    <span>
+                    <span class="navegacao" onclick="gotoDashEscola()">
                         Dashboards
                     </span>
                 </div>
@@ -52,7 +54,7 @@
                     <img src="../assets/descritores.svg" width="25px" height="25px">
                 </div>
                 <div class="tituloMenuLateral">
-                    <span>
+                    <span class="navegacao">
                         Descritores
                     </span>
                 </div>
@@ -62,7 +64,7 @@
                     <img src="../assets/bx_support.svg" width="30px" height="30px">
                 </div>
                 <div class="tituloMenuLateral">
-                    <span>
+                    <span class="navegacao">
                         Suporte
                     </span>
                 </div>
@@ -117,10 +119,12 @@
             </div>
             <div class="infoProfessor">
                 <div class="fileiraInfo">
-                    &nbsp;<img src="../assets/telefone.svg" width="25px" height="25px"> &nbsp;&nbsp; <span>Telefone: (11) 912345678</span>
+                    &nbsp;<img src="../assets/telefone.svg" width="25px" height="25px"> &nbsp;&nbsp; <span>Telefone:
+                        (11) 912345678</span>
                 </div>
                 <div class="fileiraInfo">
-                    &nbsp;<img src="../assets/oi_book.svg" width="25px" height="25px"> &nbsp;&nbsp; <span>Disciplina: Matemática</span>
+                    &nbsp;<img src="../assets/oi_book.svg" width="25px" height="25px"> &nbsp;&nbsp; <span>Disciplina:
+                        Matemática</span>
                 </div>
                 <div class="fileiraInfo">
                     <img src="../assets/chapeu.svg" width="30px" height="30px"> &nbsp; <span>Turmas: 3ºA, 3ºB</span>
@@ -130,4 +134,17 @@
                 Editar | Exluir
             </div>
         </div>
-    </body>
+</body>
+<script>
+    function gotoDashDiretor() {
+        window.location.href = "dashDiretor.html"
+    }
+
+    function gotoAtribuirTurmas() {
+        window.location.href = "atribuirTurmas.html"
+    }
+
+    function gotoDashEscola() {
+        window.location.href = "dashEscola.html"
+    }
+</script>
