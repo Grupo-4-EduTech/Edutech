@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
+
 <body class="bodyCadastro">
     <div class="menuLateral">
         <div class="logoEduTech"></div>
@@ -29,7 +31,7 @@
             </div>
             <div class="turmasTitulo">
                 <div class="imgMenuLateral">
-                    <img src="../assets/chapeuBranco.svg"  width="32px" height="32px">
+                    <img src="../assets/chapeuBranco.svg" width="32px" height="32px">
                 </div>
                 <div class="tituloMenuLateral">
                     <span class="navegacao" onclick="gotoAtribuirTurmas()">
@@ -102,81 +104,47 @@
                 </div>
             </div>
         </div>
-        <div class="containerCadastrarProfessor">
-            <div class="tituloCadastrar">
-                <span>
-                    Cadastro de professor
-                </span>
-            </div>
-            <div class="fileiraInput">
-                <div class="divisaoInput">
-                    <span>
-                        Nome
-                    </span>
-                    <input class="inputCadastrarProfessor" placeholder="Nome">
+        <div class="containerPerfil">
+            <div class="nomeEmail">
+                <div class="fotoProfessor">
+                    <img src="../assets/mdi_account-student.svg" width="60px" height="60px">
                 </div>
-                <div class="divisaoInput"> 
-                    <span>
-                        Sobrenome
-                    </span>
-                    <input class="inputCadastrarProfessor" placeholder="Sobrenome">
+                <div class="emailProfessor">
+                    <span style="font-size: 23px; font-weight: 550;">Wellington Rato</span>
+                    <span>Email: wellington.rato@faria.neto.com</span>
                 </div>
             </div>
-            <div class="fileiraInput">
-                <div class="divisaoInput">
-                    <span>
-                        Email
-                    </span>
-                    <input class="inputCadastrarProfessor" placeholder="Email">
+            <div class="tituloInfo">
+                Informações
+            </div>
+            <div class="infoProfessor">
+                <div class="fileiraInfo">
+                    &nbsp;<img src="../assets/telefone.svg" width="25px" height="25px"> &nbsp;&nbsp; <span>Telefone:
+                        (11) 912345678</span>
                 </div>
-                <div class="divisaoInput"> 
-                    <span>
-                        Telefone
-                    </span>
-                    <input class="inputCadastrarProfessor" placeholder="(XX) XXXXX - XXXX">
+                <div class="fileiraInfo">
+                    &nbsp;<img src="../assets/oi_book.svg" width="25px" height="25px"> &nbsp;&nbsp; <span>Disciplina:
+                        Matemática</span>
+                </div>
+                <div class="fileiraInfo">
+                    <img src="../assets/chapeu.svg" width="30px" height="30px"> &nbsp; <span>Turmas: 3ºA, 3ºB</span>
                 </div>
             </div>
-            <div class="fileiraInput">
-                <div class="divisaoInput">
-                    <span>
-                        Instituição
-                    </span>
-                    <select class="selectCadastrarProfessor">
-                        <option>Selecione...</option>
-                    </select>
-                </div>
-                <div class="divisaoInput"> 
-                    <span>
-                        Disciplina
-                    </span>
-                    <select class="selectCadastrarProfessor">
-                        <option>Selecione...</option>
-                    </select>
-                </div>
-            </div>
-            <div class="proximo">
-                <button class="proximo" onclick="gotoAtribuicao()">
-                    Próximo
-                </button>
+            <div class="editarExcluir">
+                Editar | Exluir
             </div>
         </div>
-    </div>
 </body>
-</html>
 <script>
-    function gotoAtribuicao(){
-        window.location.href = "atribuirTurmas.html"
-    }
-
-    function gotoDashDiretor(){
+    function gotoDashDiretor() {
         window.location.href = "dashDiretor.html"
     }
 
-    function gotoAtribuirTurmas(){
+    function gotoAtribuirTurmas() {
         window.location.href = "atribuirTurmas.html"
     }
 
-    function gotoDashEscola(){
+    function gotoDashEscola() {
         window.location.href = "dashEscola.html"
     }
 </script>

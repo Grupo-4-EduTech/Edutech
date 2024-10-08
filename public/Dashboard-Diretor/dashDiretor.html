@@ -22,7 +22,7 @@
                     <img src="../assets/ph_chalkboard-teacher.svg" width="30px" height="30px">
                 </div>
                 <div class="tituloMenuLateral">
-                    <span>
+                    <span class="navegacao" onclick="gotoDashDiretor()">
                         Professores
                     </span>
                 </div>
@@ -32,7 +32,7 @@
                     <img src="../assets/chapeuBranco.svg"  width="32px" height="32px">
                 </div>
                 <div class="tituloMenuLateral">
-                    <span>
+                    <span class="navegacao" onclick="gotoAtribuirTurmas()">
                         Turmas
                     </span>
                 </div>
@@ -42,7 +42,7 @@
                     <img src="../assets/mdi_graph-box.svg" width="30px" height="30px">
                 </div>
                 <div class="tituloMenuLateral">
-                    <span>
+                    <span class="navegacao" onclick="gotoDashEscola()">
                         Dashboards
                     </span>
                 </div>
@@ -52,7 +52,7 @@
                     <img src="../assets/descritores.svg" width="25px" height="25px">
                 </div>
                 <div class="tituloMenuLateral">
-                    <span>
+                    <span class="navegacao">
                         Descritores
                     </span>
                 </div>
@@ -62,7 +62,7 @@
                     <img src="../assets/bx_support.svg" width="30px" height="30px">
                 </div>
                 <div class="tituloMenuLateral">
-                    <span>
+                    <span class="navegacao">
                         Suporte
                     </span>
                 </div>
@@ -132,7 +132,7 @@
         <div class="areaProfessoresAdicionados">
             <div class="fileira">
                 <div class="cardProfessor">
-                    <div class="fotoProfessor">
+                    <div class="fotoProfessor" onclick="gotoPerfilProfessor()">
                         <img src="../assets/mdi_account-student.svg" width="60px" height="60px">
                     </div>
                     <div class="nomeProfessor">
@@ -154,7 +154,7 @@
                     </div>
                 </div>
                 <div class="cardProfessor">
-                    <div class="fotoProfessor">
+                    <div class="fotoProfessor" onclick="gotoPerfilProfessor()">
                         <img src="../assets/mdi_account-student.svg" width="60px" height="60px">
                     </div>
                     <div class="nomeProfessor">
@@ -176,7 +176,7 @@
                     </div>
                 </div>
                 <div class="cardProfessor">
-                    <div class="fotoProfessor">
+                    <div class="fotoProfessor" onclick="gotoPerfilProfessor()">
                         <img src="../assets/mdi_account-student.svg" width="60px" height="60px">
                     </div>
                     <div class="nomeProfessor">
@@ -200,7 +200,7 @@
             </div>
             <div class="fileira">
                 <div class="cardProfessor">
-                    <div class="fotoProfessor">
+                    <div class="fotoProfessor" onclick="gotoPerfilProfessor()">
                         <img src="../assets/mdi_account-student.svg" width="60px" height="60px">
                     </div>
                     <div class="nomeProfessor">
@@ -222,7 +222,7 @@
                     </div>
                 </div>
                 <div class="cardProfessor">
-                    <div class="fotoProfessor">
+                    <div class="fotoProfessor" onclick="gotoPerfilProfessor()">
                         <img src="../assets/mdi_account-student.svg" width="60px" height="60px">
                     </div>
                     <div class="nomeProfessor">
@@ -244,7 +244,7 @@
                     </div>
                 </div>
                 <div class="cardProfessor">
-                    <div class="fotoProfessor">
+                    <div class="fotoProfessor" onclick="gotoPerfilProfessor()">
                         <img src="../assets/mdi_account-student.svg" width="60px" height="60px">
                     </div>
                     <div class="nomeProfessor">
@@ -273,5 +273,21 @@
 <script>
     function gotocadastroProfessor(){
         window.location.href = "adicionarProfessor.html"
+    }
+
+    function gotoPerfilProfessor(){
+        window.location.href = "perfilProfessor.html"
+    }
+
+    function gotoDashDiretor(){
+        window.location.href = "dashDiretor.html"
+    }
+
+    function gotoAtribuirTurmas(){
+        window.location.href = "atribuirTurmas.html"
+    }
+
+    function gotoDashEscola(){
+        window.location.href = "dashEscola.html"
     }
 </script>
