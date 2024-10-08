@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <title>Edu Tech | Dashboard</title>
 </head>
+
 <body>
     <div class="menuLateral">
         <div class="logoEduTech"></div>
@@ -30,7 +32,7 @@
             </div>
             <div class="turmasTitulo">
                 <div class="imgMenuLateral">
-                    <img src="../assets/chapeuBranco.svg"  width="32px" height="32px">
+                    <img src="../assets/chapeuBranco.svg" width="32px" height="32px">
                 </div>
                 <div class="tituloMenuLateral">
                     <span>
@@ -86,7 +88,7 @@
                 <div class="tituloProfessor">
                     <img src="../assets/ph_chalkboard-teacher.svg">
                     <span>
-                        Dashboard 
+                        Dashboard
                     </span>
                 </div>
                 <div class="areaUsuario">
@@ -105,20 +107,54 @@
         </div>
         <div class="indicadores">
             <div class="cardIndicador">
-                <div class="tituloIndicador"></div>
-                <div class="conteudoIndicador"></div>
+                <div class="tituloIndicador">
+                    <span>
+                        Rank da escola
+                    </span>
+                </div>
+                <div class="conteudoIndicador">
+                    <div class="fotoProfessor">
+                        <img src="../assets/rank.svg">
+                    </div>
+                    <span>16°</span>
+                    <img src="../assets/mdi_rank.svg" width="60px" height="70px">
+                </div>
+            </div>
+            <div class="cardIndicador">
+                <div class="tituloIndicador">
+                    <span>
+                        Alunos abaixo do nível básico (Matemática)
+                    </span>
+                </div>
+                <div class="conteudoIndicador">
+                    <div class="fotoProfessor">
+                        <img src="../assets/operacoes.svg">
+                    </div>
+                    <span style="color: red;">
+                        60%
+                    </span>
+                </div>
+            </div>
+            <div class="cardIndicador">
+                <div class="tituloIndicador">
+                    <span>
+                        Alunos abaixo do nível básico (Portugûes)
+                    </span>
+                </div>
+                <div class="conteudoIndicador">
+                    <div class="fotoProfessor">
+                        <img src="../assets/bxs_book.svg">
+                    </div>
+                    <span>
+                        40%
+                    </span>
+                </div>
             </div>
             <div class="cardIndicador">
                 <div class="tituloIndicador"></div>
-                <div class="conteudoIndicador"></div>
-            </div>
-            <div class="cardIndicador">
-                <div class="tituloIndicador"></div>
-                <div class="conteudoIndicador"></div>
-            </div>
-            <div class="cardIndicador">
-                <div class="tituloIndicador"></div>
-                <div class="conteudoIndicador"></div>
+                <div class="conteudoIndicador">
+                    <div class="fotoProfessor"></div>
+                </div>
             </div>
         </div>
         <div class="graficos">
@@ -154,163 +190,161 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="script.js"></script>
-    </body>
-    <script>
-       const ctx = document.getElementById('graficoBarras').getContext('2d');
+</body>
+<script>
+    const ctx = document.getElementById('graficoBarras').getContext('2d');
 
-const graficoBarras = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['3º A', '3º B', '3º C', '3º D', '3º E', '3º F', '3º G'],
-        datasets: [{
-            label: 'Média por proficiência',
-            data: [150, 250, 300, 200, 350, 100, 400], // Exemplo de dados
-            backgroundColor: '#0790C2',
-            barThickness: 28,
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true,
-                title: {
-                    display: true,
-                    color: '#000',
-                    text: 'Média por proficiência' // Título da escala Y
-                },
-                grid: {
-                    display: false
-                },
-                border: {
-                    color: '#000'
-                },
-                ticks: {
-                    stepSize: 50,
-                    color: '#000'// Define os intervalos no eixo Y
-                }
-            },
-            x: {
-                title: {
-                    display: true,
-                    color: '#000',
-                    text: 'Turmas' // Título da escala X
-                },
-                grid: {
-                    display: false
-                },
-                border: {
-                    color: '#000'
-                },
-                ticks: {
-                    stepSize: 55,
-                    color: '#000'
-                }
-            }
+    const graficoBarras = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['3º A', '3º B', '3º C', '3º D', '3º E', '3º F', '3º G'],
+            datasets: [{
+                label: 'Média por proficiência',
+                data: [150, 250, 300, 200, 350, 100, 400], // Exemplo de dados
+                backgroundColor: '#0790C2',
+                barThickness: 28,
+                borderWidth: 1
+            }]
         },
-        plugins: {
-            legend: {
-                display: false // Oculta a legenda padrão
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        color: '#000',
+                        text: 'Média por proficiência' // Título da escala Y
+                    },
+                    grid: {
+                        display: false
+                    },
+                    border: {
+                        color: '#000'
+                    },
+                    ticks: {
+                        stepSize: 50,
+                        color: '#000'// Define os intervalos no eixo Y
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        color: '#000',
+                        text: 'Turmas' // Título da escala X
+                    },
+                    grid: {
+                        display: false
+                    },
+                    border: {
+                        color: '#000'
+                    },
+                    ticks: {
+                        stepSize: 55,
+                        color: '#000'
+                    }
+                }
             },
-            datalabels: {
-                color: '#fff', // Cor dos rótulos
-                anchor: 'end',
-                align: 'end',
-                formatter: (value) => {
-                    return value; // Exibe o valor da barra
+            plugins: {
+                legend: {
+                    display: false // Oculta a legenda padrão
+                },
+                datalabels: {
+                    color: '#fff', // Cor dos rótulos
+                    anchor: 'end',
+                    align: 'end',
+                    formatter: (value) => {
+                        return value; // Exibe o valor da barra
+                    }
                 }
             }
         }
-    }
-});
+    });
 
-        const ctx1 = document.getElementById('graficoPizza1').getContext('2d');
-        const ctx2 = document.getElementById('graficoPizza2').getContext('2d');
-    
-        const graficoPizza1 = new Chart(ctx1, {
-            type: 'pie',
-            data: {
-                labels: ['Professor A', 'Professor B', 'Professor C'],
-                datasets: [{
-                    data: [300, 50, 100],
-                    backgroundColor: [
-                        'rgba(255, 255, 255)',
-                        'rgba(255, 255, 255)',
-                        'rgba(255, 255, 255)'
-                    ],
-                    borderColor: [
-                        '#0790C2', 
-                        '#0790C2',
-                        '#0790C2'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false, 
+    const ctx1 = document.getElementById('graficoPizza1').getContext('2d');
+    const ctx2 = document.getElementById('graficoPizza2').getContext('2d');
+
+    const graficoPizza1 = new Chart(ctx1, {
+        type: 'pie',
+        data: {
+            labels: ['Professor A', 'Professor B', 'Professor C'],
+            datasets: [{
+                data: [300, 50, 100],
+                backgroundColor: [
+                    'rgba(255, 255, 255)',
+                    'rgba(255, 255, 255)',
+                    'rgba(255, 255, 255)'
+                ],
+                borderColor: [
+                    '#0790C2',
+                    '#0790C2',
+                    '#0790C2'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                datalabels: {
+                    color: '#0790C2',
+                    anchor: 'center',
+                    align: 'center',
+                    formatter: (value, context) => {
+                        const labels = ['Professor A', 'Professor B', 'Professor C'];
+                        return labels[context.dataIndex];
                     },
-                    datalabels: {
-                        color: '#0790C2', 
-                        anchor: 'center',
-                        align: 'center',
-                        formatter: (value, context) => {
-                            const labels = ['Professor A', 'Professor B', 'Professor C'];
-                            return labels[context.dataIndex]; 
-                        },
-                        
-                        display: (context) => {
-                            return true; 
-                        }
+
+                    display: (context) => {
+                        return true;
                     }
                 }
             }
-        });
-    
-        const graficoPizza2 = new Chart(ctx2, {
-            type: 'pie',
-            data: {
-                labels: ['Professor A', 'Professor B', 'Professor C'],
-                datasets: [{
-                    data: [200, 150, 75],
-                    backgroundColor: [
-                        'rgba(255, 255, 255)',
-                        'rgba(255, 255, 255)',
-                        'rgba(255, 255, 255)'
-                    ],
-                    borderColor: [
-                        '#0790C2',
-                        '#0790C2',
-                        '#0790C2'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false, 
+        }
+    });
+
+    const graficoPizza2 = new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: ['Professor A', 'Professor B', 'Professor C'],
+            datasets: [{
+                data: [200, 150, 75],
+                backgroundColor: [
+                    'rgba(255, 255, 255)',
+                    'rgba(255, 255, 255)',
+                    'rgba(255, 255, 255)'
+                ],
+                borderColor: [
+                    '#0790C2',
+                    '#0790C2',
+                    '#0790C2'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                datalabels: {
+                    color: '#0790C2',
+                    anchor: 'center',
+                    align: 'center',
+                    formatter: (value, context) => {
+                        const labels = ['Professor A', 'Professor B', 'Professor C'];
+                        return labels[context.dataIndex];
                     },
-                    datalabels: {
-                        color: '#0790C2', 
-                        anchor: 'center',
-                        align: 'center',
-                        formatter: (value, context) => {
-                            const labels = ['Professor A', 'Professor B', 'Professor C'];
-                            return labels[context.dataIndex];
-                        },
-                        
-                        display: (context) => {
-                            return true; 
-                        }
+
+                    display: (context) => {
+                        return true;
                     }
                 }
             }
-        });
-    </script>
-    
-    
+        }
+    });
+</script>

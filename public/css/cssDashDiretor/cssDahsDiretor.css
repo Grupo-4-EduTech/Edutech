@@ -549,7 +549,7 @@ body {
 .cardIndicador {
     border: solid 2px #0790C2;
     border-radius: 15px;
-    width: 230px;
+    width: 260px;
     height: 180px;
     display: flex;
     flex-direction: column;
@@ -559,15 +559,18 @@ body {
 }
 
 .tituloIndicador {
-    width: 200px;
+    width: 220px;
     height: 40px;
-    background-color: red;
+    text-align: center;
 }
 
 .conteudoIndicador  {
-    width: 200px;
-    height: 100px;
-    background-color: red;
+    width: 255px;
+    height: 90px;
+    display: flex;
+    font-size: 45px;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .graficos {
@@ -592,9 +595,10 @@ body {
 }
 
 .tituloGrafico {
-    width: 60%;
+    width: 65%;
     height: 30px;
     text-align: center;
+    font-size: 19px;
 }
 
 .areaGraficoBarras {
@@ -611,7 +615,7 @@ body {
 }
 
 .legendaGrafico {
-    width: 70%;
+    width: 67%;
     height: 30px;
     display: flex;
     justify-content: space-between;
