@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/CssDashProfessor/DashboardsProfessor.css">
     <link rel="icon" sizes="56X56" href="../assets/a 1logo-Educare.svg">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Edu Tech | Dashboard</title>
 </head>
 
@@ -100,7 +101,7 @@
                                     <img src="../assets/Icongraficodelinha.svg" class="IconIMG">
                                 </div>
                             </div>
-                            <div class="AreaTextoInfoKPI" id="AreaTextoComNumero">
+                            <div class="AreaTextoInfoKPI" id="AreaTextoComNumeroEVirgula" style="color: red;">
                                 250,5
                             </div>
                         </div>
@@ -134,9 +135,14 @@
                                     <img src="../assets/fotousuarioturma.svg" class="IconIMG">
                                 </div>
                             </div>
-                            <div class="AreaTextoInfoKPI" id="AreaTextoComNumero">
+                            <div class="AreaTextoInfoKPI" id="AreaTextoComNumero" style="color: red;">
                                 30
                             </div>
+                        </div>
+                        <div class="AreaImgDuvidaDescritor">
+                        <a href="./EntradaDash.html" class="ImgDuvidaAlunosAbaixo">
+                            <img src="../assets/IconInterrogacaoblack.svg" class="IconInterrogacaoAlunosAbaixo">
+                        </a>
                         </div>
                     </div>
                 </div>
@@ -159,9 +165,111 @@
                 </div>
             </div>
             <div class="Dashboards">
+                <div class="InfoDash">
+                    <div class="InfoDashEnglobada">
+                        <div class="AreaImgDuvidaDescritor">
+                            <a href="./EntradaDash.html" class="ImgDuvidaDescritor">
+                                <img src="../assets/IconInterrogacaoblack.svg" class="IconInterrogacaoDuvida">
+                            </a>
+                        </div>
+                        <div class="AreaTituloGrafico">
+                            Comparação de Erros de Descritores 
+                        </div>
+                        <div class="AreaGrafico">
+                        <canvas id="bar-chart" class="Grafico"></canvas>
+                    </div>
+                    <div class="AreaLegendaInferior">
+                        <B>Descritor</B>
+                    </div>
+                    </div>
+                </div>
+                <div class="InfoDashAlunosAbaixo">
+                    <div class="InfoDashAlunosAbaixoEnglobada">
+                        <div class="AreaTituloGrafico">
+                            Alunos Com a Nota Mais Baixa
+                        </div>
+                        <div class="AreaTopPioresAlunos">
+                            <div class="InfoAlunoNoTop">
+                                <div class="TextoInfoAlunoNoTop">
+                                    Manoel
+                                </div>
+                                <div class="NotaDoAlunoNoTop"style="color: red;">
+                                    200,1
+                                </div>
+                            </div>
+                            <div class="InfoAlunoNoTop">
+                                <div class="TextoInfoAlunoNoTop">
+                                    Jean Charles
+                                </div>
+                                <div class="NotaDoAlunoNoTop" style="color: red;">
+                                    201,2
+                                </div>
+                            </div>
+                            <div class="InfoAlunoNoTop">    
+                                <div class="TextoInfoAlunoNoTop">
+                                    Samuel Teodoro
+                                </div>
+                                <div class="NotaDoAlunoNoTop" style="color: red;">
+                                    202,3
+                                </div>
+                            </div>
+                            <div class="InfoAlunoNoTop">
+                                <div class="TextoInfoAlunoNoTop">
+                                    Henrique Sericov
+                                </div>
+                                <div class="NotaDoAlunoNoTop" style="color: red;">
+                                    203,4
+                                </div>
+                            </div>
+                            <div class="InfoAlunoNoTop">
+                                <div class="TextoInfoAlunoNoTop">
+                                    André Yoshiriro
+                                </div>
+                                <div class="NotaDoAlunoNoTop" style="color: red;">
+                                    204,5
+                                </div>
+                            </div>
+                        </div>
+
+                            <a href="./EntradaDash.html" class="AreaLevarParaDescritor">
+                                <div class="TextoParaDescritor">
+                                    Ver mais &rarr;
+                                </div>
+                                </a>
+                    </div>
+                </div>
+                <a href="./EntradaDash.html" class="IconLupaParaDescritores">
+                    <img src="../assets/IconLupaDashProfe.svg" class="IconLupa">
+                </a>
             </div>
         </div>
     </div>
 </body>
 
 </html>
+
+<script>
+        const barChart = document.getElementById('bar-chart');
+
+        new Chart(barChart,
+            {
+                type: 'bar',
+                data: {
+                    labels: ['ghost','sjmj','jnjkfnvj','kjnjfvj','jkenfv','jervnkjn','dmkf','dwvcer','vds','vs'],
+                    datasets: [{
+                        label: 'Curtidas de cada personagem',
+                        data: [2,5,6,7,8,9,4,10,11,12],
+                        borderWidth: 1,
+                        borderColor: '#113768',
+                        backgroundColor: '#0790C2',
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+</script>
