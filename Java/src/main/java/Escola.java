@@ -1,15 +1,23 @@
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+
 public class Escola {
     private int idEscola;
     private String nome;
-    private String cep;
-    private Integer numLog;
+    private String logradouro;
+    private Integer numLogradouro;
     private Diretoria diretoria;
 
-    public Escola(int idEscola, String nome, String cep, Integer numLog, Diretoria diretoria) {
+    public Escola(){}
+
+    public Escola(int idEscola, String nome, String logradouro, Integer numLogradouro, Diretoria diretoria) {
         this.idEscola = idEscola;
         this.nome = nome;
-        this.cep = cep;
-        this.numLog = numLog;
+        this.logradouro = logradouro;
+        this.numLogradouro = numLogradouro;
         this.diretoria = diretoria;
     }
 
@@ -29,20 +37,20 @@ public class Escola {
         this.nome = nome;
     }
 
-    public String getCep() {
-        return cep;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
-    public Integer getNumLog() {
-        return numLog;
+    public Integer getNumLogradouro() {
+        return numLogradouro;
     }
 
-    public void setNumLog(Integer numLog) {
-        this.numLog = numLog;
+    public void setNumLogradouro(Integer numLogradouro) {
+        this.numLogradouro = numLogradouro;
     }
 
     public Diretoria getDiretoria() {

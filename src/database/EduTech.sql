@@ -8,24 +8,37 @@ CREATE TABLE diretoria(
 );
 
 CREATE TABLE escola(
-	idEscola INT AUTO_INCREMENT,
-    nome VARCHAR(100) NOT NULL,
-    cep CHAR(8) NOT NULL,
-    numLog INT NOT NULL,
-    fkDiretoria INT,
+	idEscola INT UNIQUE NOT NULL,
+    nome VARCHAR(45) NULL,
+    logradouro VARCHAR(45) NULL,
+    numLogradouro INT NULL,
+    fkDiretoria INT NOT NULL,
     FOREIGN KEY (fkDiretoria) REFERENCES diretoria(idDiretoria),
     PRIMARY KEY (idEscola, fkDiretoria)
 );
 
-CREATE TABLE aluno(
-	ra VARCHAR(20) NOT NULL,
-    nome VARCHAR(45) NOT NULL,
-    dtNasc DATE NOT NULL,
-    dtMatricula DATE NOT NULL,
+CREATE TABLE turma(
+	idTurma INT NOT NULL,
+    serie INT NOT NULL,
     fkEscola INT NOT NULL,
     fkDiretoria INT NOT NULL,
-    FOREIGN KEY (fkEscola, fkDiretoria) REFERENCES escola(idEscola,fkDiretoria),
-    PRIMARY KEY (ra, fkEscola)
+    FOREIGN KEY (fkEscola, fkDiretoria) REFERENCES escola(idEscola, fkDiretoria),
+    PRIMARY KEY(idTurma, fkEscola, fkDiretoria)
+);
+
+CREATE TABLE aluno(
+	idAluno VARCHAR(20) NOT NULL,
+    nome VARCHAR(45) NOT NULL,
+    idade INT,
+    sexo CHAR(1),
+    proficienciaMT INT,
+    proficienciaLP INT,
+    nivel INT,
+    fkTurma INT NOT NULL,
+    fkEscola INT NOT NULL,
+    fkDiretoria INT NOT NULL,
+    FOREIGN KEY (fkTurma, fkEscola, fkDiretoria) REFERENCES turma(idTurma,fkEscola,fkDiretoria),
+    PRIMARY KEY (idAluno, fkTurma)
 );
 
 CREATE TABLE materia(
@@ -53,34 +66,30 @@ CREATE TABLE usuario(
     FOREIGN KEY (fkEscola, fkDiretoria) REFERENCES escola(idEscola, fkDiretoria),
     FOREIGN KEY (fkMateria) REFERENCES materia(idMateria),
     PRIMARY KEY (idUsuario, fkCargo),
-    CONSTRAINT ministerio CHECK (fkCargo != 1 OR (fkMateria IS NULL AND fkEscola IS NULL)), -- Se for do ministério, fkEscola e fkMatéria são nulas
+    CONSTRAINT secretaria CHECK (fkCargo != 1 OR (fkMateria IS NULL AND fkEscola IS NULL)), -- Se for do secretaria, fkEscola e fkMatéria são nulas
     CONSTRAINT diretorTemEscola CHECK (fkCargo != 2 OR (fkMateria IS NULL AND fkEscola IS NOT NULL)), -- Se for diretor, fkEscola não pode ser nula
     CONSTRAINT ProfessorTemMateria CHECK (fkCargo != 3 OR (fkMateria IS NOT NULL AND fkEscola IS NOT NULL)) -- Se for professor, fkEscola e fkMateria não podem ser nulas
 );
 
-CREATE TABLE prova(
-	idProva INT AUTO_INCREMENT,
-    dtProva DATE NOT NULL,
-    nota DECIMAL(5,2) NOT NULL, -- valor provisório
-    bloco INT NOT NULL,
-    fkAluno VARCHAR(20) NOT NULL,
-    fkEscola INT NOT NULL,
-    FOREIGN KEY (fkAluno, fkEscola) REFERENCES aluno(ra, fkEscola),
-    PRIMARY KEY (idProva, fkAluno)
-);
-
 CREATE TABLE questao(
-	idQuestao INT AUTO_INCREMENT,
+	idQuestao INT NOT NULL,
+    bloco INT NOT NULL,
     numero INT NOT NULL,
-    valor DOUBLE(4,2) NOT NULL,
     respostaCorreta CHAR(1) NOT NULL,
     descritor VARCHAR(3) NOT NULL,
     fkMateria INT NOT NULL,
-    fkProva INT NOT NULL,
-    fkAluno VARCHAR(20) NOT NULL, 
     FOREIGN KEY (fkMateria) REFERENCES materia(idMateria),
-    FOREIGN KEY (fkProva, fkAluno) REFERENCES prova(idProva, fkAluno),
-    PRIMARY KEY (idQuestao, fkMateria, fkProva, fkAluno)
+    PRIMARY KEY (idQuestao, fkMateria)
+);
+
+CREATE TABLE respostaAluno(
+	idRespostaAluno INT NOT NULL AUTO_INCREMENT,
+    resposta CHAR(1),
+    fkAluno VARCHAR(20) NOT NULL,
+    fkQuestao INT NOT NULL,
+    FOREIGN KEY (fkAluno) REFERENCES aluno(idAluno),
+    FOREIGN KEY (fkQuestao) REFERENCES questao(idQuestao),
+	PRIMARY KEY (idRespostaAluno, fkAluno, fkQuestao)
 );
 
 CREATE TABLE contato(
@@ -95,16 +104,18 @@ CREATE TABLE contato(
 -- Inserts de exemplo
 
 insert into cargo(descricao)
-values ("Ministerio"), ("Diretor"), ("Professor");
+values ("Secretaria"), ("Diretor"), ("Professor");
 
 insert into diretoria(nome)
 values ("Centro 1"),("Centro 2"),("Centro 3");
 
 insert into materia(nome)
-values ("Matemática"),("Português");
+values ("MT"),("LP");
 
 insert into escola
-values (default, "Escola teste 1","00000000", 1, 1),(default, "Escola teste 2", "00000000", 2, 1),(default, "Escola teste 3","00000000", 3, 1);
+values (1, "Escola teste 1","00000000", 1, 1),(2, "Escola teste 2", "00000000", 2, 1),(3, "Escola teste 3","00000000", 3, 1);
 
 insert into usuario
-values (default, "Ministro Fulano","minfulano@saopaulo.com","123","11999999999",NOW(),1,null,null,null),(default, "Diretor Ciclano","dirciclano@escolaa.com","123","11999999999",NOW(),2,1,1,null),(default, "Professor Beltrano","profbeltrano@escolaa.com","123","11999999999",NOW(),3,1,1,1);
+values (default, "Secretário Fulano","secfulano@saopaulo.com","123","11999999999",NOW(),1,null,null,null),(default, "Diretor Ciclano","dirciclano@escolaa.com","123","11999999999",NOW(),2,1,1,null),(default, "Professor Beltrano","profbeltrano@escolaa.com","123","11999999999",NOW(),3,1,1,1);
+
+select (select count(idEscola)-3 from escola) qtdEscolas,(select count(idTurma) from turma) qtdTurmas, (select count(idAluno) from aluno) qtdAlunos,(select count(idQuestao) from questao) qtdQuestoes,count(idRespostaAluno) qtdRespostas from respostaAluno;

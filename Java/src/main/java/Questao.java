@@ -1,22 +1,20 @@
 public class Questao {
     private int idQuestao;
+    private Integer bloco;
     private Integer numero;
-    private Double valor;
-    private Character respostaCorreta;
+    private String respostaCorreta;
     private String descritor;
     private Materia materia;
-    private Prova prova;
-    private Aluno aluno;
 
-    public Questao(int idQuestao, Integer numero, Double valor, Character respostaCorreta, String descritor, Materia materia, Prova prova, Aluno aluno) {
+    public Questao(){}
+
+    public Questao(int idQuestao, Integer bloco, Integer numero, String respostaCorreta, String descritor, Materia materia) {
         this.idQuestao = idQuestao;
+        this.bloco = bloco;
         this.numero = numero;
-        this.valor = valor;
         this.respostaCorreta = respostaCorreta;
         this.descritor = descritor;
         this.materia = materia;
-        this.prova = prova;
-        this.aluno = aluno;
     }
 
     public int getIdQuestao() {
@@ -27,6 +25,14 @@ public class Questao {
         this.idQuestao = idQuestao;
     }
 
+    public Integer getBloco() {
+        return bloco;
+    }
+
+    public void setBloco(Integer bloco) {
+        this.bloco = bloco;
+    }
+
     public Integer getNumero() {
         return numero;
     }
@@ -35,19 +41,11 @@ public class Questao {
         this.numero = numero;
     }
 
-    public Double getValor() {
-        return valor;
-    }
-
-    public void setValor(Double valor) {
-        this.valor = valor;
-    }
-
-    public Character getRespostaCorreta() {
+    public String getRespostaCorreta() {
         return respostaCorreta;
     }
 
-    public void setRespostaCorreta(Character respostaCorreta) {
+    public void setRespostaCorreta(String respostaCorreta) {
         this.respostaCorreta = respostaCorreta;
     }
 
@@ -65,21 +63,5 @@ public class Questao {
 
     public void setMateria(Materia materia) {
         this.materia = materia;
-    }
-
-    public Prova getProva() {
-        return prova;
-    }
-
-    public void setProva(Prova prova) {
-        this.prova = prova;
-    }
-
-    public Aluno getAluno() {
-        return aluno;
-    }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
     }
 }

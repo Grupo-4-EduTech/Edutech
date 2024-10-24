@@ -1,26 +1,36 @@
 public class Aluno {
-    private String ra;
+    private String idAluno;
     private String nome;
-    private String dtNasc;
-    private String dtMatricula;
+    private Integer idade;
+    private String sexo;
+    private Double proficienciaMT;
+    private Double proficienciaLP;
+    private Integer nivel;
+    private Turma turma;
     private Escola escola;
     private Diretoria diretoria;
 
-    public Aluno(String ra, String nome, String dtNasc, String dtMatricula, Escola escola, Diretoria diretoria) {
-        this.ra = ra;
+    public Aluno(){}
+
+    public Aluno(String idAluno, String nome, Integer idade, String sexo, Double proficienciaMT, Double proficienciaLP, Integer nivel, Turma turma, Escola escola, Diretoria diretoria) {
+        this.idAluno = idAluno;
         this.nome = nome;
-        this.dtNasc = dtNasc;
-        this.dtMatricula = dtMatricula;
+        this.idade = idade;
+        this.sexo = sexo;
+        this.proficienciaMT = proficienciaMT;
+        this.proficienciaLP = proficienciaLP;
+        this.nivel = nivel;
+        this.turma = turma;
         this.escola = escola;
         this.diretoria = diretoria;
     }
 
-    public String getRa() {
-        return ra;
+    public String getIdAluno() {
+        return idAluno;
     }
 
-    public void setRa(String ra) {
-        this.ra = ra;
+    public void setIdAluno(String idAluno) {
+        this.idAluno = idAluno;
     }
 
     public String getNome() {
@@ -31,20 +41,52 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public String getDtNasc() {
-        return dtNasc;
+    public Integer getIdade() {
+        return idade;
     }
 
-    public void setDtNasc(String dtNasc) {
-        this.dtNasc = dtNasc;
+    public void setIdade(Integer idade) {
+        this.idade = idade;
     }
 
-    public String getDtMatricula() {
-        return dtMatricula;
+    public String getSexo() {
+        return sexo;
     }
 
-    public void setDtMatricula(String dtMatricula) {
-        this.dtMatricula = dtMatricula;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public Double getProficienciaMT() {
+        return proficienciaMT;
+    }
+
+    public void setProficienciaMT(Double proficienciaMT) {
+        this.proficienciaMT = proficienciaMT;
+    }
+
+    public Double getProficienciaLP() {
+        return proficienciaLP;
+    }
+
+    public void setProficienciaLP(Double proficienciaLP) {
+        this.proficienciaLP = proficienciaLP;
+    }
+
+    public Integer getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(Integer nivel) {
+        this.nivel = nivel;
+    }
+
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public void setTurma(Turma turma) {
+        this.turma = turma;
     }
 
     public Escola getEscola() {

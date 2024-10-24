@@ -2,6 +2,8 @@ public class Diretoria {
     private int idDiretoria;
     private String nome;
 
+    public Diretoria(){}
+
     public Diretoria(int idDiretoria, String nome) {
         this.idDiretoria = idDiretoria;
         this.nome = nome;
