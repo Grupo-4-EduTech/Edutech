@@ -25,7 +25,8 @@ CREATE TABLE aluno(
     dtNasc DATE NOT NULL,
     dtMatricula DATE NOT NULL,
     fkEscola INT NOT NULL,
-    FOREIGN KEY (fkEscola) REFERENCES escola(idEscola),
+    fkDiretoria INT NOT NULL,
+    FOREIGN KEY (fkEscola, fkDiretoria) REFERENCES escola(idEscola,fkDiretoria),
     PRIMARY KEY (ra, fkEscola)
 );
 
@@ -44,12 +45,14 @@ CREATE TABLE usuario(
     nome VARCHAR(45) NOT NULL,
     email VARCHAR(256) NOT NULL,
     senha VARCHAR(256) NOT NULL,
+    telefone CHAR(14),
     dtCadastro DATETIME NOT NULL,
     fkCargo INT NOT NULL,
     fkEscola INT,
+    fkDiretoria INT,
     fkMateria INT,
     FOREIGN KEY (fkCargo) REFERENCES cargo(idCargo),
-    FOREIGN KEY (fkEscola) REFERENCES escola(idEscola),
+    FOREIGN KEY (fkEscola, fkDiretoria) REFERENCES escola(idEscola, fkDiretoria),
     FOREIGN KEY (fkMateria) REFERENCES materia(idMateria),
     PRIMARY KEY (idUsuario, fkCargo),
     CONSTRAINT ministerio CHECK (fkCargo != 1 OR (fkMateria IS NULL AND fkEscola IS NULL)), -- Se for do ministério, fkEscola e fkMatéria são nulas
@@ -76,9 +79,9 @@ CREATE TABLE prova(
 	fkMateria INT NOT NULL,
     fkQuestao INT NOT NULL,
     fkAluno VARCHAR(20) NOT NULL,
-    FOREIGN KEY (fkMateria) REFERENCES materia(idMateria),
-    FOREIGN KEY (fkQuestao) REFERENCES questao(idQuestao),
-    FOREIGN KEY (fkAluno) REFERENCES aluno(ra),
+    fkEscola INT NOT NULL,
+    FOREIGN KEY (fkQuestao, fkMateria) REFERENCES questao(idQuestao, fkMateria),
+    FOREIGN KEY (fkAluno, fkEscola) REFERENCES aluno(ra, fkEscola),
     PRIMARY KEY (idProva, fkMateria, fkQuestao, fkAluno)
 );
 
@@ -86,8 +89,9 @@ CREATE TABLE desempenho(
 	idDesempenho INT AUTO_INCREMENT,
 	notaFinal DECIMAL(4,1) NOT NULL, -- valor provisório
     fkAluno VARCHAR(20) NOT NULL,
+    fkEscola INT NOT NULL,
     fkMateria INT NOT NULL,
-    FOREIGN KEY (fkAluno) REFERENCES aluno(ra),
+    FOREIGN KEY (fkAluno, fkEscola) REFERENCES aluno(ra, fkEscola),
     FOREIGN KEY (fkMateria) REFERENCES materia(idMateria),
     PRIMARY KEY (idDesempenho, fkAluno, fkMateria)
 );
@@ -116,4 +120,4 @@ insert into escola
 values (default, "Escola teste 1", 1, "São Paulo", "Rua Haddock Lobo", 1, 1),(default, "Escola teste 2", 2, "São Paulo", "Rua Haddock Lobo", 2, 1),(default, "Escola teste 3", 3, "São Paulo", "Rua Haddock Lobo", 3, 1);
 
 insert into usuario
-values (default, "Ministro Fulano","minfulano@saopaulo.com","123",NOW(),1,null,null),(default, "Diretor Ciclano","dirciclano@escolaa.com","123",NOW(),2,1,null),(default, "Professor Beltrano","profbeltrano@escolaa.com","",NOW(),3,1,1);
+values (default, "Ministro Fulano","minfulano@saopaulo.com","123","11999999999",NOW(),1,null,null,null),(default, "Diretor Ciclano","dirciclano@escolaa.com","123","11999999999",NOW(),2,1,1,null),(default, "Professor Beltrano","profbeltrano@escolaa.com","123","11999999999",NOW(),3,1,1,1);

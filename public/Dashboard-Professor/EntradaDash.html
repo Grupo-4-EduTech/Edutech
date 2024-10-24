@@ -10,6 +10,32 @@
     <title>Edu Tech | Dashboard</title>
 </head>
 <body>
+
+    <div class="modal">
+        <div class="content">
+          <h1 class="title">Turmas</h1>
+          <p class="text">Essa sessão exibe todas as turmas em que você leciona e informações de desempenho,
+             é possível obter informações mais detalhadas ao clicar em cima de cada turma</p>
+             <div class="EspacoModal"></div>
+             <h1 class="title">Legenda</h1>
+             <div class="AreaLegenda">
+                <div class="AreaTextoLegenda">
+             <img src="../assets/livro-aberto.svg">
+             <div class="TextoLegenda" id="TextoNomeMateria">Nome da matéria</div>
+            </div>
+            <div class="AreaTextoLegenda">
+                <img src="../assets/prancheta.svg" >
+                <div class="TextoLegenda">Média calculada pela proficiência</div>
+               </div>
+               <div class="AreaTextoLegenda">
+                <img src="../assets/imagemAlerta.svg">
+                <div class="TextoLegenda">Conteúdo que a sala demonstrou mais dificuldade</div>
+               </div>
+            </div>
+        </div>
+      </div>
+
+
     <div class="navBarlateral">
         <div class="AreaLogo">
             <div class="Logo">
@@ -19,14 +45,68 @@
             NAVEGAÇÃO           
         </div>
         <div class="AreaNavegacao">
-            
+            <a class="OpcaoArea" id="OpcaoSelecionada" href="./EntradaDash.html">
+                <img src="../assets/IconChapeuTurma.svg" class="IconNavegacao">
+                <div class="AreaTextoOpcao">
+                    Turmas
+                </div>
+            </a>
+            <a class="OpcaoArea" href="./EntradaDash.html">
+                <img src="../assets/IconFolhaNavegacaoTurma.svg" class="IconNavegacaoFolha">
+                <div class="AreaTextoOpcao">
+                    Descritores
+                </div>
+            </a>
+            <a class="OpcaoArea" href="./EntradaDash.html">
+                <img src="../assets/MicrofoneSuporteTurma.svg" class="IconNavegacao">
+                <div class="AreaTextoOpcao">
+                    Suporte
+                </div>
+            </a>
         </div>
+        <div class="Espaco">       
+        </div>
+        <a class="OpcaoArea" href="./EntradaDash.html">
+            <img src="../assets/IconSairTurma.svg" class="IconNavegacao">
+            <div class="AreaTextoOpcao">
+                Sair
+            </div>
+        </a>
     </div>
     <div class="Areadash">
         <div class="AreaKPI">
             <div class="KPI">
-                <div class="LocalSelecionado">
-                </div>
+                <div class="AreaIconLocal">
+            <img src="../assets/IconChapeuTurma.svg" class="IconLocalSelecionadoKPI">    
+        </div>
+        <div class="AreaTextoLocal">
+            <div class="TextoLocal">
+            Turmas
+        </div>
+        <button onclick="AtivarModal()" class="BotaoInterrogacao">
+                <img src="../assets/IconInterrogacao.svg" class="IconAjudaKPI">
+        </button>
+        </div>
+        <div class="EspacoKPI">
+        </div>
+        <div class="AreaSinoNotificacao">
+            <img src="../assets/sinonotificacaoturma.svg" class="SinoNotificacao">
+        </div>
+        <div class="AreaEspacoNotificacao">
+            <div class="EspacoNotificacao">               
+            </div>
+        </div>
+        <div class="AreaSobreUsuario">
+            <div class="AreaPrincipalFoto">
+                <div class="AreaSecundariaFoto">
+            <img src="../assets/fotousuarioturma.svg" class="FotoDoUsuario">
+        </div>
+        </div>
+        <div class="AreaDadosDoUsuario">
+            <div class="NomeDoUsuario">Girafales Teodoro</div>
+            <div class="CargoDoUsuario">Professor(a)</div>
+        </div>
+        </div>
             </div>
         </div>
         <div class="Dashboards">
@@ -291,8 +371,31 @@
                 </div>
             </div>
         </a>
-    </div>
+    </div>  
         </div>
-    </div>
+</div>
 </body>
 </html>
+
+<script>
+    const switchModal = () => {
+    const modal = document.querySelector('.modal')
+    const actualStyle = modal.style.display
+    if(actualStyle == 'block') {
+      modal.style.display = 'none'
+    }
+    else {
+      modal.style.display = 'block'
+    }
+  }
+  
+  const btn = document.querySelector('.BotaoInterrogacao')
+  btn.addEventListener('click', switchModal)
+  
+  window.onclick = function(event) {
+      const modal = document.querySelector('.modal')
+    if (event.target == modal) {
+      switchModal()
+    }
+  }
+</script>
