@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,40 +10,41 @@
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
+
 <body>
 
     <div class="modal">
         <div class="content">
-          <h1 class="title">Turmas</h1>
-          <p class="text">Essa sessão exibe todas as turmas em que você leciona e informações de desempenho,
-             é possível obter informações mais detalhadas ao clicar em cima de cada turma</p>
-             <div class="EspacoModal"></div>
-             <h1 class="title">Legenda</h1>
-             <div class="AreaLegenda">
+            <h1 class="title">Turmas</h1>
+            <p class="text">Essa sessão exibe todas as turmas em que você leciona e informações de desempenho,
+                é possível obter informações mais detalhadas ao clicar em cima de cada turma</p>
+            <div class="EspacoModal"></div>
+            <h1 class="title">Legenda</h1>
+            <div class="AreaLegenda"> 
                 <div class="AreaTextoLegenda">
-             <img src="../assets/livro-aberto.svg">
-             <div class="TextoLegenda" id="TextoNomeMateria">Nome da matéria</div>
-            </div>
-            <div class="AreaTextoLegenda">
-                <img src="../assets/prancheta.svg" >
-                <div class="TextoLegenda">Média calculada pela proficiência</div>
-               </div>
-               <div class="AreaTextoLegenda">
-                <img src="../assets/imagemAlerta.svg">
-                <div class="TextoLegenda">Conteúdo que a sala demonstrou mais dificuldade</div>
-               </div>
+                    <img src="../assets/livro-aberto.svg">
+                    <div class="TextoLegenda" id="TextoNomeMateria">Nome da matéria</div>
+                </div>
+                <div class="AreaTextoLegenda">
+                    <img src="../assets/prancheta.svg">
+                    <div class="TextoLegenda">Média calculada pela proficiência</div>
+                </div>
+                <div class="AreaTextoLegenda">
+                    <img src="../assets/imagemAlerta.svg">
+                    <div class="TextoLegenda">Conteúdo que a sala demonstrou mais dificuldade</div>
+                </div>
             </div>
         </div>
-      </div>
+    </div>
 
 
     <div class="navBarlateral">
         <div class="AreaLogo">
             <div class="Logo">
-                </div>
+            </div>
         </div>
         <div class="TituloNavegacao">
-            NAVEGAÇÃO           
+            NAVEGAÇÃO
         </div>
         <div class="AreaNavegacao">
             <a class="OpcaoArea" id="OpcaoSelecionada" href="./EntradaDash.html">
@@ -51,7 +53,7 @@
                     Turmas
                 </div>
             </a>
-            <a class="OpcaoArea" href="./EntradaDash.html">
+            <a class="OpcaoArea" href="./DashboardsProfessor.html">
                 <img src="../assets/IconFolhaNavegacaoTurma.svg" class="IconNavegacaoFolha">
                 <div class="AreaTextoOpcao">
                     Descritores
@@ -64,7 +66,7 @@
                 </div>
             </a>
         </div>
-        <div class="Espaco">       
+        <div class="Espaco">
         </div>
         <a class="OpcaoArea" href="./EntradaDash.html">
             <img src="../assets/IconSairTurma.svg" class="IconNavegacao">
@@ -77,325 +79,326 @@
         <div class="AreaKPI">
             <div class="KPI">
                 <div class="AreaIconLocal">
-            <img src="../assets/IconChapeuTurma.svg" class="IconLocalSelecionadoKPI">    
-        </div>
-        <div class="AreaTextoLocal">
-            <div class="TextoLocal">
-            Turmas
-        </div>
-        <button onclick="AtivarModal()" class="BotaoInterrogacao">
-                <img src="../assets/IconInterrogacao.svg" class="IconAjudaKPI">
-        </button>
-        </div>
-        <div class="EspacoKPI">
-        </div>
-        <div class="AreaSinoNotificacao">
-            <img src="../assets/sinonotificacaoturma.svg" class="SinoNotificacao">
-        </div>
-        <div class="AreaEspacoNotificacao">
-            <div class="EspacoNotificacao">               
+                    <img src="../assets/IconChapeuTurma.svg" class="IconLocalSelecionadoKPI">
+                </div>
+                <div class="AreaTextoLocal">
+                    <div class="TextoLocal">
+                        Turmas
+                    </div>
+                    <button onclick="AtivarModal()" class="BotaoInterrogacao">
+                        <img src="../assets/IconInterrogacao.svg" class="IconAjudaKPI">
+                    </button>
+                </div>
+                <div class="EspacoKPI">
+                </div>
+                <div class="AreaSinoNotificacao">
+                    <img src="../assets/sinonotificacaoturma.svg" class="SinoNotificacao">
+                </div>
+                <div class="AreaEspacoNotificacao">
+                    <div class="EspacoNotificacao">
+                    </div>
+                </div>
+                <div class="AreaSobreUsuario">
+                    <div class="AreaPrincipalFoto">
+                        <div class="AreaSecundariaFoto">
+                            <img src="../assets/fotousuarioturma.svg" class="FotoDoUsuario">
+                        </div>
+                    </div>
+                    <div class="AreaDadosDoUsuario">
+                        <div class="NomeDoUsuario">Girafales Teodoro</div>
+                        <div class="CargoDoUsuario">Professor(a)</div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="AreaSobreUsuario">
-            <div class="AreaPrincipalFoto">
-                <div class="AreaSecundariaFoto">
-            <img src="../assets/fotousuarioturma.svg" class="FotoDoUsuario">
-        </div>
-        </div>
-        <div class="AreaDadosDoUsuario">
-            <div class="NomeDoUsuario">Girafales Teodoro</div>
-            <div class="CargoDoUsuario">Professor(a)</div>
-        </div>
-        </div>
-            </div>
-        </div>
-        <div class="Dashboards">
+        <div class="AreaDeTrabalho" id="AreaDeTrabalhoEntrada">
             <div class="NomeFileira">
                 Turmas do 3°:
             </div>
             <div class="Fileira">
-            <a class="Turma" id="Turma1" href="../index.html">
-                <div class="nomeTurma">
-                    3°A
-                </div>
-                <div class="disciplina">
-                    <div class="imagemLivroDisciplina">
+                <a class="Turma" id="Turma1" href="./DashboardsProfessor.html">
+                    <div class="nomeTurma">
+                        3°A
                     </div>
-                    <div class="AreaTextoDisciplina">
-                        Matemática
+                    <div class="disciplina">
+                        <div class="imagemLivroDisciplina">
+                        </div>
+                        <div class="AreaTextoDisciplina">
+                            Matemática
+                        </div>
                     </div>
-                </div>
-                <div class="media">
-                    <div class="imagemPrachetaMedia">
+                    <div class="media">
+                        <div class="imagemPrachetaMedia">
+                        </div>
+                        <div class="AreaTextoMedia">
+                            <b>
+                                Média: 250,5
+                            </b>
+                        </div>
                     </div>
-                    <div class="AreaTextoMedia">
-                        <b>
-                        Média: 250,5
-                    </b>
+                    <div class="materiaComDificuldade">
+                        <div class="imagemAlerta">
+                        </div>
+                        <div class="AreaTextoDificuldade">
+                            Algebra
+                        </div>
                     </div>
-                </div>
-                <div class="materiaComDificuldade">
-                    <div class="imagemAlerta">
+                </a>
+                <a class="Turma" id="Turma2" href="./DashboardsProfessor.html">
+                    <div class="nomeTurma">
+                        3°B
                     </div>
-                    <div class="AreaTextoDificuldade">
-                        Algebra
+                    <div class="disciplina">
+                        <div class="imagemLivroDisciplina">
+                        </div>
+                        <div class="AreaTextoDisciplina">
+                            Matemática
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a class="Turma" id="Turma2" href="../index.html">
-                <div class="nomeTurma">
-                    3°B
-                </div>
-                <div class="disciplina">
-                    <div class="imagemLivroDisciplina">
+                    <div class="media">
+                        <div class="imagemPrachetaMedia">
+                        </div>
+                        <div class="AreaTextoMedia">
+                            <b>
+                                Média: 350,4
+                            </b>
+                        </div>
                     </div>
-                    <div class="AreaTextoDisciplina">
-                        Matemática
+                    <div class="materiaComDificuldade">
+                        <div class="imagemAlerta">
+                        </div>
+                        <div class="AreaTextoDificuldade">
+                            Algebra
+                        </div>
                     </div>
-                </div>
-                <div class="media">
-                    <div class="imagemPrachetaMedia">
+                </a>
+                <a class="Turma" id="Turma3" href="./DashboardsProfessor.html">
+                    <div class="nomeTurma">
+                        3°C
                     </div>
-                    <div class="AreaTextoMedia">
-                        <b>
-                        Média: 350,4
-                    </b>
+                    <div class="disciplina">
+                        <div class="imagemLivroDisciplina">
+                        </div>
+                        <div class="AreaTextoDisciplina">
+                            Matemática
+                        </div>
                     </div>
-                </div>
-                <div class="materiaComDificuldade">
-                    <div class="imagemAlerta">
+                    <div class="media">
+                        <div class="imagemPrachetaMedia">
+                        </div>
+                        <div class="AreaTextoMedia">
+                            <b>
+                                Média: 403,1
+                            </b>
+                        </div>
                     </div>
-                    <div class="AreaTextoDificuldade">
-                        Algebra
+                    <div class="materiaComDificuldade">
+                        <div class="imagemAlerta">
+                        </div>
+                        <div class="AreaTextoDificuldade">
+                            Grandezas
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a class="Turma"  id="Turma3" href="../cadastro.html">
-                <div class="nomeTurma">
-                    3°C
-                </div>
-                <div class="disciplina">
-                    <div class="imagemLivroDisciplina">
+                </a>
+                <a class="Turma" id="Turma4" href="./DashboardsProfessor.html">
+                    <div class="nomeTurma">
+                        3°D
                     </div>
-                    <div class="AreaTextoDisciplina">
-                        Matemática
+                    <div class="disciplina">
+                        <div class="imagemLivroDisciplina">
+                        </div>
+                        <div class="AreaTextoDisciplina">
+                            Matemática
+                        </div>
                     </div>
-                </div>
-                <div class="media">
-                    <div class="imagemPrachetaMedia">
+                    <div class="media">
+                        <div class="imagemPrachetaMedia">
+                        </div>
+                        <div class="AreaTextoMedia">
+                            <b>
+                                Média: 430,1
+                            </b>
+                        </div>
                     </div>
-                    <div class="AreaTextoMedia">
-                        <b>
-                        Média: 403,1
-                    </b>
+                    <div class="materiaComDificuldade">
+                        <div class="imagemAlerta">
+                        </div>
+                        <div class="AreaTextoDificuldade">
+                            Grandezas
+                        </div>
                     </div>
-                </div>
-                <div class="materiaComDificuldade">
-                    <div class="imagemAlerta">
+                </a>
+                <a class="Turma" id="Turma5" href="./DashboardsProfessor.html">
+                    <div class="nomeTurma">
+                        3°E
                     </div>
-                    <div class="AreaTextoDificuldade">
-                        Grandezas
+                    <div class="disciplina">
+                        <div class="imagemLivroDisciplina">
+                        </div>
+                        <div class="AreaTextoDisciplina">
+                            Matemática
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a class="Turma" id="Turma4" href="../cadastro.html">
-                <div class="nomeTurma">
-                    3°D
-                </div>
-                <div class="disciplina">
-                    <div class="imagemLivroDisciplina">
+                    <div class="media">
+                        <div class="imagemPrachetaMedia">
+                        </div>
+                        <div class="AreaTextoMedia">
+                            <b>
+                                Média: 278,1
+                            </b>
+                        </div>
                     </div>
-                    <div class="AreaTextoDisciplina">
-                        Matemática
+                    <div class="materiaComDificuldade">
+                        <div class="imagemAlerta">
+                        </div>
+                        <div class="AreaTextoDificuldade">
+                            Grandezas
+                        </div>
                     </div>
-                </div>
-                <div class="media">
-                    <div class="imagemPrachetaMedia">
+                </a>
+            </div>
+            <div class="NomeFileira">
+                Turmas do 2°:
+            </div>
+            <div class="Fileira">
+                <a class="Turma" id="Turma1" href="./DashboardsProfessor.html">
+                    <div class="nomeTurma">
+                        2°A
                     </div>
-                    <div class="AreaTextoMedia">
-                        <b>
-                        Média: 430,1
-                    </b>
+                    <div class="disciplina">
+                        <div class="imagemLivroDisciplina">
+                        </div>
+                        <div class="AreaTextoDisciplina">
+                            Matemática
+                        </div>
                     </div>
-                </div>
-                <div class="materiaComDificuldade">
-                    <div class="imagemAlerta">
+                    <div class="media">
+                        <div class="imagemPrachetaMedia">
+                        </div>
+                        <div class="AreaTextoMedia">
+                            <b>
+                                Média: 250,5
+                            </b>
+                        </div>
                     </div>
-                    <div class="AreaTextoDificuldade">
-                        Grandezas
+                    <div class="materiaComDificuldade">
+                        <div class="imagemAlerta">
+                        </div>
+                        <div class="AreaTextoDificuldade">
+                            Algebra
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a class="Turma" id="Turma5" href="../cadastro.html">
-                <div class="nomeTurma">
-                    3°E
-                </div>
-                <div class="disciplina">
-                    <div class="imagemLivroDisciplina">
+                </a>
+                <a class="Turma" id="Turma2" href="./DashboardsProfessor.html">
+                    <div class="nomeTurma">
+                        2°B
                     </div>
-                    <div class="AreaTextoDisciplina">
-                        Matemática
+                    <div class="disciplina">
+                        <div class="imagemLivroDisciplina">
+                        </div>
+                        <div class="AreaTextoDisciplina">
+                            Matemática
+                        </div>
                     </div>
-                </div>
-                <div class="media">
-                    <div class="imagemPrachetaMedia">
+                    <div class="media">
+                        <div class="imagemPrachetaMedia">
+                        </div>
+                        <div class="AreaTextoMedia">
+                            <b>
+                                Média: 350,4
+                            </b>
+                        </div>
                     </div>
-                    <div class="AreaTextoMedia">
-                        <b>
-                        Média: 278,1
-                    </b>
+                    <div class="materiaComDificuldade">
+                        <div class="imagemAlerta">
+                        </div>
+                        <div class="AreaTextoDificuldade">
+                            Algebra
+                        </div>
                     </div>
-                </div>
-                <div class="materiaComDificuldade">
-                    <div class="imagemAlerta">
+                </a>
+                <a class="Turma" id="Turma3" href="./DashboardsProfessor.html">
+                    <div class="nomeTurma">
+                        2°C
                     </div>
-                    <div class="AreaTextoDificuldade">
-                        Grandezas
+                    <div class="disciplina">
+                        <div class="imagemLivroDisciplina">
+                        </div>
+                        <div class="AreaTextoDisciplina">
+                            Matemática
+                        </div>
                     </div>
-                </div>
-            </a>
+                    <div class="media">
+                        <div class="imagemPrachetaMedia">
+                        </div>
+                        <div class="AreaTextoMedia">
+                            <b>
+                                Média: 403,1
+                            </b>
+                        </div>
+                    </div>
+                    <div class="materiaComDificuldade">
+                        <div class="imagemAlerta">
+                        </div>
+                        <div class="AreaTextoDificuldade">
+                            Grandezas
+                        </div>
+                    </div>
+                </a>
+                <a class="Turma" id="Turma4" href="./DashboardsProfessor.html">
+                    <div class="nomeTurma">
+                        2°D
+                    </div>
+                    <div class="disciplina">
+                        <div class="imagemLivroDisciplina">
+                        </div>
+                        <div class="AreaTextoDisciplina">
+                            Matemática
+                        </div>
+                    </div>
+                    <div class="media">
+                        <div class="imagemPrachetaMedia">
+                        </div>
+                        <div class="AreaTextoMedia">
+                            <b>
+                                Média: 403,1
+                            </b>
+                        </div>
+                    </div>
+                    <div class="materiaComDificuldade">
+                        <div class="imagemAlerta">
+                        </div>
+                        <div class="AreaTextoDificuldade">
+                            Grandezas
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
-        <div class="NomeFileira">
-            Turmas do 2°:
-        </div>
-        <div class="Fileira">
-        <a class="Turma" id="Turma1" href="../index.html">
-            <div class="nomeTurma">
-                2°A
-            </div>
-            <div class="disciplina">
-                <div class="imagemLivroDisciplina">
-                </div>
-                <div class="AreaTextoDisciplina">
-                    Matemática
-                </div>
-            </div>
-            <div class="media">
-                <div class="imagemPrachetaMedia">
-                </div>
-                <div class="AreaTextoMedia">
-                    <b>
-                    Média: 250,5
-                </b>
-                </div>
-            </div>
-            <div class="materiaComDificuldade">
-                <div class="imagemAlerta">
-                </div>
-                <div class="AreaTextoDificuldade">
-                    Algebra
-                </div>
-            </div>
-        </a>
-        <a class="Turma" id="Turma2" href="../index.html">
-            <div class="nomeTurma">
-                2°B
-            </div>
-            <div class="disciplina">
-                <div class="imagemLivroDisciplina">
-                </div>
-                <div class="AreaTextoDisciplina">
-                    Matemática
-                </div>
-            </div>
-            <div class="media">
-                <div class="imagemPrachetaMedia">
-                </div>
-                <div class="AreaTextoMedia">
-                    <b>
-                    Média: 350,4
-                </b>
-                </div>
-            </div>
-            <div class="materiaComDificuldade">
-                <div class="imagemAlerta">
-                </div>
-                <div class="AreaTextoDificuldade">
-                    Algebra
-                </div>
-            </div>
-        </a>
-        <a class="Turma" id="Turma3" href="../cadastro.html">
-            <div class="nomeTurma">
-                2°C
-            </div>
-            <div class="disciplina">
-                <div class="imagemLivroDisciplina">
-                </div>
-                <div class="AreaTextoDisciplina">
-                    Matemática
-                </div>
-            </div>
-            <div class="media">
-                <div class="imagemPrachetaMedia">
-                </div>
-                <div class="AreaTextoMedia">
-                    <b>
-                    Média: 403,1
-                </b>
-                </div>
-            </div>
-            <div class="materiaComDificuldade">
-                <div class="imagemAlerta">
-                </div>
-                <div class="AreaTextoDificuldade">
-                    Grandezas
-                </div>
-            </div>
-        </a>
-        <a class="Turma" id="Turma4" href="../cadastro.html">
-            <div class="nomeTurma">
-                2°D
-            </div>
-            <div class="disciplina">
-                <div class="imagemLivroDisciplina">
-                </div>
-                <div class="AreaTextoDisciplina">
-                    Matemática
-                </div>
-            </div>
-            <div class="media">
-                <div class="imagemPrachetaMedia">
-                </div>
-                <div class="AreaTextoMedia">
-                    <b>
-                    Média: 403,1
-                </b>
-                </div>
-            </div>
-            <div class="materiaComDificuldade">
-                <div class="imagemAlerta">
-                </div>
-                <div class="AreaTextoDificuldade">
-                    Grandezas
-                </div>
-            </div>
-        </a>
-    </div>  
-        </div>
-</div>
+    </div>
 </body>
+
 </html>
 
 <script>
     const switchModal = () => {
-    const modal = document.querySelector('.modal')
-    const actualStyle = modal.style.display
-    if(actualStyle == 'block') {
-      modal.style.display = 'none'
+        const modal = document.querySelector('.modal')
+        const actualStyle = modal.style.display
+        if (actualStyle == 'block') {
+            modal.style.display = 'none'
+        }
+        else {
+            modal.style.display = 'block'
+        }
     }
-    else {
-      modal.style.display = 'block'
+
+    const btn = document.querySelector('.BotaoInterrogacao')
+    btn.addEventListener('click', switchModal)
+
+    window.onclick = function (event) {
+        const modal = document.querySelector('.modal')
+        if (event.target == modal) {
+            switchModal()
+        }
     }
-  }
-  
-  const btn = document.querySelector('.BotaoInterrogacao')
-  btn.addEventListener('click', switchModal)
-  
-  window.onclick = function(event) {
-      const modal = document.querySelector('.modal')
-    if (event.target == modal) {
-      switchModal()
-    }
-  }
 </script>
