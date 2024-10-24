@@ -585,11 +585,18 @@ body {
 
 .conteudoIndicador  {
     width: 255px;
-    height: 90px;
+    height: 85px;
     display: flex;
     font-size: 45px;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.nivelMedio {
+    width: 100px;
+    height: 20px;
+    font-size: 12px;
+    margin-left: 160px;
 }
 
 .graficos {
