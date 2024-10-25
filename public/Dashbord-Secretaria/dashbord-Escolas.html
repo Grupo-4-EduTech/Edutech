@@ -85,7 +85,7 @@
                     <img src="../../public/assets/media_portugues.svg">
                     <span>300,1</span>
                 </div>
-                
+
 
 
             </div>
@@ -98,7 +98,7 @@
                     <img src="../../public/assets/media_portugues.svg">
                     <span style="color: red;">200,1</span>
                 </div>
-                
+
             </div>
             <div class="mostra_estado">
                 <div class="titulo_estado">
@@ -109,11 +109,11 @@
                     <img src="../../public/assets/Subtract (3).svg">
                     <span>20%</span>
                 </div>
-                
+
 
 
             </div>
-         
+
             <div class="mostra_estado">
                 <div class="titulo_estado">
                     <span>Alunos abaixo do nivel basico</span>
@@ -123,7 +123,7 @@
                     <img src="../../public/assets/Subtract (4).svg">
                     <span style="color: red;">60%</span>
                 </div>
-            
+
             </div>
         </div>
 
@@ -132,17 +132,81 @@
                 <h4>Comparação de regioes por proeficiencia</h4>
                 <div class="grafico_e_lateral">
                     <h6 class="texto_media_grafico">Média de Proeficiencia</h6>
-                    <div class="grafico_">
-                    <canvas id="myChart" width="400" height="200"></canvas>
+                    <div class="grafico">
+                        <canvas id="myChart" width="400" height="200"></canvas>
+                    </div>
                 </div>
-                </div>
-                
+
                 <h6>regiôes</h6>
             </div>
+
+            <div class="ranking_escolas">
+                <div class="titulo_ranking">
+                    <p>Ranking de Escolas</p>
+                </div>
+                <div class="lista_ranking">
+                    <div class="school-card">
+                        <div class="rank">1º</div>
+                        <div class="school-name">Nome completo da escola</div>
+                        <div class="score">
+                            <span class="score-icon">🏆</span>
+                            <span>5081</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lista_ranking">
+                    <div class="school-card">
+                        <div class="rank">2º</div>
+                        <div class="school-name">Nome completo da escola</div>
+                        <div class="score">
+                            <span class="score-icon">🏆</span>
+                            <span>5081</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lista_ranking">
+                    <div class="school-card">
+                        <div class="rank">3º</div>
+                        <div class="school-name">Nome completo da escola</div>
+                        <div class="score">
+                            <span class="score-icon">🏆</span>
+                            <span>5081</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lista_ranking">
+                    <div class="school-card">
+                        <div class="rank">4º</div>
+                        <div class="school-name">Nome completo da escola</div>
+                        <div class="score">
+                            <span class="score-icon">🏆</span>
+                            <span>5081</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lista_ranking">
+                    <div class="school-card">
+                        <div class="rank">5º</div>
+                        <div class="school-name">Nome completo da escola</div>
+                        <div class="score">
+                            <span class="score-icon">🏆</span>
+                            <span>5081</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ver_mais">
+                    <a href="../../public/Dashbord-Secretaria/rankingEscolas.html" style="text-decoration: none; color: black;"><span>Ver mais</span></a>
+                </div>
+
+
+
             </div>
         </div>
 
-        <div></div>
+        
+    </div>
+
+
 
 </body>
 
@@ -151,43 +215,55 @@
 
 <script>
  const ctx = document.getElementById('myChart').getContext('2d');
-        const myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Região 1', 'Região 2', 'Região 3', 'Região 4', 'Região 5'],
-                datasets: [
-                    {
-                        label: 'Matemática',
-                        data: [150, 100, 200, 250, 50],
-                        backgroundColor: '#0790C2',
-                        borderColor: '#0790C2',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Português',
-                        data: [100, 150, 100, 300, 100],
-                        backgroundColor: '#081F45',
-                        borderColor: '#081F45',
-                        borderWidth: 1
-                    }
-                ]
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Região 1', 'Região 2', 'Região 3', 'Região 4', 'Região 5'],
+        datasets: [
+            {
+                label: 'Matemática',
+                data: [100, 80, 120, 50, 80],
+                backgroundColor: '#0790C2',
+                borderColor: '#0790C2',
+                borderWidth: 1
             },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+            {
+                label: 'Português',
+                data: [200, 150, 100, 300, 100],
+                backgroundColor: '#081F45',
+                borderColor: '#081F45',
+                borderWidth: 1
+            }
+        ]
+    },
+    options: {
+        scales: {
+            x: {
+                grid: {
+                    display: false 
                 },
-                plugins: {
-                    legend: {
-                        position: 'right',
-                        labels: {
-                            font: {
-                                size: 10 // Ajuste o tamanho da fonte da legenda aqui
-                            },
-                            boxWidth: 10 // Ajuste o tamanho do retângulo da legenda aqui
-                        }
-                    }
+                ticks: {
+                    color: 'black'          
+                }
+            },
+            y: {
+                beginAtZero: true,
+                grid: {
+                    display: false 
+                },
+                ticks: {
+                    color: 'black' 
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                position: 'right',
+                labels: {
+                    font: {
+                        size: 10 
+                    },
+                    boxWidth: 10 
                 }
             }
         });
@@ -205,5 +281,5 @@
     }
     function mudarTelaDescritores() {
         window.open('https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf')
-    }
+    } 
 </script>

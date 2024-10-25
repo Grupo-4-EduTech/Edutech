@@ -13,7 +13,7 @@ body {
 .menuLateral {
     width: 15.7vw;
     height: 100vw;
-    background: linear-gradient(to bottom, #0790C2, #113768);
+    background: linear-gradient(to bottom, #0981B3, #114172);
     display: flex;
     position: fixed;
     flex-direction: column;
