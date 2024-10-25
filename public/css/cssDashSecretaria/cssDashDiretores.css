@@ -422,3 +422,22 @@ box-shadow: 0.3vw 0.3vw 10px rgba(0, 0, 0, 0.2); /* Suaviza a sombra */
     font-size: 1.2vw;
     margin-top: 5%;
 }
+
+.OpcaoArea{
+    cursor: pointer;
+    text-decoration: none;
+    align-items: center;
+    transition: 0.4s;
+    border-radius: 6px;
+}
+
+.OpcaoArea:hover{
+    border-radius: 6px;
+    background-color: #18b4ed;
+    transition: 0.4s;
+}
+
+#OpcaoSelecionada{
+ border-radius: 6PX;
+ background-color: #18b4ed;
+}
