@@ -228,10 +228,9 @@
                 `
             } 
             
-            if (!email) {
+            if (!email || email.indexOf("@") == -1) {
                 input_email.classList.add("inputErro")
-                if (email.indexOf("@") == -1) {
-                    titulo_email.innerHTML = `
+                titulo_email.innerHTML = `
                     <span style="color: #a11919;">Email inválido</span>
                     `
                 }
