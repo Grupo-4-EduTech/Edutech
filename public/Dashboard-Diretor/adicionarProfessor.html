@@ -124,13 +124,13 @@
             </div>
             <div class="fileiraInput">
                 <div class="divisaoInput">
-                    <span>
+                    <span id="titulo_email">
                         Email
                     </span>
                     <input class="inputCadastrarProfessor" placeholder="Email" id="input_email">
                 </div>
                 <div class="divisaoInput"> 
-                    <span>
+                    <span id="titulo_telefone">
                         Telefone
                     </span>
                     <input class="inputCadastrarProfessor" placeholder="(XX) XXXXX - XXXX" id="input_telefone">
@@ -195,7 +195,7 @@
         let inputs = document.querySelector(".inputCadastrarProfessor")
         let selects = document.querySelector(".selectCadastrarProfessor")
 
-        if (!nome || !sobrenome || !email || !telefone || instituicao == 0 || disciplina == 0) {
+        if (!nome || !sobrenome || !email || !telefone || instituicao == 0 || disciplina == 0 || email.indexOf("@") == -1 || !/^\d+$/.test(telefone)) {
             tituloCadastro.innerHTML = `
             <span style="color: #a11919;">Preencha todos os campos antes de prosseguir</span>
             `
@@ -207,12 +207,18 @@
                 input_sobrenome.classList.add("inputErro")
             } 
             
-            if (!email) {
+            if (!email || email.indexOf("@") == -1) {
                 input_email.classList.add("inputErro")
+                titulo_email.innerHTML = `
+                <span style="color: #a11919;">Formato incorreto</span>
+                `
             } 
             
-            if (!telefone) {
+            if (!telefone || !/^\d+$/.test(telefone)) {
                 input_telefone.classList.add("inputErro")
+                titulo_telefone.innerHTML = `
+                <span style="color: #a11919;">Use apenas números</span>
+                `
             } 
 
             if (instituicao == 0) {
