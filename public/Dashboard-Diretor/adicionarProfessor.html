@@ -103,7 +103,7 @@
             </div>
         </div>
         <div class="containerCadastrarProfessor">
-            <div class="tituloCadastrar">
+            <div class="tituloCadastrar" id="tituloCadastro">
                 <span>
                     Cadastro de professor
                 </span>
@@ -113,13 +113,13 @@
                     <span>
                         Nome
                     </span>
-                    <input class="inputCadastrarProfessor" placeholder="Nome">
+                    <input class="inputCadastrarProfessor" placeholder="Nome" id="input_nome">
                 </div>
                 <div class="divisaoInput"> 
                     <span>
                         Sobrenome
                     </span>
-                    <input class="inputCadastrarProfessor" placeholder="Sobrenome">
+                    <input class="inputCadastrarProfessor" placeholder="Sobrenome" id="input_sobrenome">
                 </div>
             </div>
             <div class="fileiraInput">
@@ -127,13 +127,13 @@
                     <span>
                         Email
                     </span>
-                    <input class="inputCadastrarProfessor" placeholder="Email">
+                    <input class="inputCadastrarProfessor" placeholder="Email" id="input_email">
                 </div>
                 <div class="divisaoInput"> 
                     <span>
                         Telefone
                     </span>
-                    <input class="inputCadastrarProfessor" placeholder="(XX) XXXXX - XXXX">
+                    <input class="inputCadastrarProfessor" placeholder="(XX) XXXXX - XXXX" id="input_telefone">
                 </div>
             </div>
             <div class="fileiraInput">
@@ -141,21 +141,25 @@
                     <span>
                         Instituição
                     </span>
-                    <select class="selectCadastrarProfessor">
-                        <option>Selecione...</option>
+                    <select class="selectCadastrarProfessor" id="select_instituicao">
+                        <option value="0">Selecione...</option>
+                        <option value="1">Vaccaro</option>
+                        <option value="2">Campos Salles</option>
                     </select>
                 </div>
                 <div class="divisaoInput"> 
                     <span>
                         Disciplina
                     </span>
-                    <select class="selectCadastrarProfessor">
-                        <option>Selecione...</option>
+                    <select class="selectCadastrarProfessor" id="select_disciplina">
+                        <option value="0">Selecione...</option>
+                        <option value="1">Matemática</option>
+                        <option value="2">Português</option>
                     </select>
                 </div>
             </div>
             <div class="proximo">
-                <button class="proximo" onclick="gotoAtribuicao()">
+                <button class="proximo" onclick="validacaoCadastro()">
                     Próximo
                 </button>
             </div>
@@ -178,5 +182,48 @@
 
     function gotoDashEscola(){
         window.location.href = "dashEscola.html"
+    }
+
+    function validacaoCadastro (){
+        let nome = input_nome.value
+        let sobrenome = input_sobrenome.value
+        let email = input_email.value
+        let telefone = input_telefone.value
+        let instituicao = select_instituicao.value
+        let disciplina = select_disciplina.value
+        
+        let inputs = document.querySelector(".inputCadastrarProfessor")
+        let selects = document.querySelector(".selectCadastrarProfessor")
+
+        if (!nome || !sobrenome || !email || !telefone || instituicao == 0 || disciplina == 0) {
+            tituloCadastro.innerHTML = `
+            <span style="color: #a11919;">Preencha todos os campos antes de prosseguir</span>
+            `
+            if (!nome) {
+                input_nome.classList.add("inputErro")
+            }  
+            
+            if (!sobrenome) {
+                input_sobrenome.classList.add("inputErro")
+            } 
+            
+            if (!email) {
+                input_email.classList.add("inputErro")
+            } 
+            
+            if (!telefone) {
+                input_telefone.classList.add("inputErro")
+            } 
+
+            if (instituicao == 0) {
+                select_instituicao.classList.add("selectErro")
+            }
+
+            if (disciplina == 0) {
+                select_disciplina.classList.add("selectErro")
+            }
+        } else {
+            gotoAtribuicao()
+        }
     }
 </script>
