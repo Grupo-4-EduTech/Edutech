@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="../css/CssDashProfessor/EntradaDash.css">
     <link rel="icon" sizes="56X56" href="../assets/a 1logo-Educare.svg">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    <script src="Modal.js"></script>
     <title>Edu Tech | Dashboard</title>
 </head>
 
 <body>
 
-    <div class="modal">
+    <div class="painel" id="modal">
         <div class="content">
             <h1 class="title">Turmas</h1>
             <p class="text">Essa sessão exibe todas as turmas em que você leciona e informações de desempenho,
@@ -37,6 +38,15 @@
         </div>
     </div>
 
+    <div class="modalSuporte">
+        <div class="contentSuporte">
+            <h1 class="titleSuporte">Turmas</h1>
+            <p class="textSuporte">Essa sessão exibe todas as turmas em que você leciona e informações de desempenho,
+                é possível obter informações mais detalhadas ao clicar em cima de cada turma</p>
+            <div class="EspacoModalSuporte"></div>
+            <h1 class="titleSuporte">Legenda</h1>
+        </div>
+    </div>
 
     <div class="navBarlateral">
         <div class="AreaLogo">
@@ -59,12 +69,14 @@
                     Descritores
                 </div>
             </a>
-            <a class="OpcaoArea" href="./EntradaDash.html">
+            <button class="Suporte">
+                <div class="AreaClick">
                 <img src="../assets/MicrofoneSuporteTurma.svg" class="IconNavegacao">
-                <div class="AreaTextoOpcao">
+                <div class="AreaTextoSuporte">
                     Suporte
                 </div>
-            </a>
+            </div>
+            </button>
         </div>
         <div class="Espaco">
         </div>
@@ -85,7 +97,7 @@
                     <div class="TextoLocal">
                         Turmas
                     </div>
-                    <button onclick="AtivarModal()" class="BotaoInterrogacao">
+                    <button  class="BotaoInterrogacao">
                         <img src="../assets/IconInterrogacao.svg" class="IconAjudaKPI">
                     </button>
                 </div>
@@ -381,24 +393,28 @@
 </html>
 
 <script>
-    const switchModal = () => {
-        const modal = document.querySelector('.modal')
-        const actualStyle = modal.style.display
-        if (actualStyle == 'block') {
-            modal.style.display = 'none'
-        }
-        else {
-            modal.style.display = 'block'
-        }
-    }
 
-    const btn = document.querySelector('.BotaoInterrogacao')
-    btn.addEventListener('click', switchModal)
-
-    window.onclick = function (event) {
-        const modal = document.querySelector('.modal')
-        if (event.target == modal) {
-            switchModal()
-        }
+const switchModalSuporte = () => {
+    const modalSuporte = document.querySelector('.modalSuporte')
+    const actualStyleSuporte = getComputedStyle(modalSuporte).display;
+    if (actualStyleSuporte == 'block') {
+        modalSuporte.style.display = 'none'
     }
+    else {
+        modalSuporte.style.display = 'block'
+    }
+}
+
+const btnw = document.querySelector('.Suporte')
+btnw.addEventListener('click', switchModalSuporte)
+
+window.onclick = function (eventSuporte) {
+    const modalSuporte = document.querySelector('.modalSuporte')
+    if (eventSuporte.target == modalSuporte) {
+        switchModalSuporte()
+    }
+}
+
+
+
 </script>
