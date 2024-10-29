@@ -14,7 +14,7 @@
 
 <body>
 
-    <div class="painel" id="modal">
+    <div class="painel" id="modal" onclick="fecharmodal()">
         <div class="content">
             <h1 class="title">Turmas</h1>
             <p class="text">Essa sessão exibe todas as turmas em que você leciona e informações de desempenho,
@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div class="modalSuporte">
+    <div class="modalSuporte" onclick="fecharmodal()">
         <div class="contentSuporte">
             <h1 class="titleSuporte">Turmas</h1>
             <p class="textSuporte">Essa sessão exibe todas as turmas em que você leciona e informações de desempenho,
@@ -69,7 +69,7 @@
                     Descritores
                 </div>
             </a>
-            <button class="Suporte">
+            <button class="Suporte" onclick="abrirSuporte()">
                 <div class="AreaClick">
                 <img src="../assets/MicrofoneSuporteTurma.svg" class="IconNavegacao">
                 <div class="AreaTextoSuporte">
@@ -97,7 +97,7 @@
                     <div class="TextoLocal">
                         Turmas
                     </div>
-                    <button  class="BotaoInterrogacao">
+                    <button  class="BotaoInterrogacao" onclick="abrirTurmas()">
                         <img src="../assets/IconInterrogacao.svg" class="IconAjudaKPI">
                     </button>
                 </div>
@@ -393,26 +393,25 @@
 </html>
 
 <script>
-
-const switchModalSuporte = () => {
-    const modalSuporte = document.querySelector('.modalSuporte')
-    const actualStyleSuporte = getComputedStyle(modalSuporte).display;
-    if (actualStyleSuporte == 'block') {
-        modalSuporte.style.display = 'none'
-    }
-    else {
-        modalSuporte.style.display = 'block'
-    }
+function abrirModais(codigoModal) {
+    let listamodais = ['.painel','.modalSuporte']
+    const modal1 = document.querySelector(listamodais[codigoModal])
+    modal1.style.display = 'block'
 }
-
-const btnw = document.querySelector('.Suporte')
-btnw.addEventListener('click', switchModalSuporte)
-
-window.onclick = function (eventSuporte) {
-    const modalSuporte = document.querySelector('.modalSuporte')
-    if (eventSuporte.target == modalSuporte) {
-        switchModalSuporte()
-    }
+function abrirSuporte() { 
+    let codigoModal = 0
+    abrirModais(codigoModal);
+}
+function abrirTurmas(){
+    let codigoModal = 1
+    abrirModais(codigoModal);
+}
+function fecharmodal(codigoModal){
+ let listamodais = ['.painel','.modalSuporte']
+        for(let i = 0;i <=listamodais.length;i++) {  
+            let modal1 = document.querySelector(listamodais[i])
+            modal1.style.display = 'none'
+}
 }
 
 </script>
