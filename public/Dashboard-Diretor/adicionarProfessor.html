@@ -186,6 +186,20 @@
 
     function validacaoCadastro (){
 
+        input_nome.classList.add("inputCadastrarProfessor");
+        input_sobrenome.classList.remove("inputErro");
+        input_email.classList.remove("inputErro");
+        input_telefone.classList.remove("inputErro");
+        select_instituicao.classList.remove("selectErro");
+        select_disciplina.classList.remove("selectErro");
+
+        titulo_nome.innerHTML = 'Nome';
+        titulo_sobrenome.innerHTML = 'Sobrenome';
+        titulo_email.innerHTML = 'Email';
+        titulo_telefone.innerHTML = 'Telefone';
+        titulo_instituicao.innerHTML = 'Instituição';
+        titulo_disciplina.innerHTML = 'Disciplina';
+
         let nome = input_nome.value
         let sobrenome = input_sobrenome.value
         let email = input_email.value
