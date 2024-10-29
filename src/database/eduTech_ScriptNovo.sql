@@ -101,10 +101,21 @@ CREATE TABLE contato(
     mensagem VARCHAR(1000) NOT NULL
 );
 
+CREATE TABLE alerta (
+	idAlerta INT PRIMARY KEY AUTO_INCREMENT,
+    dataAlerta DATETIME,
+    mensagemAlerta VARCHAR(100),
+    idUsuario INT,
+    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
+    idCargoUsuario INT,
+    FOREIGN KEY (idCargoUsuario) REFERENCES usuario(fkCargo)
+);
+
 -- Inserts de exemplo
 
 insert into cargo(descricao)
 values ("Secretaria"), ("Diretor"), ("Professor");
+
 
 insert into diretoria(nome)
 values ("Centro 1"),("Centro 2"),("Centro 3");
@@ -118,4 +129,13 @@ values (1, "Escola teste 1","00000000", 1, 1),(2, "Escola teste 2", "00000000", 
 insert into usuario
 values (default, "Secretário Fulano","secfulano@saopaulo.com","123","11999999999",NOW(),1,null,null,null),(default, "Diretor Ciclano","dirciclano@escolaa.com","123","11999999999",NOW(),2,1,1,null),(default, "Professor Beltrano","profbeltrano@escolaa.com","123","11999999999",NOW(),3,1,1,1);
 
+INSERT INTO alerta (dataAlerta, mensagemAlerta, idUsuario, idCargoUsuario)
+VALUES 
+    ('2024-10-29 10:15:00', 'Alerta: notas mais baixas em Geometria no último ano.', 1, 3),
+    ('2024-10-30 09:00:00', 'Atenção: desempenho abaixo da média em Matemática.', 2, 1),
+    ('2024-11-01 14:30:00', 'Aviso: alunos com dificuldades em Português detectados.', 3, 2);
+
 select (select count(idEscola)-3 from escola) qtdEscolas,(select count(idTurma) from turma) qtdTurmas, (select count(idAluno) from aluno) qtdAlunos,(select count(idQuestao) from questao) qtdQuestoes,count(idRespostaAluno) qtdRespostas from respostaAluno;
+
+SELECT * FROM alerta;
+SELECT a.mensagemAlerta AS 'Mensagem Apresentada' , u.nome AS 'Nome de quem recebeu', a.dataAlerta AS 'Data que foi entregue' FROM alerta AS a JOIN usuario AS u ON u.idUsuario = a.idUsuario;
