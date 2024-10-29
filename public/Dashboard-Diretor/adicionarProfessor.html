@@ -110,13 +110,13 @@
             </div>
             <div class="fileiraInput">
                 <div class="divisaoInput">
-                    <span>
+                    <span id="titulo_nome">
                         Nome
                     </span>
                     <input class="inputCadastrarProfessor" placeholder="Nome" id="input_nome">
                 </div>
                 <div class="divisaoInput"> 
-                    <span>
+                    <span id="titulo_sobrenome">
                         Sobrenome
                     </span>
                     <input class="inputCadastrarProfessor" placeholder="Sobrenome" id="input_sobrenome">
@@ -138,7 +138,7 @@
             </div>
             <div class="fileiraInput">
                 <div class="divisaoInput">
-                    <span>
+                    <span id="titulo_instituicao">
                         Instituição
                     </span>
                     <select class="selectCadastrarProfessor" id="select_instituicao">
@@ -148,7 +148,7 @@
                     </select>
                 </div>
                 <div class="divisaoInput"> 
-                    <span>
+                    <span id="titulo_disciplina">
                         Disciplina
                     </span>
                     <select class="selectCadastrarProfessor" id="select_disciplina">
@@ -185,6 +185,7 @@
     }
 
     function validacaoCadastro (){
+
         let nome = input_nome.value
         let sobrenome = input_sobrenome.value
         let email = input_email.value
@@ -201,32 +202,46 @@
             `
             if (!nome) {
                 input_nome.classList.add("inputErro")
+                titulo_nome.innerHTML = `
+                <span style="color: #a11919;">Nome inválido</span>
+                `
             }  
             
             if (!sobrenome) {
                 input_sobrenome.classList.add("inputErro")
+                titulo_sobrenome.innerHTML = `
+                <span style="color: #a11919;">Sobrenome inválido</span>
+                `
             } 
             
-            if (!email || email.indexOf("@") == -1) {
+            if (!email) {
                 input_email.classList.add("inputErro")
-                titulo_email.innerHTML = `
-                <span style="color: #a11919;">Formato incorreto</span>
-                `
+                if (email.indexOf("@") == -1) {
+                    titulo_email.innerHTML = `
+                    <span style="color: #a11919;">Email inválido</span>
+                    `
+                }
             } 
             
             if (!telefone || !/^\d+$/.test(telefone)) {
                 input_telefone.classList.add("inputErro")
                 titulo_telefone.innerHTML = `
-                <span style="color: #a11919;">Use apenas números</span>
+                <span style="color: #a11919;">Telefone inválido</span>
                 `
             } 
 
             if (instituicao == 0) {
                 select_instituicao.classList.add("selectErro")
+                titulo_instituicao.innerHTML = `
+                <span style="color: #a11919;">Selecione uma instituição</span>
+                `
             }
 
             if (disciplina == 0) {
                 select_disciplina.classList.add("selectErro")
+                titulo_disciplina.innerHTML = `
+                <span style="color: #a11919;">Selecione uma disciplina</span>
+                `
             }
         } else {
             gotoAtribuicao()
