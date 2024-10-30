@@ -27,7 +27,7 @@ CREATE TABLE turma(
 );
 
 CREATE TABLE aluno(
-	idAluno VARCHAR(20) NOT NULL,
+	idAluno VARCHAR(20) NOT NULL UNIQUE,
     nome VARCHAR(45) NOT NULL,
     idade INT,
     sexo CHAR(1),
@@ -72,7 +72,7 @@ CREATE TABLE usuario(
 );
 
 CREATE TABLE questao(
-	idQuestao INT NOT NULL,
+	idQuestao INT NOT NULL UNIQUE,
     bloco INT NOT NULL,
     numero INT NOT NULL,
     respostaCorreta CHAR(1) NOT NULL,
