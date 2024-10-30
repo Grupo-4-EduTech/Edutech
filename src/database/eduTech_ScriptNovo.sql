@@ -52,7 +52,7 @@ CREATE TABLE cargo(
 );
 
 CREATE TABLE usuario(
-	idUsuario INT AUTO_INCREMENT,
+	idUsuario INT AUTO_INCREMENT UNIQUE,
     nome VARCHAR(45) NOT NULL,
     email VARCHAR(256) NOT NULL,
     senha VARCHAR(256) NOT NULL,
