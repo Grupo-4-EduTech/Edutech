@@ -49,6 +49,43 @@ body{
     align-items: center;
 }
 
+.Suporte{
+    cursor: pointer;
+    width: 140px;
+    height: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    transition: 0.4s;
+    border-radius: 6px;
+}
+
+.AreaClick{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Suporte:hover{
+    background-color: #18b4ed;
+    transition: 0.4s;
+}
+
+.AreaTextoSuporte{
+    margin-left: 8px;
+    width: 91px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    font-family: 'Rubik';
+    font-size: 16px;
+}
+
 .OpcaoArea{
     width: 130px;
     height: 32px;
@@ -62,7 +99,6 @@ body{
 }
 
 .OpcaoArea:hover{
-    border-radius: 6px;
     background-color: #18b4ed;
     transition: 0.4s;
 }
@@ -90,6 +126,96 @@ body{
     align-items: center;
     color: #FFF;
     font-family: 'Rubik';
+}
+
+.title{
+    font-family: 'Rubik';
+}
+
+.text {
+    margin-top: 0;
+    font-size: 1.1em;
+    display: flex;
+    text-align: center;
+    font-family: 'Rubik';
+}
+
+.modalSuporte {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modalSuporte .contentSuporte {
+    background: linear-gradient(160deg ,#0790C2,#113768);
+    margin: 17% auto; 
+    padding: 10px;
+    border-radius: 30px;
+    width: 30%; 
+    height: 24%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    font-family: 'LexendDeca-Regular';
+    color: var(--title);
+    transition: 0.7s;
+}
+
+.contentSuporte:hover{
+    transform: scale(1.20);
+    transition: 0.7s;
+}
+
+.EspacoModalSuporte{
+    width: 97%;
+    border-radius: 10px;
+    height: 3px;
+    background-color: #ffffff;
+}
+
+.titleSuporte{
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Rubik';
+    font-size: 30px;
+    color: #FFF;
+}
+
+.iconsModal:hover{
+    transition: 0.6s;
+    transform: scale(1.15);
+}
+
+.iconsModal{
+    cursor: pointer;
+    transition: 0.6s;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+#Insta{
+    border-radius: 0px;
+}
+
+#google{
+    border-radius: 0px;
+    width: 65px;
+    height: 65px;
 }
 
 .Espaco{
@@ -178,7 +304,7 @@ body{
     font-family: 'Rubik';
 }
 
-.modal {
+.painel {
     display: none; 
     position: fixed;
     z-index: 1; 
@@ -190,7 +316,7 @@ body{
     background-color: rgba(0,0,0,0.4);
 }
 
-.modal .content {
+.painel .content {
     background-color: #D3D3D3;
     margin: 9% auto; 
     padding: 10px;
@@ -204,6 +330,12 @@ body{
 
     font-family: 'LexendDeca-Regular';
     color: var(--title);
+    transition: 0.3s;
+}
+
+.content:hover{
+    transform: scale(1.20);
+    transition: 0.7s;
 }
 
 .EspacoModal{
