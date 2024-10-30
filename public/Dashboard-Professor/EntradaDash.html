@@ -40,11 +40,21 @@
 
     <div class="modalSuporte" onclick="fecharmodal()">
         <div class="contentSuporte">
-            <h1 class="titleSuporte">Turmas</h1>
-            <p class="textSuporte">Essa sessão exibe todas as turmas em que você leciona e informações de desempenho,
-                é possível obter informações mais detalhadas ao clicar em cima de cada turma</p>
+            <div class="titleSuporte">Meios de contato</div>
             <div class="EspacoModalSuporte"></div>
-            <h1 class="titleSuporte">Legenda</h1>
+            <div class="titleSuporte">
+                <a href="https://wa.me/+5511914821813">
+                    <img src="../assets/Icon-whatsapp.png" class="iconsModal">
+                </a>
+                <a
+                    href="https://www.instagram.com/theodorsouza42/?next=%2Fbluegodzi%2Ftagged%2F&locale=在
+                    线定制塔吉克斯坦TEF证书联系%7B威信%2BTG%2F飞机%3A%40buth2788%7DsjwNH%3F%3F%3F%3F%3F%3Fѧ%3F%3FƾSwQuO">
+                    <img src="../assets/icon_insta.webp" class="iconsModal" id="Insta">
+                </a>
+                <a href="./DashboardsProfessor.html">
+                    <img src="../assets/icon_gmail.svg" class="iconsModal" id="google">
+                </a>
+            </div>
         </div>
     </div>
 
@@ -394,7 +404,7 @@
 
 <script>
 function abrirModais(codigoModal) {
-    let listamodais = ['.painel','.modalSuporte']
+    let listamodais = ['.modalSuporte','.painel']
     const modal1 = document.querySelector(listamodais[codigoModal])
     modal1.style.display = 'block'
 }
