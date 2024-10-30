@@ -127,7 +127,7 @@ values (1, "Escola teste 1","00000000", 1, 1),(2, "Escola teste 2", "00000000", 
 insert into usuario
 values (default, "Secretário Fulano","secfulano@saopaulo.com","123","11999999999",NOW(),1,null,null,null),(default, "Diretor Ciclano","dirciclano@escolaa.com","123","11999999999",NOW(),2,1,1,null),(default, "Professor Beltrano","profbeltrano@escolaa.com","123","11999999999",NOW(),3,1,1,1);
 
-INSERT INTO alerta (dataAlerta, mensagemAlerta, idUsuario, idCargoUsuario)
+INSERT INTO alerta (dataAlerta, mensagemAlerta, idUsuario)
 VALUES 
     ('2024-10-29 10:15:00', 'Alerta: notas mais baixas em Geometria no último ano.', 1),
     ('2024-10-30 09:00:00', 'Atenção: desempenho abaixo da média em Matemática.', 2),
