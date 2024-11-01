@@ -82,7 +82,6 @@
     justify-content: center;
     align-items: center;
     background: linear-gradient(160deg ,#113768,#068EC2);
-
 }
 
 #FotoIdeia{
@@ -135,7 +134,17 @@
 }
 
 #VerMais{
+    border-radius: 12px;
+    border: solid 2px #068EC2;
+    cursor: pointer;
+    background-color: rgba(0, 0, 139, 0);
     text-decoration: none;
     color: black;
     margin-right: 20px;
+    transition: 0.5s;
+}
+
+#VerMais:hover{
+    transition: 0.5s;
+    transform: scale(1.10);
 }
