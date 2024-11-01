@@ -8,7 +8,7 @@ public class Connection {
 
     public Connection(){
         BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setUrl("jdbc:mysql://localhost:3306/EduTech");
+        basicDataSource.setUrl("jdbc:mysql://container-mysql:3306/EduTech");
         basicDataSource.setUsername("root");
         basicDataSource.setPassword("urubu100");
 
