@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/CssDashProfessor/Dashgeral.css">
     <link rel="stylesheet" href="../css/CssDashProfessor/Sugestoes.css">
+    <link rel="stylesheet" href="../css/CssDashProfessor/SugestaoSelecionada.css">
     <link rel="icon" sizes="56X56" href="../assets/a 1logo-Educare.svg">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -22,12 +23,12 @@
                 <a href="https://wa.me/+5511914821813">
                     <img src="../assets/Icon-whatsapp.png" class="iconsModal">
                 </a>
-                <a
-                    href="https://www.instagram.com/theodorsouza42/?next=%2Fbluegodzi%2Ftagged%2F&locale=在
+                <a href="https://www.instagram.com/theodorsouza42/?next=%2Fbluegodzi%2Ftagged%2F&locale=在
                     线定制塔吉克斯坦TEF证书联系%7B威信%2BTG%2F飞机%3A%40buth2788%7DsjwNH%3F%3F%3F%3F%3F%3Fѧ%3F%3FƾSwQuO">
                     <img src="../assets/icon_insta.webp" class="iconsModal" id="Insta">
                 </a>
-                <a href="./DashboardsProfessor.html">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=samukatsouza16@gmail.com&su=
+Necessito%20De%20apoio%20com%20a%20tela%20de%20Sugestoes!&body=Mensagem%20.%20.%20.">
                     <img src="../assets/icon_gmail.svg" class="iconsModal" id="google">
                 </a>
             </div>
@@ -104,6 +105,28 @@
                 </div>
             </div>
         </div>
+        <div class="AreaDeTrabalho" id="AreaDetrabalhoSugestaoSelecionada">
+            <div class="SugestaoSelecionada">
+                <div class="SugestaoSelecionadaEnglobada">
+                    <div class="AreaTituloGeral">
+                        <div class="AreaFoto">
+                            <div class="AreaFotoEnglobada">
+                                <img src="../assets/LampadaSugestao.svg" id="FotoIdeiaSelecionado">
+                            </div>
+                            <div class="AreaTituloSug" id="AreaTituloSug">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="DescricaoSug" id="DescricaoSug">
+                    </div>
+                    <div class="AreaVerMais">
+                        <button id="VerMais" onclick="voltarParaSugestoes()">
+                            Voltar Para as Sugestôes &rarr;
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="AreaDeTrabalho" id="AreaDetrabalhoSugestao">
             <div class="QuadroDeSugestoes">
                 <div class="fileirasujestao">
@@ -129,9 +152,9 @@
                             aplicação prática das medidas em seu dia a dia.
                         </div>
                         <div class="AreaVerMais">
-                            <a href="SugestaoSelecionada.html" id="VerMais">
+                            <button id="VerMais" onclick="Selecionar1()">
                                 Ver mais &rarr;
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="Sugestao">
@@ -156,9 +179,9 @@
                             envolvente, permitindo que os alunos pratiquem de forma interativa.
                         </div>
                         <div class="AreaVerMais">
-                            <a href="SugestaoSelecionada.html" id="VerMais">
+                            <button id="VerMais" onclick="Selecionar2()">
                                 Ver mais &rarr;
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -185,9 +208,9 @@
                             estimulando a curiosidade e mostrando a relevância das grandezas no mundo real.
                         </div>
                         <div class="AreaVerMais">
-                            <a href="SugestaoSelecionada.html" id="VerMais">
+                            <button id="VerMais" onclick="Selecionar3()">
                                 Ver mais &rarr;
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="Sugestao">
@@ -213,9 +236,9 @@
                             contextos.
                         </div>
                         <div class="AreaVerMais">
-                            <a href="SugestaoSelecionada.html" id="VerMais">
+                            <button id="VerMais" onclick="Selecionar4()">
                                 Ver mais &rarr;
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -238,11 +261,85 @@
         abrirModais(codigoModal);
     }
 
+    function anularDiv() {
+        let listamodais = ['.Sugestao']
+        const modal1 = document.querySelector(listamodais[codigoModal])
+        modal1.style.display = 'none'
+    }
+
     function fecharmodal(codigoModal) {
         let listamodais = ['.modalSuporte']
         for (let i = 0; i <= listamodais.length; i++) {
             let modal1 = document.querySelector(listamodais[i])
             modal1.style.display = 'none'
+        }
+    }
+
+    function Selecionar1() {
+        let Selecao = 0
+        SelecionarTextoETitulo(Selecao)
+        fecharmodalSugestao()
+    }
+
+    function Selecionar2() {
+        let Selecao = 1
+        SelecionarTextoETitulo(Selecao)
+        fecharmodalSugestao()
+    }
+
+    function Selecionar3() {
+        let Selecao = 2
+        SelecionarTextoETitulo(Selecao)
+        fecharmodalSugestao()
+    }
+
+    function Selecionar4() {
+        let Selecao = 3
+        SelecionarTextoETitulo(Selecao)
+        fecharmodalSugestao()
+    }
+
+    function SelecionarTextoETitulo(Selecao) { 
+        let listaTexto = ['O aprendizado prático, especialmente por meio de atividades hands-on, desempenha um papel crucial na educação, pois promove a compreensão efetiva de conceitos abstratos. Uma abordagem poderosa é a medição de objetos na sala de aula. Ao envolver os alunos nessa prática, eles não apenas desenvolvem habilidades matemáticas, mas também conectam o conhecimento teórico à  realidade cotidiana.<br>  Medir objetos como mesas, cadeiras e materiais escolares permite que os alunos visualizem grandezas e compreendam as diferentes unidades de medida, como centímetros e metros. Essa atividade lúdica transforma a sala de aula em um ambiente de aprendizado dinâmico, onde a matemática se torna uma ferramenta prática. Por exemplo, ao medir o comprimento de uma mesa, os alunos podem calcular a área e discutir como essa informação é útil na vida real, como na escolha de móveis para uma casa. Além disso, a medição estimula o trabalho em equipe e a comunicação, já que os alunos frequentemente colaboram para obter resultados mais precisos. Eles aprendem a comparar medidas, discutir discrepâncias e desenvolver um senso crítico. Ao registrar os dados e criar gráficos, as crianças não apenas praticam a aritmética, mas também introduzem conceitos de estatística de maneira intuitiva. <br> Essas experiências práticas facilitam a retenção do conhecimento, pois os alunos veem a aplicação direta do que aprenderam. Ao final da atividade, eles não apenas dominam a técnica de medição, mas também reconhecem sua relevância em diversas situações do dia a dia, como cozinhar, decorar ou até mesmo realizar tarefas simples. Assim, o aprendizado hands-on não é apenas uma técnica de ensino, mas uma forma de preparar os alunos para interagir de maneira significativa com o mundo ao seu redor.',
+            'A tecnologia tem se mostrado uma aliada poderosa no ensino, especialmente quando se trata de conceitos como grandezas e medidas. Aplicativos e jogos educativos transformam o aprendizado, tornando-o mais dinâmico e envolvente. Ferramentas digitais como o Khan Academy e o Geogebra oferecem exercícios interativos que ajudam os alunos a compreenderem melhor as relações entre diferentes grandezas, como comprimento, massa e volume.<br>Jogos como Mathletics e Prodigy incentivam a prática de forma lúdica, desafiando os estudantes a resolver problemas enquanto se divertem. Essas plataformas utilizam elementos de gamificação, como pontos e conquistas, para manter o interesse dos alunos e promover a repetição de conteúdos de maneira prazerosa.<br>Além disso, aplicativos como Measure e Unit Converter ajudam os alunos a visualizar e converter grandezas no dia a dia, facilitando a aplicação prática do que aprendem em sala de aula. Com esses recursos, o aprendizado se torna mais interativo e acessível, permitindo que os alunos pratiquem em seus próprios ritmos.<br>Ao integrar a tecnologia ao ensino de matemática, professores conseguem captar a atenção dos alunos e estimular uma aprendizagem mais profunda, preparando-os para desafios acadêmicos e profissionais futuros.',
+            'Os projetos interdisciplinares são uma excelente estratégia para conectar a matemática com outras disciplinas, como ciências e artes, estimulando a curiosidade dos alunos e mostrando a relevância das grandezas no mundo real. Um exemplo é um projeto que envolva a construção de um jardim escolar, onde os alunos precisam medir e calcular áreas, proporções e volumes. Essa atividade prática não só ensina conceitos matemáticos, mas também permite que eles compreendam a importância da matemática na biologia e na ecologia.<br>Outra ideia é criar uma exposição de arte que utilize conceitos matemáticos, como simetria, padrões e proporções. Os alunos podem explorar a relação entre matemática e estética, criando obras que incorporam essas ideias, enquanto aprendem a medir e a aplicar escalas. Além disso, projetos que envolvam a análise de dados, como a coleta de informações sobre fenômenos naturais, permitem que os estudantes utilizem a matemática para entender melhor o mundo ao seu redor.<br>Essas atividades interdisciplinares não apenas tornam o aprendizado mais significativo, mas também preparam os alunos para ver a matemática como uma ferramenta útil em diversas áreas, incentivando um aprendizado mais integrado e contextualizado. Assim, eles desenvolvem habilidades essenciais para o futuro.'
+            , 'Promover debates e discussões sobre situações cotidianas que envolvem grandezas é uma excelente maneira de desenvolver o pensamento crítico dos alunos. Temas como economia e culinária são particularmente relevantes, pois permitem que os estudantes explorem a importância das medidas em diversos contextos.<br>Por exemplo, ao discutir a economia doméstica, os alunos podem analisar orçamentos, comparar preços e calcular porcentagens de descontos. Esse tipo de atividade não só os ensina a fazer escolhas financeiras informadas, mas também mostra como a matemática se aplica diretamente ao cotidiano.<br>Na culinária, debates sobre receitas podem incentivar os alunos a trabalhar com frações, medidas e proporções. Ao discutir como ajustar receitas para diferentes porções, eles exercitam habilidades matemáticas de maneira prática e envolvente. Além disso, podem explorar conceitos de conversão de unidades, como mililitros para litros, e aprender sobre a importância de medidas precisas na cozinha.<br>Essas discussões não apenas tornam o aprendizado mais relevante, mas também ajudam os alunos a reconhecerem a matemática como uma ferramenta essencial para resolver problemas do dia a dia. Ao desenvolver a capacidade de argumentação e análise, os estudantes se tornam mais conscientes da importância das grandezas em suas vidas.<br>'
+        ]
+
+        let listaTitulo = ['Aprendizado Prático', 'Tecnologia a Favor', 'Projetos Interdisciplinares', 'Debates e Discussões']
+
+            AreaTituloSug.innerHTML = ''
+            AreaTituloSug.innerHTML += listaTitulo[Selecao]
+
+            DescricaoSug.innerHTML = ''
+            DescricaoSug.innerHTML += '<b>Descrição completa da Sugestão:</b>' + listaTexto[Selecao]
+    }
+
+
+    function fecharmodalSugestao(codigoModal) {
+        let listamodais = ['#AreaDetrabalhoSugestao',
+         '#AreaDetrabalhoSugestaoSelecionada']
+        for (let i = 0; i <= listamodais.length; i++) {
+            let modal1 = document.querySelector(listamodais[i])
+            if (listamodais[i] != '#AreaDetrabalhoSugestaoSelecionada') {
+                modal1.style.display = 'none'
+            }
+            else {
+                modal1.style.display = 'flex'
+            }
+        }
+    }
+
+    function voltarParaSugestoes(codigoModal) {
+        let listamodais = ['#AreaDetrabalhoSugestao', '#AreaDetrabalhoSugestaoSelecionada']
+        for (let i = 0; i <= listamodais.length; i++) {
+            let modal1 = document.querySelector(listamodais[i])
+            if (listamodais[i] != '#AreaDetrabalhoSugestao') {
+                modal1.style.display = 'none'
+            }
+            else {
+                modal1.style.display = 'flex'
+            }
         }
     }
 </script>
