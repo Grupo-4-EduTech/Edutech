@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <link rel="icon" sizes="56X56" href="./assets/a 1logo-Educare.svg">
 </head>
+
 <body class="bodyCadastro">
     <div class="containerLogo">
         <div class="btnHomeLogin" onclick="gotoHome()"></div>
@@ -37,18 +39,19 @@
                         Enviar
                     </button>
                 </div>
-                    </span>
-                </div>
+                </span>
             </div>
         </div>
     </div>
+    </div>
 </body>
+
 </html>
 <script>
-    function gotocadastro(){
+    function gotocadastro() {
         window.location.href = "cadastro.html"
     }
-    function gotoHome(){
+    function gotoHome() {
         window.location.href = "index.html"
     }
 
@@ -84,33 +87,29 @@
             console.log("ESTOU NO THEN DO entrar()!")
 
             if (resposta.ok) {
-                console.log(resposta);
+                resposta.json().then(function (resposta) {
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json[0].email;
-                    sessionStorage.NOME_USUARIO = json[0].nome;
-                    sessionStorage.ID_USUARIO = json[0].id;
-                    sessionStorage.CARGO_USUARIO = json[0].fkcargo;
-                 // apenas para exibir o loading
+                    console.log("Dados recebidos: INFOPUB ", JSON.stringify(resposta));
+                    for (let i = 0; i < resposta.length; i++) {
+                        var fkCargo = resposta[i];
+                        console.log("Cargo: " + fkCargo);
 
+                        setTimeout(function () {
+
+                            switch (fkCargo) {
+                                case 1: window.location = "/Dashbord-Secretaria/dashbord-Escolas";
+                                    break;
+                                case 2: window.location = "/Dashbord-Diretor/dashDiretor";
+                                    break;
+                                case 3: window.location = "/Dashbord-Professor/EntradaDash";
+                            }
+
+                        }, 1000);
+                        alert("login efetuado com sucesso")
+                    }
                 });
-               
-         
-            setTimeout(function () {
-                var fkCargo = resposta.fkCargo;
-                
-                switch(fkCargo){
-                    case 1:  window.location = "/Dashbord-Secretaria/dashbord-Escolas";
-                    break;
-                    case 2: window.location = "/Dashbord-Diretor/dashDiretor";
-                    break;
-                    case 3: window.location = "/Dashbord-Professor/EntradaDash";
-                }
-                        
-                    }, 1000);
-                  alert("login efetuado com sucesso")
+
+
             } else {
 
                 alert("Houve um erro ao tentar realizar o login!");
@@ -128,7 +127,7 @@
         return false;
     }
 
-    function verificacaoCargoUsuario(){
+    function verificacaoCargoUsuario() {
 
     }
 </script>
