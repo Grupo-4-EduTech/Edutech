@@ -91,12 +91,12 @@
 
                     console.log("Dados recebidos: INFOPUB ", JSON.stringify(resposta));
                     for (let i = 0; i < resposta.length; i++) {
-                        var fkCargo = resposta[i];
-                        console.log("Cargo: " + fkCargo);
+                        var cargo = resposta[i];
+                        console.log("Cargo: " + cargo.fkCargo);
 
                         setTimeout(function () {
 
-                            switch (fkCargo) {
+                            switch (cargo.fkCargo) {
                                 case 1: window.location = "/Dashbord-Secretaria/dashbord-Escolas";
                                     break;
                                 case 2: window.location = "/Dashbord-Diretor/dashDiretor";
