@@ -92,13 +92,23 @@
                     sessionStorage.EMAIL_USUARIO = json[0].email;
                     sessionStorage.NOME_USUARIO = json[0].nome;
                     sessionStorage.ID_USUARIO = json[0].id;
+                    sessionStorage.CARGO_USUARIO = json[0].fkcargo;
                  // apenas para exibir o loading
 
                 });
                
          
             setTimeout(function () {
-                        window.location = "./dashboard/questionario.html";
+                var fkCargo = resposta.fkCargo;
+                
+                switch(fkCargo){
+                    case 1:  window.location = "/Dashbord-Secretaria/dashbord-Escolas";
+                    break;
+                    case 2: window.location = "/Dashbord-Diretor/dashDiretor";
+                    break;
+                    case 3: window.location = "/Dashbord-Professor/EntradaDash";
+                }
+                        
                     }, 1000);
                   alert("login efetuado com sucesso")
             } else {
@@ -116,5 +126,9 @@
         })
 
         return false;
+    }
+
+    function verificacaoCargoUsuario(){
+
     }
 </script>
