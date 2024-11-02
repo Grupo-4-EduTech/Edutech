@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         S3Client s3Client = new S3Provider().getS3Client();
-        String bucketName = "edutech-bucket-s3";
+        String bucketName = "edutech-s3";
 
         try {
             List<S3Object> objects = s3Client.listObjects(ListObjectsRequest.builder().bucket(bucketName).build()).contents();
