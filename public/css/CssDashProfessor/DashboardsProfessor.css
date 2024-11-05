@@ -59,9 +59,9 @@
 }
 
 .InfoKPISEnglobada{
-    width: 278px;
+    width: 275px;
     height: 137px;
-    border-radius: 25px;
+    border-radius: 23.5px;
     background-color: #FFF;
     display: flex;
     flex-direction: column;
