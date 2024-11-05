@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/cssDashDiretor/cssDahsDiretor.css">
     <link rel="icon" sizes="56X56" href="../assets/a 1logo-Educare.svg">
+    <link rel="stylesheet" href="../css/CssDashProfessor/Dashgeral.css">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
@@ -62,7 +63,7 @@
                     <img src="../assets/bx_support.svg" width="30px" height="30px">
                 </div>
                 <div class="tituloMenuLateral">
-                    <span class="navegacao">
+                    <span class="navegacao" onclick="abrirSuporte()">
                         Suporte
                     </span>
                 </div>
@@ -73,13 +74,33 @@
                 <img src="../assets/sair.svg">
             </div>
             <div class="tituloSair">
-                <span>
+                <span  onclick="SairDaDash()">
                     Sair
                 </span>
             </div>
         </div>
     </div>
     <div class="areaProfessores">
+        <div class="modalSuporte" onclick="fecharmodal()">
+            <div class="contentSuporte">
+                <div class="titleSuporte">Meios de contato</div>
+                <div class="EspacoModalSuporte"></div>
+                <div class="titleSuporte">
+                    <a href="https://wa.me/+5511914821813"  target="_blank">
+                        <img src="../assets/Icon-whatsapp.png" class="iconsModal">
+                    </a>
+                    <a
+                        href="https://www.instagram.com/theodorsouza42/?next=%2Fbluegodzi%2Ftagged%2F&locale=在
+                        线定制塔吉克斯坦TEF证书联系%7B威信%2BTG%2F飞机%3A%40buth2788%7DsjwNH%3F%3F%3F%3F%3F%3Fѧ%3F%3FƾSwQuO"  target="_blank">
+                        <img src="../assets/icon_insta.webp" class="iconsModal" id="Insta">
+                    </a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=samukatsouza16@gmail.com&su=
+    Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensagem%20.%20.%20."  target="_blank">
+                        <img src="../assets/icon_gmail.svg" class="iconsModal" id="google">
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="kpi">
             <div class="kpiProfessor">
                 <div class="tituloProfessor">
@@ -290,4 +311,26 @@
     function gotoDashEscola(){
         window.location.href = "dashEscola.html"
     }
+
+    function abrirModais(codigoModal) {
+    let listamodais = ['.modalSuporte']
+    const modal1 = document.querySelector(listamodais[codigoModal])
+    modal1.style.display = 'block'
+}
+function abrirSuporte() { 
+    let codigoModal = 0
+    abrirModais(codigoModal);
+}
+
+function fecharmodal(codigoModal){
+ let listamodais = ['.modalSuporte']
+        for(let i = 0;i <=listamodais.length;i++) {  
+            let modal1 = document.querySelector(listamodais[i])
+            modal1.style.display = 'none'
+}
+}
+
+function SairDaDash(){
+    window.location.href = "../index.html"
+}
 </script>
