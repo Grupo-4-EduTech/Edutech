@@ -199,8 +199,8 @@ public class ApachePOI{
                         });
                     }
 
-                    diretoria.setIdDiretoria(1); // seria bom conseguir deschumbar isso
-                    escola.setNome(faker.university().name()); // sei que os nomes são meio estranhos, mas é o que tem pra hoje
+                    diretoria.setIdDiretoria(1);
+                    escola.setNome(faker.university().name());
                     escola.setLogradouro(faker.address().streetName());
                     escola.setNumLogradouro(Integer.parseInt(faker.address().streetAddressNumber()));
                     aluno.setNome(faker.name().fullName());
