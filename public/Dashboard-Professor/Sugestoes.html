@@ -10,6 +10,7 @@
     <link rel="icon" sizes="56X56" href="../assets/a 1logo-Educare.svg">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="../js/geminiIA.js"></script>
     <title>Edu Tech | Dashboard</title>
 </head>
 
@@ -20,15 +21,16 @@
             <div class="titleSuporte">Meios de contato</div>
             <div class="EspacoModalSuporte"></div>
             <div class="titleSuporte">
-                <a href="https://wa.me/+5511914821813"  target="_blank">
+                <a href="https://wa.me/+5511914821813" target="_blank">
                     <img src="../assets/Icon-whatsapp.png" class="iconsModal">
                 </a>
                 <a href="https://www.instagram.com/theodorsouza42/?next=%2Fbluegodzi%2Ftagged%2F&locale=在
-                    线定制塔吉克斯坦TEF证书联系%7B威信%2BTG%2F飞机%3A%40buth2788%7DsjwNH%3F%3F%3F%3F%3F%3Fѧ%3F%3FƾSwQuO"  target="_blank">
+                    线定制塔吉克斯坦TEF证书联系%7B威信%2BTG%2F飞机%3A%40buth2788%7DsjwNH%3F%3F%3F%3F%3F%3Fѧ%3F%3FƾSwQuO"
+                    target="_blank">
                     <img src="../assets/icon_insta.webp" class="iconsModal" id="Insta">
                 </a>
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=samukatsouza16@gmail.com&su=
-Necessito%20De%20apoio%20com%20a%20tela%20de%20Sugestoes!&body=Mensagem%20.%20.%20."  target="_blank"   >
+Necessito%20De%20apoio%20com%20a%20tela%20de%20Sugestoes!&body=Mensagem%20.%20.%20." target="_blank">
                     <img src="../assets/icon_gmail.svg" class="iconsModal" id="google">
                 </a>
             </div>
@@ -50,7 +52,9 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Sugestoes!&body=Mensagem%20.%20.%
                     Turmas
                 </div>
             </a>
-            <a class="OpcaoArea" href="https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf" target="_blank">
+            <a class="OpcaoArea"
+                href="https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf"
+                target="_blank">
                 <img src="../assets/IconFolhaNavegacaoTurma.svg" class="IconNavegacaoFolha">
                 <div class="AreaTextoOpcao">
                     Descritores
@@ -299,7 +303,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Sugestoes!&body=Mensagem%20.%20.%
         fecharmodalSugestao()
     }
 
-    function SelecionarTextoETitulo(Selecao) { 
+    function SelecionarTextoETitulo(Selecao) {
         let listaTexto = ['O aprendizado prático, especialmente por meio de atividades hands-on, desempenha um papel crucial na educação, pois promove a compreensão efetiva de conceitos abstratos. Uma abordagem poderosa é a medição de objetos na sala de aula. Ao envolver os alunos nessa prática, eles não apenas desenvolvem habilidades matemáticas, mas também conectam o conhecimento teórico à  realidade cotidiana.<br>  Medir objetos como mesas, cadeiras e materiais escolares permite que os alunos visualizem grandezas e compreendam as diferentes unidades de medida, como centímetros e metros. Essa atividade lúdica transforma a sala de aula em um ambiente de aprendizado dinâmico, onde a matemática se torna uma ferramenta prática. Por exemplo, ao medir o comprimento de uma mesa, os alunos podem calcular a área e discutir como essa informação é útil na vida real, como na escolha de móveis para uma casa. Além disso, a medição estimula o trabalho em equipe e a comunicação, já que os alunos frequentemente colaboram para obter resultados mais precisos. Eles aprendem a comparar medidas, discutir discrepâncias e desenvolver um senso crítico. Ao registrar os dados e criar gráficos, as crianças não apenas praticam a aritmética, mas também introduzem conceitos de estatística de maneira intuitiva. <br> Essas experiências práticas facilitam a retenção do conhecimento, pois os alunos veem a aplicação direta do que aprenderam. Ao final da atividade, eles não apenas dominam a técnica de medição, mas também reconhecem sua relevância em diversas situações do dia a dia, como cozinhar, decorar ou até mesmo realizar tarefas simples. Assim, o aprendizado hands-on não é apenas uma técnica de ensino, mas uma forma de preparar os alunos para interagir de maneira significativa com o mundo ao seu redor.',
             'A tecnologia tem se mostrado uma aliada poderosa no ensino, especialmente quando se trata de conceitos como grandezas e medidas. Aplicativos e jogos educativos transformam o aprendizado, tornando-o mais dinâmico e envolvente. Ferramentas digitais como o Khan Academy e o Geogebra oferecem exercícios interativos que ajudam os alunos a compreenderem melhor as relações entre diferentes grandezas, como comprimento, massa e volume.<br>Jogos como Mathletics e Prodigy incentivam a prática de forma lúdica, desafiando os estudantes a resolver problemas enquanto se divertem. Essas plataformas utilizam elementos de gamificação, como pontos e conquistas, para manter o interesse dos alunos e promover a repetição de conteúdos de maneira prazerosa.<br>Além disso, aplicativos como Measure e Unit Converter ajudam os alunos a visualizar e converter grandezas no dia a dia, facilitando a aplicação prática do que aprendem em sala de aula. Com esses recursos, o aprendizado se torna mais interativo e acessível, permitindo que os alunos pratiquem em seus próprios ritmos.<br>Ao integrar a tecnologia ao ensino de matemática, professores conseguem captar a atenção dos alunos e estimular uma aprendizagem mais profunda, preparando-os para desafios acadêmicos e profissionais futuros.',
             'Os projetos interdisciplinares são uma excelente estratégia para conectar a matemática com outras disciplinas, como ciências e artes, estimulando a curiosidade dos alunos e mostrando a relevância das grandezas no mundo real. Um exemplo é um projeto que envolva a construção de um jardim escolar, onde os alunos precisam medir e calcular áreas, proporções e volumes. Essa atividade prática não só ensina conceitos matemáticos, mas também permite que eles compreendam a importância da matemática na biologia e na ecologia.<br>Outra ideia é criar uma exposição de arte que utilize conceitos matemáticos, como simetria, padrões e proporções. Os alunos podem explorar a relação entre matemática e estética, criando obras que incorporam essas ideias, enquanto aprendem a medir e a aplicar escalas. Além disso, projetos que envolvam a análise de dados, como a coleta de informações sobre fenômenos naturais, permitem que os estudantes utilizem a matemática para entender melhor o mundo ao seu redor.<br>Essas atividades interdisciplinares não apenas tornam o aprendizado mais significativo, mas também preparam os alunos para ver a matemática como uma ferramenta útil em diversas áreas, incentivando um aprendizado mais integrado e contextualizado. Assim, eles desenvolvem habilidades essenciais para o futuro.'
@@ -308,17 +312,17 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Sugestoes!&body=Mensagem%20.%20.%
 
         let listaTitulo = ['Aprendizado Prático', 'Tecnologia a Favor', 'Projetos Interdisciplinares', 'Debates e Discussões']
 
-            AreaTituloSug.innerHTML = ''
-            AreaTituloSug.innerHTML += listaTitulo[Selecao]
+        AreaTituloSug.innerHTML = ''
+        AreaTituloSug.innerHTML += listaTitulo[Selecao]
 
-            DescricaoSug.innerHTML = ''
-            DescricaoSug.innerHTML += '<b>Descrição completa da Sugestão:</b>' + listaTexto[Selecao]
+        DescricaoSug.innerHTML = ''
+        DescricaoSug.innerHTML += '<b>Descrição completa da Sugestão:</b>' + listaTexto[Selecao]
     }
 
 
     function fecharmodalSugestao(codigoModal) {
         let listamodais = ['#AreaDetrabalhoSugestao',
-         '#AreaDetrabalhoSugestaoSelecionada']
+            '#AreaDetrabalhoSugestaoSelecionada']
         for (let i = 0; i <= listamodais.length; i++) {
             let modal1 = document.querySelector(listamodais[i])
             if (listamodais[i] != '#AreaDetrabalhoSugestaoSelecionada') {
@@ -342,4 +346,130 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Sugestoes!&body=Mensagem%20.%20.%
             }
         }
     }
+
+
+    // function inserirSugestao() {
+    //     const { run } = require('../../app.js');
+    //     const dados = run();
+
+    //     for (let i = 0; i <= 4; i++) {
+    //         const titulo = dados[0].titulo;
+    //         const descricaoBreve = dados[0].breveExplicacao;
+    //         const descricaoCompleta = dados[0].explicacaoCompleta;
+    //         let idUsuario = 1;
+
+
+    //         fetch(`/geminiAI/inserirSugestoes/${idUsuario}`, {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify({
+    //                 titulo: titulo,
+    //                 descricaoBreve: descricaoBreve,
+    //                 descricaoCompleta: descricaoCompleta,
+    //             }),
+    //         })
+    //             .then(function (resposta) {
+    //                 console.log("resposta: ", resposta);
+    //             })
+    //             .catch(function (resposta) {
+    //                 console.log(`#ERRO: ${resposta}`);
+    //             });
+    //     }
+
+
+    //     return false;
+
+    // }
+
+
+    // const apiKey = process.env.GEMINI_API_KEY;
+//     import { GoogleGenerativeAI } from './app.js';
+// const genAI = new GoogleGenerativeAI('AIzaSyDxsWFO6JXuGOod7BTGg7j6CahDw1uTpaw');
+
+// const model = genAI.getGenerativeModel({
+//     model: "gemini-1.5-pro",
+// });
+
+// const generationConfig = {
+//     temperature: 1,
+//     topP: 0.95,
+//     topK: 40,
+//     maxOutputTokens: 8192,
+//     responseMimeType: "text/plain",
+// };
+
+// let textoCompleto  = "";
+// let materiaDificuldade = "Geometria";
+
+// async function run() {
+//     const chatSession = model.startChat({
+//         generationConfig,
+//         history: [
+//         ],
+//     });
+
+//     const prompt = `Como um especialista na área da educação, me dê 4 sugestões de melhorias para professores conseguirem identificar as dificuldades dos alunos relacionados à matéria: ${materiaDificuldade}. Separe dessa forma: Título: Breve Explicação: Explicação completa: `;
+
+//     const result = await chatSession.sendMessage(prompt);
+//     console.log(result.response.text());
+
+//     textoCompleto  = result.response.text();
+//     let dadosExtraidos =  extrairDados(textoCompleto);
+//     console.log(dadosExtraidos);
+
+    
+//     for (let i = 0; i < 4; i++) {
+//         const titulo = dadosExtraidos[i].titulo;
+//         const descricaoBreve = dadosExtraidos[i].breveExplicacao;
+//         const descricaoCompleta = dadosExtraidos[i].explicacaoCompleta;
+//         let idUsuario = 1;
+
+
+//         fetch(`/geminiAI/inserirSugestoes`, {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json",
+//             },
+//             body: JSON.stringify({
+//                 titulo: titulo,
+//                 descricaoBreve: descricaoBreve,
+//                 descricaoCompleta: descricaoCompleta,
+//                 idUsuario : idUsuario
+//             }),
+//         })
+//             .then(function (resposta) {
+//                 console.log("resposta: ", resposta);
+//             })
+//             .catch(function (resposta) {
+//                 console.log(`#ERRO: ${resposta}`);
+//             });
+//     }
+
+//     return false;
+// }
+
+// run();
+// function extrairDados(texto) {
+//     // Expressão regular para capturar os 4 blocos de título, breve explicação e explicação completa
+//     const regex = /## (\d+)\. Título: ([^\n]+)\n\n\*\*Breve Explicação:\*\*([\s\S]+?)\n\n\*\*Explicação completa:\*\*([\s\S]+?)(?=\n##|\n$)/g;
+    
+//     let resultado;
+//     const dados = [];
+  
+//     // Enquanto houver correspondências
+//     while ((resultado = regex.exec(texto)) !== null) {
+//       dados.push({
+//         numero: resultado[1],  // Número do item (1, 2, 3, etc.)
+//         titulo: resultado[2],  // Título
+//         breveExplicacao: resultado[3].trim(),  // Breve explicação
+//         explicacaoCompleta: resultado[4].trim()  // Explicação completa
+//       });
+//     }
+  
+//     return dados;
+//   }
+
+
 </script>

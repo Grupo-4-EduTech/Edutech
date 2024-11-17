@@ -1,6 +1,6 @@
 
-var ambiente_processo = 'producao';
-//var ambiente_processo = 'desenvolvimento';
+// var ambiente_processo = 'producao';
+var ambiente_processo = 'desenvolvimento';
 
 var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 // Acima, temos o uso do operador ternário para definir o caminho do arquivo .env
@@ -31,7 +31,7 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
-app.use("/jogo_interesse" , jogo_interesse)
+app.use("/jogo_interesse", jogo_interesse)
 
 app.listen(PORTA_APP, function () {
     console.log(`
@@ -87,5 +87,84 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'valorant.html'));
 });
 
+
+const {
+    GoogleGenerativeAI,
+    HarmCategory,
+    HarmBlockThreshold,
+} = require("@google/generative-ai");
+
+const genAI = new GoogleGenerativeAI('AIzaSyDxsWFO6JXuGOod7BTGg7j6CahDw1uTpaw');
+
+const model = genAI.getGenerativeModel({
+    model: "gemini-1.5-pro",
+});
+
+const generationConfig = {
+    temperature: 1,
+    topP: 0.95,
+    topK: 40,
+    maxOutputTokens: 8192,
+    responseMimeType: "text/plain",
+};
+
+let textoCompleto  = "";
+let materiaDificuldade = "Geometria";
+
+async function run() {
+    const chatSession = model.startChat({
+        generationConfig,
+        history: [
+        ],
+    });
+
+    const prompt = `Como um especialista na área da educação, me dê 4 sugestões de melhorias para professores conseguirem identificar as dificuldades dos alunos relacionados à matéria: ${materiaDificuldade}. Separe dessa forma: Título: Breve Explicação: Explicação completa: `;
+
+    const result = await chatSession.sendMessage(prompt);
+    console.log(result.response.text());
+
+    textoCompleto  = result.response.text();
+    let dadosExtraidos =  extrairDados(textoCompleto);
+    console.log(dadosExtraidos);
+
+
+    const database = require("./src/database/config");
+    for(let i = 0; i< 4; i++){
+        const titulo = dadosExtraidos[i].titulo;
+        const descricaoBreve = dadosExtraidos[i].breveExplicacao;
+        const descricaoCompleta = dadosExtraidos[i].explicacaoCompleta;
+        const fkUsuario = 1;
+
+        const instrucaoSql = `
+        INSERT INTO sugestoes (titulo, descricaoBreve, descricaoCompleta, fkUsuario) VALUES ('${titulo}', '${descricaoBreve}', '${descricaoCompleta}','${fkUsuario}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+     database.executar(instrucaoSql);
+    }
+   
+    return false;
+}
+
+run();
+
+function extrairDados(texto) {
+    // Expressão regular para capturar os 4 blocos de título, breve explicação e explicação completa
+    const regex = /## (\d+)\. Título: ([^\n]+)\n\n\*\*Breve Explicação:\*\*([\s\S]+?)\n\n\*\*Explicação completa:\*\*([\s\S]+?)(?=\n##|\n$)/g;
+    
+    let resultado;
+    const dados = [];
+  
+    // Enquanto houver correspondências
+    while ((resultado = regex.exec(texto)) !== null) {
+      dados.push({
+        numero: resultado[1],  // Número do item (1, 2, 3, etc.)
+        titulo: resultado[2],  // Título
+        breveExplicacao: resultado[3].trim(),  // Breve explicação
+        explicacaoCompleta: resultado[4].trim()  // Explicação completa
+      });
+    }
+  
+    return dados;
+  }
 
 
