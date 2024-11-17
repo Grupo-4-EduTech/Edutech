@@ -112,10 +112,12 @@ CREATE TABLE alerta (
 CREATE TABLE sugestoes(
 	idSugestao INT PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(100),
-    descricaoBreve VARCHAR(150),
-    descricaoCompleta VARCHAR(1000),
+    descricaoBreve VARCHAR(500),
+    descricaoCompleta VARCHAR(2000),
     fkUsuario INT,
-    FOREIGN KEY(fkUsuario) REFERENCES usuario(idUsuario)
+    fkTurma INT,
+    FOREIGN KEY(fkUsuario) REFERENCES usuario(idUsuario),
+    FOREIGN KEY(fkTurma) REFERENCES turma(idTurma)
 );
 
 -- Inserts de exemplo

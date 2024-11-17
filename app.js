@@ -22,7 +22,8 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-var jogo_interesse = require("./src/routes/jogo_interesse")
+var jogo_interesse = require("./src/routes/jogo_interesse");
+var sugestoesRouter = require("./src/routes/sugestoes");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -32,6 +33,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/jogo_interesse", jogo_interesse)
+app.use("/sugestoes", sugestoesRouter)
 
 app.listen(PORTA_APP, function () {
     console.log(`
@@ -110,6 +112,7 @@ const generationConfig = {
 
 let textoCompleto  = "";
 let materiaDificuldade = "Geometria";
+const fkUsuario = 2;
 
 async function run() {
     const chatSession = model.startChat({
@@ -118,7 +121,7 @@ async function run() {
         ],
     });
 
-    const prompt = `Como um especialista na área da educação, me dê 4 sugestões de melhorias para professores conseguirem identificar as dificuldades dos alunos relacionados à matéria: ${materiaDificuldade}. Separe dessa forma: Título: Breve Explicação: Explicação completa: `;
+    const prompt = `Como um especialista na área da educação, me dê 4 sugestões de melhorias para professores conseguirem identificar as dificuldades dos alunos relacionados à matéria: ${materiaDificuldade}. Separe dessa forma: Título: Breve Explicação: Explicação completa: (faça 2 parágrafos)`;
 
     const result = await chatSession.sendMessage(prompt);
     console.log(result.response.text());
@@ -132,8 +135,8 @@ async function run() {
     for(let i = 0; i< 4; i++){
         const titulo = dadosExtraidos[i].titulo;
         const descricaoBreve = dadosExtraidos[i].breveExplicacao;
-        const descricaoCompleta = dadosExtraidos[i].explicacaoCompleta;
-        const fkUsuario = 1;
+        const descricaoCompleta = formatarQuebrasDeLinha(dadosExtraidos[i].explicacaoCompleta);
+       
 
         const instrucaoSql = `
         INSERT INTO sugestoes (titulo, descricaoBreve, descricaoCompleta, fkUsuario) VALUES ('${titulo}', '${descricaoBreve}', '${descricaoCompleta}','${fkUsuario}');
@@ -145,7 +148,32 @@ async function run() {
     return false;
 }
 
-run();
+
+verificarSugestoes();
+
+
+function verificarSugestoes(){
+    const database = require("./src/database/config");
+
+    const instrucaoSql = `
+    SELECT * FROM sugestoes WHERE fkUsuario = ${fkUsuario}
+`;
+
+    return database.executar(instrucaoSql).then(result => {
+        // Verifica se a consulta retornou algum resultado
+        if (result.length === 0) {
+            console.log('Nenhuma sugestão encontrada.');
+            run();
+        } else {
+            console.log('Sugestões encontradas:', result);
+            return result;  // Retorna os resultados encontrados
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao executar a consulta:', error);
+        return [];  // Retorna um array vazio em caso de erro
+    });
+}
 
 function extrairDados(texto) {
     // Expressão regular para capturar os 4 blocos de título, breve explicação e explicação completa
@@ -167,4 +195,8 @@ function extrairDados(texto) {
     return dados;
   }
 
+
+  function formatarQuebrasDeLinha(texto) {
+    return texto.replace(/\n/g, '<br>');
+}
 
