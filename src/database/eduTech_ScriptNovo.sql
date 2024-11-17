@@ -109,6 +109,15 @@ CREATE TABLE alerta (
     FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
 );
 
+CREATE TABLE sugestoes(
+	idSugestao INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(100),
+    descricaoBreve VARCHAR(150),
+    descricaoCompleta VARCHAR(1000),
+    fkUsuario INT,
+    FOREIGN KEY(fkUsuario) REFERENCES usuario(idUsuario)
+);
+
 -- Inserts de exemplo
 
 insert into cargo(descricao)
