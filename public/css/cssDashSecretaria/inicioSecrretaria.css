@@ -11,7 +11,7 @@ body {
 /* -- MENU LATERAL --  */
 
 .menuLateral {
-    width: 230px;
+    width: 205px;
     height: 100vh;
     background: linear-gradient(to bottom, #0790C2, #113768);
     display: flex;
@@ -41,7 +41,7 @@ body {
 }
 
 .containerNavegacao {
-    width: 230px;
+    width: 205px;
     height: 250px;
     display: flex;
     flex-direction: column;
@@ -49,7 +49,7 @@ body {
 }
 
 .fileiraNavegacao {
-    width: 230px;
+    width: 205px;
     height: 43px;
     color: white;
     transition: all 0.3s;
@@ -59,7 +59,7 @@ body {
 }
 
 .fileiraSelecionada {
-    width: 230px;
+    width: 205px;
     height: 43px;
     background-color: #00b7ff;
     color: white;
