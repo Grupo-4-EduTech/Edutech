@@ -37,31 +37,22 @@
 .Turma:hover{
    transform: scale(1.05);
    transition: 0.3s;
+   cursor: pointer;
 }
 
-#Turma1{
+.cardVermelho{
     background-color: #FF9A9A;
     box-shadow: 0px 0px 0px 1.5px #AE0000;
 }
 
-#Turma2{
+.cardAmarelo{
     background-color: #FFEC83;
     box-shadow: 0px 0px 0px 1.5px #AE7700;
 }
 
-#Turma3{
+.cardVerde{
     background-color: #96FF7C;
     box-shadow: 0px 0px 0px 1.5px #3DAE00;
-}
-
-#Turma4{
-    background-color: #96FF7C;
-    box-shadow: 0px 0px 0px 1.5px #3DAE00;
-}
-
-#Turma5{
-    background-color: #FF9A9A;
-    box-shadow: 0px 0px 0px 1.5px #AE0000;
 }
 
 .nomeTurma {
