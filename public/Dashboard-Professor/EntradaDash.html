@@ -141,6 +141,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                 Turmas do 3°:
             </div> -->
             <div class="Fileira" id="div_exibir_turmas">
+                
             </div>
         </div>
     </div>
@@ -191,6 +192,11 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
 
                         let materia = turma.materia == "MT" ? "Matemática" : "Português";
                         let media = turma.materia == "MT" ? turma.mediaMT : turma.mediaLP;
+
+                        if(media == null){
+                            media = "000,0"
+                        }
+
                         let idMateria = turma.materia == "MT" ? 1 : 0;
 
                         // Renderiza a turma sem a dificuldade, só com informações básicas
@@ -210,16 +216,16 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                                 <div class="imagemPrachetaMedia">
                                 </div>
                                 <div class="AreaTextoMedia">
-                                    <b>
+                                    
                                         Média: ${media}
-                                    </b>
+                                    
                                 </div>
                             </div>
                             <div class="materiaComDificuldade">
                                 <div class="imagemAlerta">
                                 </div>
                                 <div class="AreaTextoDificuldade" id="dificuldade${turma.idTurma}">
-                                    Carregando...
+                                    Sem dados
                                 </div>
                             </div>
                         </a>
@@ -246,6 +252,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                             })
                             .catch(function (erro) {
                                 console.error(`Erro ao obter dificuldade da turma ${turma.idTurma}:`, erro);
+                                
                             });
                     }
 
@@ -331,7 +338,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
     function relacionarCores(mediaProficiencia, turma) {
         const cardTurma = document.getElementById(`turma${turma}`);
         console.log(mediaProficiencia)
-
+        
         if (mediaProficiencia < 275) {
             cardTurma.classList.add('cardVermelho');
         }
@@ -340,7 +347,8 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
         }
         else if (mediaProficiencia >= 350) {
             cardTurma.classList.add('cardVerde');
-        }
+        } 
+
         console.log(cardTurma)
     }
 

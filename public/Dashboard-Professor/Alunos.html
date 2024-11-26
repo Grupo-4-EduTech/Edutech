@@ -13,7 +13,7 @@
     <title>Edu Tech | Dashboard</title>
 </head>
 
-<body>
+<body onload="selecionarOrdemExibicao()">
 
     <div class="modalSuporte" onclick="fecharmodal()">
         <div class="contentSuporte">
@@ -23,9 +23,9 @@
                 <a href="https://wa.me/+5511914821813" target="_blank">
                     <img src="../assets/Icon-whatsapp.png" class="iconsModal">
                 </a>
-                <a
-                    href="https://www.instagram.com/theodorsouza42/?next=%2Fbluegodzi%2Ftagged%2F&locale=在
-                    线定制塔吉克斯坦TEF证书联系%7B威信%2BTG%2F飞机%3A%40buth2788%7DsjwNH%3F%3F%3F%3F%3F%3Fѧ%3F%3FƾSwQuO" target="_blank">
+                <a href="https://www.instagram.com/theodorsouza42/?next=%2Fbluegodzi%2Ftagged%2F&locale=在
+                    线定制塔吉克斯坦TEF证书联系%7B威信%2BTG%2F飞机%3A%40buth2788%7DsjwNH%3F%3F%3F%3F%3F%3Fѧ%3F%3FƾSwQuO"
+                    target="_blank">
                     <img src="../assets/icon_insta.webp" class="iconsModal" id="Insta">
                 </a>
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=samukatsouza16@gmail.com&su=
@@ -51,7 +51,9 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     Turmas
                 </div>
             </a>
-            <a class="OpcaoArea" href="https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf" target="_blank">
+            <a class="OpcaoArea"
+                href="https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf"
+                target="_blank">
                 <img src="../assets/IconFolhaNavegacaoTurma.svg" class="IconNavegacaoFolha">
                 <div class="AreaTextoOpcao">
                     Descritores
@@ -59,11 +61,11 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
             </a>
             <button class="Suporte" onclick="abrirSuporte()">
                 <div class="AreaClick">
-                <img src="../assets/MicrofoneSuporteTurma.svg" class="IconNavegacao">
-                <div class="AreaTextoSuporte">
-                    Suporte
+                    <img src="../assets/MicrofoneSuporteTurma.svg" class="IconNavegacao">
+                    <div class="AreaTextoSuporte">
+                        Suporte
+                    </div>
                 </div>
-            </div>
             </button>
         </div>
         <div class="Espaco">
@@ -76,7 +78,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
         </a>
     </div>
     <div class="Areadash">
-        <div class="AreaKPI">
+        <div class="AreaKPI" id="areaKPI">
             <div class="KPI">
                 <div class="AreaIconLocal">
                     <img src="../assets/IconPessoa.svg" class="IconLocalSelecionadoKPI">
@@ -86,9 +88,10 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                         Alunos
                     </div>
                     <div class="EspacoTextoLocal">
+                        |
                     </div>
-                    <div class="AreaTextoLocalSelecionado">
-                        3°A
+                    <div class="AreaTextoLocalSelecionado" id="id_turma">
+
                     </div>
                 </div>
                 <div class="EspacoKPI">
@@ -107,8 +110,8 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                         </div>
                     </div>
                     <div class="AreaDadosDoUsuario">
-                        <div class="NomeDoUsuario">Girafales Teodoro</div>
-                        <div class="CargoDoUsuario">Professor(a)</div>
+                        <div class="NomeDoUsuario" id="nome_usuario">Usuário</div>
+                        <div class="CargoDoUsuario" id="cargo_usuario">Professor(a)</div>
                     </div>
                 </div>
             </div>
@@ -119,182 +122,26 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     <div class="AreaFiltros" id="AreaPesquisar">
                         Pesquisar
                         <div class="SubDiv">
-                        <input id="InputDePesquisa">
-                        <button id="AplicarFiltros">
-                            <img src="../assets/LupaSimplesAluno.svg" class="LupaSimplesAluno">
-                        </button>
-                    </div>
+                            <input id="InputDePesquisa">
+                            <button id="AplicarFiltros" onclick="pesquisarAluno()">
+                                <img src="../assets/LupaSimplesAluno.svg" class="LupaSimplesAluno">
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="AbasDePesquisa" id="Aba2">
                     <div class="AreaFiltros" id="AreaFiltrar">
-                        <select id="SelecaoDeFiltros">
-                            <option value="">Filtrar: Nota Crescente</option>
+                        <span>Ordenar por: </span>
+                        <select id="SelecaoDeFiltros" onclick="selecionarOrdemExibicao()">
+                            <option value="1">Proficiência (Crescente)</option>
+                            <option value="2">Proficiência (Decrescente)</option>
+                            <option value="3">Ordem alfabética</option>
                         </select>
                     </div>
                 </div>
             </div>
-            <div class="AreaTrabalhoAlunos">
-                <div class="FileiraAlunos">
-                    <div class="AreaInfoAlunoEnglobado">
-                        <div class="AreaImagemAluno">
-                            <div class="ImagemAluno">
-                                <img src="../assets/IconAluno.svg" id="ImagemAluno">
-                            </div>
-                        </div>
-                        <div class="AreaNomeDoAluno">
-                            Manoel
-                        </div>
-                        <div class="AreaProeficiencia">
-                            <div class="AreaImagem">
-                                <img src="../assets/IconLivroProeficiencia.svg">
-                            </div>
-                            <div class="AreaTexto">
-                                Proficiência:  <b style="color: red;">200,1</b>
-                            </div>
-                        </div>
-                        <div class="AreaProeficiencia">
-                            <div class="AreaImagem">
-                                <img src="../assets/IconAlertaBlueskin.svg">
-                            </div>
-                            <div class="AreaTexto">
-                                Grandezas e Medidas
-                            </div>
-                        </div>
-                    </div>
-                    <div class="AreaInfoAlunoEnglobado">
-                        <div class="AreaImagemAluno">
-                            <div class="ImagemAluno">
-                                <img src="../assets/IconAluno.svg" id="ImagemAluno">
-                            </div>
-                        </div>
-                        <div class="AreaNomeDoAluno">
-                            Jean Charles
-                        </div>
-                        <div class="AreaProeficiencia">
-                            <div class="AreaImagem">
-                                <img src="../assets/IconLivroProeficiencia.svg">
-                            </div>
-                            <div class="AreaTexto">
-                                Proficiência:  <b style="color: red;">201,2</b>
-                            </div>
-                        </div>
-                        <div class="AreaProeficiencia">
-                            <div class="AreaImagem">
-                                <img src="../assets/IconAlertaBlueskin.svg">
-                            </div>
-                            <div class="AreaTexto">
-                                Grandezas e Medidas
-                            </div>
-                        </div>
-                    </div>
-                    <div class="AreaInfoAlunoEnglobado">
-                        <div class="AreaImagemAluno">
-                            <div class="ImagemAluno">
-                                <img src="../assets/IconAluno.svg" id="ImagemAluno">
-                            </div>
-                        </div>
-                        <div class="AreaNomeDoAluno">
-                            Samuel Teodoro
-                        </div>
-                        <div class="AreaProeficiencia">
-                            <div class="AreaImagem">
-                                <img src="../assets/IconLivroProeficiencia.svg">
-                            </div>
-                            <div class="AreaTexto">
-                                Proficiência:  <b style="color: red;">202,3</b>
-                            </div>
-                        </div>
-                        <div class="AreaProeficiencia">
-                            <div class="AreaImagem">
-                                <img src="../assets/IconAlertaBlueskin.svg">
-                            </div>
-                            <div class="AreaTexto">
-                                Grandezas e Medidas
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="FileiraAlunos">
-
-                    <div class="AreaInfoAlunoEnglobado">
-                        <div class="AreaImagemAluno">
-                            <div class="ImagemAluno">
-                                <img src="../assets/IconAluno.svg" id="ImagemAluno">
-                            </div>
-                        </div>
-                        <div class="AreaNomeDoAluno">
-                            Henrique Sericov
-                        </div>
-                        <div class="AreaProeficiencia">
-                            <div class="AreaImagem">
-                                <img src="../assets/IconLivroProeficiencia.svg">
-                            </div>
-                            <div class="AreaTexto">
-                                Proficiência:  <b style="color: red;">203,4</b>
-                            </div>
-                        </div>
-                        <div class="AreaProeficiencia">
-                            <div class="AreaImagem">
-                                <img src="../assets/IconAlertaBlueskin.svg">
-                            </div>
-                            <div class="AreaTexto">
-                                Grandezas e Medidas
-                            </div>
-                        </div>
-                    </div>
-                    <div class="AreaInfoAlunoEnglobado">
-                        <div class="AreaImagemAluno">
-                            <div class="ImagemAluno">
-                                <img src="../assets/IconAluno.svg" id="ImagemAluno">
-                            </div>
-                        </div>
-                        <div class="AreaNomeDoAluno">
-                            André Yoshiriro
-                        </div>
-                        <div class="AreaProeficiencia">
-                            <div class="AreaImagem">
-                                <img src="../assets/IconLivroProeficiencia.svg">
-                            </div>
-                            <div class="AreaTexto">
-                                Proficiência:  <b style="color: red;">204,5</b>
-                            </div>
-                        </div>
-                        <div class="AreaProeficiencia">
-                            <div class="AreaImagem">
-                                <img src="../assets/IconAlertaBlueskin.svg">
-                            </div>
-                            <div class="AreaTexto">
-                                Grandezas e Medidas
-                            </div>
-                        </div>
-                    </div>
-                    <div class="AreaInfoAlunoEnglobado">
-                        <div class="AreaImagemAluno">
-                            <div class="ImagemAluno">
-                                <img src="../assets/IconAluno.svg" id="ImagemAluno">
-                            </div>
-                        </div>
-                        <div class="AreaNomeDoAluno">
-                            Marcio
-                        </div>
-                        <div class="AreaProeficiencia">
-                            <div class="AreaImagem">
-                                <img src="../assets/IconLivroProeficiencia.svg">
-                            </div>
-                            <div class="AreaTexto">
-                                Proficiência: <b style="color: red;"> 205,6</b>
-                            </div>
-                        </div>
-                        <div class="AreaProeficiencia">
-                            <div class="AreaImagem">
-                                <img src="../assets/IconAlertaBlueskin.svg">
-                            </div>
-                            <div class="AreaTexto">
-                                Grandezas e Medidas
-                            </div>
-                        </div>
-                    </div>
+            <div class="AreaTrabalhoAlunos" id="div_pai_alunos">
+           
                 </div>
             </div>
         </div>
@@ -304,22 +151,245 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
 </html>
 
 <script>
-    
-    function abrirModais(codigoModal) {
-    let listamodais = ['.modalSuporte']
-    const modal1 = document.querySelector(listamodais[codigoModal])
-    modal1.style.display = 'block'
-}
-function abrirSuporte() { 
-    let codigoModal = 0
-    abrirModais(codigoModal);
-}
 
-function fecharmodal(codigoModal){
- let listamodais = ['.modalSuporte']
-        for(let i = 0;i <=listamodais.length;i++) {  
+    function abrirModais(codigoModal) {
+        let listamodais = ['.modalSuporte']
+        const modal1 = document.querySelector(listamodais[codigoModal])
+        modal1.style.display = 'block'
+    }
+    function abrirSuporte() {
+        let codigoModal = 0
+        abrirModais(codigoModal);
+    }
+
+    function fecharmodal(codigoModal) {
+        let listamodais = ['.modalSuporte']
+        for (let i = 0; i <= listamodais.length; i++) {
             let modal1 = document.querySelector(listamodais[i])
             modal1.style.display = 'none'
-}
-}
+        }
+    }
+
+    const idUsuario = sessionStorage.getItem('ID_USUARIO');
+    const cargoUsuario = sessionStorage.getItem('CARGO_USUARIO');
+    const nomeUsuario = sessionStorage.getItem('NOME_USUARIO');
+
+    nome_usuario.innerHTML = nomeUsuario;
+    cargo_usuario.innerHTML = cargoUsuario;
+
+    const idTurmaSelecionada = sessionStorage.getItem('ID_TURMA')
+    id_turma.innerHTML = "Turma: " + idTurmaSelecionada;
+    const idMateria = sessionStorage.getItem('ID_MATERIA');
+
+
+    function selecionarOrdemExibicao(){
+        let ordenacao = idMateria == 1 ? "mediaMT" : "mediaLP"
+
+        const selectOrdenacao = SelecaoDeFiltros.value;
+
+        if(selectOrdenacao == 2){
+            ordenacao += " DESC"; 
+        }
+        else if(selectOrdenacao == 3){
+            ordenacao = "a.nome";
+        }
+        
+        listarAlunosIndividualmente(ordenacao);
+    }
+
+    // const ordenacaoFiltrada = selecionarOrdemExibicao()
+    // listarAlunosIndividualmente(ordenacaoFiltrada);
+   
+
+    function listarAlunosIndividualmente(ordenacao) {
+        fetch(`/dashboardProfessor/listarAlunosIndividualmente/${idMateria}/${idTurmaSelecionada}/${ordenacao}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }           
+                resposta.json().then(function (resposta) {
+                    let contadorFileira = 0;
+                    let fileira = 0;
+                    let a = 0;
+                    div_pai_alunos.innerHTML = ""
+                    for (let i = 0; i < resposta.length; i++) {
+                        let aluno = resposta[i];
+
+                        let media = idMateria == 1 ? aluno.mediaMT : aluno.mediaLP;
+                        const dificuldadeAluno = verificarDificuldadePorDescritor(aluno.dificuldade, idMateria);
+                       
+                        if(fileira == 0){
+                            div_pai_alunos.innerHTML += `
+                                    <div class="FileiraAlunos" id="fileira${contadorFileira}">
+                                    </div>
+                                `;
+                           a = contadorFileira;
+                            contadorFileira++;
+                        }
+                        
+                        
+                            const idFileira = document.getElementById(`fileira${a}`)
+                            console.log()
+                                idFileira.innerHTML += `
+                                <div class="AreaInfoAlunoEnglobado">
+                                    <div class="AreaImagemAluno">
+                                        <div class="ImagemAluno">
+                                            <img src="../assets/IconAluno.svg" id="ImagemAluno">
+                                        </div>
+                                    </div>
+                                    <div class="AreaNomeDoAluno" id="div_nome_aluno">
+                                        ${aluno.nome}
+                                    </div>
+                                    <div class="AreaProeficiencia">
+                                        <div class="AreaImagem">
+                                            <img src="../assets/IconLivroProeficiencia.svg">
+                                        </div>
+                                        <div class="AreaTexto" id="div_proficiencia_aluno">
+                                            Proficiência: <b>${media}</b>
+                                        </div>
+                                    </div>
+                                    <div class="AreaProeficiencia">
+                                        <div class="AreaImagem">
+                                            <img src="../assets/IconAlertaBlueskin.svg">
+                                        </div>
+                                        <div class="AreaTexto" id="div_dificuldade">
+                                            ${dificuldadeAluno}
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                            fileira++;
+
+                        if(fileira == 3){
+                                fileira = 0;
+                        }
+                            
+                    }
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+    }
+
+
+    function verificarDificuldadePorDescritor(descritor, materia) {
+        let dificuldadeTurma = 'Nenhum';
+
+        if (materia == 1) {
+            if (descritor == 'D1' || descritor == 'D2' || descritor == 'D3' || descritor == 'D4' || descritor == 'D5' || descritor == 'D6' || descritor == 'D7' || descritor == 'D8' || descritor == 'D9' || descritor == 'D10') {
+                dificuldadeTurma = 'Espaço e Forma';
+            }
+            else if (descritor == 'D11' || descritor == 'D12' || descritor == 'D13') {
+                dificuldadeTurma = 'Grandezas e Medidas';
+            }
+            else if (descritor == 'D14' || descritor == 'D15' || descritor == 'D16' || descritor == 'D17' || descritor == 'D18' || descritor == 'D19' || descritor == 'D20' || descritor == 'D21' || descritor == 'D22' || descritor == 'D23' || descritor == 'D24' || descritor == 'D25' || descritor == 'D26' || descritor == 'D27' || descritor == 'D28' || descritor == 'D29' || descritor == 'D30' || descritor == 'D31' || descritor == 'D32' || descritor == 'D33') {
+                dificuldadeTurma = 'Álgebra e Funções';
+            }
+            else if (descritor == 'D34' || descritor == 'D35') {
+                dificuldadeTurma = 'Tratamento da Informação';
+            }
+        }
+        else if (materia == 2) {
+            if (descritor == 'D1' || descritor == 'D3' || descritor == 'D4' || descritor == 'D6' || descritor == 'D14') {
+                dificuldadeTurma = 'Procedimentos de leitura';
+            }
+            else if (descritor == 'D5' || descritor == '12') {
+                dificuldadeTurma = 'Compreensão do texto';
+            }
+            else if (descritor == 'D20' || descritor == 'D21') {
+                dificuldadeTurma = 'Relação entre textos';
+            }
+            else if (descritor == 'D2' || descritor == 'D7' || descritor == 'D8' || descritor == 'D9' || descritor == 'D10' || descritor == 'D11' || descritor == 'D15') {
+                dificuldadeTurma = 'Coerência e coesão';
+            }
+            else if (descritor == 'D16' || descritor == 'D17' || descritor == 'D18' || descritor == 'D19') {
+                dificuldadeTurma = 'Relações entre recursos';
+            }
+            else if (descritor == 'D13') {
+                dificuldadeTurma = 'Variação linguística';
+            }
+        }
+
+
+        return dificuldadeTurma;
+    }
+    
+
+    function pesquisarAluno(){
+        const pesquisa = InputDePesquisa.value;
+
+        fetch(`/dashboardProfessor/pesquisarAluno/${idMateria}/${idTurmaSelecionada}/${pesquisa}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }           
+                resposta.json().then(function (resposta) {
+                    let contadorFileira = 0;
+                    let fileira = 0;
+                    let a = 0;
+                    div_pai_alunos.innerHTML = ""
+                    for (let i = 0; i < resposta.length; i++) {
+                        let aluno = resposta[i];
+
+                        let media = idMateria == 1 ? aluno.mediaMT : aluno.mediaLP;
+                        const dificuldadeAluno = verificarDificuldadePorDescritor(aluno.dificuldade, idMateria);
+                       
+                        if(fileira == 0){
+                            div_pai_alunos.innerHTML += `
+                                    <div class="FileiraAlunos" id="fileira${contadorFileira}">
+                                    </div>
+                                `;
+                           a = contadorFileira;
+                            contadorFileira++;
+                        }
+                        
+                        
+                            const idFileira = document.getElementById(`fileira${a}`)
+                            console.log()
+                                idFileira.innerHTML += `
+                                <div class="AreaInfoAlunoEnglobado">
+                                    <div class="AreaImagemAluno">
+                                        <div class="ImagemAluno">
+                                            <img src="../assets/IconAluno.svg" id="ImagemAluno">
+                                        </div>
+                                    </div>
+                                    <div class="AreaNomeDoAluno" id="div_nome_aluno">
+                                        ${aluno.nome}
+                                    </div>
+                                    <div class="AreaProeficiencia">
+                                        <div class="AreaImagem">
+                                            <img src="../assets/IconLivroProeficiencia.svg">
+                                        </div>
+                                        <div class="AreaTexto" id="div_proficiencia_aluno">
+                                            Proficiência: <b>${media}</b>
+                                        </div>
+                                    </div>
+                                    <div class="AreaProeficiencia">
+                                        <div class="AreaImagem">
+                                            <img src="../assets/IconAlertaBlueskin.svg">
+                                        </div>
+                                        <div class="AreaTexto" id="div_dificuldade">
+                                            ${dificuldadeAluno}
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                            fileira++;
+
+                        if(fileira == 3){
+                                fileira = 0;
+                        }
+                            
+                    }
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+    }
 </script>
