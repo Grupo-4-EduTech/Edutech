@@ -40,7 +40,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
             </span>
         </div>
         <div class="containerNavegacao">
-            <div class="fileiraSelecionada" onclick="">
+            <div class="fileiraNavegacao" onclick="mudarTelaDiretor()">
                 <div class="imgFileira">
                     <img src="../assets/maletaLateral.svg" width="28px" height="28px">
                 </div>
@@ -48,7 +48,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     Diretores
                 </div>
             </div>
-            <div class="fileiraNavegacao" onclick="">
+            <div class="fileiraNavegacao" onclick="mudarTelaEscola()">
                 <div class="imgFileira">
                     <img src="../assets/escolaLateral.svg"  width="30px" height="30px">
                 </div>
@@ -56,7 +56,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     Escolas
                 </div>
             </div>
-            <div class="fileiraNavegacao" onclick="">
+            <div class="fileiraSelecionada" onclick="mudarTelaDashboard()">
                 <div class="imgFileira">
                     <img src="../assets/mdi_graph-box.svg" width="28px" height="28px">
                 </div>
@@ -64,7 +64,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     Dashboard
                 </div>
             </div>
-            <div class="fileiraNavegacao">
+            <div class="fileiraNavegacao" onclick="mudarTelaDescritores()">
                 <div class="imgFileira">
                     <img src="../assets/descritores.svg" width="23px" height="23px">
                 </div>
@@ -81,7 +81,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 </div>
             </div>
         </div>
-        <div class="exit">
+        <div class="exit" onclick="SairDaDash()">
             <img src="../assets/sair.svg">
             <span>
                 Sair
