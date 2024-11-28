@@ -296,6 +296,7 @@ margin-left:1.6%;
     margin-left: 50%;
     height: 35%;
     margin-right:2.5%;
+    cursor: pointer;
 }
 
 
@@ -517,4 +518,116 @@ margin-right: 4%;
     border-radius: 0px;
     width: 65px;
     height: 65px;
+}
+
+/* ALERTAS */
+.wrapper {
+    display: none;
+    position: relative;
+    left: 74.65%;
+    top: -3%;
+}
+
+.base {
+    display: none;
+    width: 22%;
+    height: 450px;
+    max-height: 450px; 
+    background-color: #F0F0F0;
+    overflow-y: auto; 
+    overflow-x: hidden;
+    color: black;
+    position: absolute;
+    z-index: 1;
+}
+
+.triangle {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #F0F0F0;
+    z-index: 2;
+}
+
+/* PERSONALIZA A BARRA DE ROLAGEM */
+.base::-webkit-scrollbar {
+    width: 8px; 
+}
+
+.base::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 5px;
+}
+
+.base::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 5px;
+}
+
+.base::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.alert-box {
+    border-top: 2px solid #0981B3;
+    border-bottom: 2px solid #0981B3;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    margin: 10px auto;
+    width: 85%;
+    box-sizing: border-box;
+}
+
+.alert-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.alert-icon {
+    font-size: 20px;
+    margin-right: 8px;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+.alert-title {
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    margin-top: 3.5%;
+}
+
+.alert-description {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    color: #333;
+}
+
+.square-div {
+    width: 25%;
+    height: 25%;
+    background-color: #FFFFFF;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border: solid 2px #0981B3;
+}
+
+.alert-box-segund {   
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    margin: 10px auto;
+    width: 85%;
+    box-sizing: border-box;
 }

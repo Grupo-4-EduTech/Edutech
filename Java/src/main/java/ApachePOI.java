@@ -214,6 +214,8 @@ public class ApachePOI{
                     aluno.setNome(faker.name().fullName());
                     seed++;
 
+                    escola.setIdRegiao(ThreadLocalRandom.current().nextInt(1, 6));
+
                     escola.setDiretoria(diretoria);
                     turma.setEscola(escola);
                     aluno.setTurma(turma);
@@ -234,6 +236,8 @@ public class ApachePOI{
                     turmasExtraidas.add(turma);
                     alunosExtraidos.add(aluno);
                     respostasExtraidas.add(respostaAluno);
+
+
                 }
             }
 
@@ -244,7 +248,8 @@ public class ApachePOI{
 
             for(Escola escola:escolasExtraidas){
                 if(escola.getIdEscola()==0){continue;}
-                connection.update("INSERT IGNORE INTO escola (idEscola, nome, logradouro, numLogradouro, idRegiao, fkDiretoria) VALUES(?, ?, ?, ?, ?, ?)", escola.getIdEscola(), escola.getNome(), escola.getLogradouro(), escola.getNumLogradouro(), escola.getIdRegiao(), escola.getDiretoria().getIdDiretoria());
+
+                connection.update("INSERT IGNORE INTO escola (idEscola, nome, logradouro, numLogradouro, fkDiretoria, idRegiao) VALUES(?, ?, ?, ?, ?, ?)", escola.getIdEscola(), escola.getNome(), escola.getLogradouro(), escola.getNumLogradouro(), escola.getDiretoria().getIdDiretoria(), escola.getIdRegiao());
             }
 
             for(Turma turma:turmasExtraidas){

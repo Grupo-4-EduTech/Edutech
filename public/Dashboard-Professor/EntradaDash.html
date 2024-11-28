@@ -12,7 +12,7 @@
     <title>Edu Tech | Dashboard</title>
 </head>
 
-<body>
+<body onload="listarTurmas()">
 
     <div class="painel" id="modal" onclick="fecharmodal()">
         <div class="content">
@@ -21,7 +21,7 @@
                 é possível obter informações mais detalhadas ao clicar em cima de cada turma</p>
             <div class="EspacoModal"></div>
             <h1 class="title">Legenda</h1>
-            <div class="AreaLegenda"> 
+            <div class="AreaLegenda">
                 <div class="AreaTextoLegenda">
                     <img src="../assets/livro-aberto.svg">
                     <div class="TextoLegenda" id="TextoNomeMateria">Nome da matéria</div>
@@ -46,9 +46,9 @@
                 <a href="https://wa.me/+5511914821813" target="_blank">
                     <img src="../assets/Icon-whatsapp.png" class="iconsModal">
                 </a>
-                <a
-                    href="https://www.instagram.com/theodorsouza42/?next=%2Fbluegodzi%2Ftagged%2F&locale=在
-                    线定制塔吉克斯坦TEF证书联系%7B威信%2BTG%2F飞机%3A%40buth2788%7DsjwNH%3F%3F%3F%3F%3F%3Fѧ%3F%3FƾSwQuO" target="_blank">
+                <a href="https://www.instagram.com/theodorsouza42/?next=%2Fbluegodzi%2Ftagged%2F&locale=在
+                    线定制塔吉克斯坦TEF证书联系%7B威信%2BTG%2F飞机%3A%40buth2788%7DsjwNH%3F%3F%3F%3F%3F%3Fѧ%3F%3FƾSwQuO"
+                    target="_blank">
                     <img src="../assets/icon_insta.webp" class="iconsModal" id="Insta">
                 </a>
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=samukatsouza16@gmail.com&su=
@@ -74,7 +74,9 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                     Turmas
                 </div>
             </a>
-        <a class="OpcaoArea" href="https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf" target="_blank">
+            <a class="OpcaoArea"
+                href="https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf"
+                target="_blank">
                 <img src="../assets/IconFolhaNavegacaoTurma.svg" class="IconNavegacaoFolha">
                 <div class="AreaTextoOpcao">
                     Descritores
@@ -82,11 +84,11 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
             </a>
             <button class="Suporte" onclick="abrirSuporte()">
                 <div class="AreaClick">
-                <img src="../assets/MicrofoneSuporteTurma.svg" class="IconNavegacao">
-                <div class="AreaTextoSuporte">
-                    Suporte
+                    <img src="../assets/MicrofoneSuporteTurma.svg" class="IconNavegacao">
+                    <div class="AreaTextoSuporte">
+                        Suporte
+                    </div>
                 </div>
-            </div>
             </button>
         </div>
         <div class="Espaco">
@@ -108,7 +110,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                     <div class="TextoLocal">
                         Turmas
                     </div>
-                    <button  class="BotaoInterrogacao" onclick="abrirTurmas()">
+                    <button class="BotaoInterrogacao" onclick="abrirTurmas()">
                         <img src="../assets/IconInterrogacao.svg" class="IconAjudaKPI">
                     </button>
                 </div>
@@ -128,274 +130,18 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                         </div>
                     </div>
                     <div class="AreaDadosDoUsuario">
-                        <div class="NomeDoUsuario">Girafales Teodoro</div>
-                        <div class="CargoDoUsuario">Professor(a)</div>
+                        <div class="NomeDoUsuario" id="nome_usuario">Usuário</div>
+                        <div class="CargoDoUsuario" id="cargo_usuario">Cargo</div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="AreaDeTrabalho" id="AreaDeTrabalhoEntrada">
-            <div class="NomeFileira">
+            <!-- <div class="NomeFileira">
                 Turmas do 3°:
-            </div>
-            <div class="Fileira">
-                <a class="Turma" id="Turma1" href="./DashboardsProfessor.html">
-                    <div class="nomeTurma">
-                        3°A
-                    </div>
-                    <div class="disciplina">
-                        <div class="imagemLivroDisciplina">
-                        </div>
-                        <div class="AreaTextoDisciplina">
-                            Matemática
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="imagemPrachetaMedia">
-                        </div>
-                        <div class="AreaTextoMedia">
-                            <b>
-                                Média: 250,5
-                            </b>
-                        </div>
-                    </div>
-                    <div class="materiaComDificuldade">
-                        <div class="imagemAlerta">
-                        </div>
-                        <div class="AreaTextoDificuldade">
-                            Algebra
-                        </div>
-                    </div>
-                </a>
-                <a class="Turma" id="Turma2" href="./DashboardsProfessor.html">
-                    <div class="nomeTurma">
-                        3°B
-                    </div>
-                    <div class="disciplina">
-                        <div class="imagemLivroDisciplina">
-                        </div>
-                        <div class="AreaTextoDisciplina">
-                            Matemática
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="imagemPrachetaMedia">
-                        </div>
-                        <div class="AreaTextoMedia">
-                            <b>
-                                Média: 350,4
-                            </b>
-                        </div>
-                    </div>
-                    <div class="materiaComDificuldade">
-                        <div class="imagemAlerta">
-                        </div>
-                        <div class="AreaTextoDificuldade">
-                            Algebra
-                        </div>
-                    </div>
-                </a>
-                <a class="Turma" id="Turma3" href="./DashboardsProfessor.html">
-                    <div class="nomeTurma">
-                        3°C
-                    </div>
-                    <div class="disciplina">
-                        <div class="imagemLivroDisciplina">
-                        </div>
-                        <div class="AreaTextoDisciplina">
-                            Matemática
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="imagemPrachetaMedia">
-                        </div>
-                        <div class="AreaTextoMedia">
-                            <b>
-                                Média: 403,1
-                            </b>
-                        </div>
-                    </div>
-                    <div class="materiaComDificuldade">
-                        <div class="imagemAlerta">
-                        </div>
-                        <div class="AreaTextoDificuldade">
-                            Grandezas
-                        </div>
-                    </div>
-                </a>
-                <a class="Turma" id="Turma4" href="./DashboardsProfessor.html">
-                    <div class="nomeTurma">
-                        3°D
-                    </div>
-                    <div class="disciplina">
-                        <div class="imagemLivroDisciplina">
-                        </div>
-                        <div class="AreaTextoDisciplina">
-                            Matemática
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="imagemPrachetaMedia">
-                        </div>
-                        <div class="AreaTextoMedia">
-                            <b>
-                                Média: 430,1
-                            </b>
-                        </div>
-                    </div>
-                    <div class="materiaComDificuldade">
-                        <div class="imagemAlerta">
-                        </div>
-                        <div class="AreaTextoDificuldade">
-                            Grandezas
-                        </div>
-                    </div>
-                </a>
-                <a class="Turma" id="Turma5" href="./DashboardsProfessor.html">
-                    <div class="nomeTurma">
-                        3°E
-                    </div>
-                    <div class="disciplina">
-                        <div class="imagemLivroDisciplina">
-                        </div>
-                        <div class="AreaTextoDisciplina">
-                            Matemática
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="imagemPrachetaMedia">
-                        </div>
-                        <div class="AreaTextoMedia">
-                            <b>
-                                Média: 278,1
-                            </b>
-                        </div>
-                    </div>
-                    <div class="materiaComDificuldade">
-                        <div class="imagemAlerta">
-                        </div>
-                        <div class="AreaTextoDificuldade">
-                            Grandezas
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="NomeFileira">
-                Turmas do 2°:
-            </div>
-            <div class="Fileira">
-                <a class="Turma" id="Turma1" href="./DashboardsProfessor.html">
-                    <div class="nomeTurma">
-                        2°A
-                    </div>
-                    <div class="disciplina">
-                        <div class="imagemLivroDisciplina">
-                        </div>
-                        <div class="AreaTextoDisciplina">
-                            Matemática
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="imagemPrachetaMedia">
-                        </div>
-                        <div class="AreaTextoMedia">
-                            <b>
-                                Média: 250,5
-                            </b>
-                        </div>
-                    </div>
-                    <div class="materiaComDificuldade">
-                        <div class="imagemAlerta">
-                        </div>
-                        <div class="AreaTextoDificuldade">
-                            Algebra
-                        </div>
-                    </div>
-                </a>
-                <a class="Turma" id="Turma2" href="./DashboardsProfessor.html">
-                    <div class="nomeTurma">
-                        2°B
-                    </div>
-                    <div class="disciplina">
-                        <div class="imagemLivroDisciplina">
-                        </div>
-                        <div class="AreaTextoDisciplina">
-                            Matemática
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="imagemPrachetaMedia">
-                        </div>
-                        <div class="AreaTextoMedia">
-                            <b>
-                                Média: 350,4
-                            </b>
-                        </div>
-                    </div>
-                    <div class="materiaComDificuldade">
-                        <div class="imagemAlerta">
-                        </div>
-                        <div class="AreaTextoDificuldade">
-                            Algebra
-                        </div>
-                    </div>
-                </a>
-                <a class="Turma" id="Turma3" href="./DashboardsProfessor.html">
-                    <div class="nomeTurma">
-                        2°C
-                    </div>
-                    <div class="disciplina">
-                        <div class="imagemLivroDisciplina">
-                        </div>
-                        <div class="AreaTextoDisciplina">
-                            Matemática
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="imagemPrachetaMedia">
-                        </div>
-                        <div class="AreaTextoMedia">
-                            <b>
-                                Média: 403,1
-                            </b>
-                        </div>
-                    </div>
-                    <div class="materiaComDificuldade">
-                        <div class="imagemAlerta">
-                        </div>
-                        <div class="AreaTextoDificuldade">
-                            Grandezas
-                        </div>
-                    </div>
-                </a>
-                <a class="Turma" id="Turma4" href="./DashboardsProfessor.html">
-                    <div class="nomeTurma">
-                        2°D
-                    </div>
-                    <div class="disciplina">
-                        <div class="imagemLivroDisciplina">
-                        </div>
-                        <div class="AreaTextoDisciplina">
-                            Matemática
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="imagemPrachetaMedia">
-                        </div>
-                        <div class="AreaTextoMedia">
-                            <b>
-                                Média: 403,1
-                            </b>
-                        </div>
-                    </div>
-                    <div class="materiaComDificuldade">
-                        <div class="imagemAlerta">
-                        </div>
-                        <div class="AreaTextoDificuldade">
-                            Grandezas
-                        </div>
-                    </div>
-                </a>
+            </div> -->
+            <div class="Fileira" id="div_exibir_turmas">
+                
             </div>
         </div>
     </div>
@@ -404,25 +150,214 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
 </html>
 
 <script>
-function abrirModais(codigoModal) {
-    let listamodais = ['.modalSuporte','.painel']
-    const modal1 = document.querySelector(listamodais[codigoModal])
-    modal1.style.display = 'block'
-}
-function abrirSuporte() { 
-    let codigoModal = 0
-    abrirModais(codigoModal);
-}
-function abrirTurmas(){
-    let codigoModal = 1
-    abrirModais(codigoModal);
-}
-function fecharmodal(codigoModal){
- let listamodais = ['.painel','.modalSuporte']
-        for(let i = 0;i <=listamodais.length;i++) {  
+    function abrirModais(codigoModal) {
+        let listamodais = ['.modalSuporte', '.painel']
+        const modal1 = document.querySelector(listamodais[codigoModal])
+        modal1.style.display = 'block'
+    }
+    function abrirSuporte() {
+        let codigoModal = 0
+        abrirModais(codigoModal);
+    }
+    function abrirTurmas() {
+        let codigoModal = 1
+        abrirModais(codigoModal);
+    }
+    function fecharmodal(codigoModal) {
+        let listamodais = ['.painel', '.modalSuporte']
+        for (let i = 0; i <= listamodais.length; i++) {
             let modal1 = document.querySelector(listamodais[i])
             modal1.style.display = 'none'
-}
-}
+        }
+    }
+
+    const idUsuario = sessionStorage.getItem('ID_USUARIO');
+    const cargoUsuario = sessionStorage.getItem('CARGO_USUARIO');
+    const nomeUsuario = sessionStorage.getItem('NOME_USUARIO');
+
+    nome_usuario.innerHTML = nomeUsuario;
+    cargo_usuario.innerHTML = cargoUsuario;
+
+    function listarTurmas() {
+        const idTurmaSelecionada = sessionStorage.getItem('ID_TURMA');
+        let condicao = idTurmaSelecionada == 1 ? "mediaMT" : "mediaLP";
+
+        fetch(`/dashboardProfessor/listarTurmas/${idUsuario}/${condicao}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+                resposta.json().then(function (resposta) {
+
+                    // Renderiza todas as turmas inicialmente no DOM, sem dificuldade
+                    for (let i = 0; i < resposta.length; i++) {
+                        let turma = resposta[i];
+
+                        let materia = turma.materia == "MT" ? "Matemática" : "Português";
+                        let media = turma.materia == "MT" ? turma.mediaMT : turma.mediaLP;
+
+                        if(media == null){
+                            media = "N/A"
+                        }
+
+                        let idMateria = turma.materia == "MT" ? 1 : 0;
+
+                        // Renderiza a turma sem a dificuldade, só com informações básicas
+                        div_exibir_turmas.innerHTML += `          
+                        <a class="Turma" id="turma${turma.idTurma}" onclick="verificarTurmaSelecionada(${turma.idTurma})">
+                            <div class="nomeTurma">
+                                ${turma.nomeTurma}
+                            </div>
+                            <div class="disciplina">
+                                <div class="imagemLivroDisciplina">
+                                </div>
+                                <div class="AreaTextoDisciplina">
+                                    ${materia}
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="imagemPrachetaMedia">
+                                </div>
+                                <div class="AreaTextoMedia">
+                                    
+                                        Média: ${media}
+                                    
+                                </div>
+                            </div>
+                            <div class="materiaComDificuldade">
+                                <div class="imagemAlerta">
+                                </div>
+                                <div class="AreaTextoDificuldade" id="dificuldade${turma.idTurma}">
+                                    N/A
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                    }
+
+                    // Agora fazemos as requisições para a dificuldade, respeitando a ordem
+                    for (let i = 0; i < resposta.length; i++) {
+                        let turma = resposta[i];
+                        let idMateria = turma.materia == "MT" ? 1 : 0;
+
+                        getDificuldadePorTurma(turma.idTurma, idMateria)
+                            .then(function (dificuldade) {
+                                const dificuldadeTurma = verificarDificuldadePorDescritor(dificuldade, idMateria);
+
+                                // Atualiza o conteúdo da dificuldade no DOM, sem mudar a ordem
+                                let elementoDificuldade = document.getElementById(`dificuldade${turma.idTurma}`);
+                                if (elementoDificuldade) {
+                                    elementoDificuldade.textContent = dificuldadeTurma;
+                                }
+
+                                const mediaProficiencia = turma.materia == "MT" ? turma.mediaMT : turma.mediaLP;
+                                relacionarCores(mediaProficiencia.replace(",", "."), turma.idTurma);
+                            })
+                            .catch(function (erro) {
+                                console.error(`Erro ao obter dificuldade da turma ${turma.idTurma}:`, erro);
+                                
+                            });
+                    }
+
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+    }
+
+
+    function getDificuldadePorTurma(idTurma, idMateria) {
+        return new Promise(function (resolve, reject) {
+            fetch(`/dashboardProfessor/listarDificuldadePorTurma/${idTurma}/${idMateria}`)
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        if (resposta.status == 204) {
+                            reject("Nenhum resultado encontrado!");
+                        } else {
+                            return resposta.json();  // Retorna a Promise para converter o JSON
+                        }
+                    } else {
+                        reject('Houve um erro na API!');
+                    }
+                })
+                .then(function (dados) {
+                    console.log("estou dentro da função");
+                    console.log(dados[0].descritor);
+                    resolve(dados[0].descritor);  // Resolve a Promise com o valor do descritor
+                })
+                .catch(function (erro) {
+                    console.error(erro);
+                    reject(erro);  // Rejeita a Promise em caso de erro
+                });
+        });
+    }
+
+
+    function verificarDificuldadePorDescritor(descritor, materia) {
+        let dificuldadeTurma = 'Nenhum';
+
+        if (materia == 1) {
+            if (descritor == 'D1' || descritor == 'D2' || descritor == 'D3' || descritor == 'D4' || descritor == 'D5' || descritor == 'D6' || descritor == 'D7' || descritor == 'D8' || descritor == 'D9' || descritor == 'D10') {
+                dificuldadeTurma = 'Espaço e Forma';
+            }
+            else if (descritor == 'D11' || descritor == 'D12' || descritor == 'D13') {
+                dificuldadeTurma = 'Grandezas e Medidas';
+            }
+            else if (descritor == 'D14' || descritor == 'D15' || descritor == 'D16' || descritor == 'D17' || descritor == 'D18' || descritor == 'D19' || descritor == 'D20' || descritor == 'D21' || descritor == 'D22' || descritor == 'D23' || descritor == 'D24' || descritor == 'D25' || descritor == 'D26' || descritor == 'D27' || descritor == 'D28' || descritor == 'D29' || descritor == 'D30' || descritor == 'D31' || descritor == 'D32' || descritor == 'D33') {
+                dificuldadeTurma = 'Álgebra e Funções';
+            }
+            else if (descritor == 'D34' || descritor == 'D35') {
+                dificuldadeTurma = 'Tratamento da Informação';
+            }
+        }
+        else if (materia == 2) {
+            if (descritor == 'D1' || descritor == 'D3' || descritor == 'D4' || descritor == 'D6' || descritor == 'D14') {
+                dificuldadeTurma = 'Procedimentos de leitura';
+            }
+            else if (descritor == 'D5' || descritor == '12') {
+                dificuldadeTurma = 'Compreensão do texto';
+            }
+            else if (descritor == 'D20' || descritor == 'D21') {
+                dificuldadeTurma = 'Relação entre textos';
+            }
+            else if (descritor == 'D2' || descritor == 'D7' || descritor == 'D8' || descritor == 'D9' || descritor == 'D10' || descritor == 'D11' || descritor == 'D15') {
+                dificuldadeTurma = 'Coerência e coesão';
+            }
+            else if (descritor == 'D16' || descritor == 'D17' || descritor == 'D18' || descritor == 'D19') {
+                dificuldadeTurma = 'Relações entre recursos';
+            }
+            else if (descritor == 'D13') {
+                dificuldadeTurma = 'Variação linguística';
+            }
+        }
+
+
+        return dificuldadeTurma;
+    }
+
+    function relacionarCores(mediaProficiencia, turma) {
+        const cardTurma = document.getElementById(`turma${turma}`);
+        console.log(mediaProficiencia)
+        
+        if (mediaProficiencia < 275) {
+            cardTurma.classList.add('cardVermelho');
+        }
+        else if (mediaProficiencia >= 275 && mediaProficiencia < 350) {
+            cardTurma.classList.add('cardAmarelo');
+        }
+        else if (mediaProficiencia >= 350) {
+            cardTurma.classList.add('cardVerde');
+        } 
+
+        console.log(cardTurma)
+    }
+
+    function verificarTurmaSelecionada(idTurma) {
+        sessionStorage.setItem('ID_TURMA', idTurma);
+        window.location = './DashboardsProfessor.html';
+    }
 
 </script>

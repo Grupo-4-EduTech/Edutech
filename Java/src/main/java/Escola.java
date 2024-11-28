@@ -11,16 +11,26 @@ public class Escola {
     private Integer numLogradouro;
     private Integer idRegiao;
     private Diretoria diretoria;
+    private Integer idRegiao;
 
     public Escola(){}
 
-    public Escola(int idEscola, String nome, String logradouro, Integer numLogradouro, Integer idRegiao, Diretoria diretoria) {
+    public Escola(int idEscola, String nome, String logradouro, Integer numLogradouro, Diretoria diretoria, Integer idRegiao) {
         this.idEscola = idEscola;
         this.nome = nome;
         this.logradouro = logradouro;
         this.numLogradouro = numLogradouro;
         this.idRegiao = idRegiao;
         this.diretoria = diretoria;
+        this.idRegiao = idRegiao;
+    }
+
+    public Integer getIdRegiao() {
+        return idRegiao;
+    }
+
+    public void setIdRegiao(Integer idRegiao) {
+        this.idRegiao = idRegiao;
     }
 
     public int getIdEscola() {
