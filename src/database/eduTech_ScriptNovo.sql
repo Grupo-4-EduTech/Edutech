@@ -13,12 +13,14 @@ CREATE TABLE escola(
     logradouro VARCHAR(45) NULL,
     numLogradouro INT NULL,
     fkDiretoria INT NOT NULL,
+    idRegiao INT NOT NULL,
     FOREIGN KEY (fkDiretoria) REFERENCES diretoria(idDiretoria),
     PRIMARY KEY (idEscola, fkDiretoria)
 );
 
 CREATE TABLE turma(
 	idTurma INT NOT NULL,
+    nome CHAR(3),
     serie INT NOT NULL,
     fkEscola INT NOT NULL,
     fkDiretoria INT NOT NULL,
@@ -109,6 +111,13 @@ CREATE TABLE alerta (
     FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
 );
 
+CREATE TABLE professorTurma(
+	fkTurma int,
+    fkProfessor int,
+    FOREIGN KEY(fkTurma) REFERENCES turma(idTurma),
+    FOREIGN KEY(fkProfessor) REFERENCES usuario(idUsuario)
+);
+
 -- Inserts de exemplo
 
 insert into cargo(descricao)
@@ -122,7 +131,7 @@ insert into materia(nome)
 values ("MT"),("LP");
 
 insert into escola
-values (1, "Escola teste 1","00000000", 1, 1),(2, "Escola teste 2", "00000000", 2, 1),(3, "Escola teste 3","00000000", 3, 1);
+values (1, "Escola teste 1","00000000", 1, 1, 1),(2, "Escola teste 2", "00000000", 2, 1, 2),(3, "Escola teste 3","00000000", 3, 1, 3);
 
 insert into usuario
 values (default, "Secretário Fulano","secfulano@saopaulo.com","123","11999999999",NOW(),1,null,null,null),(default, "Diretor Ciclano","dirciclano@escolaa.com","123","11999999999",NOW(),2,1,1,null),(default, "Professor Beltrano","profbeltrano@escolaa.com","123","11999999999",NOW(),3,1,1,1);
@@ -132,6 +141,21 @@ VALUES
     ('2024-10-29 10:15:00', 'Alerta: notas mais baixas em Geometria no último ano.', 1),
     ('2024-10-30 09:00:00', 'Atenção: desempenho abaixo da média em Matemática.', 2),
     ('2024-11-01 14:30:00', 'Aviso: alunos com dificuldades em Português detectados.', 3);
+    
+insert into usuario values
+(default, "Professor teste", "profT1@escolaa.com", "123", "11999999999", NOW(), 3, 1, 1, 1);
+
+/*
+insert into professorTurma values
+(1289313, 3),
+(1361594, 3),
+(1448100, 3);
+
+insert into professorTurma values
+(1257665, 4),
+(1376711, 4),
+(1416455, 4);
+*/
 
 select (select count(idEscola)-3 from escola) qtdEscolas,(select count(idTurma) from turma) qtdTurmas, (select count(idAluno) from aluno) qtdAlunos,(select count(idQuestao) from questao) qtdQuestoes,count(idRespostaAluno) qtdRespostas from respostaAluno;
 
