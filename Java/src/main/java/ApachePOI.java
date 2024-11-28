@@ -3,6 +3,7 @@ import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 import com.github.javafaker.Faker;
 import org.apache.poi.ss.usermodel.Cell;
@@ -110,6 +111,12 @@ public class ApachePOI{
             List<RespostaAluno> respostasExtraidas = new ArrayList<>();
 
             List<Integer> relevante = List.of(5,8,9,10,22,23,24,25,33,38,43,45,46);
+            List<String> listaNomeTurmas = new ArrayList<>(Arrays.asList(
+                    "3ºA", "3ºB", "3ºC", "3ºD", "3ºE", "3ºF", "3ºG", "3ºH"
+            ));
+            List<Integer> listaIdEscolas = new ArrayList<>();
+
+            Integer contador = 0;
 
             for (Row row:sheet){
                 if(row==null){continue;}
@@ -203,8 +210,11 @@ public class ApachePOI{
                     escola.setNome(faker.university().name()); // sei que os nomes são meio estranhos, mas é o que tem pra hoje
                     escola.setLogradouro(faker.address().streetName());
                     escola.setNumLogradouro(Integer.parseInt(faker.address().streetAddressNumber()));
+                    escola.setIdRegiao(ThreadLocalRandom.current().nextInt(1,6));
                     aluno.setNome(faker.name().fullName());
                     seed++;
+
+                    escola.setIdRegiao(ThreadLocalRandom.current().nextInt(1, 6));
 
                     escola.setDiretoria(diretoria);
                     turma.setEscola(escola);
@@ -212,10 +222,22 @@ public class ApachePOI{
                     respostaAluno.setAluno(aluno);
                     respostaAluno.setResposta(respostas);
 
+                    if(!listaIdEscolas.contains(turma.getEscola().getIdEscola())){
+                        listaIdEscolas.add(turma.getEscola().getIdEscola());
+                        contador = 0;
+                        turma.setNome(listaNomeTurmas.get(contador));
+                    }
+                    else{
+                        turma.setNome(listaNomeTurmas.get(contador));
+                    }
+                    contador++;
+
                     escolasExtraidas.add(escola);
                     turmasExtraidas.add(turma);
                     alunosExtraidos.add(aluno);
                     respostasExtraidas.add(respostaAluno);
+
+
                 }
             }
 
@@ -226,12 +248,13 @@ public class ApachePOI{
 
             for(Escola escola:escolasExtraidas){
                 if(escola.getIdEscola()==0){continue;}
-                connection.update("INSERT IGNORE INTO escola (idEscola, nome, logradouro, numLogradouro, fkDiretoria) VALUES(?, ?, ?, ?, ?)", escola.getIdEscola(), escola.getNome(), escola.getLogradouro(), escola.getNumLogradouro(), escola.getDiretoria().getIdDiretoria());
+
+                connection.update("INSERT IGNORE INTO escola (idEscola, nome, logradouro, numLogradouro, fkDiretoria, idRegiao) VALUES(?, ?, ?, ?, ?, ?)", escola.getIdEscola(), escola.getNome(), escola.getLogradouro(), escola.getNumLogradouro(), escola.getDiretoria().getIdDiretoria(), escola.getIdRegiao());
             }
 
             for(Turma turma:turmasExtraidas){
                 if(turma.getIdTurma()==0){continue;}
-                connection.update("INSERT IGNORE INTO turma (idTurma, serie, fkEscola, fkDiretoria) VALUES(?, ?, ?, ?)", turma.getIdTurma(), turma.getSerie(), turma.getEscola().getIdEscola(), turma.getEscola().getDiretoria().getIdDiretoria());
+                connection.update("INSERT IGNORE INTO turma (idTurma, nome, serie, fkEscola, fkDiretoria) VALUES(?, ?, ?, ?, ?)", turma.getIdTurma(), turma.getNome(), turma.getSerie(), turma.getEscola().getIdEscola(), turma.getEscola().getDiretoria().getIdDiretoria());
             }
 
             for(Aluno aluno:alunosExtraidos){

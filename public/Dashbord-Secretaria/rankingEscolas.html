@@ -9,7 +9,7 @@
         <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
         <title>Edu Tech | Ranking</title>
     </head>
-<body>
+<body onload="validarSessao(), rankingEscolas()">
 
     <div class="modalSuporte" onclick="fecharmodal()">
         <div class="contentSuporte">
@@ -96,11 +96,11 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     <span class="titulo_kpi">Ranking das escolas</span>
                 </div>
                 <div class="kpi_direita">
-                    <img src="../assets/sino.svg" class="icone_notificacao">
+                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
                     <img src="../assets/linha-kpi.svg" class="barra_kpi">
                     <img src="../assets/icone_usuario.svg" class="icone_usuario">
                     <div class="nome_titulo">
-                        <p class="kpi_nomeUsuario">Usuario Sobrenome</p>
+                        <p class="kpi_nomeUsuario" id="nomeUsuario">Usuario Sobrenome</p>
                         <h6 class="kpi_descricao">Secretaria da educação</h6>
 
                     </div>
@@ -109,118 +109,23 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
             </div>
         </div>
 
+        <!-- ALERTAS -->
+        <div class="wrapper" id="wra">
+            <div class="triangle"></div>
+            <div class="base" id="basesinha">
+            </div>
+        </div>
+
         <div class="area_cadastro">
             <div class="quadrado">
                 <p>Ranking de Escolas</p>
-                <div class="list">
-                    <div class="school-card">
-                        <div class="rank">1º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                    <div class="school-card">
-                        <div class="rank">2º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5001</span>
-                        </div>
-                    </div>
-                    <div class="school-card">
-                        <div class="rank">3º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5097</span>
-                        </div>
-                    </div>
-                    <div class="school-card">
-                        <div class="rank">1º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                    <div class="school-card">
-                        <div class="rank">1º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                    <div class="school-card">
-                        <div class="rank">1º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                    <div class="school-card">
-                        <div class="rank">1º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                    <div class="school-card">
-                        <div class="rank">1º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                    <div class="school-card">
-                        <div class="rank">1º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                    <div class="school-card">
-                        <div class="rank">1º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                    <div class="school-card">
-                        <div class="rank">1º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                    <div class="school-card">
-                        <div class="rank">1º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                    <div class="school-card">
-                        <div class="rank">1º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
+                <div class="list" id="list">
             </div>
         </div>
 </body>
 </html>
+
+<script src="../js/sessao.js"></script>
 
 <script>
     function mudarTelaDiretor() {
@@ -237,6 +142,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
     }
 
     function SairDaDash(){
+    limparSessao();
     window.location.href = "../index.html"
 }
 
@@ -257,4 +163,29 @@ function fecharmodal(codigoModal){
             modal1.style.display = 'none'
 }
 }
+
+function rankingEscolas(){
+
+    fetch("/secretaria/rankingEscolas", {
+        method: "GET",
+    }).then(function (resposta){
+        resposta.json().then((escolas) => {
+            escolas.forEach((escola, index) => {
+                list.innerHTML+=`
+                   <div class="school-card">
+                        <div class="rank">${index+1}</div>
+                        <div class="school-name">${escola.nome}</div>
+                        <div class="score">
+                            <span class="score-icon">🏆</span>
+                            <span>${escola.media}</span>
+                        </div>
+                    </div> 
+                `
+            })
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    })
+}
 </script>
+  <script src="../js/alerta.js"></script>

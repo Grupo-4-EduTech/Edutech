@@ -5,7 +5,7 @@
 }
 
 .AreaTextoLocal{
-    width: 220px;
+    width: 50%;
     height: 100%;
     margin-left: 6px;
     display: flex;
@@ -17,13 +17,17 @@
     font-size: 23px;
 }
 
+.AreaTextoLocalSelecionado{
+    width: 100%;
+}
+
 .EspacoTextoLocal{
     width: 10px;
-    height: 2px;
+    /* height: 2px; */
     border-radius: 10px;
     margin-left: 10px;
     margin-right: 10px;
-    background-color: #FFF;
+    /* background-color: #FFF; */
 }
 
 .EspacoKPI{
@@ -118,6 +122,8 @@
     margin-right: 8px;
     font-family: 'Rubik';
     text-align: center;
+    font-size: 50px;
+    margin-left: 4px;
 }
 
 #AreaTextoComNumeroEVirgula{
