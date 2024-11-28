@@ -1,3 +1,4 @@
+import org.json.JSONObject;
 import software.amazon.awssdk.core.sync.ResponseTransformer;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.*;
@@ -11,9 +12,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
-        S3Client s3Client = new S3Provider().getS3Client();
+        JSONObject json = new JSONObject();
+
+        json.put("text", "Turma 3°B esta abaixo da média!!! ⚠\uD83D\uDD14");
+        Slack.enviarMensagem(json);
+
+        /*S3Client s3Client = new S3Provider().getS3Client();
         String bucketName = "edutech-s3";
 
         try {
@@ -41,7 +47,7 @@ public class Main {
         InputStream fileQ = Files.newInputStream(pathQ);
 
         ApachePOI apachePOI = new ApachePOI();
-        apachePOI.extrairDadosEM(filenameEM,fileEM, apachePOI.extrairQuestoes(filenameQ,fileQ));
+        apachePOI.extrairDadosEM(filenameEM,fileEM, apachePOI.extrairQuestoes(filenameQ,fileQ));*/
 
     }
 }
