@@ -58,47 +58,46 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
             </div>
         </div>
     </div>
-
-    <div class="navBarlateral">
-        <div class="AreaLogo">
-            <div class="Logo">
-            </div>
+    <div class="menuLateral">
+        <div class="logoEduTech"></div>
+        <div class="navegacaoTitulo">
+            <span>
+                Navegação
+            </span>
         </div>
-        <div class="TituloNavegacao">
-            NAVEGAÇÃO
-        </div>
-        <div class="AreaNavegacao">
-            <a class="OpcaoArea" id="OpcaoSelecionada" href="./EntradaDash.html">
-                <img src="../assets/IconChapeuTurma.svg" class="IconNavegacao">
-                <div class="AreaTextoOpcao">
+        <div class="containerNavegacao">
+            <div class="fileiraSelecionada" onclick="gotoTurmas()">
+                <div class="imgFileira">
+                    <img src="../assets/chapeuBranco.svg"  width="30px" height="30px">
+                </div>
+                <div class="tituloFileira">
                     Turmas
                 </div>
-            </a>
-            <a class="OpcaoArea"
-                href="https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf"
-                target="_blank">
-                <img src="../assets/IconFolhaNavegacaoTurma.svg" class="IconNavegacaoFolha">
-                <div class="AreaTextoOpcao">
+
+            </div>
+            <div class="fileiraNavegacao">
+                <div class="imgFileira">
+                    <img src="../assets/descritores.svg" width="23px" height="23px">
+                </div>
+                <div class="tituloFileira" onclick="gotoMatrizReferencia()">
                     Descritores
                 </div>
-            </a>
-            <button class="Suporte" onclick="abrirSuporte()">
-                <div class="AreaClick">
-                    <img src="../assets/MicrofoneSuporteTurma.svg" class="IconNavegacao">
-                    <div class="AreaTextoSuporte">
-                        Suporte
-                    </div>
-                </div>
-            </button>
-        </div>
-        <div class="Espaco">
-        </div>
-        <a class="OpcaoArea" href="../index.html">
-            <img src="../assets/IconSairTurma.svg" class="IconNavegacao">
-            <div class="AreaTextoOpcao">
-                Sair
             </div>
-        </a>
+            <div class="fileiraNavegacao">
+                <div class="imgFileira">
+                    <img src="../assets/bx_support.svg" width="30px" height="30px">
+                </div>
+                <div class="tituloFileira" onclick="abrirSuporte()">
+                    Suporte
+                </div>
+            </div>
+        </div>
+        <div class="exit">
+            <img src="../assets/sair.svg">
+            <span>
+                Sair
+            </span>
+        </div>
     </div>
     <div class="Areadash">
         <div class="AreaKPI">
@@ -150,6 +149,12 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
 </html>
 
 <script>
+  function gotoMatrizReferencia(){
+        var url = "https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf";
+            // Abre a URL em uma nova aba
+            window.open(url, '_blank');
+    }
+  
     function abrirModais(codigoModal) {
         let listamodais = ['.modalSuporte', '.painel']
         const modal1 = document.querySelector(listamodais[codigoModal])
@@ -168,8 +173,13 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
         for (let i = 0; i <= listamodais.length; i++) {
             let modal1 = document.querySelector(listamodais[i])
             modal1.style.display = 'none'
+
         }
     }
+function gotoTurmas(){
+        window.location.href = "EntradaDash.html"
+    }
+
 
     const idUsuario = sessionStorage.getItem('ID_USUARIO');
     const cargoUsuario = sessionStorage.getItem('CARGO_USUARIO');
