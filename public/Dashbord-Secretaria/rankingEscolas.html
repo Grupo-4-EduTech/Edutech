@@ -80,7 +80,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     <span class="titulo_kpi">Ranking das escolas</span>
                 </div>
                 <div class="kpi_direita">
-                    <img src="../assets/sino.svg" class="icone_notificacao">
+                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
                     <img src="../assets/linha-kpi.svg" class="barra_kpi">
                     <img src="../assets/icone_usuario.svg" class="icone_usuario">
                     <div class="nome_titulo">
@@ -90,6 +90,13 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+        <!-- ALERTAS -->
+        <div class="wrapper" id="wra">
+            <div class="triangle"></div>
+            <div class="base" id="basesinha">
             </div>
         </div>
 
@@ -242,3 +249,5 @@ function fecharmodal(codigoModal){
 }
 }
 </script>
+
+<script src="../js/alerta.js"></script>
