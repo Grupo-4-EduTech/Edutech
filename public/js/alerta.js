@@ -1,7 +1,9 @@
 document.getElementById('sino_alerts').addEventListener("click", function() {
+    var idUsuario = sessionStorage.ID_USUARIO;
+    
     abrirEFecharNotificacoes();
 
-    fetch("/alert/puxarAlertas", {
+    fetch(`/alert/puxarAlertas/${idUsuario}`, {
         method: "GET",
     }).then(function (resposta) {
 
