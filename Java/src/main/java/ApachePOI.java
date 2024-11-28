@@ -111,6 +111,12 @@ public class ApachePOI{
             List<RespostaAluno> respostasExtraidas = new ArrayList<>();
 
             List<Integer> relevante = List.of(5,8,9,10,22,23,24,25,33,38,43,45,46);
+            List<String> listaNomeTurmas = new ArrayList<>(Arrays.asList(
+                    "3ºA", "3ºB", "3ºC", "3ºD", "3ºE", "3ºF", "3ºG", "3ºH"
+            ));
+            List<Integer> listaIdEscolas = new ArrayList<>();
+
+            Integer contador = 0;
 
             for (Row row:sheet){
                 if(row==null){continue;}
@@ -215,10 +221,52 @@ public class ApachePOI{
                     respostaAluno.setAluno(aluno);
                     respostaAluno.setResposta(respostas);
 
+                    if(row.getCell(8)!=null&&row.getCell(8).getNumericCellValue()!=0){
+
+                    }
+                    if(!listaIdEscolas.contains(turma.getEscola().getIdEscola())){
+                        listaIdEscolas.add(turma.getEscola().getIdEscola());
+                        contador = 0;
+                        turma.setNome(listaNomeTurmas.get(contador));
+                        System.out.println("Inseriu: " + listaNomeTurmas.get(contador));
+                        System.out.println(listaIdEscolas);
+                    }
+                    else{
+                        System.out.println("Caiu no else: " + listaNomeTurmas.get(contador));
+                        turma.setNome(listaNomeTurmas.get(contador));
+                    }
+                    contador++;
+
                     escolasExtraidas.add(escola);
                     turmasExtraidas.add(turma);
                     alunosExtraidos.add(aluno);
                     respostasExtraidas.add(respostaAluno);
+
+
+                  /*  Integer idTurmaAtual = ((int) row.getCell(8).getNumericCellValue());
+                    List<Object> novaTurma = new ArrayList<>();*/
+
+
+
+                 /*   boolean existe = false;
+                    for (List<Object> turmaList : listaTurmasInserir) {
+                        if (turmaList.get(0).equals(idTurmaAtual)) {  // Verifica se o id da turma já existe
+                            existe = true;
+                            break;  // Encerra o loop assim que encontrar
+                        }
+                    }
+
+                    if (!existe) {
+                        novaTurma.add(idTurmaAtual);
+                        novaTurma.add(listaNomeTurmas.get(contador));
+                        listaTurmasInserir.add(novaTurma);
+                        contador++;
+                    }
+                    else{
+
+                    }
+*/
+
                 }
             }
 
@@ -234,7 +282,7 @@ public class ApachePOI{
 
             for(Turma turma:turmasExtraidas){
                 if(turma.getIdTurma()==0){continue;}
-                connection.update("INSERT IGNORE INTO turma (idTurma, serie, fkEscola, fkDiretoria) VALUES(?, ?, ?, ?)", turma.getIdTurma(), turma.getSerie(), turma.getEscola().getIdEscola(), turma.getEscola().getDiretoria().getIdDiretoria());
+                connection.update("INSERT IGNORE INTO turma (idTurma, nome, serie, fkEscola, fkDiretoria) VALUES(?, ?, ?, ?, ?)", turma.getIdTurma(), turma.getNome(), turma.getSerie(), turma.getEscola().getIdEscola(), turma.getEscola().getDiretoria().getIdDiretoria());
             }
 
             for(Aluno aluno:alunosExtraidos){

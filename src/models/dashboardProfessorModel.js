@@ -3,6 +3,7 @@ var database = require("../database/config");
 function listarTurmas(idUsuario) {
     const instrucaoSql = `
         SELECT professorTurma.fkTurma AS idTurma,
+                turma.nome AS nomeTurma,
 		        materia.nome AS materia,
                 CONCAT(SUBSTRING(avg(proficienciaMT),1, 3), ',',
                         SUBSTRING(avg(proficienciaMT),3, 1)) AS mediaMT,
@@ -12,7 +13,8 @@ function listarTurmas(idUsuario) {
                     JOIN usuario ON fkProfessor = idUsuario
                     JOIN materia ON fkMateria = idMateria
                     JOIN aluno ON aluno.fkTurma = professorTurma.fkTurma
-                WHERE fkProfessor = ${idUsuario} GROUP BY professorTurma.fkTurma ORDER BY idTurma;
+                    JOIN turma ON professorTurma.fkTurma = turma.idTurma
+                WHERE fkProfessor = ${idUsuario} GROUP BY professorTurma.fkTurma, turma.nome ORDER BY idTurma;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -67,20 +69,28 @@ function listarDesempenhoPorTurma(idUsuario, idTurma) {
 
 function listarMediaAlunosPorTurma(idUsuario, idTurma, idMateria) {
     const instrucaoSql = `
-       SELECT idAluno,
+       SELECT 
+            idAluno,
             a.fkTurma,
             a.nome,
-            m.nome as materia,
-            CONCAT(SUBSTRING(avg(proficienciaMT),1, 3), ',',
-                    SUBSTRING(avg(proficienciaMT),3, 1)) AS mediaMT,
-            CONCAT(SUBSTRING(avg(proficienciaLP),1, 3), ',',
-                    SUBSTRING(avg(proficienciaLP),3, 1)) AS mediaLP
-            FROM aluno AS a
-                JOIN professorTurma AS p ON a.fkTurma = p.fkTurma
-                JOIN usuario ON fkProfessor = idUsuario
-                JOIN materia AS m ON fkMateria = idMateria
-            WHERE fkProfessor = ${idUsuario} AND a.fkTurma = ${idTurma}
-            GROUP BY idAluno ORDER BY ${idMateria};
+            t.nome AS nomeTurma, 
+            m.nome AS materia,
+            IFNULL(CONCAT(SUBSTRING(avg(proficienciaMT), 1, 3), ',', SUBSTRING(avg(proficienciaMT), 3, 1)), 'N/A') AS mediaMT,
+            IFNULL(CONCAT(SUBSTRING(avg(proficienciaLP), 1, 3), ',', SUBSTRING(avg(proficienciaLP), 3, 1)), 'N/A') AS mediaLP
+        FROM 
+            aluno AS a
+            JOIN professorTurma AS p ON a.fkTurma = p.fkTurma
+            JOIN usuario ON fkProfessor = idUsuario
+            JOIN materia AS m ON fkMateria = idMateria
+            JOIN turma AS t ON idTurma = p.fkTurma
+        WHERE 
+            fkProfessor = ${idUsuario} AND a.fkTurma = ${idTurma}
+        GROUP BY 
+            idAluno, t.nome
+        ORDER BY 
+            CASE WHEN avg(proficienciaMT) IS NULL THEN 1 ELSE 0 END,  -- Coloca os registros com mediaMT NULL por último
+            CASE WHEN avg(proficienciaLP) IS NULL THEN 1 ELSE 0 END,  -- Coloca os registros com mediaLP NULL por último
+            ${idMateria};  -- Ordenação adicional por matéria
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -117,8 +127,8 @@ function listarAlunosIndividualmente(idMateria, idTurma, ordenacao) {
         SELECT
             a.idAluno,
             a.nome,
-            CONCAT(SUBSTRING(AVG(proficienciaMT), 1, 3), ',', SUBSTRING(AVG(proficienciaMT), 3, 1)) AS mediaMT,
-            CONCAT(SUBSTRING(AVG(proficienciaLP), 1, 3), ',', SUBSTRING(AVG(proficienciaLP), 3, 1)) AS mediaLP,
+            IFNULL(CONCAT(SUBSTRING(avg(proficienciaMT), 1, 3), ',', SUBSTRING(avg(proficienciaMT), 3, 1)), 'N/A') AS mediaMT,
+            IFNULL(CONCAT(SUBSTRING(avg(proficienciaLP), 1, 3), ',', SUBSTRING(avg(proficienciaLP), 3, 1)), 'N/A') AS mediaLP,
             COUNT(r.idRespostaAluno) AS quantidadeErros,  -- Contando apenas respostas erradas
             (SELECT q.descritor
             FROM respostaAluno r2
@@ -152,8 +162,8 @@ function pesquisarAluno(idMateria, idTurma, pesquisa) {
         SELECT
             a.idAluno,
             a.nome,
-            CONCAT(SUBSTRING(AVG(proficienciaMT), 1, 3), ',', SUBSTRING(AVG(proficienciaMT), 3, 1)) AS mediaMT,
-            CONCAT(SUBSTRING(AVG(proficienciaLP), 1, 3), ',', SUBSTRING(AVG(proficienciaLP), 3, 1)) AS mediaLP,
+            IFNULL(CONCAT(SUBSTRING(AVG(proficienciaMT), 1, 3), ',', SUBSTRING(AVG(proficienciaMT), 3, 1)), 'N/A') AS mediaMT,
+            IFNULL(CONCAT(SUBSTRING(AVG(proficienciaLP), 1, 3), ',', SUBSTRING(AVG(proficienciaLP), 3, 1)), 'N/A') AS mediaLP, 
             COUNT(r.idRespostaAluno) AS quantidadeErros,  -- Contando apenas respostas erradas
             (SELECT q.descritor
             FROM respostaAluno r2
