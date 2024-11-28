@@ -83,7 +83,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     <span class="titulo_kpi">Diretores</span>
                 </div>
                 <div class="kpi_direita">
-                    <img src="../assets/sino.svg" class="icone_notificacao">
+                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
                     <img src="../assets/linha-kpi.svg" class="barra_kpi">
                     <img src="../assets/icone_usuario.svg" class="icone_usuario">
                     <div class="nome_titulo">
@@ -93,6 +93,13 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+        <!-- ALERTAS -->
+        <div class="wrapper" id="wra">
+            <div class="triangle"></div>
+            <div class="base" id="basesinha">
             </div>
         </div>
 
@@ -143,7 +150,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 
             </div>
         </div>
-
+    </div>
 </body>
 
 </html>
@@ -181,6 +188,8 @@ function fecharmodal(codigoModal){
         for(let i = 0;i <=listamodais.length;i++) {  
             let modal1 = document.querySelector(listamodais[i])
             modal1.style.display = 'none'
-}
+    }
 }
 </script>
+
+<script src="../js/alerta.js"></script>
