@@ -111,6 +111,12 @@ public class ApachePOI{
             List<RespostaAluno> respostasExtraidas = new ArrayList<>();
 
             List<Integer> relevante = List.of(5,8,9,10,22,23,24,25,33,38,43,45,46);
+            List<String> listaNomeTurmas = new ArrayList<>(Arrays.asList(
+                    "3ºA", "3ºB", "3ºC", "3ºD", "3ºE", "3ºF", "3ºG", "3ºH"
+            ));
+            List<Integer> listaIdEscolas = new ArrayList<>();
+
+            Integer contador = 0;
 
             for (Row row:sheet){
                 if(row==null){continue;}
@@ -215,10 +221,22 @@ public class ApachePOI{
                     respostaAluno.setAluno(aluno);
                     respostaAluno.setResposta(respostas);
 
+                    if(!listaIdEscolas.contains(turma.getEscola().getIdEscola())){
+                        listaIdEscolas.add(turma.getEscola().getIdEscola());
+                        contador = 0;
+                        turma.setNome(listaNomeTurmas.get(contador));
+                    }
+                    else{
+                        turma.setNome(listaNomeTurmas.get(contador));
+                    }
+                    contador++;
+
                     escolasExtraidas.add(escola);
                     turmasExtraidas.add(turma);
                     alunosExtraidos.add(aluno);
                     respostasExtraidas.add(respostaAluno);
+
+
                 }
             }
 
@@ -234,7 +252,7 @@ public class ApachePOI{
 
             for(Turma turma:turmasExtraidas){
                 if(turma.getIdTurma()==0){continue;}
-                connection.update("INSERT IGNORE INTO turma (idTurma, serie, fkEscola, fkDiretoria) VALUES(?, ?, ?, ?)", turma.getIdTurma(), turma.getSerie(), turma.getEscola().getIdEscola(), turma.getEscola().getDiretoria().getIdDiretoria());
+                connection.update("INSERT IGNORE INTO turma (idTurma, nome, serie, fkEscola, fkDiretoria) VALUES(?, ?, ?, ?, ?)", turma.getIdTurma(), turma.getNome(), turma.getSerie(), turma.getEscola().getIdEscola(), turma.getEscola().getDiretoria().getIdDiretoria());
             }
 
             for(Aluno aluno:alunosExtraidos){

@@ -214,7 +214,8 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     div_pai_alunos.innerHTML = ""
                     for (let i = 0; i < resposta.length; i++) {
                         let aluno = resposta[i];
-
+                        id_turma.innerHTML = aluno.nomeTurma;
+                        
                         let media = idMateria == 1 ? aluno.mediaMT : aluno.mediaLP;
                         const dificuldadeAluno = verificarDificuldadePorDescritor(aluno.dificuldade, idMateria);
                        

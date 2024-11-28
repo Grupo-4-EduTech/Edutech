@@ -128,7 +128,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
                                 </div>
                             </div>
                             <div class="AreaTextoInfoKPI" id="AreaTextoComNumeroEVirgula">
-
+                                N/A
                             </div>
                         </div>
                     </div>
@@ -145,7 +145,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
                                 </div>
                             </div>
                             <div class="AreaTextoInfoKPI" id="KPI_alunos_abaixo_media">
-                                0
+                                N/A
                             </div>
                         </div>
                     </div>
@@ -162,7 +162,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
                                 </div>
                             </div>
                             <div class="AreaTextoInfoKPI" id="KPI_alunos_abaixo_nivel5" >
-                                0
+                                N/A
                             </div>
                         </div>
                         <div class="AreaImgDuvidaDescritor">
@@ -185,7 +185,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
                                 </div>
                             </div>
                             <div class="AreaTextoInfoKPI" id="AreaTextoSemNumero">
-
+                                N/A
                             </div>
                         </div>
                     </div>
@@ -195,7 +195,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
                 <div class="InfoDash">
                     <div class="InfoDashEnglobada">
                         <div class="AreaImgDuvidaDescritor">
-                            <a href="https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf"
+                            <a id="href_descritor" href="#"
                                 target="_blank" class="ImgDuvidaDescritor">
                                 <img src="../assets/IconInterrogacaoblack.svg" class="IconInterrogacaoDuvida">
                             </a>
@@ -294,7 +294,8 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: {stepSize: 1}
                     }
                 }
             }
@@ -344,7 +345,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
     }
 
     const idTurmaSelecionada = sessionStorage.getItem('ID_TURMA')
-    id_turma.innerHTML = "Turma: " + idTurmaSelecionada;
+    // id_turma.innerHTML = "Turma: " + idTurmaSelecionada;
 
     const idUsuario = sessionStorage.getItem('ID_USUARIO');
     const cargoUsuario = sessionStorage.getItem('CARGO_USUARIO');
@@ -368,7 +369,10 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
                         let materia = turma.materia == "MT" ? "Matemática" : "Português";
                         let media = turma.materia == "MT" ? turma.mediaMT : turma.mediaLP;
                         let idMateria = turma.materia == "MT" ? 1 : 0;
-                        sessionStorage.setItem('ID_MATERIA', idMateria)
+                        sessionStorage.setItem('ID_MATERIA', idMateria);
+
+                        const hrefDescritor = document.getElementById('href_descritor');
+                        hrefDescritor.href = turma.materia == "MT" ? "https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf" : "https://download.inep.gov.br/educacao_basica/prova_brasil_saeb/menu_do_professor/o_que_cai_nas_provas/Matriz_de_Referencia_de_Lingua_Portuguesa.pdf"
 
                         getDificuldadePorTurma(turma.idTurma, idMateria)
                             .then(function (dificuldade) {
@@ -486,6 +490,8 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
                         let materia = aluno.materia == "MT" ? "Matemática" : "Português";
                         let media = aluno.materia == "MT" ? aluno.mediaMT : aluno.mediaLP;
                         let idMateria = aluno.materia == "MT" ? 1 : 0;
+
+                        id_turma.innerHTML = aluno.nomeTurma;
 
                         if (media < mediaTurma) {
                             qtdAlunosAbaixoMedia++;

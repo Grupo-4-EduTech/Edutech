@@ -179,7 +179,10 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
     cargo_usuario.innerHTML = cargoUsuario;
 
     function listarTurmas() {
-        fetch(`/dashboardProfessor/listarTurmas/${idUsuario}`).then(function (resposta) {
+        const idTurmaSelecionada = sessionStorage.getItem('ID_TURMA');
+        let condicao = idTurmaSelecionada == 1 ? "mediaMT" : "mediaLP";
+
+        fetch(`/dashboardProfessor/listarTurmas/${idUsuario}/${condicao}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     throw "Nenhum resultado encontrado!!";
@@ -194,7 +197,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                         let media = turma.materia == "MT" ? turma.mediaMT : turma.mediaLP;
 
                         if(media == null){
-                            media = "000,0"
+                            media = "N/A"
                         }
 
                         let idMateria = turma.materia == "MT" ? 1 : 0;
@@ -203,7 +206,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                         div_exibir_turmas.innerHTML += `          
                         <a class="Turma" id="turma${turma.idTurma}" onclick="verificarTurmaSelecionada(${turma.idTurma})">
                             <div class="nomeTurma">
-                                ${turma.idTurma}
+                                ${turma.nomeTurma}
                             </div>
                             <div class="disciplina">
                                 <div class="imagemLivroDisciplina">
@@ -225,7 +228,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                                 <div class="imagemAlerta">
                                 </div>
                                 <div class="AreaTextoDificuldade" id="dificuldade${turma.idTurma}">
-                                    Sem dados
+                                    N/A
                                 </div>
                             </div>
                         </a>

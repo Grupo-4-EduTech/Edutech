@@ -3,7 +3,7 @@ var router = express.Router();
 
 var dashboardProfessorController = require("../controllers/dashboardProfessorController");
 
-router.get("/listarTurmas/:idUsuario", function (req, res) {
+router.get("/listarTurmas/:idUsuario/:condicao", function (req, res) {
     dashboardProfessorController.listarTurmas(req, res);
 });
 
