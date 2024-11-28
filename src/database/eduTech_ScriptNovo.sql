@@ -12,6 +12,7 @@ CREATE TABLE escola(
     nome VARCHAR(45) NULL,
     logradouro VARCHAR(45) NULL,
     numLogradouro INT NULL,
+    idRegiao INT NOT NULL,
     fkDiretoria INT NOT NULL,
     FOREIGN KEY (fkDiretoria) REFERENCES diretoria(idDiretoria),
     PRIMARY KEY (idEscola, fkDiretoria)
@@ -19,6 +20,7 @@ CREATE TABLE escola(
 
 CREATE TABLE turma(
 	idTurma INT NOT NULL,
+    nome CHAR(3),
     serie INT NOT NULL,
     fkEscola INT NOT NULL,
     fkDiretoria INT NOT NULL,
@@ -69,6 +71,13 @@ CREATE TABLE usuario(
     CONSTRAINT secretaria CHECK (fkCargo != 1 OR (fkMateria IS NULL AND fkEscola IS NULL)), -- Se for do secretaria, fkEscola e fkMatéria são nulas
     CONSTRAINT diretorTemEscola CHECK (fkCargo != 2 OR (fkMateria IS NULL AND fkEscola IS NOT NULL)), -- Se for diretor, fkEscola não pode ser nula
     CONSTRAINT ProfessorTemMateria CHECK (fkCargo != 3 OR (fkMateria IS NOT NULL AND fkEscola IS NOT NULL)) -- Se for professor, fkEscola e fkMateria não podem ser nulas
+);
+
+CREATE TABLE professorTurma(
+    fkProfessor INT NOT NULL,
+    fkTurma INT NOT NULL,
+    FOREIGN KEY (fkProfessor) REFERENCES usuario(idUsuario),
+    FOREIGN KEY (fkTurma) REFERENCES turma(idTurma)
 );
 
 CREATE TABLE questao(
@@ -122,7 +131,7 @@ insert into materia(nome)
 values ("MT"),("LP");
 
 insert into escola
-values (1, "Escola teste 1","00000000", 1, 1),(2, "Escola teste 2", "00000000", 2, 1),(3, "Escola teste 3","00000000", 3, 1);
+values (1, "Escola teste 1","00000000", 1, 1, 1),(2, "Escola teste 2", "00000000", 2, 1, 1),(3, "Escola teste 3","00000000", 3, 1, 1);
 
 insert into usuario
 values (default, "Secretário Fulano","secfulano@saopaulo.com","123","11999999999",NOW(),1,null,null,null),(default, "Diretor Ciclano","dirciclano@escolaa.com","123","11999999999",NOW(),2,1,1,null),(default, "Professor Beltrano","profbeltrano@escolaa.com","123","11999999999",NOW(),3,1,1,1);

@@ -1,13 +1,15 @@
 public class Turma {
     private int idTurma;
     private Integer serie;
+    private String nome;
     private Escola escola;
     private Diretoria diretoria;
 
     public Turma(){}
 
-    public Turma(int idTurma, Integer serie, Escola escola, Diretoria diretoria) {
+    public Turma(int idTurma, String nome, Integer serie, Escola escola, Diretoria diretoria) {
         this.idTurma = idTurma;
+        this.nome = nome;
         this.serie = serie;
         this.escola = escola;
         this.diretoria = diretoria;
@@ -19,6 +21,14 @@ public class Turma {
 
     public void setIdTurma(int idTurma) {
         this.idTurma = idTurma;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Integer getSerie() {

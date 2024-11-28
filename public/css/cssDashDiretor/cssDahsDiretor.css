@@ -165,6 +165,196 @@ body {
     justify-content: center;
 }
 
+.AreaDeTrabalhoDiretor {
+    margin-top: 50px;
+    height: 660px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Fileira {
+    height: 300px;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    border-radius: 20px;
+    flex-wrap: wrap;
+}
+
+.Turma {
+    border-radius: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Rubik';
+    height: 90%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: 0.3s;
+    background-color: #c9c9c9;
+    box-shadow: 0px 0px 0px 1.5px #565656;
+    margin-bottom: 2%;
+}
+
+.Turma:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#AreaDeTrabalhoEntrada {
+    align-items: center;
+    justify-content: space-between;
+    height: 660px;
+    width: 100%;
+}
+
+#div_exibir_turmas {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    justify-content: center;
+}
+
+.cardVermelho {
+    background-color: #FF9A9A;
+    box-shadow: 0px 0px 0px 1.5px #AE0000;
+}
+
+.cardAmarelo {
+    background-color: #FFEC83;
+    box-shadow: 0px 0px 0px 1.5px #AE7700;
+}
+
+.cardVerde {
+    background-color: #96FF7C;
+    box-shadow: 0px 0px 0px 1.5px #3DAE00;
+}
+
+.cardDefault {
+    background-color: #c9c9c9;
+    box-shadow: 0px 0px 0px 1.5px #000000;
+}
+
+.AreaTextoMedia {
+    width: 60%;
+    /* width: 60%; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 23px;
+    font-family: 'Rubik';
+    margin-left: 4%;
+    font-weight: bold;
+}
+
+.materiaComDificuldade {
+    width: 225px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.nomeTurma {
+    width: 250px;
+    height: 50px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.disciplina {
+    width: 190px;
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+}
+
+.imagemLivroDisciplina {
+    width: 27%;
+    height: 100%;
+    background-image: url("../../assets/livro-aberto.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.AreaTextoDisciplina {
+    width: 72%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+}
+
+.media {
+    width: 215px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.imagemPrachetaMedia {
+    width: 20%;
+    height: 100%;
+    background-image: url("../../assets/prancheta.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.AreaTextoMedia {
+    /* width: 60%; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    /* font-size: 1.5vw; */
+    font-family: 'Rubik';
+    margin-left: 4%;
+    font-weight: bold;
+}
+
+.materiaComDificuldade {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.imagemAlerta {
+    width: 20%;
+    height: 100%;
+    background-image: url("../../assets/imagemAlerta.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.AreaTextoDificuldade {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .kpiProfessor {
     height: 100px;
     width: 95%;
@@ -296,18 +486,8 @@ body {
     width: 100%;
     height: 750px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.fileira {
-    width: 90%;
-    height: 360px;
-    display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .cardProfessor {
@@ -322,6 +502,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    margin: 1.5vw;
 }
 
 .fotoProfessor {
