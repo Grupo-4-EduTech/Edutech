@@ -2,8 +2,9 @@ var dashboardProfessorModel = require("../models/dashboardProfessorModel");
 
 function listarTurmas(req, res) {
     const idUsuario = req.params.idUsuario;
+    const condicao = req.params.condicao;
 
-    dashboardProfessorModel.listarTurmas(idUsuario)
+    dashboardProfessorModel.listarTurmas(idUsuario, condicao)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);

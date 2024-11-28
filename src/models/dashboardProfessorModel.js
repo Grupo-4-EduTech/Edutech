@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function listarTurmas(idUsuario) {
+function listarTurmas(idUsuario, condicao) {
     const instrucaoSql = `
         SELECT professorTurma.fkTurma AS idTurma,
                 turma.nome AS nomeTurma,
@@ -14,8 +14,17 @@ function listarTurmas(idUsuario) {
                     JOIN materia ON fkMateria = idMateria
                     JOIN aluno ON aluno.fkTurma = professorTurma.fkTurma
                     JOIN turma ON professorTurma.fkTurma = turma.idTurma
-                WHERE fkProfessor = ${idUsuario} GROUP BY professorTurma.fkTurma, turma.nome ORDER BY idTurma;
-    `;
+                WHERE fkProfessor = ${idUsuario} GROUP BY professorTurma.fkTurma, turma.nome ORDER BY  
+                CASE 
+                    WHEN avg(proficienciaMT) IS NULL THEN 1 
+                    ELSE 0 
+                END,
+                CASE 
+                    WHEN avg(proficienciaLP) IS NULL THEN 1 
+                    ELSE 0 
+                END,
+                ${condicao};;
+                `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -127,6 +136,7 @@ function listarAlunosIndividualmente(idMateria, idTurma, ordenacao) {
         SELECT
             a.idAluno,
             a.nome,
+            t.nome AS nomeTurma,
             IFNULL(CONCAT(SUBSTRING(avg(proficienciaMT), 1, 3), ',', SUBSTRING(avg(proficienciaMT), 3, 1)), 'N/A') AS mediaMT,
             IFNULL(CONCAT(SUBSTRING(avg(proficienciaLP), 1, 3), ',', SUBSTRING(avg(proficienciaLP), 3, 1)), 'N/A') AS mediaLP,
             COUNT(r.idRespostaAluno) AS quantidadeErros,  -- Contando apenas respostas erradas

@@ -179,7 +179,10 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
     cargo_usuario.innerHTML = cargoUsuario;
 
     function listarTurmas() {
-        fetch(`/dashboardProfessor/listarTurmas/${idUsuario}`).then(function (resposta) {
+        const idTurmaSelecionada = sessionStorage.getItem('ID_TURMA');
+        let condicao = idTurmaSelecionada == 1 ? "mediaMT" : "mediaLP";
+
+        fetch(`/dashboardProfessor/listarTurmas/${idUsuario}/${condicao}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     throw "Nenhum resultado encontrado!!";

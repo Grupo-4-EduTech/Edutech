@@ -221,18 +221,12 @@ public class ApachePOI{
                     respostaAluno.setAluno(aluno);
                     respostaAluno.setResposta(respostas);
 
-                    if(row.getCell(8)!=null&&row.getCell(8).getNumericCellValue()!=0){
-
-                    }
                     if(!listaIdEscolas.contains(turma.getEscola().getIdEscola())){
                         listaIdEscolas.add(turma.getEscola().getIdEscola());
                         contador = 0;
                         turma.setNome(listaNomeTurmas.get(contador));
-                        System.out.println("Inseriu: " + listaNomeTurmas.get(contador));
-                        System.out.println(listaIdEscolas);
                     }
                     else{
-                        System.out.println("Caiu no else: " + listaNomeTurmas.get(contador));
                         turma.setNome(listaNomeTurmas.get(contador));
                     }
                     contador++;
@@ -242,30 +236,6 @@ public class ApachePOI{
                     alunosExtraidos.add(aluno);
                     respostasExtraidas.add(respostaAluno);
 
-
-                  /*  Integer idTurmaAtual = ((int) row.getCell(8).getNumericCellValue());
-                    List<Object> novaTurma = new ArrayList<>();*/
-
-
-
-                 /*   boolean existe = false;
-                    for (List<Object> turmaList : listaTurmasInserir) {
-                        if (turmaList.get(0).equals(idTurmaAtual)) {  // Verifica se o id da turma já existe
-                            existe = true;
-                            break;  // Encerra o loop assim que encontrar
-                        }
-                    }
-
-                    if (!existe) {
-                        novaTurma.add(idTurmaAtual);
-                        novaTurma.add(listaNomeTurmas.get(contador));
-                        listaTurmasInserir.add(novaTurma);
-                        contador++;
-                    }
-                    else{
-
-                    }
-*/
 
                 }
             }
