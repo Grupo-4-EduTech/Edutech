@@ -210,6 +210,7 @@ public class ApachePOI{
                     escola.setNome(faker.university().name()); // sei que os nomes são meio estranhos, mas é o que tem pra hoje
                     escola.setLogradouro(faker.address().streetName());
                     escola.setNumLogradouro(Integer.parseInt(faker.address().streetAddressNumber()));
+                    escola.setIdRegiao(ThreadLocalRandom.current().nextInt(1,6));
                     aluno.setNome(faker.name().fullName());
                     seed++;
 
@@ -247,6 +248,7 @@ public class ApachePOI{
 
             for(Escola escola:escolasExtraidas){
                 if(escola.getIdEscola()==0){continue;}
+
                 connection.update("INSERT IGNORE INTO escola (idEscola, nome, logradouro, numLogradouro, fkDiretoria, idRegiao) VALUES(?, ?, ?, ?, ?, ?)", escola.getIdEscola(), escola.getNome(), escola.getLogradouro(), escola.getNumLogradouro(), escola.getDiretoria().getIdDiretoria(), escola.getIdRegiao());
             }
 

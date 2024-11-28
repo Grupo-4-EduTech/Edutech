@@ -9,7 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
-<body class="bodyCadastro">
+<body class="bodyCadastro" onload="validarSessao()">
     <div class="menuLateral">
         <div class="logoEduTech"></div>
         <div class="navegacaoTitulo">
@@ -33,7 +33,7 @@
                     <img src="../assets/chapeuBranco.svg"  width="32px" height="32px">
                 </div>
                 <div class="tituloMenuLateral">
-                    <span class="navegacao" onclick="gotoAtribuirTurmas()">
+                    <span class="navegacao" onclick="gotoTurmas()">
                         Turmas
                     </span>
                 </div>
@@ -115,7 +115,7 @@
                     <img src="../assets/user.svg" width="45px" height="45px">
                     <div class="nomeDiretor">
                         <span>
-                            Magaiver Da Silva
+                            <span id=nomeUsuario>Magaiver Da Silva</span>
                             <br>
                             Diretor(a)
                         </span>
@@ -149,13 +149,16 @@
             </button>
         </div>
     </body>
+
+<script src="../js/sessao.js"></script>
+
     <script>
         function gotoDashDiretor(){
         window.location.href = "dashDiretor.html"
     }
 
-    function gotoAtribuirTurmas(){
-        window.location.href = "atribuirTurmas.html"
+    function gotoTurmas(){
+        window.location.href = "turmas.html"
     }
 
     function gotoDashEscola(){
@@ -181,6 +184,7 @@ function fecharmodal(codigoModal){
 }
 
 function SairDaDash(){
+    limparSessao();
     window.location.href = "../index.html"
 }
     </script>

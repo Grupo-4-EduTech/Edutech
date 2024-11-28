@@ -12,7 +12,7 @@
     <title>Edu Tech | Dashboard</title>
 </head>
 
-<body>
+<body onload="validarSessao(), ranking(),abaixoMedia(), maisDificuldade(), turmasProficiencia()">
     <div class="menuLateral">
         <div class="logoEduTech"></div>
         <div class="navegacaoTitulo">
@@ -36,7 +36,7 @@
                     <img src="../assets/chapeuBranco.svg" width="32px" height="32px">
                 </div>
                 <div class="tituloMenuLateral">
-                    <span class="navegacao" onclick="gotoAtribuirTurmas()">
+                    <span class="navegacao" onclick="gotoTurmas()">
                         Turmas
                     </span>
                 </div>
@@ -118,7 +118,7 @@
                     <img src="../assets/user.svg" width="45px" height="45px">
                     <div class="nomeDiretor">
                         <span>
-                            Magaiver Da Silva
+                            <span id=nomeUsuario>Magaiver Da Silva</span>
                             <br>
                             Diretor(a)
                         </span>
@@ -137,8 +137,8 @@
                     <div class="fotoProfessor">
                         <img src="../assets/rank.svg">
                     </div>
-                    <span>16°</span>
-                    <img src="../assets/mdi_rank.svg" width="60px" height="70px">
+                    <span id="rank"></span>
+                    <!-- <img src="../assets/mdi_rank.svg" width="60px" height="70px"> -->
                 </div>
                 <div class="nivelMedio"></div>
             </div>
@@ -152,33 +152,33 @@
                     <div class="fotoProfessor">
                         <img src="../assets/operacoes.svg">
                     </div>
-                    <span style="color: red;">
-                        60%
+                    <span id="abaixoMediaMT">
+                        
                     </span>
                 </div>
                 <div class="nivelMedio">
                     <span>
-                        Nível básico < 5
+                        Nível básico < 325
                     </span>
                 </div>
             </div>
             <div class="cardIndicador">
                 <div class="tituloIndicador">
                     <span>
-                        Alunos abaixo do nível básico (Portugûes)
+                        Alunos abaixo do nível básico (Português)
                     </span>
                 </div>
                 <div class="conteudoIndicador">
                     <div class="fotoProfessor">
                         <img src="../assets/bxs_book.svg">
                     </div>
-                    <span>
-                        40%
+                    <span id="abaixoMediaLP">
+                        
                     </span>
                 </div>
                 <div class="nivelMedio">
                     <span>
-                        Nível básico < 5
+                        Nível básico < 325
                     </span>
                 </div>
             </div>
@@ -192,8 +192,8 @@
                     <div class="fotoProfessor">
                         <img src="../assets/chapeuBranco.svg" width="45px" height="45px">
                     </div>
-                    <span>
-                        3°F
+                    <span id="turmaMaisDificuldade">
+                        
                     </span>
                 </div>
                 <div class="nivelMedio"></div>
@@ -233,16 +233,19 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="script.js"></script>
 </body>
+
+<script src="../js/sessao.js"></script>
+
 <script>
     const ctx = document.getElementById('graficoBarras').getContext('2d');
 
     const graficoBarras = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['3º A', '3º B', '3º C', '3º D', '3º E', '3º F', '3º G'],
+            labels: [],
             datasets: [{
                 label: 'Média por proficiência',
-                data: [150, 250, 300, 200, 350, 100, 400], // Exemplo de dados
+                data: [], // Exemplo de dados
                 backgroundColor: '#0790C2',
                 barThickness: 28,
                 borderWidth: 1
@@ -394,8 +397,8 @@
         window.location.href = "dashDiretor.html"
     }
 
-    function gotoAtribuirTurmas(){
-        window.location.href = "atribuirTurmas.html"
+    function gotoTurmas(){
+        window.location.href = "turmas.html"
     }
 
     function gotoDashEscola(){
@@ -421,6 +424,74 @@ function fecharmodal(codigoModal){
 }
 
 function SairDaDash(){
+    limparSessao();
     window.location.href = "../index.html"
+}
+
+function ranking(){
+    fetch(`/diretor/rank/${sessionStorage.FK_ESCOLA}`, {
+        method: "GET",
+    }).then(function (resposta) {
+        resposta.json().then((ranking) => {
+            rank.innerHTML = ranking[0].ranking+"º";
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    })
+}
+
+function abaixoMedia(){
+    let fkEscola = sessionStorage.FK_ESCOLA;
+    fetch(`/diretor/porcentagemAbaixoMediaLP/${fkEscola}`, {
+        method: "GET",
+    }).then(function (resposta) {
+        resposta.json().then((porcentagem) => {
+            abaixoMediaLP.innerHTML = porcentagem[0].porcentagem+"%";
+            if (porcentagem[0].porcentagem > 50) { abaixoMediaLP.style.color = "red" }
+            else if (porcentagem[0].porcentagem >= 30) { abaixoMediaLP.style.color = "#EEAD2D" }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    })
+
+    fetch(`/diretor/porcentagemAbaixoMediaMT/${fkEscola}`, {
+        method: "GET",
+    }).then(function (resposta) {
+        resposta.json().then((porcentagem) => {
+            abaixoMediaMT.innerHTML = porcentagem[0].porcentagem+"%";
+            if (porcentagem[0].porcentagem > 50) { abaixoMediaMT.style.color = "red" }
+            else if (porcentagem[0].porcentagem >= 30) { abaixoMediaMT.style.color = "#EEAD2D" }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    })
+}
+
+function maisDificuldade(){
+    fetch(`/diretor/turmaMaisDificuldade/${sessionStorage.FK_ESCOLA}`, {
+        method: "GET",
+    }).then(function (resposta) {
+        resposta.json().then((turma) => {
+            turmaMaisDificuldade.innerHTML = turma[0].nome;
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    })
+}
+
+function turmasProficiencia(){
+    fetch(`/diretor/turmasProficiencia/${sessionStorage.FK_ESCOLA}`, {
+        method: "GET",
+    }).then(function (resposta) {
+        resposta.json().then((turmas) => {
+            turmas.forEach((turma) => {
+                graficoBarras.data.labels.push(turma.nome);
+                graficoBarras.data.datasets[0].data.push(turma.media);
+                graficoBarras.update();
+            })
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    })
 }
 </script>

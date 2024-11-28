@@ -9,7 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
-<body>
+<body onload="validarSessao(), diretores()">
 
     <div class="modalSuporte" onclick="fecharmodal()">
         <div class="contentSuporte">
@@ -85,7 +85,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     <img src="../assets/linha-kpi.svg" class="barra_kpi">
                     <img src="../assets/icone_usuario.svg" class="icone_usuario">
                     <div class="nome_titulo">
-                    <p class="kpi_nomeUsuario">Usuario Sobrenome</p>
+                    <p class="kpi_nomeUsuario" id="nomeUsuario">Usuario Sobrenome</p>
                     <h6 class="kpi_descricao">Secretaria da educação</h6>
 
             
@@ -130,77 +130,14 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 </button>
             </div>
         </div>
-       <div class="cards_diretores">
-            <div class="cards">
-                <div class="foto_diretor"><img src="../assets/icone_diretor.svg" alt=""></div>
-                <div class="nome_diretor"><h2>Nome diretor</h2></div>
-                <div class="diretor_diretor"><span>Escola: Nome da Escola</div></span>
-                <div class="regiao_diretor">
-                    
-                    <span>nome.sobrenome@instiituicao.com 
-                      
-                    </span>
-                </div>
-               
-            </div>
-
-            <div class="cards">
-                <div class="foto_diretor"><img src="../assets/icone_diretor.svg" alt=""></div>
-                <div class="nome_diretor"><h2>Nome diretor</h2></div>
-                <div class="diretor_diretor"><span>Escola: Nome da Escola</div></span>
-                <div class="regiao_diretor">
-                    
-                    <span>nome.sobrenome@instiituicao.com
-                      
-                    </span>
-                </div>
-               
-            </div>
-            <div class="cards">
-                <div class="foto_diretor"><img src="../assets/icone_diretor.svg" alt=""></div>
-                <div class="nome_diretor"><h2>Nome diretor</h2></div>
-                <div class="diretor_diretor"><span>Escola: Nome da Escola</div></span>
-                <div class="regiao_diretor">
-                    
-                    <span>nome.sobrenome@instiituicao.com 
-                      
-                    </span>
-                </div>
-               
-            </div>
-            <div class="cards">
-                <div class="foto_diretor"><img src="../assets/icone_diretor.svg" alt=""></div>
-                <div class="nome_diretor"><h2>Nome diretor</h2></div>
-                <div class="diretor_diretor"><span>Escola: Nome da Escola</div></span>
-                <div class="regiao_diretor">
-                    
-                    <span>nome.sobrenome@instiituicao.com
-                      
-                    </span>
-                </div>
-               
-            </div>
-
-        
-
-            <div class="cards">
-                <div class="foto_diretor"><img src="../assets/icone_diretor.svg" alt=""></div>
-                <div class="nome_diretor"><h2>Nome Escola</h2></div>
-                <div class="diretor_diretor"><span>Escola: Nome da Escola</div></span>
-                <div class="regiao_diretor">
-                    
-                    <span>nome.sobrenome@instiituicao.com
-                      
-                    </span>
-                </div>
-               
-            </div>
-        </div>
+       <div class="cards_diretores" id="cards_diretores"></div>
         
        </div>
     </div>
 </body>
 </html>
+
+<script src="../js/sessao.js"></script>
 
 <script>
     function mudarTelaDiretor() {
@@ -221,6 +158,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
     }
 
     function SairDaDash(){
+    limparSessao();
     window.location.href = "../index.html"
 }
 
@@ -241,6 +179,28 @@ function fecharmodal(codigoModal){
             modal1.style.display = 'none'
 }
 }
-</script>
 
+function diretores(){
+    fetch("/secretaria/diretores",{
+        method: "GET",
+    }).then(function (resposta){
+        resposta.json().then((diretores) => {
+            diretores.forEach((diretor) => {
+                cards_diretores.innerHTML += `
+                    <div class="cards">
+                        <div class="foto_diretor"><img src="../assets/icone_diretor.svg" alt=""></div>
+                        <div class="nome_diretor"><h2>${diretor.diretor}</h2></div>
+                        <div class="diretor_diretor"><span>Escola: ${diretor.escola}</div></span>
+                        <div class="regiao_diretor">
+                            <span>${diretor.email}</span>
+                        </div>
+                    </div>
+                `
+            })
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    })
+}
+</script>
 <script src="../js/alerta.js"></script>
