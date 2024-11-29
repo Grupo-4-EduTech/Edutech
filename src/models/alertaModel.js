@@ -22,7 +22,14 @@ function buscarUltimoRegistro(idUsuario) {
   return database.executar(instrucaoSql);
 }
 
+function cadastrarAlertas(idUsuario, mensagemAlerta) {
+  var instrucaoSql = `INSERT INTO alerta (dataAlerta, mensagemAlerta, idUsuario, tipoAlerta) VALUES 
+    (now(), '${mensagemAlerta}', '${idUsuario}', 'Aviso');`
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     buscarAlertas,
-    buscarUltimoRegistro
+    buscarUltimoRegistro,
+    cadastrarAlertas
 }
