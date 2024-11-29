@@ -47,7 +47,7 @@
                 <div class="imgFileira">
                     <img src="../assets/descritores.svg" width="23px" height="23px">
                 </div>
-                <div class="tituloFileira">
+                <div class="tituloFileira" onclick="mudarTelaDescritores()">
                     Descritores
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 <div class="imgFileira">
                     <img src="../assets/bx_support.svg" width="30px" height="30px">
                 </div>
-                <div class="tituloFileira">
+                <div class="tituloFileira" onclick="abrirSuporte()">
                     Suporte
                 </div>
             </div>
@@ -129,9 +129,9 @@
                 </div>
             </div>
             <div class="adicionar">
-                <button class="btnAdicionar">
+                <!-- <button class="btnAdicionar">
                     Importar
-                </button>
+                </button> -->
                 <button class="btnAdicionar" onclick="gotocadastroProfessor()">
                     Adicionar
                 </button>
@@ -191,12 +191,21 @@
         window.location.href = "../index.html"
     }
 
+    function mudarTelaDescritores() {
+        window.open('https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/matriz_de_referencia_de_lingua_portuguesa_e_matematica_do_saeb.pdf')
+    } 
+
     function professores() {
         fetch(`/diretor/professores/${sessionStorage.FK_ESCOLA}`,{
             method: "GET",
         }).then(function (resposta){
             resposta.json().then((professores) => {
                 professores.forEach((professor) => {
+                    let turmas = professor.turmas;
+
+                    if(turmas == null){
+                        turmas = "Sem dados";
+                    }
                     areaProfessoresAdicionados.innerHTML += `
                         <div class="cardProfessor" onclick="gotoPerfilProfessor(${professor.idUsuario})">
                             <div class="fotoProfessor" ">
@@ -216,7 +225,7 @@
                             <div class="turma">
                                 <img src="../assets/chapeu.svg">
                                 <span>
-                                    Turma: ${professor.turmas}
+                                    Turma: ${turmas}
                                 </span>
                             </div>
                         </div>

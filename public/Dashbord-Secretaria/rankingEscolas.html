@@ -72,7 +72,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     Descritores
                 </div>
             </div>
-            <div class="fileiraNavegacao">
+            <div class="fileiraNavegacao" onclick="abrirSuporte()">
                 <div class="imgFileira">
                     <img src="../assets/bx_support.svg" width="30px" height="30px">
                 </div>
@@ -93,7 +93,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
             <div class="kpiProfessor">
                 <div class="kpi_esquerda">
                     <img src="../assets/escola-kpi.svg" class="imgem_kpi">
-                    <span class="titulo_kpi">Ranking das escolas</span>
+                    <span class="titulo_kpi">Ranking de escolas</span>
                 </div>
                 <div class="kpi_direita">
                     <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
@@ -118,7 +118,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
 
         <div class="area_cadastro">
             <div class="quadrado">
-                <p>Ranking de Escolas</p>
+                <p><b>Ranking de Escolas</b></p>
                 <div class="list" id="list">
             </div>
         </div>
@@ -138,7 +138,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
         window.location = "dashbord-Escolas.html"
     }
     function mudarTelaDescritores() {
-        window.open('https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf')
+        window.open('https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/matriz_de_referencia_de_lingua_portuguesa_e_matematica_do_saeb.pdf')
     }
 
     function SairDaDash(){
@@ -171,13 +171,17 @@ function rankingEscolas(){
     }).then(function (resposta){
         resposta.json().then((escolas) => {
             escolas.forEach((escola, index) => {
+                let media = escola.media;
+                if(media == null){
+                    media = "N/A";
+                }
                 list.innerHTML+=`
                    <div class="school-card">
-                        <div class="rank">${index+1}</div>
+                        <div class="rank">${index+1}º</div>
                         <div class="school-name">${escola.nome}</div>
                         <div class="score">
                             <span class="score-icon">🏆</span>
-                            <span>${escola.media}</span>
+                            <span>${media}</span>
                         </div>
                     </div> 
                 `

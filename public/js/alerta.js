@@ -1,5 +1,5 @@
 document.getElementById('sino_alerts').addEventListener("click", function() {
-    var idUsuario = sessionStorage.ID_USUARIO;
+    var idUsuario = sessionStorage.getItem('ID_USUARIO');
     
     abrirEFecharNotificacoes();
 

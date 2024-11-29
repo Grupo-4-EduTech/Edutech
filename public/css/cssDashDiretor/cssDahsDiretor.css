@@ -423,7 +423,7 @@ body {
 }
 
 .adicionar {
-    width: 400px;
+    /* width: 400px; */
     height: 50px;
     margin-right: 50px;
     display: flex;

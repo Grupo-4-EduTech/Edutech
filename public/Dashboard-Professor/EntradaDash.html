@@ -92,7 +92,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                 </div>
             </div>
         </div>
-        <div class="exit">
+        <div class="exit" onclick="SairDaDash()">
             <img src="../assets/sair.svg">
             <span>
                 Sair
@@ -147,7 +147,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
 </body>
 
 </html>
-
+<script src="../js/sessao.js"></script>
 <script>
   function gotoMatrizReferencia(){
         var url = "https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf";
@@ -368,6 +368,11 @@ function gotoTurmas(){
     function verificarTurmaSelecionada(idTurma) {
         sessionStorage.setItem('ID_TURMA', idTurma);
         window.location = './DashboardsProfessor.html';
+    }
+
+    function SairDaDash(){
+        limparSessao();
+        window.location.href = "../index.html"
     }
 
 </script>

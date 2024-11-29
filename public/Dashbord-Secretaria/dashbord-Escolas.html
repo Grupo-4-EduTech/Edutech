@@ -73,7 +73,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     Descritores
                 </div>
             </div>
-            <div class="fileiraNavegacao">
+            <div class="fileiraNavegacao" onclick="abrirSuporte()">
                 <div class="imgFileira">
                     <img src="../assets/bx_support.svg" width="30px" height="30px">
                 </div>
@@ -122,7 +122,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
             <div class="mostra_estado">
                 <div class="titulo_estado">
                     <span>Média Geral</span>
-                    <span>(Portugues)</span>
+                    <span>(Português)</span>
                 </div>
                 <div class="valor_estado">
                     <img src="../assets/media_portugues.svg">
@@ -135,7 +135,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
             <div class="mostra_estado">
                 <div class="titulo_estado">
                     <span>Média Geral</span>
-                    <span>(Matématica)</span>
+                    <span>(Matemática)</span>
                 </div>
                 <div class="valor_estado">
                     <img src="../assets/media_portugues.svg">
@@ -145,8 +145,8 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
             </div>
             <div class="mostra_estado">
                 <div class="titulo_estado">
-                    <span>Alunos abaixo do nivel basico</span>
-                    <span>(Portugues)</span>
+                    <span>Alunos abaixo do nível basico</span>
+                    <span>(Português)</span>
                 </div>
                 <div class="valor_estado">
                     <img src="../assets/Subtract (3).svg">
@@ -159,8 +159,8 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
 
             <div class="mostra_estado">
                 <div class="titulo_estado">
-                    <span>Alunos abaixo do nivel basico</span>
-                    <span>(Matématica)</span>
+                    <span>Alunos abaixo do nível basico</span>
+                    <span>(Matemática)</span>
                 </div>
                 <div class="valor_estado">
                     <img src="../assets/Subtract (4).svg">
@@ -172,9 +172,9 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
 
         <div class="mostra_graficos">
             <div class="grafico_regiao">
-                <h4>Comparação de regioes por proeficiencia</h4>
+                <h4>Comparação de Regiões por Proficiência</h4>
                 <div class="grafico_e_lateral">
-                    <h6 class="texto_media_grafico">Média de Proeficiencia</h6>
+                    <h6 class="texto_media_grafico">Média de Proficiência</h6>
                     <div class="grafico">
                         <canvas id="myChart" width="400" height="200"></canvas>
                     </div>
@@ -277,7 +277,7 @@ const myChart = new Chart(ctx, {
         window.location = "dashbord-Escolas.html"
     }
     function mudarTelaDescritores() {
-        window.open('https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf')
+        window.open('https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/matriz_de_referencia_de_lingua_portuguesa_e_matematica_do_saeb.pdf')
     } 
 
     function SairDaDash(){
