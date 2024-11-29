@@ -13,14 +13,12 @@ function autenticar(req, res) {
         usuarioModel.autenticar(email, senha)
             .then(
                 function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+                    // console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+                    // console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
 
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
-                        res.status(200).json(resultadoAutenticar);
-
-                            res.json({
+                        res.json({
                                 idUsuario: resultadoAutenticar[0].idUsuario,
                                 email: resultadoAutenticar[0].email,
                                 nome: resultadoAutenticar[0].nome,
@@ -77,9 +75,6 @@ function cadastrar(req, res) {
             );
     }
 }
-
-
-
 
 
 module.exports = {

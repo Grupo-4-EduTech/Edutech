@@ -31,120 +31,88 @@ body {
 }   
 
 .navegacaoTitulo {
-    width: 200px;
+    width: 130px;
     height: 40px;
     margin-top: 40px;
     display: flex;
     justify-content: flex-start;
     color: #FFF;
-    font-size: 17px;
-    margin-left: 30px;
+    font-size: 1.2vw;
 }
 
 .containerNavegacao {
-    width: 150px;
-    height: 400px;
+    width: 230px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-top: 15px;
-    margin-left: 20px;
 }
 
-.navegacao {
-    height: 30px;
-    width: 129px;
-    border-radius: 5px;
-    transition: all 0.4s;
-}
-
-.navegacao:hover {
-    background-color: #ffffff3b;
-    cursor: pointer;
-    transition: all 0.4s;
-}
-
-.professoresTitulo {
-    width: 128px;
-    height: 25px;
-    color: #FFF;
+.fileiraNavegacao {
+    width: 230px;
+    height: 43px;
+    color: white;
+    transition: all 0.3s;
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
-    justify-content: space-between;
 }
 
-.imgMenuLateral {
-    width: 27px;
-    height: 27px;
+.fileiraSelecionada {
+    width: 230px;
+    height: 43px;
+    background-color: #00b7ff;
+    color: white;
+    transition: all 0.3s;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.fileiraNavegacao:hover {
+    cursor: pointer;
+    background-color: #00b7ff;
+    color: black;
+    transition: all 0.3s;
+}
+
+.fileiraSelecionada:hover {
+    cursor: pointer;
+}
+
+.imgFileira {
+    width: 30px;
+    height: 30px;
+    margin-left: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.turmasTitulo {
-    width: 95px;
-    height: 25px;
-    color: #FFF;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.dashboardsTitulo {
+.tituloFileira {
     width: 130px;
+    height: 30px;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    font-size: 0.99vw;
+    margin-left: 10px;
+}
+
+.exit {
+    width: 65px;
     height: 25px;
-    color: #FFF;
+    margin-top: 100px;
+    margin-right: 60px;
     display: flex;
-    align-items: center;
+    color: #FFF;
     justify-content: space-between;
-}
-
-.descritoresTitulo {
-    width: 126px;
-    height: 25px;
-    color: #FFF;
-    display: flex;
     align-items: center;
-    justify-content: space-between;
+    font-size: 18px;
 }
 
-.suporteTitulo {
-    width: 100px;
-    height: 25px;
-    color: #FFF;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.sair {
-    width: 130px;
-    height: 40px;
-    margin-top: 180px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.imgSair {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-}
-
-.tituloSair {
-    width: 100px;
-    height: 40px;
-    color: #FFF;
-    display: flex;
-    align-items: center;
-    transition: all 0.4s;
-}
-
-.tituloSair:hover {
+.exit:hover {
     cursor: pointer;
-    transition: all 0.4s;
 }
 
 /* -- AREA PROFESSORES -- */
@@ -165,11 +133,201 @@ body {
     justify-content: center;
 }
 
+.AreaDeTrabalhoDiretor {
+    margin-top: 50px;
+    height: 660px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Fileira {
+    height: 300px;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    border-radius: 20px;
+    flex-wrap: wrap;
+}
+
+.Turma {
+    border-radius: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Rubik';
+    height: 90%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: 0.3s;
+    background-color: #c9c9c9;
+    box-shadow: 0px 0px 0px 1.5px #565656;
+    margin-bottom: 2%;
+}
+
+.Turma:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#AreaDeTrabalhoEntrada {
+    align-items: center;
+    justify-content: space-between;
+    height: 660px;
+    width: 100%;
+}
+
+#div_exibir_turmas {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    justify-content: center;
+}
+
+.cardVermelho {
+    background-color: #FF9A9A;
+    box-shadow: 0px 0px 0px 1.5px #AE0000;
+}
+
+.cardAmarelo {
+    background-color: #FFEC83;
+    box-shadow: 0px 0px 0px 1.5px #AE7700;
+}
+
+.cardVerde {
+    background-color: #96FF7C;
+    box-shadow: 0px 0px 0px 1.5px #3DAE00;
+}
+
+.cardDefault {
+    background-color: #c9c9c9;
+    box-shadow: 0px 0px 0px 1.5px #000000;
+}
+
+.AreaTextoMedia {
+    width: 60%;
+    /* width: 60%; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 23px;
+    font-family: 'Rubik';
+    margin-left: 4%;
+    font-weight: bold;
+}
+
+.materiaComDificuldade {
+    width: 225px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.nomeTurma {
+    width: 250px;
+    height: 50px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.disciplina {
+    width: 190px;
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+}
+
+.imagemLivroDisciplina {
+    width: 27%;
+    height: 100%;
+    background-image: url("../../assets/livro-aberto.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.AreaTextoDisciplina {
+    width: 72%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+}
+
+.media {
+    width: 215px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.imagemPrachetaMedia {
+    width: 20%;
+    height: 100%;
+    background-image: url("../../assets/prancheta.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.AreaTextoMedia {
+    /* width: 60%; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    /* font-size: 1.5vw; */
+    font-family: 'Rubik';
+    margin-left: 4%;
+    font-weight: bold;
+}
+
+.materiaComDificuldade {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.imagemAlerta {
+    width: 20%;
+    height: 100%;
+    background-image: url("../../assets/imagemAlerta.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.AreaTextoDificuldade {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .kpiProfessor {
     height: 100px;
     width: 95%;
     border-radius: 20px;
-    background: linear-gradient(135deg,#0790C2,#489ab8);
+    background: linear-gradient(90deg ,#0790C2,#113768);
     box-shadow: 
     2px 8px 10px 1px rgba(0, 0, 0, 0.29);
     margin-top: 8vh;
@@ -265,7 +423,7 @@ body {
 }
 
 .adicionar {
-    width: 400px;
+    /* width: 400px; */
     height: 50px;
     margin-right: 50px;
     display: flex;
@@ -296,18 +454,8 @@ body {
     width: 100%;
     height: 750px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.fileira {
-    width: 90%;
-    height: 360px;
-    display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .cardProfessor {
@@ -322,6 +470,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    margin: 1.5vw;
 }
 
 .fotoProfessor {
@@ -414,41 +563,60 @@ body {
 }
 
 .inputCadastrarProfessor {
-    width: 300px;
+    width: 320px;
     height: 35px;
-    border: solid 3px #113768;
-    border-radius: 50px;
-    padding: 10px; 
+    border-radius: 10vw;
+    border: none;
+    padding: 0.3vw; 
+    background-image: linear-gradient(white, white), 
+                      linear-gradient(to right, #13396A, #0B6395, #078FC1); 
+    background-origin: border-box; 
+    background-clip: content-box, border-box;
     font-family: 'Rubik';
+    padding: 4px;
 }
 
 .inputErro {
-    width: 300px;
+    width: 320px;
     height: 35px;
-    border: solid 3.5px #a11919;
-    border-radius: 50px;
-    padding: 10px; 
+    border: none;
+    padding: 0.3vw; 
+    background-image: linear-gradient(white, white), 
+                      linear-gradient(to right, #b10303, #b10303, #b10303); 
+    background-origin: border-box; 
+    background-clip: content-box, border-box;
     font-family: 'Rubik';
+    padding: 4px;
 }
 
 .selectCadastrarProfessor {
-    background-color: #FFF;
-    border: solid 3px #113768;
     width: 325px;
     height: 50px;
-    border-radius: 50px;
-    padding: 10px;
+    background-color: #FFF;
+    border-radius: 10vw;
+    border: none;
+    padding: 0.3vw; 
+    background-image: linear-gradient(white, white), 
+                      linear-gradient(to right, #13396A, #0B6395, #078FC1); 
+    background-origin: border-box; 
+    background-clip: content-box, border-box;
     font-family: 'Rubik';
+    padding: 4px;
 }
 
 .selectErro {
-    background-color: #FFF;
-    border: solid 3.5px #a11919;
     width: 325px;
     height: 50px;
-    border-radius: 50px;
-    padding: 10px;
+    background-color: #FFF;
+    border-radius: 10vw;
+    border: none;
+    padding: 0.3vw; 
+    background-image: linear-gradient(white, white), 
+                      linear-gradient(to right, #b10303, #b10303, #b10303); 
+    background-origin: border-box; 
+    background-clip: content-box, border-box;
     font-family: 'Rubik';
+    padding: 4px;
 }
 
 .proximo {
@@ -460,6 +628,7 @@ body {
     color: #FFF;
     font-size: 20px;
     transition: all 0.4s;
+    font-family: 'Rubik';
 }
 
 .proximo:hover {
@@ -664,4 +833,87 @@ body {
     height: 30px;
     display: flex;
     justify-content: space-between;
+}
+
+.modalSuporte {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modalSuporte .contentSuporte {
+    background: linear-gradient(160deg ,#0790C2,#113768);
+    margin: 17% auto; 
+    padding: 10px;
+    border-radius: 30px;
+    width: 30%; 
+    height: 24%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    font-family: 'LexendDeca-Regular';
+    color: var(--title);
+    transition: 0.7s;
+}
+
+.contentSuporte:hover{
+    transform: scale(1.20);
+    transition: 0.7s;
+}
+
+.EspacoModalSuporte{
+    width: 97%;
+    border-radius: 10px;
+    height: 3px;
+    background-color: #ffffff;
+}
+
+.titleSuporte{
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Rubik';
+    font-size: 30px;
+    color: #FFF;
+}
+
+.iconsModal:hover{
+    transition: 0.6s;
+    transform: scale(1.15);
+}
+
+.iconsModal{
+    cursor: pointer;
+    transition: 0.6s;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+#Insta{
+    border-radius: 0px;
+}
+
+#google{
+    border-radius: 0px;
+    width: 65px;
+    height: 65px;
+}
+
+.Espaco{
+    width: 100%;
+    height: 380px;
 }

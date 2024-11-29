@@ -22,7 +22,11 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
+var secretariaRouter = require("./src/routes/secretaria");
+var diretorRouter = require("./src/routes/diretor");
+
 var dashboardProfessorRouter = require("./src/routes/dashboardProfessor");
+var alertasRouter = require("./src/routes/alerta");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,7 +36,11 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
+
+app.use("/secretaria", secretariaRouter);
+app.use("/diretor", diretorRouter);
 app.use("/dashboardProfessor", dashboardProfessorRouter);
+app.use("/alert", alertasRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

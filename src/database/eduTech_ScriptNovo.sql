@@ -12,6 +12,7 @@ CREATE TABLE escola(
     nome VARCHAR(45) NULL,
     logradouro VARCHAR(45) NULL,
     numLogradouro INT NULL,
+    idRegiao INT NOT NULL,
     fkDiretoria INT NOT NULL,
     idRegiao INT NOT NULL,
     FOREIGN KEY (fkDiretoria) REFERENCES diretoria(idDiretoria),
@@ -73,6 +74,13 @@ CREATE TABLE usuario(
     CONSTRAINT ProfessorTemMateria CHECK (fkCargo != 3 OR (fkMateria IS NOT NULL AND fkEscola IS NOT NULL)) -- Se for professor, fkEscola e fkMateria não podem ser nulas
 );
 
+CREATE TABLE professorTurma(
+    fkProfessor INT NOT NULL,
+    fkTurma INT NOT NULL,
+    FOREIGN KEY (fkProfessor) REFERENCES usuario(idUsuario),
+    FOREIGN KEY (fkTurma) REFERENCES turma(idTurma)
+);
+
 CREATE TABLE questao(
 	idQuestao INT NOT NULL UNIQUE,
     bloco INT NOT NULL,
@@ -108,7 +116,8 @@ CREATE TABLE alerta (
     dataAlerta DATETIME,
     mensagemAlerta VARCHAR(100),
     idUsuario INT,
-    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
+    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
+    tipoAlerta VARCHAR(10) CONSTRAINT tipoAlerta_check CHECK (tipoAlerta IN ('Alerta', 'Atenção', 'Aviso'))
 );
 
 CREATE TABLE professorTurma(
@@ -133,14 +142,15 @@ values ("MT"),("LP");
 insert into escola
 values (1, "Escola teste 1","00000000", 1, 1, 1),(2, "Escola teste 2", "00000000", 2, 1, 2),(3, "Escola teste 3","00000000", 3, 1, 3);
 
+
 insert into usuario
 values (default, "Secretário Fulano","secfulano@saopaulo.com","123","11999999999",NOW(),1,null,null,null),(default, "Diretor Ciclano","dirciclano@escolaa.com","123","11999999999",NOW(),2,1,1,null),(default, "Professor Beltrano","profbeltrano@escolaa.com","123","11999999999",NOW(),3,1,1,1);
 
-INSERT INTO alerta (dataAlerta, mensagemAlerta, idUsuario)
+INSERT INTO alerta (dataAlerta, mensagemAlerta, idUsuario, tipoAlerta)
 VALUES 
-    ('2024-10-29 10:15:00', 'Alerta: notas mais baixas em Geometria no último ano.', 1),
-    ('2024-10-30 09:00:00', 'Atenção: desempenho abaixo da média em Matemática.', 2),
-    ('2024-11-01 14:30:00', 'Aviso: alunos com dificuldades em Português detectados.', 3);
+    ('2024-10-29 10:15:00', 'Notas mais baixas em Geometria no último ano.', 1, 'Alerta'),
+    ('2024-10-30 09:00:00', 'Desempenho abaixo da média em Matemática.', 2, 'Aviso'),
+    ('2024-11-01 14:30:00', 'Alunos com dificuldades em Português detectados.', 3, 'Atenção');
     
 insert into usuario values
 (default, "Professor teste", "profT1@escolaa.com", "123", "11999999999", NOW(), 3, 1, 1, 1);
@@ -160,4 +170,4 @@ insert into professorTurma values
 select (select count(idEscola)-3 from escola) qtdEscolas,(select count(idTurma) from turma) qtdTurmas, (select count(idAluno) from aluno) qtdAlunos,(select count(idQuestao) from questao) qtdQuestoes,count(idRespostaAluno) qtdRespostas from respostaAluno;
 
 SELECT * FROM alerta;
-SELECT a.mensagemAlerta AS 'Mensagem Apresentada' , u.nome AS 'Nome de quem recebeu', a.dataAlerta AS 'Data que foi entregue' FROM alerta AS a JOIN usuario AS u ON u.idUsuario = a.idUsuario;
+SELECT a.tipoAlerta AS 'Tipo', a.mensagemAlerta AS 'Mensagem Apresentada' , u.nome AS 'Nome de quem recebeu', a.dataAlerta AS 'Data que foi entregue' FROM alerta AS a JOIN usuario AS u ON u.idUsuario = a.idUsuario;

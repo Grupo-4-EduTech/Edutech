@@ -9,7 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
-<body>
+<body onload="validarSessao(), diretores()">
 
     <div class="modalSuporte" onclick="fecharmodal()">
         <div class="contentSuporte">
@@ -33,45 +33,61 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
     </div>
     
     <div class="menuLateral">
-        <div class="logoEduTech"><img src="../assets/EduTechWhite1 1.svg"  class="imagemLateral"></div>
-        <div class="navegacaoTitulo">Navegação </div>
+        <div class="logoEduTech"></div>
+        <div class="navegacaoTitulo">
+            <span>
+                Navegação
+            </span>
+        </div>
         <div class="containerNavegacao">
-            <div class="professoresTitulo OpcaoArea" style="  border-radius: 6px; background-color: #18b4ed;"> <img src="../assets/maletaLateral.svg" alt=""
-                class="iconeLateral" onclick="mudarTelaDiretor()">
-            <span onclick="mudarTelaDiretor()">
-                Diretores
+            <div class="fileiraSelecionada" onclick="mudarTelaDiretor()">
+                <div class="imgFileira">
+                    <img src="../assets/maletaLateral.svg" width="28px" height="28px">
+                </div>
+                <div class="tituloFileira">
+                    Diretores
+                </div>
+            </div>
+            <div class="fileiraNavegacao" onclick="mudarTelaEscola()">
+                <div class="imgFileira">
+                    <img src="../assets/escolaLateral.svg"  width="30px" height="30px">
+                </div>
+                <div class="tituloFileira">
+                    Escolas
+                </div>
+            </div>
+            <div class="fileiraNavegacao" onclick="mudarTelaDashboard()">
+                <div class="imgFileira">
+                    <img src="../assets/mdi_graph-box.svg" width="28px" height="28px">
+                </div>
+                <div class="tituloFileira">
+                    Dashboard
+                </div>
+            </div>
+            <div class="fileiraNavegacao" onclick="mudarTelaDescritores()">
+                <div class="imgFileira">
+                    <img src="../assets/descritores.svg" width="23px" height="23px">
+                </div>
+                <div class="tituloFileira">
+                    Descritores
+                </div>
+            </div>
+            <div class="fileiraNavegacao" onclick="abrirSuporte()">
+                <div class="imgFileira">
+                    <img src="../assets/bx_support.svg" width="30px" height="30px">
+                </div>
+                <div class="tituloFileira">
+                    Suporte
+                </div>
+            </div>
+        </div>
+        <div class="exit" onclick="SairDaDash()">
+            <img src="../assets/sair.svg">
+            <span>
+                Sair
             </span>
         </div>
-        <div class="turmasTitulo OpcaoArea" onclick="mudarTelaEscola()"><img src="../assets/escolaLateral.svg" alt=""
-                class="iconeLateral">
-            <span onclick="mudarTelaEscola()">
-                Escolas
-            </span>
-        </div>
-        <div class="dashboardsTitulo OpcaoArea"  onclick="mudarTelaDashboard()"><img src="../assets/dashLateral.svg" alt=""
-                class="iconeLateral">
-            <span style="margin-left: -1.4%;" onclick="mudarTelaDashboard()">
-                Dashboard
-            </span>
-        </div>
-        <div class="descritoresTitulo OpcaoArea" onclick="mudarTelaDescritores()"><img src="../assets/descritoresLaterl.svg  " alt=""
-                class="iconeLateral">
-            <span onclick="mudarTelaDescritores()">
-                Descritores
-            </span>
-        </div>
-        <div class="suporteTitulo OpcaoArea" onclick="mudarTelaSuporte()"><img src="../assets/suporteLteral.svg" alt=""
-                class="iconeLateral">
-            <span style="margin-left: -1%;"  onclick="abrirSuporte()">
-                Suporte
-            </span>
-        </div>
-        </div>
-        <div class="sair">
-            <img src="../assets/sair.svg" >
-            <span onclick="SairDaDash()">Sair</span>
-        </div>
-    
+    </div>
     </div>
     <div class="areaProfessores">
         <div class="kpi">
@@ -81,11 +97,11 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     <span  class="titulo_kpi">Diretores</span>
                 </div>
                 <div class="kpi_direita">
-                    <img src="../assets/sino.svg" class="icone_notificacao">
-                <img src="../assets/linha-kpi.svg" class="barra_kpi">
+                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
+                    <img src="../assets/linha-kpi.svg" class="barra_kpi">
                     <img src="../assets/icone_usuario.svg" class="icone_usuario">
                     <div class="nome_titulo">
-                    <p class="kpi_nomeUsuario">Usuario Sobrenome</p>
+                    <p class="kpi_nomeUsuario" id="nomeUsuario">Usuario Sobrenome</p>
                     <h6 class="kpi_descricao">Secretaria da educação</h6>
 
             
@@ -94,6 +110,14 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
 
             </div>
         </div>
+
+        <!-- ALERTAS -->
+        <div class="wrapper" id="wra">
+            <div class="triangle"></div>
+            <div class="base" id="basesinha">
+            </div>
+        </div>
+
         <div class="areaAdicaoPesquisa">
             <div class="pesquisa">
                 <div class="tituloPesquisar">
@@ -114,85 +138,22 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 </div>
             </div>
             <div class="adicionar">
-                <button class="btnAdicionar">
+                <!-- <button class="btnAdicionar">
                     Importar
-                </button>
+                </button> -->
                 <button class="btnAdicionar" style="margin-right: 10%;" onclick="mudarTelaCadastroDiretor()">
                     Adicionar
                 </button>
             </div>
         </div>
-       <div class="cards_diretores">
-            <div class="cards">
-                <div class="foto_diretor"><img src="../assets/icone_diretor.svg" alt=""></div>
-                <div class="nome_diretor"><h2>Nome diretor</h2></div>
-                <div class="diretor_diretor"><span>Escola: Nome da Escola</div></span>
-                <div class="regiao_diretor">
-                    
-                    <span>nome.sobrenome@instiituicao.com 
-                      
-                    </span>
-                </div>
-               
-            </div>
-
-            <div class="cards">
-                <div class="foto_diretor"><img src="../assets/icone_diretor.svg"" alt=""></div>
-                <div class="nome_diretor"><h2>Nome diretor</h2></div>
-                <div class="diretor_diretor"><span>Escola: Nome da Escola</div></span>
-                <div class="regiao_diretor">
-                    
-                    <span>nome.sobrenome@instiituicao.com
-                      
-                    </span>
-                </div>
-               
-            </div>
-            <div class="cards">
-                <div class="foto_diretor"><img src="../assets/icone_diretor.svg"" alt=""></div>
-                <div class="nome_diretor"><h2>Nome diretor</h2></div>
-                <div class="diretor_diretor"><span>Escola: Nome da Escola</div></span>
-                <div class="regiao_diretor">
-                    
-                    <span>nome.sobrenome@instiituicao.com 
-                      
-                    </span>
-                </div>
-               
-            </div>
-            <div class="cards">
-                <div class="foto_diretor"><img src="../assets/icone_diretor.svg"" alt=""></div>
-                <div class="nome_diretor"><h2>Nome diretor</h2></div>
-                <div class="diretor_diretor"><span>Escola: Nome da Escola</div></span>
-                <div class="regiao_diretor">
-                    
-                    <span>nome.sobrenome@instiituicao.com
-                      
-                    </span>
-                </div>
-               
-            </div>
-
-        
-
-            <div class="cards">
-                <div class="foto_diretor"><img src="../assets/icone_diretor.svg" alt=""></div>
-                <div class="nome_diretor"><h2>Nome Escola</h2></div>
-                <div class="diretor_diretor"><span>Escola: Nome da Escola</div></span>
-                <div class="regiao_diretor">
-                    
-                    <span>nome.sobrenome@instiituicao.com
-                      
-                    </span>
-                </div>
-               
-            </div>
-        </div>
+       <div class="cards_diretores" id="cards_diretores"></div>
         
        </div>
     </div>
 </body>
 </html>
+
+<script src="../js/sessao.js"></script>
 
 <script>
     function mudarTelaDiretor() {
@@ -205,7 +166,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
         window.location = "dashbord-Escolas.html"
     }
     function mudarTelaDescritores() {
-        window.open('https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf')
+        window.open('https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/matriz_de_referencia_de_lingua_portuguesa_e_matematica_do_saeb.pdf')
     }
 
     function mudarTelaCadastroDiretor() {
@@ -213,6 +174,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
     }
 
     function SairDaDash(){
+    limparSessao();
     window.location.href = "../index.html"
 }
 
@@ -233,4 +195,28 @@ function fecharmodal(codigoModal){
             modal1.style.display = 'none'
 }
 }
+
+function diretores(){
+    fetch("/secretaria/diretores",{
+        method: "GET",
+    }).then(function (resposta){
+        resposta.json().then((diretores) => {
+            diretores.forEach((diretor) => {
+                cards_diretores.innerHTML += `
+                    <div class="cards">
+                        <div class="foto_diretor"><img src="../assets/icone_diretor.svg" alt=""></div>
+                        <div class="nome_diretor"><h2>${diretor.diretor}</h2></div>
+                        <div class="diretor_diretor"><span>Escola: ${diretor.escola}</div></span>
+                        <div class="regiao_diretor">
+                            <span>${diretor.email}</span>
+                        </div>
+                    </div>
+                `
+            })
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    })
+}
 </script>
+<script src="../js/alerta.js"></script>
