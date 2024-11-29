@@ -23,14 +23,6 @@ public class Escola {
         this.idRegiao = idRegiao;
     }
 
-    public Integer getIdRegiao() {
-        return idRegiao;
-    }
-
-    public void setIdRegiao(Integer idRegiao) {
-        this.idRegiao = idRegiao;
-    }
-
     public int getIdEscola() {
         return idEscola;
     }
@@ -69,5 +61,13 @@ public class Escola {
 
     public void setDiretoria(Diretoria diretoria) {
         this.diretoria = diretoria;
+    }
+
+    public Integer getIdRegiao() {
+        return idRegiao;
+    }
+
+    public void setIdRegiao(Integer idRegiao) {
+        this.idRegiao = idRegiao;
     }
 }

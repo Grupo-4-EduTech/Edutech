@@ -1,12 +1,28 @@
 // sessão
 function validarSessao() {
-    var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
+    var cargo = sessionStorage.FK_CARGO;
 
-    var b_usuario = document.getElementById("b_usuario");
+    var nomeUsuario = document.getElementById("nomeUsuario");
 
-    if (email != null && nome != null) {
-        b_usuario.innerHTML = nome;
+    let location = window.location.pathname;
+    switch(location.substring(1,location.lastIndexOf("/"))){
+        case "Dashbord-Secretaria":
+            if (cargo == 2) { window.location = "../Dashboard-Diretor/dashDiretor.html" }
+            if (cargo == 3) { window.location = "../Dashboard-Professor/EntradaDash.html" }
+            break;
+        case "Dashboard-Diretor":
+            if (cargo == 1) { window.location = "../Dashbord-Secretaria/dashbord-Escolas.html" }
+            if (cargo == 3) { window.location = "../Dashboard-Professor/EntradaDash.html" }
+            break;
+        case "Dashboard-Professor":
+            if (cargo == 1) { window.location = "./Dashbord-Secretaria/dashbord-Escolas.html" }
+            if (cargo == 2) { window.location = "./Dashboard-Diretor/dashDiretor.html" }
+            break;
+    }
+
+    if (nome != null) {
+        nomeUsuario.innerHTML = nome;
     } else {
         window.location = "../login.html";
     }

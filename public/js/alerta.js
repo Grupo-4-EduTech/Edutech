@@ -4,8 +4,9 @@ let styleBolinhaVermelha = document.getElementById("bolinha_vermelha");
 setInterval(novasNotificacoes, 5000);   
 
 document.getElementById('sino_alerts').addEventListener("click", function() {
-    var idUsuario = sessionStorage.ID_USUARIO;
-   
+
+    var idUsuario = sessionStorage.getItem('ID_USUARIO');
+
     abrirEFecharNotificacoes();
 
     fetch(`/alert/puxarAlertas/${idUsuario}`, {

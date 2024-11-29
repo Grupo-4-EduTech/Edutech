@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Edu Tech | Dashboard</title>
 </head>
-<body>
+<body onload="validarSessao(), medias(), abaixoMedia(), comparacaoRegiao(), rankingEscolas()">
     <div class="modalSuporte" onclick="fecharmodal()">
         <div class="contentSuporte">
             <div class="titleSuporte">Meios de contato</div>
@@ -34,45 +34,61 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
     </div>
     
     <div class="menuLateral">
-        <div class="logoEduTech"><img src="../assets/EduTechWhite1 1.svg" class="imagemLateral"></div>
-        <div class="navegacaoTitulo">Navegação </div>
+        <div class="logoEduTech"></div>
+        <div class="navegacaoTitulo">
+            <span>
+                Navegação
+            </span>
+        </div>
         <div class="containerNavegacao">
-            <div class="professoresTitulo OpcaoArea"> <img src="../assets/maletaLateral.svg" alt=""
-                class="iconeLateral" onclick="mudarTelaDiretor()">
-            <span onclick="mudarTelaDiretor()">
-                Diretores
-            </span>
+            <div class="fileiraNavegacao" onclick="mudarTelaDiretor()">
+                <div class="imgFileira">
+                    <img src="../assets/maletaLateral.svg" width="28px" height="28px">
+                </div>
+                <div class="tituloFileira">
+                    Diretores
+                </div>
+            </div>
+            <div class="fileiraNavegacao" onclick="mudarTelaEscola()">
+                <div class="imgFileira">
+                    <img src="../assets/escolaLateral.svg"  width="30px" height="30px">
+                </div>
+                <div class="tituloFileira">
+                    Escolas
+                </div>
+            </div>
+            <div class="fileiraSelecionada" onclick="mudarTelaDashboard()">
+                <div class="imgFileira">
+                    <img src="../assets/mdi_graph-box.svg" width="28px" height="28px">
+                </div>
+                <div class="tituloFileira">
+                    Dashboard
+                </div>
+            </div>
+            <div class="fileiraNavegacao" onclick="mudarTelaDescritores()">
+                <div class="imgFileira">
+                    <img src="../assets/descritores.svg" width="23px" height="23px">
+                </div>
+                <div class="tituloFileira">
+                    Descritores
+                </div>
+            </div>
+            <div class="fileiraNavegacao" onclick="abrirSuporte()">
+                <div class="imgFileira">
+                    <img src="../assets/bx_support.svg" width="30px" height="30px">
+                </div>
+                <div class="tituloFileira">
+                    Suporte
+                </div>
+            </div>
         </div>
-        <div class="turmasTitulo OpcaoArea" onclick="mudarTelaEscola()"><img src="../assets/escolaLateral.svg" alt=""
-                class="iconeLateral">
-            <span onclick="mudarTelaEscola()">
-                Escolas
-            </span>
-        </div>
-        <div class="dashboardsTitulo OpcaoArea" style="  border-radius: 6px; background-color: #18b4ed;" onclick="mudarTelaDashboard()"><img src="../assets/dashLateral.svg" alt=""
-                class="iconeLateral">
-            <span style="margin-left: -1.4%; " onclick="mudarTelaDashboard()">
-                Dashboard
-            </span>
-        </div>
-        <div class="descritoresTitulo OpcaoArea" onclick="mudarTelaDescritores()"><img src="../assets/descritoresLaterl.svg  " alt=""
-                class="iconeLateral">
-            <span onclick="mudarTelaDescritores()">
-                Descritores
-            </span>
-        </div>
-        <div class="suporteTitulo OpcaoArea" onclick="mudarTelaSuporte()"><img src="../assets/suporteLteral.svg" alt=""
-                class="iconeLateral">
-            <span style="margin-left: -1%;"  onclick="abrirSuporte()">
-                Suporte
-            </span>
-        </div>
-        </div>
-        <div class="sair">
+        <div class="exit" onclick="SairDaDash()">
             <img src="../assets/sair.svg">
-            <span onclick="SairDaDash()">Sair</span>
+            <span>
+                Sair
+            </span>
         </div>
-
+    </div>
     </div>
     <div class="areaProfessores">
         <div class="kpi">
@@ -86,7 +102,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     <img src="../assets/linha-kpi.svg" class="barra_kpi">
                     <img src="../assets/icone_usuario.svg" class="icone_usuario">
                     <div class="nome_titulo">
-                        <p class="kpi_nomeUsuario">Usuario Sobrenome</p>
+                        <p class="kpi_nomeUsuario" id="nomeUsuario">Usuario Sobrenome</p>
                         <h6 class="kpi_descricao">Secretaria da educação</h6>
 
                     </div>
@@ -106,11 +122,11 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
             <div class="mostra_estado">
                 <div class="titulo_estado">
                     <span>Média Geral</span>
-                    <span>(Portugues)</span>
+                    <span>(Português)</span>
                 </div>
                 <div class="valor_estado">
                     <img src="../assets/media_portugues.svg">
-                    <span>300,1</span>
+                    <span id="avgLP">NULL</span>
                 </div>
 
 
@@ -119,22 +135,22 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
             <div class="mostra_estado">
                 <div class="titulo_estado">
                     <span>Média Geral</span>
-                    <span>(Matématica)</span>
+                    <span>(Matemática)</span>
                 </div>
                 <div class="valor_estado">
                     <img src="../assets/media_portugues.svg">
-                    <span style="color: red;">200,1</span>
+                    <span id="avgMT">NULL</span>
                 </div>
 
             </div>
             <div class="mostra_estado">
                 <div class="titulo_estado">
-                    <span>Alunos abaixo do nivel basico</span>
-                    <span>(Portugues)</span>
+                    <span>Alunos abaixo do nível basico</span>
+                    <span>(Português)</span>
                 </div>
                 <div class="valor_estado">
                     <img src="../assets/Subtract (3).svg">
-                    <span>20%</span>
+                    <span id="abaixoMediaLP">NULL</span>
                 </div>
 
 
@@ -143,12 +159,12 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
 
             <div class="mostra_estado">
                 <div class="titulo_estado">
-                    <span>Alunos abaixo do nivel basico</span>
-                    <span>(Matématica)</span>
+                    <span>Alunos abaixo do nível basico</span>
+                    <span>(Matemática)</span>
                 </div>
                 <div class="valor_estado">
                     <img src="../assets/Subtract (4).svg">
-                    <span style="color: red;">60%</span>
+                    <span id="abaixoMediaMT">NULL</span>
                 </div>
 
             </div>
@@ -156,9 +172,9 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
 
         <div class="mostra_graficos">
             <div class="grafico_regiao">
-                <h4>Comparação de regioes por proeficiencia</h4>
+                <h4>Comparação de Regiões por Proficiência</h4>
                 <div class="grafico_e_lateral">
-                    <h6 class="texto_media_grafico">Média de Proeficiencia</h6>
+                    <h6 class="texto_media_grafico">Média de Proficiência</h6>
                     <div class="grafico">
                         <canvas id="myChart" width="400" height="200"></canvas>
                     </div>
@@ -171,56 +187,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 <div class="titulo_ranking">
                     <p>Ranking de Escolas</p>
                 </div>
-                <div class="lista_ranking">
-                    <div class="school-card">
-                        <div class="rank">1º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="lista_ranking">
-                    <div class="school-card">
-                        <div class="rank">2º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="lista_ranking">
-                    <div class="school-card">
-                        <div class="rank">3º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="lista_ranking">
-                    <div class="school-card">
-                        <div class="rank">4º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="lista_ranking">
-                    <div class="school-card">
-                        <div class="rank">5º</div>
-                        <div class="school-name">Nome completo da escola</div>
-                        <div class="score">
-                            <span class="score-icon">🏆</span>
-                            <span>5081</span>
-                        </div>
-                    </div>
-                </div>
+                <center><div id="list"></div></center>
                 <div class="ver_mais">
                     <a href="../Dashbord-Secretaria/rankingEscolas.html" style="text-decoration: none; color: black;"><span>Ver mais</span></a>
                 </div>
@@ -239,24 +206,25 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
 
 </html>
 
+<script src="../js/sessao.js"></script>
 
 <script>
  const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Região 1', 'Região 2', 'Região 3', 'Região 4', 'Região 5'],
+        labels: [],
         datasets: [
             {
                 label: 'Matemática',
-                data: [100, 80, 120, 50, 80],
+                data: [],
                 backgroundColor: '#0790C2',
                 borderColor: '#0790C2',
                 borderWidth: 1
             },
             {
                 label: 'Português',
-                data: [200, 150, 100, 300, 100],
+                data: [],
                 backgroundColor: '#081F45',
                 borderColor: '#081F45',
                 borderWidth: 1
@@ -309,10 +277,11 @@ const myChart = new Chart(ctx, {
         window.location = "dashbord-Escolas.html"
     }
     function mudarTelaDescritores() {
-        window.open('https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf')
+        window.open('https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/matriz_de_referencia_de_lingua_portuguesa_e_matematica_do_saeb.pdf')
     } 
 
     function SairDaDash(){
+    limparSessao();
     window.location.href = "../index.html"
 }
 
@@ -333,6 +302,101 @@ function fecharmodal(codigoModal){
             modal1.style.display = 'none'
 }
 }
-</script>
 
+function medias(){
+    fetch("/secretaria/mediaMaterias", {
+        method: "GET",
+    }).then(function (resposta) {
+        console.log(resposta);
+        resposta.json().then((medias) => {
+            avgLP.innerHTML = medias[0].mediaLP;
+            if(medias[0].mediaLP <275){avgLP.style.color = "red"}
+            else if(medias[0].mediaLP <350){avgLP.style.color = "#EEAD2D"}
+            
+            avgMT.innerHTML = medias[0].mediaMT;
+            if (medias[0].mediaMT < 275) { avgMT.style.color = "red" }
+            else if (medias[0].mediaMT < 350) { avgMT.style.color = "#EEAD2D" }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    })
+}
+
+function abaixoMedia(){
+    fetch("/secretaria/porcentagemAbaixoMediaLP", {
+        method: "GET",
+    }).then(function (resposta) {
+        resposta.json().then((porcentagem) => {
+            abaixoMediaLP.innerHTML = porcentagem[0].porcentagem+"%";
+            if(porcentagem[0].porcentagem>50){abaixoMediaLP.style.color="red"}
+            else if(porcentagem[0].porcentagem >= 30) { abaixoMediaLP.style.color = "#EEAD2D" }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    })
+
+    fetch("/secretaria/porcentagemAbaixoMediaMT", {
+        method: "GET",
+    }).then(function (resposta) {
+        resposta.json().then((porcentagem) => {
+            abaixoMediaMT.innerHTML = porcentagem[0].porcentagem+"%";
+            if(porcentagem[0].porcentagem > 50) { abaixoMediaMT.style.color = "red" }
+            else if(porcentagem[0].porcentagem >= 30) { abaixoMediaMT.style.color = "#EEAD2D" }
+
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    })
+}
+
+function comparacaoRegiao(){
+    fetch("/secretaria/comparacaoRegiao", {
+        method: "GET",
+    }).then(function (resposta) {
+        resposta.json().then((regioes) => {
+            regioes.forEach((regiao) => {
+                switch (regiao.regiao) {
+                    case 1: regiaoNome = "Centro"; break;
+                    case 2: regiaoNome = "Zona Leste"; break;
+                    case 3: regiaoNome = "Zona Norte"; break;
+                    case 4: regiaoNome = "Zona Oeste"; break;
+                    case 5: regiaoNome = "Zona Sul"; break;
+                }
+
+                console.log(regiao);
+                console.log(regiaoNome);
+
+                myChart.data.labels.push(regiaoNome);
+                myChart.data.datasets[0].data.push(regiao.mediaMT);
+                myChart.data.datasets[1].data.push(regiao.mediaLP);
+                myChart.update();
+            })
+        })
+    })
+}
+
+function rankingEscolas() {
+    fetch("/secretaria/rankingEscolas", {
+        method: "GET",
+    }).then(function (resposta) {
+        resposta.json().then((escolas) => {
+            for(let i=0;i<5;i++){
+                list.innerHTML += `
+               <div class="school-card">
+                    <div class="rank">${i+1}</div>
+                    <div class="school-name">${escolas[i].nome}</div>
+                    <div class="score">
+                        <span class="score-icon">🏆</span>
+                        <span>${escolas[i].media}</span>
+                    </div>
+                </div> 
+            `
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    })
+}
+</script>
 <script src="../js/alerta.js"></script>
+

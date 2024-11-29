@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/cssDashDiretor/cssDahsDiretor.css">
     <link rel="icon" sizes="56X56" href="../assets/a 1logo-Educare.svg">
-    <link rel="stylesheet" href="../css/CssDashProfessor/Dashgeral.css">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
 
-<body class="bodyCadastro">
+<body class="bodyCadastro" onload="validarSessao(), professor()">
     <div class="menuLateral">
         <div class="logoEduTech"></div>
         <div class="navegacaoTitulo">
@@ -20,66 +19,53 @@
             </span>
         </div>
         <div class="containerNavegacao">
-            <div class="professoresTitulo">
-                <div class="imgMenuLateral">
-                    <img src="../assets/ph_chalkboard-teacher.svg" width="30px" height="30px">
+            <div class="fileiraSelecionada" onclick="gotoDashDiretor()">
+                <div class="imgFileira">
+                    <img src="../assets/ph_chalkboard-teacher.svg" width="28px" height="28px">
                 </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao" onclick="gotoDashDiretor()">
-                        Professores
-                    </span>
+                <div class="tituloFileira">
+                    Professores
                 </div>
             </div>
-            <div class="turmasTitulo">
-                <div class="imgMenuLateral">
-                    <img src="../assets/chapeuBranco.svg" width="32px" height="32px">
+            <div class="fileiraNavegacao" onclick="gotoTurmas()">
+                <div class="imgFileira">
+                    <img src="../assets/chapeuBranco.svg"  width="30px" height="30px">
                 </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao" onclick="gotoAtribuirTurmas()">
-                        Turmas
-                    </span>
-                </div>
-            </div>
-            <div class="dashboardsTitulo">
-                <div class="imgMenuLateral">
-                    <img src="../assets/mdi_graph-box.svg" width="30px" height="30px">
-                </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao" onclick="gotoDashEscola()">
-                        Dashboards
-                    </span>
+
+                <div class="tituloFileira">
+                    Turmas
                 </div>
             </div>
-            <div class="descritoresTitulo">
-                <div class="imgMenuLateral">
-                    <img src="../assets/descritores.svg" width="25px" height="25px">
+            <div class="fileiraNavegacao" onclick="gotoDashEscola()">
+                <div class="imgFileira">
+                    <img src="../assets/mdi_graph-box.svg" width="28px" height="28px">
                 </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao">
-                        Descritores
-                    </span>
+                <div class="tituloFileira">
+                    Dashboard
                 </div>
             </div>
-            <div class="suporteTitulo">
-                <div class="imgMenuLateral">
+            <div class="fileiraNavegacao">
+                <div class="imgFileira">
+                    <img src="../assets/descritores.svg" width="23px" height="23px">
+                </div>
+                <div class="tituloFileira">
+                    Descritores
+                </div>
+            </div>
+            <div class="fileiraNavegacao">
+                <div class="imgFileira">
                     <img src="../assets/bx_support.svg" width="30px" height="30px">
                 </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao" onclick="abrirSuporte()">
-                        Suporte
-                    </span>
+                <div class="tituloFileira">
+                    Suporte
                 </div>
             </div>
         </div>
-        <div class="sair">
-            <div class="imgSair">
-                <img src="../assets/sair.svg">
-            </div>
-            <div class="tituloSair">
-                <span onclick="SairDaDash()">
-                    Sair
-                </span>
-            </div>
+        <div class="exit" onclick="SairDaDash()">
+            <img src="../assets/sair.svg">
+            <span>
+                Sair
+            </span>
         </div>
     </div>
     <div class="areaCadastro">
@@ -117,7 +103,7 @@
                     <img src="../assets/user.svg" width="45px" height="45px">
                     <div class="nomeDiretor">
                         <span>
-                            Magaiver Da Silva
+                            <span id=nomeUsuario>Magaiver Da Silva</span>
                             <br>
                             Diretor(a)
                         </span>
@@ -131,8 +117,8 @@
                     <img src="../assets/mdi_account-student.svg" width="60px" height="60px">
                 </div>
                 <div class="emailProfessor">
-                    <span style="font-size: 23px; font-weight: 550;">Wellington Rato</span>
-                    <span>Email: wellington.rato@faria.neto.com</span>
+                    <span style="font-size: 23px; font-weight: 550;" id="nomeProfessor">Wellington Rato</span>
+                    <span id="emailProfessor">Email: wellington.rato@faria.neto.com</span>
                 </div>
             </div>
             <div class="tituloInfo">
@@ -140,15 +126,15 @@
             </div>
             <div class="infoProfessor">
                 <div class="fileiraInfo">
-                    &nbsp;<img src="../assets/telefone.svg" width="25px" height="25px"> &nbsp;&nbsp; <span>Telefone:
+                    &nbsp;<img src="../assets/telefone.svg" width="25px" height="25px"> &nbsp;&nbsp; <span id="telefoneProfessor">Telefone:
                         (11) 912345678</span>
                 </div>
                 <div class="fileiraInfo">
-                    &nbsp;<img src="../assets/oi_book.svg" width="25px" height="25px"> &nbsp;&nbsp; <span>Disciplina:
+                    &nbsp;<img src="../assets/oi_book.svg" width="25px" height="25px"> &nbsp;&nbsp; <span id="materiaProfessor">Disciplina:
                         Matemática</span>
                 </div>
                 <div class="fileiraInfo">
-                    <img src="../assets/chapeu.svg" width="30px" height="30px"> &nbsp; <span>Turmas: 3ºA, 3ºB</span>
+                    <img src="../assets/chapeu.svg" width="30px" height="30px"> &nbsp; <span id="turmasProfessor">Turmas: 3ºA, 3ºB</span>
                 </div>
             </div>
             <div class="editarExcluir">
@@ -156,13 +142,16 @@
             </div>
         </div>
 </body>
+
+<script src="../js/sessao.js"></script>
+
 <script>
     function gotoDashDiretor() {
         window.location.href = "dashDiretor.html"
     }
 
-    function gotoAtribuirTurmas() {
-        window.location.href = "atribuirTurmas.html"
+    function gotoTurmas() {
+        window.location.href = "turmas.html"
     }
 
     function gotoDashEscola() {
@@ -188,6 +177,26 @@ function fecharmodal(codigoModal){
 }
 
 function SairDaDash(){
+    limparSessao();
     window.location.href = "../index.html"
+}
+
+function professor(){
+    let params = new URLSearchParams(document.location.search);
+    let idUsuario = params.get("idProfessor")
+
+    fetch(`/diretor/infoProfessor/${idUsuario}`, {
+        method: "GET",
+    }).then(function (resposta) {
+        resposta.json().then((professor) => {
+            nomeProfessor.innerHTML = professor[0].nome;
+            emailProfessor.innerHTML = `Email: ${professor[0].email}`;
+            telefoneProfessor.innerHTML = `Telefone: ${professor[0].telefone}`;
+            materiaProfessor.innerHTML = `Disciplina: ${professor[0].fkMateria==1?"Matemática":"Português"}`;
+            turmasProfessor.innerHTML = `Turmas: ${professor[0].turmas}`;
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    })
 }
 </script>
