@@ -7,4 +7,8 @@ router.get("/puxarAlertas/:id", function (req, res) {
     alertaController.buscarAlertas(req, res);
 });
 
+router.get("/puxarUltimoAlerta/:id", function(req,res) {
+    alertaController.buscarUltimoRegistro(req,res);
+})
+
 module.exports = router;
