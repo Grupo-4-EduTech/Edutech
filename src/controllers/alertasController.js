@@ -5,8 +5,17 @@ function buscarAlertas(req, res) {
     alertasModel.buscarAlertas(idUsuario).then((resultado => {
             res.status(200).json(resultado);
         }
-    ))}
+    ))
+}
+
+function buscarUltimoRegistro(req, res) {
+    var idUsuario = req.params.id;
+    alertasModel.buscarUltimoRegistro(idUsuario).then((resultado => {
+        res.status(200).json(resultado);
+    }))
+}
 
 module.exports = {
-    buscarAlertas
+    buscarAlertas,
+    buscarUltimoRegistro
 }

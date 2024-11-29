@@ -311,11 +311,23 @@ body {
  font-size: 3vw;
 }
 
-.icone_notificacao{
+.icone_notificacao {
     margin-left: 50%;
     height: 35%;
-    margin-right:2.5%;
+    margin-right: 2.5%;
     cursor: pointer;
+    position: relative; 
+}
+
+.bolinha-notificacao {
+    position: absolute;
+    right: 19.1%;
+    top: 11.9%;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    display: none;
 }
 
 
