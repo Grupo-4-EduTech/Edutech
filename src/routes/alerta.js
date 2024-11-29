@@ -3,7 +3,7 @@ var router = express.Router();
 
 var alertaController = require("../controllers/alertasController");
 
-router.get("/puxarAlertas/${idUsuario}", function (req, res) {
+router.get("/puxarAlertas/:id", function (req, res) {
     alertaController.buscarAlertas(req, res);
 });
 

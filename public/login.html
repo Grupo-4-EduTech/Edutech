@@ -88,32 +88,25 @@
 
             if (resposta.ok) {
                 resposta.json().then(function (resposta) {
-
                     console.log("Dados recebidos: INFOPUB ", JSON.stringify(resposta));
-                    for (let i = 0; i < resposta.length; i++) {
-                        var cargo = resposta[i];
-                        console.log("Cargo: " + cargo.fkCargo);
-                        sessionStorage.setItem("ID_USUARIO", cargo.idUsuario);
-                        sessionStorage.setItem("NOME_USUARIO", cargo.nome);
-                       
-                        setTimeout(function () {
+                    var cargo = resposta.fkCargo;
+                    sessionStorage.setItem("ID_USUARIO", resposta.idUsuario);
+                    sessionStorage.setItem("NOME_USUARIO", resposta.nome);
 
-                            switch (cargo.fkCargo) {
-                                case 1: window.location = "./Dashbord-Secretaria/dashbord-Escolas.html";
-                                    break;
-                                case 2: window.location = "./Dashboard-Diretor/dashDiretor.html";
-                                    break;
-                                case 3: window.location = "./Dashboard-Professor/EntradaDash.html";
-                                sessionStorage.setItem("CARGO_USUARIO", "Professor(a)");
-                            }
-
-                        }, 1000);
-                        alert("login efetuado com sucesso")
-                    }
+                    setTimeout(function () {
+                        switch (cargo) {
+                            case 1: window.location = "./Dashbord-Secretaria/dashbord-Escolas.html";
+                                break;
+                            case 2: window.location = "./Dashboard-Diretor/dashDiretor.html";
+                                break;
+                            case 3: window.location = "./Dashboard-Professor/EntradaDash.html";
+                            sessionStorage.setItem("CARGO_USUARIO", "Professor(a)");
+                        }
+    
+                    }, 1000);
                 });
-
-
-            } else {
+                   
+            }else {
 
                 alert("Houve um erro ao tentar realizar o login!");
 

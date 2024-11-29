@@ -1,12 +1,12 @@
 document.getElementById('sino_alerts').addEventListener("click", function() {
     var idUsuario = sessionStorage.ID_USUARIO;
-    
+    console.log(idUsuario);
     abrirEFecharNotificacoes();
 
     fetch(`/alert/puxarAlertas/${idUsuario}`, {
         method: "GET",
     }).then(function (resposta) {
-
+        
         var base = document.getElementById('basesinha'); 
 
         resposta.json().then(function (resposta) {
@@ -31,8 +31,8 @@ document.getElementById('sino_alerts').addEventListener("click", function() {
                             ${rest.mensagemAlerta}
                         </p>
                     </div>`;
-                }
-                base.innerHTML += `<div class="alert-box" id="box_alert">
+                } else {
+                    base.innerHTML += `<div class="alert-box" id="box_alert">
                     <div class="alert-header">
                         <span class="alert-icon">⚠️</span>
                         <strong class="alert-title">${rest.tipoAlerta}</strong>
@@ -41,6 +41,8 @@ document.getElementById('sino_alerts').addEventListener("click", function() {
                         ${rest.mensagemAlerta}
                     </p>
                 </div>`;
+                }
+            
             })
         })
     });
