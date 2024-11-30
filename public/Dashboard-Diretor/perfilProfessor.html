@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/cssDashDiretor/cssDahsDiretor.css">
     <link rel="icon" sizes="56X56" href="../assets/a 1logo-Educare.svg">
-    <link rel="stylesheet" href="../css/CssDashProfessor/Dashgeral.css">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
@@ -20,66 +19,53 @@
             </span>
         </div>
         <div class="containerNavegacao">
-            <div class="professoresTitulo">
-                <div class="imgMenuLateral">
-                    <img src="../assets/ph_chalkboard-teacher.svg" width="30px" height="30px">
+            <div class="fileiraSelecionada" onclick="gotoDashDiretor()">
+                <div class="imgFileira">
+                    <img src="../assets/ph_chalkboard-teacher.svg" width="28px" height="28px">
                 </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao" onclick="gotoDashDiretor()">
-                        Professores
-                    </span>
+                <div class="tituloFileira">
+                    Professores
                 </div>
             </div>
-            <div class="turmasTitulo">
-                <div class="imgMenuLateral">
-                    <img src="../assets/chapeuBranco.svg" width="32px" height="32px">
+            <div class="fileiraNavegacao" onclick="gotoTurmas()">
+                <div class="imgFileira">
+                    <img src="../assets/chapeuBranco.svg"  width="30px" height="30px">
                 </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao" onclick="gotoTurmas()">
-                        Turmas
-                    </span>
-                </div>
-            </div>
-            <div class="dashboardsTitulo">
-                <div class="imgMenuLateral">
-                    <img src="../assets/mdi_graph-box.svg" width="30px" height="30px">
-                </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao" onclick="gotoDashEscola()">
-                        Dashboards
-                    </span>
+
+                <div class="tituloFileira">
+                    Turmas
                 </div>
             </div>
-            <div class="descritoresTitulo">
-                <div class="imgMenuLateral">
-                    <img src="../assets/descritores.svg" width="25px" height="25px">
+            <div class="fileiraNavegacao" onclick="gotoDashEscola()">
+                <div class="imgFileira">
+                    <img src="../assets/mdi_graph-box.svg" width="28px" height="28px">
                 </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao">
-                        Descritores
-                    </span>
+                <div class="tituloFileira">
+                    Dashboard
                 </div>
             </div>
-            <div class="suporteTitulo">
-                <div class="imgMenuLateral">
+            <div class="fileiraNavegacao">
+                <div class="imgFileira">
+                    <img src="../assets/descritores.svg" width="23px" height="23px">
+                </div>
+                <div class="tituloFileira">
+                    Descritores
+                </div>
+            </div>
+            <div class="fileiraNavegacao">
+                <div class="imgFileira">
                     <img src="../assets/bx_support.svg" width="30px" height="30px">
                 </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao" onclick="abrirSuporte()">
-                        Suporte
-                    </span>
+                <div class="tituloFileira">
+                    Suporte
                 </div>
             </div>
         </div>
-        <div class="sair">
-            <div class="imgSair">
-                <img src="../assets/sair.svg">
-            </div>
-            <div class="tituloSair">
-                <span onclick="SairDaDash()">
-                    Sair
-                </span>
-            </div>
+        <div class="exit" onclick="SairDaDash()">
+            <img src="../assets/sair.svg">
+            <span>
+                Sair
+            </span>
         </div>
     </div>
     <div class="areaCadastro">

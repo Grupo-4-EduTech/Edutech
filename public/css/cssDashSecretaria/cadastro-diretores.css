@@ -236,6 +236,7 @@ background-color: #078FC1;
 border: none;
 border-radius: 10vw;
 font-size: 1.5vw;
+font-family: 'Rubik';
 }
 .botao_cadastrar button:hover{
     background-color: #0B6395;

@@ -9,8 +9,8 @@ public class Escola {
     private String nome;
     private String logradouro;
     private Integer numLogradouro;
-    private Integer idRegiao;
     private Diretoria diretoria;
+    private Integer idRegiao;
 
     public Escola(){}
 
@@ -19,8 +19,8 @@ public class Escola {
         this.nome = nome;
         this.logradouro = logradouro;
         this.numLogradouro = numLogradouro;
-        this.idRegiao = idRegiao;
         this.diretoria = diretoria;
+        this.idRegiao = idRegiao;
     }
 
     public int getIdEscola() {
@@ -55,19 +55,19 @@ public class Escola {
         this.numLogradouro = numLogradouro;
     }
 
-    public Integer getIdRegiao() {
-        return idRegiao;
-    }
-
-    public void setIdRegiao(Integer idRegiao) {
-        this.idRegiao = idRegiao;
-    }
-
     public Diretoria getDiretoria() {
         return diretoria;
     }
 
     public void setDiretoria(Diretoria diretoria) {
         this.diretoria = diretoria;
+    }
+
+    public Integer getIdRegiao() {
+        return idRegiao;
+    }
+
+    public void setIdRegiao(Integer idRegiao) {
+        this.idRegiao = idRegiao;
     }
 }
