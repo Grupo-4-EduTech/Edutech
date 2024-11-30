@@ -202,16 +202,42 @@
                     </span>
                 </div>
                 <div class="areaGrafico">
-                    <canvas id="graficoPizza1" class="graficoPizza"></canvas>
-                    <canvas id="graficoPizza2" class="graficoPizza"></canvas>
-                </div>
-                <div class="legendaGrafico">
-                    <span>
-                        Matemática
-                    </span>
-                    <span>
-                        Português
-                    </span>
+                    <div class="cabecalho">
+                        <span>Turma</span>
+                        <span>Professor</span>
+                        <span>Matéria</span>
+                        <span>Média</span>
+                    </div>
+                    <div class="areaComparacao">
+                        <span>3ºB</span>
+                        <span>Professor Ciclano</span>
+                        <span>LP</span>
+                        <span>320</span>
+                    </div>
+                    <div class="areaComparacao">
+                        <span>3ºA</span>
+                        <span>Professor Ciclano</span>
+                        <span>MT</span>
+                        <span style="color: red;">200</span>
+                    </div>
+                    <div class="areaComparacao">
+                        <span>3ºC</span>
+                        <span>Professor Ciclano</span>
+                        <span>LP</span>
+                        <span>320</span>
+                    </div>
+                    <div class="areaComparacao">
+                        <span>3ºA</span>
+                        <span>Professor Ciclano</span>
+                        <span>MT</span>
+                        <span>330</span>
+                    </div>
+                    <div class="areaComparacao">
+                        <span>3ºB</span>
+                        <span>Professor Ciclano</span>
+                        <span>LP</span>
+                        <span>310</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -219,7 +245,7 @@
         <script src="script.js"></script>
 </body>
 
-<script src="../js/sessao.js"></script>
+<!-- <script src="../js/sessao.js"></script> -->
 
 <script>
     const ctx = document.getElementById('graficoBarras').getContext('2d');
@@ -285,93 +311,6 @@
                     align: 'end',
                     formatter: (value) => {
                         return value; // Exibe o valor da barra
-                    }
-                }
-            }
-        }
-    });
-
-    const ctx1 = document.getElementById('graficoPizza1').getContext('2d');
-    const ctx2 = document.getElementById('graficoPizza2').getContext('2d');
-
-    const graficoPizza1 = new Chart(ctx1, {
-        type: 'pie',
-        data: {
-            labels: ['Professor A', 'Professor B', 'Professor C'],
-            datasets: [{
-                data: [300, 50, 100],
-                backgroundColor: [
-                    'rgba(255, 255, 255)',
-                    'rgba(255, 255, 255)',
-                    'rgba(255, 255, 255)'
-                ],
-                borderColor: [
-                    '#0790C2',
-                    '#0790C2',
-                    '#0790C2'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                datalabels: {
-                    color: '#0790C2',
-                    anchor: 'center',
-                    align: 'center',
-                    formatter: (value, context) => {
-                        const labels = ['Professor A', 'Professor B', 'Professor C'];
-                        return labels[context.dataIndex];
-                    },
-
-                    display: (context) => {
-                        return true;
-                    }
-                }
-            }
-        }
-    });
-
-    const graficoPizza2 = new Chart(ctx2, {
-        type: 'pie',
-        data: {
-            labels: ['Professor A', 'Professor B', 'Professor C'],
-            datasets: [{
-                data: [200, 150, 75],
-                backgroundColor: [
-                    'rgba(255, 255, 255)',
-                    'rgba(255, 255, 255)',
-                    'rgba(255, 255, 255)'
-                ],
-                borderColor: [
-                    '#0790C2',
-                    '#0790C2',
-                    '#0790C2'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false,
-                },
-                datalabels: {
-                    color: '#0790C2',
-                    anchor: 'center',
-                    align: 'center',
-                    formatter: (value, context) => {
-                        const labels = ['Professor A', 'Professor B', 'Professor C'];
-                        return labels[context.dataIndex];
-                    },
-
-                    display: (context) => {
-                        return true;
                     }
                 }
             }
