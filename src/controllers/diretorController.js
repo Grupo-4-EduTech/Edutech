@@ -63,6 +63,38 @@ function conteudoMaisDificuldade(req, res) {
     })
 }
 
+function cadastrarProfessor(req, res) {
+    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+    var telefone = req.body.telefoneServer;
+    var fkEscola = req.body.fkEscolaServer;
+    var fkMateria = req.body.fkMateriaServer;
+    diretorModel.cadastrarProfessor(nome, email, senha, telefone, fkEscola, fkMateria).then(function (resultado) {
+        res.status(201).json({id: resultado.id});
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log(erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function turmasSemProfessor(req, res) {
+    var fkEscola = req.params.fkEscola;
+    var fkMateria = req.params.fkMateria;
+    diretorModel.turmasSemProfessor(fkEscola, fkMateria).then((resultado) => {
+        res.status(200).json(resultado);
+    });
+}
+
+function atribuirTurmas(req, res) {
+    var fkProfessor = req.body.fkProfessorServer
+    var fkTurma = req.body.fkTurmaServer
+    diretorModel.atribuirTurmas(fkProfessor, fkTurma).then((resultado) => {
+        res.status(200).json(resultado);
+    });
+}
+
 module.exports = {
     rank,
     porcentagemAbaixoMediaLP,
@@ -73,4 +105,7 @@ module.exports = {
     infoProfessor,
     turmas,
     conteudoMaisDificuldade,
+    cadastrarProfessor,
+    turmasSemProfessor,
+    atribuirTurmas,
 }

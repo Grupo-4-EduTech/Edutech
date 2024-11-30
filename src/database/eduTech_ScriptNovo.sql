@@ -8,13 +8,12 @@ CREATE TABLE diretoria(
 );
 
 CREATE TABLE escola(
-	idEscola INT UNIQUE NOT NULL,
+	idEscola INT UNIQUE AUTO_INCREMENT,
     nome VARCHAR(45) NULL,
     logradouro VARCHAR(45) NULL,
     numLogradouro INT NULL,
     idRegiao INT NOT NULL,
     fkDiretoria INT NOT NULL,
-    idRegiao INT NOT NULL,
     FOREIGN KEY (fkDiretoria) REFERENCES diretoria(idDiretoria),
     PRIMARY KEY (idEscola, fkDiretoria)
 );

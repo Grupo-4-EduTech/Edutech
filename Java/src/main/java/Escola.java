@@ -11,7 +11,6 @@ public class Escola {
     private Integer numLogradouro;
     private Integer idRegiao;
     private Diretoria diretoria;
-    private Integer idRegiao;
 
     public Escola(){}
 
@@ -22,15 +21,6 @@ public class Escola {
         this.numLogradouro = numLogradouro;
         this.idRegiao = idRegiao;
         this.diretoria = diretoria;
-        this.idRegiao = idRegiao;
-    }
-
-    public Integer getIdRegiao() {
-        return idRegiao;
-    }
-
-    public void setIdRegiao(Integer idRegiao) {
-        this.idRegiao = idRegiao;
     }
 
     public int getIdEscola() {

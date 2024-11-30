@@ -2,7 +2,6 @@ public class Turma {
     private int idTurma;
     private String nome;
     private Integer serie;
-    private String nome;
     private Escola escola;
     private Diretoria diretoria;
 

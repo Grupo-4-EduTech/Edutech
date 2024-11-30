@@ -31,13 +31,31 @@ function rankingEscolas(){
 }
 
 function escolas(){
-    var instrucaoSql = "SELECT escola.nome escola, usuario.nome diretor, idRegiao, SUBSTRING((AVG(proficienciaLP)+AVG(proficienciaMT))/2,1,4)/10 media FROM escola LEFT JOIN usuario ON idEscola=usuario.fkEscola AND fkCargo = 2 JOIN aluno ON idEscola=aluno.fkEscola GROUP BY escola,diretor,idRegiao";
+    var instrucaoSql = "SELECT escola.nome escola, usuario.nome diretor, idRegiao, SUBSTRING((AVG(proficienciaLP)+AVG(proficienciaMT))/2,1,4)/10 media FROM escola LEFT JOIN usuario ON idEscola=usuario.fkEscola AND fkCargo = 2 LEFT JOIN aluno ON idEscola=aluno.fkEscola GROUP BY escola,diretor,idRegiao";
 
     return database.executar(instrucaoSql)
 }
 
 function diretores(){
     var instrucaoSql = "SELECT usuario.nome diretor, escola.nome escola, email FROM usuario JOIN escola ON idEscola=fkEscola AND fkCargo=2;";
+
+    return database.executar(instrucaoSql)
+}
+
+function cadastroEscola(nome, logradouro, numero, regiao){
+    var instrucaoSql = `INSERT INTO escola (nome, logradouro, numLogradouro, idRegiao, fkDiretoria) VALUES ('${nome}','${logradouro}',${numero},${regiao},1)`;
+
+    return database.executar(instrucaoSql)
+}
+
+function escolasSemDiretor(){
+    var instrucaoSql = "SELECT idEscola, escola.nome FROM escola LEFT JOIN usuario ON idEscola = fkEscola AND fkCargo = 2 WHERE idUsuario IS NULL";
+
+    return database.executar(instrucaoSql)
+}
+
+function cadastrarDiretor(nome, email, senha, telefone, fkEscola){
+    var instrucaoSql = `INSERT INTO usuario (nome, email, senha, telefone, dtCadastro, fkCargo, fkEscola, fkDiretoria) VALUES ('${nome}','${email}','${senha}','${telefone}',NOW(),2,${fkEscola},1)`;
 
     return database.executar(instrucaoSql)
 }
@@ -50,4 +68,7 @@ module.exports = {
     rankingEscolas,
     escolas,
     diretores,
+    cadastroEscola,
+    escolasSemDiretor,
+    cadastrarDiretor,
 }
