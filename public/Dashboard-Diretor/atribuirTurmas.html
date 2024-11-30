@@ -8,7 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
-<body class="bodyCadastro" onload="validarSessao()">
+<body class="bodyCadastro" onload="validarSessao(), turmasSemProfessor()">
     <div class="menuLateral">
         <div class="logoEduTech"></div>
         <div class="navegacaoTitulo">
@@ -112,24 +112,12 @@
             <span class="tituloAtribuir">
                 Atribuição de Turmas
             </span>
-            <select class="selectAtribuir">
-                <option>Selecione...</option>
+            <select class="selectAtribuir" id="turmasSelect" onchange="addTurma()">
+                <option value="0">Selecione...</option>
             </select>
-            <div class="containerPainelTurmas">
-                <div class="cardTurma">
-                    3ºA &nbsp; <img src="../assets/x.svg" width="18px" height="18px" class="fechar">
-                </div>
-                <div class="cardTurma">
-                    3ºB &nbsp; <img src="../assets/x.svg" width="18px" height="18px" class="fechar">
-                </div>
-                <div class="cardTurma">
-                    2ºA &nbsp; <img src="../assets/x.svg" width="18px" height="18px" class="fechar">
-                </div>
-                <div class="cardTurma">
-                    2ºA &nbsp; <img src="../assets/x.svg" width="18px" height="18px" class="fechar">
-                </div>
+            <div class="containerPainelTurmas" id="turmasAdicionadas">
             </div>
-            <button class="proximo">
+            <button class="proximo" onclick="atribuirTurmas()">
                 Cadastrar
             </button>
         </div>
@@ -171,5 +159,74 @@ function fecharmodal(codigoModal){
 function SairDaDash(){
     limparSessao();
     window.location.href = "../index.html"
+}
+
+function turmasSemProfessor(){
+    let params = new URLSearchParams(document.location.search);
+    let fkMateria = params.get("materia")
+    fetch(`/diretor/turmasSemProfessor/${sessionStorage.FK_ESCOLA}/${fkMateria}`, {
+        method: "GET",
+    }).then(function (resposta) {
+        resposta.json().then((turmas) => {
+            turmas.forEach((turma) => {
+                turmasSelect.innerHTML += `<option value="${turma.idTurma}">${turma.nome}</option>`
+            })
+        })
+    })
+}
+
+let turmasAdicionadasListaId = [];
+let turmasAdicionadasListaNome = [];
+
+function addTurma(){
+    if(!turmasAdicionadasListaId.includes(turmasSelect.value)){
+        turmasAdicionadasListaId.push(turmasSelect.value);
+        turmasAdicionadasListaNome.push(turmasSelect.options[turmasSelect.selectedIndex].text);
+        turmasAdicionadas.innerHTML="";
+        for(i=0;i<turmasAdicionadasListaId.length;i++){
+            turmasAdicionadas.innerHTML += `<div class="cardTurma" id="${turmasAdicionadasListaId[i]}">${turmasAdicionadasListaNome[i]} &nbsp; <img src="../assets/x.svg" width="18px" height="18px" class="fechar" onclick="removeTurma(${i})"></div>`
+        }
+    }
+    turmasSelect.value = 0;
+}
+
+function removeTurma(i){
+    console.log(i);
+    console.log(turmasAdicionadasListaId);
+    console.log(turmasAdicionadasListaNome);
+    turmasAdicionadasListaId.splice(i,1);
+    turmasAdicionadasListaNome.splice(i,1);
+    console.log(turmasAdicionadasListaId);
+    console.log(turmasAdicionadasListaNome);
+    turmasAdicionadas.innerHTML = "";
+    for (i = 0; i < turmasAdicionadasListaId.length; i++) {
+        turmasAdicionadas.innerHTML += `<div class="cardTurma" id="${turmasAdicionadasListaId[i]}">${turmasAdicionadasListaNome[i]} &nbsp; <img src="../assets/x.svg" width="18px" height="18px" class="fechar" onclick="removeTurma(${i})"></div>`
+    }
+}
+
+function atribuirTurmas(){
+    let params = new URLSearchParams(document.location.search);
+    let varFkProfessor = params.get("id");
+    let varFkTurmas = turmasAdicionadasListaId
+    for(i=0;i<varFkTurmas.length;i++){
+        fetch("/diretor/atribuirTurmas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                fkProfessorServer: varFkProfessor,
+                fkTurmaServer: varFkTurmas[i]
+            }),
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json();
+                alert("Turmas cadastradas com sucesso");
+                gotoDashDiretor();
+            } else { throw "Houve um erro ao tentar realizar o cadastro!" }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
 }
     </script>

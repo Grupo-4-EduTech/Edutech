@@ -120,7 +120,6 @@ body {
 .areaProfessores {
     margin-left: 230px; 
     width: calc(100% - 230px);
-    overflow: auto; 
     display: flex;
     flex-direction: column;
 }
@@ -662,7 +661,8 @@ body {
     display: flex;
     flex-direction: row;
     padding: 20px;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 35px;
 }
 
 .cardTurma {

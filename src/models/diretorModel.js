@@ -54,6 +54,34 @@ function conteudoMaisDificuldade(fkTurma) {
     return database.executar(instrucaoSql)
 }
 
+function cadastrarProfessor(nome, email, senha, telefone, fkEscola, fkMateria){
+    var instrucaoSql = `
+        INSERT INTO usuario (nome, email, senha, telefone, dtCadastro, fkCargo, fkEscola, fkDiretoria, fkMateria)
+        VALUES ('${nome}','${email}','${senha}','${telefone}',NOW(),3,${fkEscola},1,${fkMateria})
+    `
+
+    return database.executar(instrucaoSql).then(result => {
+        return { id: result.insertId };
+    });
+}
+
+function turmasSemProfessor(fkEscola, fkMateria){
+    var instrucaoSql = `
+        SELECT t.idTurma, t.nome FROM turma t
+        LEFT JOIN (SELECT pt.fkTurma, u.fkMateria FROM professorTurma pt INNER JOIN usuario u ON pt.fkProfessor = u.idUsuario)
+        turmasProfessores ON t.idTurma = turmasProfessores.fkTurma AND turmasProfessores.fkMateria = ${fkMateria}
+        WHERE t.fkEscola = ${fkEscola} AND turmasProfessores.fkMateria IS NULL;
+    `;
+
+    return database.executar(instrucaoSql);
+}
+
+function atribuirTurmas(fkProfessor, fkTurma){
+    var instrucaoSql = `INSERT INTO professorTurma (fkProfessor, fkTurma) VALUES (${fkProfessor},${fkTurma})`;
+
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     rank,
     porcentagemAbaixoMediaLP,
@@ -64,4 +92,7 @@ module.exports = {
     infoProfessor,
     turmas,
     conteudoMaisDificuldade,
+    cadastrarProfessor,
+    turmasSemProfessor,
+    atribuirTurmas,
 }

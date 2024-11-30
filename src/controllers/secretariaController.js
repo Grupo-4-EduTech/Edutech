@@ -42,6 +42,33 @@ function diretores(req,res){
     });
 }
 
+function cadastroEscola(req,res){
+    var nome = req.body.nomeServer;
+    var logradouro = req.body.logradouroServer;
+    var numero = req.body.numeroServer;
+    var regiao = req.body.regiaoServer;
+    secretariaModel.cadastroEscola(nome, logradouro, numero, regiao).then((resultado) => {
+        res.status(200).json(resultado);
+    });
+}
+
+function escolasSemDiretor(req,res){
+    secretariaModel.escolasSemDiretor().then((resultado) => {
+        res.status(200).json(resultado);
+    });
+}
+
+function cadastrarDiretor(req,res){
+    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
+    var telefone = req.body.telefoneServer;
+    var senha = req.body.senhaServer;
+    var instituicao = req.body.instituicaoServer;
+    secretariaModel.cadastrarDiretor(nome, email, senha, telefone, instituicao).then((resultado) => {
+        res.status(200).json(resultado);
+    });
+}
+
 module.exports = {
     mediaMaterias,
     porcentagemAbaixoMediaLP,
@@ -50,4 +77,7 @@ module.exports = {
     rankingEscolas,
     escolas,
     diretores,
+    cadastroEscola,
+    escolasSemDiretor,
+    cadastrarDiretor,
 }

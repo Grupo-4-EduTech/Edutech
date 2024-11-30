@@ -214,8 +214,6 @@ public class ApachePOI{
                     aluno.setNome(faker.name().fullName());
                     seed++;
 
-                    escola.setIdRegiao(ThreadLocalRandom.current().nextInt(1, 6));
-
                     escola.setDiretoria(diretoria);
                     turma.setEscola(escola);
                     aluno.setTurma(turma);
