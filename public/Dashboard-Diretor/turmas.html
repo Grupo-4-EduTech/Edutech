@@ -21,7 +21,7 @@
             </span>
         </div>
         <div class="containerNavegacao">
-            <div class="fileiraSelecionada" onclick="gotoDashDiretor()">
+            <div class="fileiraNavegacao" onclick="gotoDashDiretor()">
                 <div class="imgFileira">
                     <img src="../assets/ph_chalkboard-teacher.svg" width="28px" height="28px">
                 </div>
@@ -29,7 +29,7 @@
                     Professores
                 </div>
             </div>
-            <div class="fileiraNavegacao" onclick="gotoTurmas()">
+            <div class="fileiraSelecionada" onclick="gotoTurmas()">
                 <div class="imgFileira">
                     <img src="../assets/chapeuBranco.svg" width="30px" height="30px">
                 </div>
@@ -93,9 +93,9 @@
         <div class="kpi">
             <div class="kpiProfessor">
                 <div class="tituloProfessor">
-                    <img src="../assets/ph_chalkboard-teacher.svg">
+                    <img src="../assets/chapeuBranco.svg" width="50px">
                     <span>
-                        Professores
+                        Turmas
                     </span>
                 </div>
                 <div class="areaUsuario">
@@ -242,11 +242,13 @@
                 <div class="nomeTurma">${turma.nome}</div>
                 <div class="media">
                     <div class="imagemPrachetaMedia"></div>
-                    <div class="AreaTextoMedia">Média LP: ${turma.mediaLP.toString().replace('.', ',')}</div>
+
+                    <div class="AreaTextoMedia">Média LP: ${turma.mediaLP!=null?turma.mediaLP.toString().replace('.', ','):"N/A"}</div>
                 </div>
                 <div class="media">
                     <div class="imagemPrachetaMedia"></div>
-                    <div class="AreaTextoMedia">Média MT: ${turma.mediaMT.toString().replace('.', ',')}</div>
+                    <div class="AreaTextoMedia">Média MT: ${turma.mediaMT!=null?turma.mediaMT.toString().replace('.', ','):"N/A"}</div>
+
                 </div>
                 <div class="materiaComDificuldade">
                     <div class="imagemAlerta"></div>

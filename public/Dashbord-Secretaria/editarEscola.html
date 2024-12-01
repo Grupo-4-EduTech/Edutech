@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/cssDashSecretaria/cssDashDiretores.css">
     <link rel="stylesheet" href="../css/cssDashSecretaria/inicioSecrretaria.css">
+    <link rel="stylesheet" href="../css/cssDashSecretaria/cadastro_escola.css">
     <link rel="icon" sizes="56X56" href="../assets/a 1logo-Educare.svg">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
-<body onload="validarSessao(), diretores()">
+
+<body onload="validarSessao(), escola()">
 
     <div class="modalSuporte" onclick="fecharmodal()">
         <div class="contentSuporte">
@@ -40,7 +42,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
             </span>
         </div>
         <div class="containerNavegacao">
-            <div class="fileiraSelecionada" onclick="mudarTelaDiretor()">
+            <div class="fileiraNavegacao" onclick="mudarTelaDiretor()">
                 <div class="imgFileira">
                     <img src="../assets/maletaLateral.svg" width="28px" height="28px">
                 </div>
@@ -48,7 +50,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     Diretores
                 </div>
             </div>
-            <div class="fileiraNavegacao" onclick="mudarTelaEscola()">
+            <div class="fileiraSelecionada" onclick="mudarTelaEscola()">
                 <div class="imgFileira">
                     <img src="../assets/escolaLateral.svg"  width="30px" height="30px">
                 </div>
@@ -76,7 +78,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 <div class="imgFileira">
                     <img src="../assets/bx_support.svg" width="30px" height="30px">
                 </div>
-                <div class="tituloFileira">
+                <div class="tituloFileira" >
                     Suporte
                 </div>
             </div>
@@ -88,23 +90,21 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
             </span>
         </div>
     </div>
-    </div>
     <div class="areaProfessores">
         <div class="kpi">
             <div class="kpiProfessor">
                 <div class="kpi_esquerda">
-                    <img src="../assets/maletaLateral.svg" class="imgem_kpi">
-                    <span  class="titulo_kpi">Diretores</span>
+                    <img src="../assets/escola-kpi.svg" class="imgem_kpi">
+                    <span class="titulo_kpi">Escolas</span>
                 </div>
                 <div class="kpi_direita">
                     <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
                     <img src="../assets/linha-kpi.svg" class="barra_kpi">
                     <img src="../assets/icone_usuario.svg" class="icone_usuario">
                     <div class="nome_titulo">
-                    <p class="kpi_nomeUsuario" id="nomeUsuario">Usuario Sobrenome</p>
-                    <h6 class="kpi_descricao">Secretaria da educação</h6>
+                        <p class="kpi_nomeUsuario" id="nomeUsuario">Usuario Sobrenome</p>
+                        <h6 class="kpi_descricao">Secretaria da educação</h6>
 
-            
                     </div>
                 </div>
 
@@ -118,47 +118,62 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
             </div>
         </div>
 
-        <div class="areaAdicaoPesquisa">
-            <div class="pesquisa">
-                <div class="tituloPesquisar">
-                    <span>
-                        Pesquisar
-                    </span>
+        <div class="area_cadastro">
+
+            <div class="form_cadastro">
+                <div class="titulo_cadastro">
+                    <h1>Edição de Escolas</h1>
                 </div>
-                <div class="barras">
-                    <div class="barraPesquisa">
-                        <input class="inputPesquisa" id="pesquisaInput">
-                        <button class="botao_pesquisar" onclick="pesquisa()"><img src="../assets/lupa_pesquisar.svg" alt=""></button>
-                    </div>
-                    <div class="filtro">
-                        <select class="inputFiltro">
-                            <option>Ordem alfabetica</option>
+                <div class="sessao_nome">
+                    <span><b>Nome</b></span>
+                    <input type="text" placeholder="Nome" id="nomeEscola">
+                </div>
+                <div class="sesssao_regiao_cidade">
+                    <div class="sessao_regiao">
+                        <span><b>Região</b></span>
+                        <select id="selectRegiao" class="selectCadastrar">
+                            <option value="0">Selecione...</option>
+                            <option value="1">Centro</option>
+                            <option value="2">Zona Leste</option>
+                            <option value="3">Zona Norte</option>
+                            <option value="4">Zona Oeste</option>
+                            <option value="5">Zona Sul</option>
                         </select>
                     </div>
+                    <div class="sessao_cidade">
+
+                        <span><b>Cidade</b></span>
+                        <input type="text" value="São Paulo" disabled id="cidadeEscola">
+                    </div>
+                </div>
+
+
+                <div class="sessao_logradouro_numero">
+                    <div class="sessao_logradouro">
+                        <span><b>Logradouro</b></span>
+                        <input type="text" placeholder="Logradouro" id="logradouroEscola">
+                    </div>
+                    <div class="sessao_numero">
+
+                        <span><b>Numero</b></span>
+                        <input type="text" placeholder="290" id="numeroEscola">
+                    </div>
+                </div>
+                <div class="botao_cadastrar">
+                        <button onclick="editarModal()">Editar</button>
                 </div>
             </div>
-            <div class="adicionar">
-                <!-- <button class="btnAdicionar">
-                    Importar
-                </button> -->
-                <button class="btnAdicionar" style="margin-right: 10%;" onclick="mudarTelaCadastroDiretor()">
-                    Adicionar
-                </button>
+        </div>
+        <dialog close id="modalEditar">
+            <div id="textoModalExcluir">Tem certeza que deseja editar esse professor?</div>
+            <div style="display: flex; justify-content: end; gap: 10px; margin: 5px 5px;">
+                <button id="cancelarEditar" onclick="cancelarEditar()">Cancelar</button>
+                <button id="confirmarEditar" onclick="confirmarEditar()">Editar</button>
             </div>
-        </div>
-       <div class="cards_diretores" id="cards_diretores"></div>
-        
-       </div>
-    </div>
-    <dialog close id="modalExcluir">
-        <span id="textoModalExcluir">Tem certeza que deseja excluir essa diretor?</span>
-    
-        <div style="display: flex; justify-content: end; gap: 10px; margin: 5px 5px;">
-            <button id="cancelarExcluir" onclick="cancelarExcluir()">Cancelar</button>
-            <button id="confirmarExcluir" onclick="confirmarExcluir()">Excluir</button>
-        </div>
-    </dialog>
+        </dialog>
+
 </body>
+
 </html>
 
 <script src="../js/sessao.js"></script>
@@ -168,17 +183,13 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
         window.location = "lista-Diretores.html"
     }
     function mudarTelaEscola() {
-         window.location = "Dash-Secretaria.html"
+        window.location = "Dash-Secretaria.html"
     }
     function mudarTelaDashboard() {
         window.location = "dashbord-Escolas.html"
     }
     function mudarTelaDescritores() {
         window.open('https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/matriz_de_referencia_de_lingua_portuguesa_e_matematica_do_saeb.pdf')
-    }
-
-    function mudarTelaCadastroDiretor() {
-        window.location = "cadastro-Diretor.html"
     }
 
     function SairDaDash(){
@@ -204,106 +215,82 @@ function fecharmodal(codigoModal){
 }
 }
 
-function diretores(){
-    fetch("/secretaria/diretores",{
+function escola(){
+    let params = new URLSearchParams(document.location.search);
+    let idEscola = params.get("idEscola");
+    fetch(`/secretaria/escola/${idEscola}`, {
         method: "GET",
-    }).then(function (resposta){
-        resposta.json().then((diretores) => {
-            diretores.forEach((diretor) => {
-                cards_diretores.innerHTML += `
-                    <div class="cards">
-                        <div class="foto_diretor"><img src="../assets/icone_diretor.svg" alt=""></div>
-                        <div class="nome_diretor"><h2>${diretor.diretor}</h2></div>
-                        <div class="diretor_diretor"><span>Escola: ${diretor.escola}</div></span>
-                        <div class="regiao_diretor">
-                            <span>${diretor.email}</span>
-                        </div>
-                        <div class="editarExcluir">
-                            <span onclick="edit(${diretor.idUsuario})">Editar&nbsp;</span>
-                            <span>|</span>
-                            <span onclick="excluirModal(${diretor.idUsuario})">&nbsp;Excluir</span>
-                        </div>
-                    </div>
-                `
-            })
+    }).then(function (resposta) {
+        resposta.json().then((escola) => {
+            nomeEscola.value = escola[0].nome;
+            selectRegiao.value = escola[0].idRegiao;
+            logradouroEscola.value = escola[0].logradouro;
+            numeroEscola.value = escola[0].numLogradouro;
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
         });
     })
 }
 
-function pesquisa() {
-    let pesquisaVar = pesquisaInput.value;
-    if(pesquisaVar.trim()!=""){
-        cards_diretores.innerHTML = "";
-        fetch(`/secretaria/diretoresPesquisa/${pesquisaVar}`, {
-            method: "GET",
-        }).then(function (resposta) {
-            resposta.json().then((diretores) => {
-                diretores.forEach((diretor) => {
-                    cards_diretores.innerHTML += `
-                <div class="cards">
-                    <div class="foto_diretor"><img src="../assets/icone_diretor.svg" alt=""></div>
-                    <div class="nome_diretor"><h2>${diretor.diretor}</h2></div>
-                    <div class="diretor_diretor"><span>Escola: ${diretor.escola}</div></span>
-                    <div class="regiao_diretor">
-                        <span>${diretor.email}</span>
-                    </div>
-                    <div class="editarExcluir">
-                        <span onclick="edit(${diretor.idUsuario})">Editar&nbsp;</span>
-                        <span>|</span>
-                        <span onclick="excluirModal(${diretor.idUsuario})">&nbsp;Excluir</span>
-                    </div>
-                </div>
-            `
-                })
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-        })
-    }else{
-        cards_diretores.innerHTML = "";
-        diretores();
+function editarModal() {
+    modalEditar.showModal();
+}
+
+function cancelarEditar() {
+    modalEditar.close();
+}
+
+function confirmarEditar() {
+    let nome = nomeEscola.value;
+    let regiao = selectRegiao.value;
+    let logradouro = logradouroEscola.value;
+    let numero = numeroEscola.value;
+
+    if (!nome || regiao == 0 || !logradouro || !numero) {
+        alert("Preencha todos os campos");
+    } else {
+        modalEditar.innerHTML = "<span>Insira sua senha para confirmar</span><br><input id='senhaConfirmar' type='password'><button onclick='editarEscola()'>Confirmar</button>"
     }
 }
 
-function edit(idDiretor) {
-    window.location.href = "editarDiretor.html?idDiretor=" + idDiretor
-}
-
-function excluirModal(idUsuario) {
-    modalExcluir.showModal();
-    modalExcluir.value = idUsuario;
-}
-
-function cancelarExcluir() {
-    modalExcluir.close();
-}
-
-function confirmarExcluir(idUsuario) {
-    modalExcluir.innerHTML = `<span>Insira sua senha para confirmar</span><br><input id='senhaConfirmar' type='password'><button onclick='excluir(${modalExcluir.value})'>Confirmar</button>`
-}
-
-function excluir(idUsuario) {
+function editarEscola(){
+    let nome = nomeEscola.value;
+    let regiao = selectRegiao.value;
+    let logradouro = logradouroEscola.value;
+    let numero = numeroEscola.value;
+    let params = new URLSearchParams(document.location.search);
+    let idEscola = params.get("idEscola");
     let senha = senhaConfirmar.value;
-
-    fetch(`/secretaria/confirmarOperacao/${sessionStorage.ID_USUARIO}/${senha}`, {
+    
+    fetch(`/diretor/confirmarOperacao/${sessionStorage.ID_USUARIO}/${senha}`, {
         method: "GET",
     }).then(function (resposta) {
         if (resposta.ok) {
-            fetch(`/secretaria/excluirDiretor/${idUsuario}`, {
-                method: "DELETE",
+            fetch(`/secretaria/editarEscola/${idEscola}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nomeServer: nome,
+                    regiaoServer: regiao,
+                    logradouroServer: logradouro,
+                    numeroServer: numero
+                }),
             }).then(function (resposta) {
                 if (resposta.ok) {
-                    alert("Diretor removido com sucesso!");
-                    mudarTelaDiretor();
-                }
+                    alert("Escola editada com sucesso");
+                    mudarTelaEscola();
+                    return resposta.json();
+                } else { throw "Houve um erro ao tentar realizar a edição!" }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
             });
         } else {
             alert("Falha em validar usuário.")
         }
     });
 }
-
 </script>
+
 <script src="../js/alerta.js"></script>

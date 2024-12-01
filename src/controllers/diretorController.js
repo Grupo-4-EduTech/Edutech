@@ -42,6 +42,30 @@ function professores(req, res) {
     });
 }
 
+function professorPesquisa(req, res){
+    var fkEscola = req.params.fkEscola;
+    var pesquisa = req.params.pesquisa;
+    diretorModel.professorPesquisa(fkEscola, pesquisa).then((resultado) => {
+        res.status(200).json(resultado);
+    });
+}
+
+function professorFiltroMateria(req, res){
+    var fkEscola = req.params.fkEscola;
+    var fkMateria = req.params.fkMateria;
+    diretorModel.professorFiltroMateria(fkEscola, fkMateria).then((resultado) => {
+        res.status(200).json(resultado);
+    });
+}
+
+function professorFiltroAlfabetica(req, res){
+    var fkEscola = req.params.fkEscola;
+    diretorModel.professorFiltroAlfabetica(fkEscola).then((resultado) => {
+        res.status(200).json(resultado);
+    });
+}
+
+
 function infoProfessor(req, res) {
     var idUsuario = req.params.idUsuario;
     diretorModel.infoProfessor(idUsuario).then((resultado) => {
@@ -95,6 +119,35 @@ function atribuirTurmas(req, res) {
     });
 }
 
+function confirmarOperacao(req, res) {
+    var idUsuario = req.params.idUsuario;
+    var senha = req.params.senha;
+    diretorModel.confirmarOperacao(idUsuario, senha).then((resultado) => {
+        if (resultado.length == 1) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(403).send("Senha inválida");
+        }
+    });
+}
+
+function editarProfessor(req, res){
+    var idUsuario = req.params.idUsuario;
+    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
+    var telefone = req.body.telefoneServer;
+    diretorModel.editarProfessor(nome, email, telefone, idUsuario).then((resultado) => {
+        res.status(200).json(resultado);
+    });
+}
+
+function excluirProfessor(req, res) {
+    var idUsuario = req.params.idProfessor;
+    diretorModel.excluirProfessor(idUsuario).then((resultado) => {
+        res.status(200).json(resultado);
+    });
+}
+
 module.exports = {
     rank,
     porcentagemAbaixoMediaLP,
@@ -102,10 +155,16 @@ module.exports = {
     turmaMaisDificuldade,
     turmasProficiencia,
     professores,
+    professorPesquisa,
+    professorFiltroMateria,
+    professorFiltroAlfabetica,
     infoProfessor,
     turmas,
     conteudoMaisDificuldade,
     cadastrarProfessor,
     turmasSemProfessor,
     atribuirTurmas,
+    confirmarOperacao,
+    editarProfessor,
+    excluirProfessor,
 }

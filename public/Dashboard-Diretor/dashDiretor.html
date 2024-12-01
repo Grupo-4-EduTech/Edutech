@@ -128,11 +128,14 @@
                 </div>
                 <div class="barras">
                     <div class="barraPesquisa">
-                        <input class="inputPesquisa">
+                        <input class="inputPesquisa" id="pesquisaInput" onkeyup="pesquisa()">
                     </div>
                     <div class="filtro">
-                        <select class="inputFiltro">
-                            <option>Filtrar por matéria</option>
+                        <select class="inputFiltro" id="inputFiltro" onchange="filtro()">
+                            <option value="0">Filtrar</option>
+                            <option value="1">Filtrar: Matemática</option>
+                            <option value="2">Filtrar: Português</option>
+                            <option value="3">Ordem Alfabética</option>
                         </select>
                     </div>
                 </div>
@@ -245,5 +248,146 @@
             });
         })
     }
+
+    function pesquisa(){
+        pesquisaVar = pesquisaInput.value;
+        if(pesquisaVar.trim()!=""){
+            areaProfessoresAdicionados.innerHTML="";
+            fetch(`/diretor/professorPesquisa/${sessionStorage.FK_ESCOLA}/${pesquisaVar}`,{
+            method: "GET",
+        }).then(function (resposta){
+            resposta.json().then((professores) => {
+                professores.forEach((professor) => {
+                    let turmas = professor.turmas;
+
+                    if(turmas == null){
+                        turmas = "Sem dados";
+                    }
+                    areaProfessoresAdicionados.innerHTML += `
+                        <div class="cardProfessor" onclick="gotoPerfilProfessor(${professor.idUsuario})">
+                            <div class="fotoProfessor" ">
+                                <img src="../assets/mdi_account-student.svg" width="60px" height="60px">
+                            </div>
+                            <div class="nomeProfessor">
+                                <span>
+                                    ${professor.nome}
+                                </span>
+                            </div>
+                            <div class="disciplina">
+                                <img src="../assets/oi_book.svg">
+                                <span>
+                                    Disciplina: ${professor.fkMateria==1?"Matemática":"Português"}
+                                </span>
+                            </div>
+                            <div class="turma">
+                                <img src="../assets/chapeu.svg">
+                                <span>
+                                    Turma: ${turmas}
+                                </span>
+                            </div>
+                        </div>
+                    `
+                })
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        })
+        }else{
+            areaProfessoresAdicionados.innerHTML = "";
+            professores();
+        }
+    }
+
+    function filtro(){
+        filtroVar = inputFiltro.value;
+        if(filtroVar==0){
+            areaProfessoresAdicionados.innerHTML = "";
+            professores();
+        }else if(filtroVar==3){
+            areaProfessoresAdicionados.innerHTML = "";
+            fetch(`/diretor/professorFiltroAlfabetica/${sessionStorage.FK_ESCOLA}`,{
+            method: "GET",
+        }).then(function (resposta){
+            resposta.json().then((professores) => {
+                professores.forEach((professor) => {
+                    let turmas = professor.turmas;
+
+                    if(turmas == null){
+                        turmas = "Sem dados";
+                    }
+                    areaProfessoresAdicionados.innerHTML += `
+                        <div class="cardProfessor" onclick="gotoPerfilProfessor(${professor.idUsuario})">
+                            <div class="fotoProfessor" ">
+                                <img src="../assets/mdi_account-student.svg" width="60px" height="60px">
+                            </div>
+                            <div class="nomeProfessor">
+                                <span>
+                                    ${professor.nome}
+                                </span>
+                            </div>
+                            <div class="disciplina">
+                                <img src="../assets/oi_book.svg">
+                                <span>
+                                    Disciplina: ${professor.fkMateria==1?"Matemática":"Português"}
+                                </span>
+                            </div>
+                            <div class="turma">
+                                <img src="../assets/chapeu.svg">
+                                <span>
+                                    Turma: ${turmas}
+                                </span>
+                            </div>
+                        </div>
+                    `
+                })
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        })
+        }else{
+            areaProfessoresAdicionados.innerHTML = "";
+            fetch(`/diretor/professorFiltroMateria/${sessionStorage.FK_ESCOLA}/${filtroVar}`,{
+            method: "GET",
+        }).then(function (resposta){
+            resposta.json().then((professores) => {
+                professores.forEach((professor) => {
+                    let turmas = professor.turmas;
+
+                    if(turmas == null){
+                        turmas = "Sem dados";
+                    }
+                    areaProfessoresAdicionados.innerHTML += `
+                        <div class="cardProfessor" onclick="gotoPerfilProfessor(${professor.idUsuario})">
+                            <div class="fotoProfessor" ">
+                                <img src="../assets/mdi_account-student.svg" width="60px" height="60px">
+                            </div>
+                            <div class="nomeProfessor">
+                                <span>
+                                    ${professor.nome}
+                                </span>
+                            </div>
+                            <div class="disciplina">
+                                <img src="../assets/oi_book.svg">
+                                <span>
+                                    Disciplina: ${professor.fkMateria==1?"Matemática":"Português"}
+                                </span>
+                            </div>
+                            <div class="turma">
+                                <img src="../assets/chapeu.svg">
+                                <span>
+                                    Turma: ${turmas}
+                                </span>
+                            </div>
+                        </div>
+                    `
+                })
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        })
+        }
+    }
 </script>
+
 <script src="../js/alertaDiretor.js"></script>
+

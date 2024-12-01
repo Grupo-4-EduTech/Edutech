@@ -31,13 +31,31 @@ function rankingEscolas(){
 }
 
 function escolas(){
-    var instrucaoSql = "SELECT escola.nome escola, usuario.nome diretor, idRegiao, SUBSTRING((AVG(proficienciaLP)+AVG(proficienciaMT))/2,1,4)/10 media FROM escola LEFT JOIN usuario ON idEscola=usuario.fkEscola AND fkCargo = 2 LEFT JOIN aluno ON idEscola=aluno.fkEscola GROUP BY escola,diretor,idRegiao";
+    var instrucaoSql = "SELECT idEscola, escola.nome escola, usuario.nome diretor, idRegiao, SUBSTRING((AVG(proficienciaLP)+AVG(proficienciaMT))/2,1,4)/10 media FROM escola LEFT JOIN usuario ON idEscola=usuario.fkEscola AND fkCargo = 2 LEFT JOIN aluno ON idEscola=aluno.fkEscola GROUP BY idEscola,escola,diretor,idRegiao";
 
     return database.executar(instrucaoSql)
 }
 
+function escolasFiltro(idRegiao){
+    var instrucaoSql = `SELECT idEscola, escola.nome escola, usuario.nome diretor, idRegiao, SUBSTRING((AVG(proficienciaLP)+AVG(proficienciaMT))/2,1,4)/10 media FROM escola LEFT JOIN usuario ON idEscola=usuario.fkEscola AND fkCargo = 2 LEFT JOIN aluno ON idEscola=aluno.fkEscola WHERE idRegiao = ${idRegiao} GROUP BY idEscola,escola,diretor,idRegiao`;
+    
+    return database.executar(instrucaoSql);
+}
+
+function escolasPesquisa(pesquisa) {
+    var instrucaoSql = `SELECT idEscola, escola.nome escola, usuario.nome diretor, idRegiao, SUBSTRING((AVG(proficienciaLP)+AVG(proficienciaMT))/2,1,4)/10 media FROM escola LEFT JOIN usuario ON idEscola=usuario.fkEscola AND fkCargo = 2 LEFT JOIN aluno ON idEscola=aluno.fkEscola WHERE escola.nome LIKE '%${pesquisa}%' GROUP BY idEscola,escola,diretor,idRegiao`;
+
+    return database.executar(instrucaoSql);
+}
+
 function diretores(){
-    var instrucaoSql = "SELECT usuario.nome diretor, escola.nome escola, email FROM usuario JOIN escola ON idEscola=fkEscola AND fkCargo=2;";
+    var instrucaoSql = "SELECT idUsuario, usuario.nome diretor, escola.nome escola, email FROM usuario JOIN escola ON idEscola=fkEscola AND fkCargo=2 ORDER BY diretor;";
+
+    return database.executar(instrucaoSql)
+}
+
+function diretoresPesquisa(pesquisa) {
+    var instrucaoSql = `SELECT idUsuario, usuario.nome diretor, escola.nome escola, email FROM usuario JOIN escola ON idEscola=fkEscola AND fkCargo=2 WHERE usuario.nome LIKE '%${pesquisa}%' ORDER BY diretor;`;
 
     return database.executar(instrucaoSql)
 }
@@ -60,6 +78,48 @@ function cadastrarDiretor(nome, email, senha, telefone, fkEscola){
     return database.executar(instrucaoSql)
 }
 
+function confirmarOperacao(idUsuario, senha) {
+    var instrucaoSql = `SELECT * FROM usuario WHERE idUsuario = ${idUsuario} AND senha = '${senha}'`;
+
+    return database.executar(instrucaoSql);
+}
+
+function escola(idEscola){
+    var instrucaoSql = `SELECT nome, logradouro, numLogradouro, idRegiao FROM escola WHERE idEscola = ${idEscola}`;
+
+    return database.executar(instrucaoSql);
+}
+
+function editarEscola(nome, regiao, logradouro, numero, idEscola){
+    var instrucaoSql = `UPDATE escola SET nome = '${nome}', idRegiao = '${regiao}', logradouro = '${logradouro}', numLogradouro = ${numero} WHERE idEscola = ${idEscola}`;
+
+    return database.executar(instrucaoSql);
+}
+
+function excluirEscola(idEscola){
+    var instrucaoSql = `DELETE FROM escola WHERE idEscola = ${idEscola}`;
+
+    return database.executar(instrucaoSql);
+}
+
+function diretor(idUsuario) {
+    var instrucaoSql = `SELECT usuario.nome nomeDiretor, email, telefone, fkEscola, escola.nome nomeEscola FROM usuario JOIN escola ON fkEscola = idEscola WHERE idUsuario = ${idUsuario}`;
+
+    return database.executar(instrucaoSql);
+}
+
+function editarDiretor(nome, email, telefone, fkEscola, idUsuario) {
+    var instrucaoSql = `UPDATE usuario SET nome = '${nome}', email = '${email}', telefone = '${telefone}', fkEscola = ${fkEscola} WHERE idUsuario = ${idUsuario}`;
+
+    return database.executar(instrucaoSql);
+}
+
+function excluirDiretor(idUsuario) {
+    var instrucaoSql = `DELETE FROM usuario WHERE idUsuario = ${idUsuario}`;
+
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     mediaMaterias,
     porcentagemAbaixoMediaLP,
@@ -67,8 +127,18 @@ module.exports = {
     comparacaoRegiao,
     rankingEscolas,
     escolas,
+    escolasFiltro,
+    escolasPesquisa,
     diretores,
+    diretoresPesquisa,
     cadastroEscola,
     escolasSemDiretor,
     cadastrarDiretor,
+    confirmarOperacao,
+    escola,
+    editarEscola,
+    excluirEscola,
+    diretor,
+    editarDiretor,
+    excluirDiretor,
 }
