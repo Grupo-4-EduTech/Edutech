@@ -13,7 +13,7 @@
 </head>
 
 <body class="bodyCadastro" onload="validarSessao(), turmas()">
-     <div class="menuLateral">
+    <div class="menuLateral">
         <div class="logoEduTech"></div>
         <div class="navegacaoTitulo">
             <span>
@@ -31,7 +31,7 @@
             </div>
             <div class="fileiraNavegacao" onclick="gotoTurmas()">
                 <div class="imgFileira">
-                    <img src="../assets/chapeuBranco.svg"  width="30px" height="30px">
+                    <img src="../assets/chapeuBranco.svg" width="30px" height="30px">
                 </div>
                 <div class="tituloFileira">
                     Turmas
@@ -99,7 +99,8 @@
                     </span>
                 </div>
                 <div class="areaUsuario">
-                    <img src="../assets/ion_notifications.svg" width="40px" height="40px">
+                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
+                    <span class="bolinha-notificacao" id="bolinha_vermelha"></span>
                     <img src="../assets/Line 96.svg">
                     <img src="../assets/user.svg" width="45px" height="45px">
                     <div class="nomeDiretor">
@@ -112,6 +113,15 @@
                 </div>
             </div>
         </div>
+
+        <!-- ALERTAS -->
+        <div class="wrapper" id="wra">
+            <div class="triangle"></div>
+            <div class="base" id="basesinha">
+            </div>
+        </div>
+
+
         <div class="AreaDeTrabalhoDiretor" id="AreaDeTrabalhoEntrada">
             <div class="Fileira" id="div_exibir_turmas">
 
@@ -232,11 +242,11 @@
                 <div class="nomeTurma">${turma.nome}</div>
                 <div class="media">
                     <div class="imagemPrachetaMedia"></div>
-                    <div class="AreaTextoMedia">Média LP: ${turma.mediaLP.toString().replace('.', ',') }</div>
+                    <div class="AreaTextoMedia">Média LP: ${turma.mediaLP.toString().replace('.', ',')}</div>
                 </div>
                 <div class="media">
                     <div class="imagemPrachetaMedia"></div>
-                    <div class="AreaTextoMedia">Média MT: ${turma.mediaMT.toString().replace('.', ',') }</div>
+                    <div class="AreaTextoMedia">Média MT: ${turma.mediaMT.toString().replace('.', ',')}</div>
                 </div>
                 <div class="materiaComDificuldade">
                     <div class="imagemAlerta"></div>
@@ -249,7 +259,7 @@
         div_exibir_turmas.innerHTML = turmaElements.join('');
 
         turmas.forEach((turma) => {
-            const mediaProficiencia = (turma.mediaLP+turma.mediaMT)/2
+            const mediaProficiencia = (turma.mediaLP + turma.mediaMT) / 2
             relacionarCores(mediaProficiencia, turma.idTurma)
         })
     }
@@ -269,3 +279,5 @@
     }
 
 </script>
+
+<script src="../js/alertaDiretor.js"></script>

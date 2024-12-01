@@ -4,11 +4,12 @@ let styleBolinhaVermelha = document.getElementById("bolinha_vermelha");
 
 document.getElementById('sino_alerts').addEventListener("click", function() {
 
-    var fkCargo = sessionStorage.getItem('FK_CARGO');
+    const fkCargo = sessionStorage.getItem('FK_CARGO');
+    const fkUsuario = sessionStorage.getItem('ID_USUARIO')
 
     abrirEFecharNotificacoes();
 
-    fetch(`/alert/puxarAlertas/${fkCargo}`, {
+    fetch(`/alert/puxarAlertasProfessor/${fkCargo}/${fkUsuario}`, {
         method: "GET",
     }).then(function (resposta) {
         
@@ -19,37 +20,42 @@ document.getElementById('sino_alerts').addEventListener("click", function() {
 
         resposta.json().then(function (resposta) {
             resposta.forEach(rest => {
-                if(rest.tipoAlerta === "Atenção") {
-                    base.innerHTML += `<div class="alert-box" id="box_alert">
+                const materia = sessionStorage.getItem('ID_MATERIA');
+                let includes = materia == 1 ? "Português" : "Matemática";
+
+                if(!rest.mensagemAlerta.includes(includes)){
+                    if(rest.tipoAlerta === "Atenção") {
+                        base.innerHTML += `<div class="alert-box" id="box_alert">
+                            <div class="alert-header">
+                                <span class="alert-icon">👀</span>
+                                <strong class="alert-title">${rest.tipoAlerta}</strong>
+                            </div>
+                            <p class="alert-description">
+                                ${rest.mensagemAlerta}
+                            </p>
+                        </div>`;
+                    } else if (rest.tipoAlerta === "Aviso") {
+                        base.innerHTML += `<div class="alert-box" id="box_alert">
+                            <div class="alert-header">
+                                <span class="alert-icon">📫</span>
+                                <strong class="alert-title">${rest.tipoAlerta}</strong>
+                            </div>
+                            <p class="alert-description">
+                                ${rest.mensagemAlerta}
+                            </p>
+                        </div>`;
+                    } else {
+                        base.innerHTML += `<div class="alert-box" id="box_alert">
                         <div class="alert-header">
-                            <span class="alert-icon">👀</span>
+                            <span class="alert-icon">⚠️</span>
                             <strong class="alert-title">${rest.tipoAlerta}</strong>
                         </div>
                         <p class="alert-description">
                             ${rest.mensagemAlerta}
                         </p>
                     </div>`;
-                } else if (rest.tipoAlerta === "Aviso") {
-                    base.innerHTML += `<div class="alert-box" id="box_alert">
-                        <div class="alert-header">
-                            <span class="alert-icon">📫</span>
-                            <strong class="alert-title">${rest.tipoAlerta}</strong>
-                        </div>
-                        <p class="alert-description">
-                            ${rest.mensagemAlerta}
-                        </p>
-                    </div>`;
-                } else {
-                    base.innerHTML += `<div class="alert-box" id="box_alert">
-                    <div class="alert-header">
-                        <span class="alert-icon">⚠️</span>
-                        <strong class="alert-title">${rest.tipoAlerta}</strong>
-                    </div>
-                    <p class="alert-description">
-                        ${rest.mensagemAlerta}
-                    </p>
-                </div>`;
-                }
+                    }
+                }         
             })
         })
     });
