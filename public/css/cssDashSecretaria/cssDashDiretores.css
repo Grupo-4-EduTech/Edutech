@@ -349,3 +349,11 @@ box-shadow: 0.3vw 0.3vw 10px rgba(0, 0, 0, 0.2); /* Suaviza a sombra */
  border-radius: 6PX;
  background-color: #18b4ed;
 }
+
+.editarExcluir {
+    width: 100px;
+    height: 30px;
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-end;
+}

@@ -24,7 +24,7 @@ CREATE TABLE turma(
     serie INT NOT NULL,
     fkEscola INT NOT NULL,
     fkDiretoria INT NOT NULL,
-    FOREIGN KEY (fkEscola, fkDiretoria) REFERENCES escola(idEscola, fkDiretoria),
+    FOREIGN KEY (fkEscola, fkDiretoria) REFERENCES escola(idEscola, fkDiretoria) ON DELETE CASCADE,
     PRIMARY KEY(idTurma, fkEscola, fkDiretoria)
 );
 
@@ -39,7 +39,7 @@ CREATE TABLE aluno(
     fkTurma INT NOT NULL,
     fkEscola INT NOT NULL,
     fkDiretoria INT NOT NULL,
-    FOREIGN KEY (fkTurma, fkEscola, fkDiretoria) REFERENCES turma(idTurma,fkEscola,fkDiretoria),
+    FOREIGN KEY (fkTurma, fkEscola, fkDiretoria) REFERENCES turma(idTurma,fkEscola,fkDiretoria) ON DELETE CASCADE,
     PRIMARY KEY (idAluno, fkTurma)
 );
 
@@ -65,7 +65,7 @@ CREATE TABLE usuario(
     fkDiretoria INT,
     fkMateria INT,
     FOREIGN KEY (fkCargo) REFERENCES cargo(idCargo),
-    FOREIGN KEY (fkEscola, fkDiretoria) REFERENCES escola(idEscola, fkDiretoria),
+    FOREIGN KEY (fkEscola, fkDiretoria) REFERENCES escola(idEscola, fkDiretoria) ON DELETE CASCADE,
     FOREIGN KEY (fkMateria) REFERENCES materia(idMateria),
     PRIMARY KEY (idUsuario, fkCargo),
     CONSTRAINT secretaria CHECK (fkCargo != 1 OR (fkMateria IS NULL AND fkEscola IS NULL)), -- Se for do secretaria, fkEscola e fkMatéria são nulas
@@ -76,8 +76,8 @@ CREATE TABLE usuario(
 CREATE TABLE professorTurma(
     fkProfessor INT NOT NULL,
     fkTurma INT NOT NULL,
-    FOREIGN KEY (fkProfessor) REFERENCES usuario(idUsuario),
-    FOREIGN KEY (fkTurma) REFERENCES turma(idTurma)
+    FOREIGN KEY (fkProfessor) REFERENCES usuario(idUsuario) ON DELETE CASCADE,
+    FOREIGN KEY (fkTurma) REFERENCES turma(idTurma) ON DELETE CASCADE
 );
 
 CREATE TABLE questao(
@@ -96,7 +96,7 @@ CREATE TABLE respostaAluno(
     resposta CHAR(1),
     fkAluno VARCHAR(20) NOT NULL,
     fkQuestao INT NOT NULL,
-    FOREIGN KEY (fkAluno) REFERENCES aluno(idAluno),
+    FOREIGN KEY (fkAluno) REFERENCES aluno(idAluno) ON DELETE CASCADE,
     FOREIGN KEY (fkQuestao) REFERENCES questao(idQuestao),
 	PRIMARY KEY (idRespostaAluno, fkAluno, fkQuestao)
 );
@@ -115,15 +115,8 @@ CREATE TABLE alerta (
     dataAlerta DATETIME,
     mensagemAlerta VARCHAR(100),
     idUsuario INT,
-    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
+    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE,
     tipoAlerta VARCHAR(10) CONSTRAINT tipoAlerta_check CHECK (tipoAlerta IN ('Alerta', 'Atenção', 'Aviso'))
-);
-
-CREATE TABLE professorTurma(
-	fkTurma int,
-    fkProfessor int,
-    FOREIGN KEY(fkTurma) REFERENCES turma(idTurma),
-    FOREIGN KEY(fkProfessor) REFERENCES usuario(idUsuario)
 );
 
 -- Inserts de exemplo

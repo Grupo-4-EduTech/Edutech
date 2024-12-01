@@ -211,7 +211,7 @@ function atribuirTurmas(){
     for(i=0;i<varFkTurmas.length;i++){
         fetch("/diretor/atribuirTurmas", {
             method: "POST",
-            headers: {
+            headers: {  
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -220,9 +220,9 @@ function atribuirTurmas(){
             }),
         }).then(function (resposta) {
             if (resposta.ok) {
-                return resposta.json();
                 alert("Turmas cadastradas com sucesso");
                 gotoDashDiretor();
+                return resposta.json();
             } else { throw "Houve um erro ao tentar realizar o cadastro!" }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);

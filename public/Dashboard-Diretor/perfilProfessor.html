@@ -138,9 +138,18 @@
                 </div>
             </div>
             <div class="editarExcluir">
-                Editar | Exluir
+                <span onclick="edit()">Editar&nbsp;</span>
+                <span>|</span>
+                <span onclick="excluirModal()">&nbsp;Excluir</span>
             </div>
         </div>
+        <dialog close id="modalExcluir">
+            <div id="textoModalExcluir">Tem certeza que deseja excluir esse professor?</div>
+            <div style="display: flex; justify-content: end; gap: 10px; margin: 5px 5px;">
+                <button id="cancelarExcluir" onclick="cancelarExcluir()">Cancelar</button>
+                <button id="confirmarExcluir" onclick="confirmarExcluir()">Excluir</button>
+            </div>
+        </dialog>
 </body>
 
 <script src="../js/sessao.js"></script>
@@ -199,4 +208,47 @@ function professor(){
         });
     })
 }
+
+function edit(){
+    let params = new URLSearchParams(document.location.search);
+    let idUsuario = params.get("idProfessor");
+    window.location.href = "editarProfessor.html?idProfessor="+idUsuario
+}
+
+function excluirModal() {
+    modalExcluir.showModal();
+}
+
+function cancelarExcluir() {
+    modalExcluir.close();
+}
+
+function confirmarExcluir() {
+    modalExcluir.innerHTML = "<span>Insira sua senha para confirmar</span><br><input id='senhaConfirmar' type='password'><button onclick='excluir()'>Confirmar</button>"
+}
+
+function excluir(){
+    let params = new URLSearchParams(document.location.search);
+    let idUsuario = params.get("idProfessor");
+    let senha = senhaConfirmar.value;
+
+    fetch(`/diretor/confirmarOperacao/${sessionStorage.ID_USUARIO}/${senha}`, {
+        method: "GET",
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            fetch(`/diretor/excluirProfessor/${idUsuario}`, {
+                method: "DELETE",
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    alert("Professor removido com sucesso!");
+                    gotoDashDiretor();
+                }
+            });
+        }else{
+            alert("Falha em validar usuário.")
+        }
+    });
+    
+}
+
 </script>
