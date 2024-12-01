@@ -94,7 +94,8 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
                 <div class="EspacoKPI">
                 </div>
                 <div class="AreaSinoNotificacao">
-                    <img src="../assets/sinonotificacaoturma.svg" class="SinoNotificacao">
+                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
+                    <span class="bolinha-notificacao" id="bolinha_vermelha"></span>
                 </div>
                 <div class="AreaEspacoNotificacao">
                     <div class="EspacoNotificacao">
@@ -111,6 +112,12 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
                         <div class="CargoDoUsuario" id="cargo_usuario">Cargo</div>
                     </div>
                 </div>
+            </div>
+        </div>
+          <!-- ALERTAS -->
+          <div class="wrapper" id="wra">
+            <div class="triangle"></div>
+            <div class="base" id="basesinha">
             </div>
         </div>
         <div class="AreaDeTrabalho" id="AreaDetrabalhoDash">
@@ -556,3 +563,4 @@ function gotoTurmas(){
         window.location.href = "../index.html"
     }
 </script>
+<script src="../js/alertaProfessor.js"></script>

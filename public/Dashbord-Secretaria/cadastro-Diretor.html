@@ -11,7 +11,7 @@
     <title>Edu Tech | Dashboard</title>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), escolasSemDiretor()">
 
     <div class="modalSuporte" onclick="fecharmodal()">
         <div class="contentSuporte">
@@ -132,35 +132,43 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 <div class="sesssao_regiao_cidade">
                     <div class="sessao_regiao">
                         <span><b>Nome</b></span>
-                        <input type="text" placeholder="Nome">
+                        <input type="text" placeholder="Nome" id="nome">
                     </div>
                     <div class="sessao_cidade">
 
                         <span><b>Sobrenome</b></span>
-                        <input type="text" placeholder="Sobrenome">
+                        <input type="text" placeholder="Sobrenome" id="sobrenome">
                     </div>
                 </div>
 
 
                 <div class="sessao_logradouro_numero">
                     <div class="sessao_logradouro">
-                        <span ><b>Email</b></span>
-                        <input type="email" placeholder="Email">
+                        <span ><b>email</b></span>
+                        <input type="email" placeholder="Email" id="email">
+
                     </div>
                     <div class="sessao_telefone">
 
                         <span><b>Telefone</b></span>
-                        <input type="number" placeholder="(XX) XXXXX - XX" >
+                        <input type="text" inputmode="numeric" placeholder="(XX) XXXXX - XXXX" id="telefone" maxlength="11">
                     </div>
                 </div>
-                <div class="select_Instituicao">
-                    <span ><b>Instituição</b></span>
-                  <select class="Instituicao">
-                    <option value="">Selecione a Instituição</option>
-                  </select>
+                <div class="sessao_logradouro_numero">
+                    <div class="sessao_logradouro">
+                        <span><b>Senha</b></span>
+                        <input type="password" placeholder="*******" id="senha">
+                    </div>
+                    <div class="select_Instituicao">
+                        <span><b>Instituição</b></span>
+                        <select class="Instituicao" id="instituicao">
+                            <option value="">Selecione a Instituição</option>
+                        </select>
                 </div>
+                </div>
+                    
                 <div class="botao_cadastrar">
-                        <button type="submit">Cadastrar</button>
+                        <button type="submit" onclick="cadastrarDiretor()">Cadastrar</button>
                 </div>
 
                 
@@ -207,6 +215,52 @@ function fecharmodal(codigoModal){
         for(let i = 0;i <=listamodais.length;i++) {  
             let modal1 = document.querySelector(listamodais[i])
             modal1.style.display = 'none'
+    }
+}
+
+function escolasSemDiretor(){
+    fetch("/secretaria/escolasSemDiretor", {
+        method: "GET",
+    }).then(function (resposta) {
+        resposta.json().then((escolas) => {
+            escolas.forEach((escola) => {
+                instituicao.innerHTML += `<option value=${escola.idEscola}>${escola.nome}</option>`
+            })
+        })
+    })
+}
+
+function cadastrarDiretor(){
+    var nomeVar = nome.value+" "+sobrenome.value;
+    var emailVar = email.value;
+    var telefoneVar = telefone.value;
+    var senhaVar = senha.value;
+    var instituicaoVar = instituicao.value;
+
+    if(!nomeVar||!emailVar||!telefoneVar||!senhaVar||instituicaoVar==0){
+        alert("Preencha todos os campos!");
+    }else{
+        fetch("/secretaria/cadastrarDiretor", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                telefoneServer: telefoneVar,
+                senhaServer: senhaVar,
+                instituicaoServer: instituicaoVar
+            }),
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                alert("Diretor cadastrado com sucesso");
+                mudarTelaDiretor();
+                return resposta.json();
+            } else { throw "Houve um erro ao tentar realizar o cadastro!" }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
     }
 }
 </script>

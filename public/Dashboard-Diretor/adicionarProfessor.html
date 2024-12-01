@@ -95,7 +95,8 @@
                     </span>
                 </div>
                 <div class="areaUsuario">
-                    <img src="../assets/ion_notifications.svg" width="40px" height="40px">
+                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
+                    <span class="bolinha-notificacao" id="bolinha_vermelha"></span>
                     <img src="../assets/Line 96.svg">
                     <img src="../assets/user.svg" width="45px" height="45px">
                     <div class="nomeDiretor">
@@ -108,6 +109,14 @@
                 </div>
             </div>
         </div>
+
+          <!-- ALERTAS -->
+          <div class="wrapper" id="wra">
+            <div class="triangle"></div>
+            <div class="base" id="basesinha">
+            </div>
+        </div>
+
         <div class="containerCadastrarProfessor">
             <div class="tituloCadastrar" id="tituloCadastro">
                 <span>
@@ -139,19 +148,15 @@
                     <span id="titulo_telefone">
                         Telefone
                     </span>
-                    <input class="inputCadastrarProfessor" placeholder="(XX) XXXXX - XXXX" id="input_telefone">
+                    <input class="inputCadastrarProfessor" placeholder="(XX) XXXXX - XXXX" id="input_telefone" maxlength="11">
                 </div>
             </div>
             <div class="fileiraInput">
                 <div class="divisaoInput">
-                    <span id="titulo_instituicao">
-                        Instituição
+                    <span id="titulo_senha">
+                        Senha
                     </span>
-                    <select class="selectCadastrarProfessor" id="select_instituicao">
-                        <option value="0">Selecione...</option>
-                        <option value="1">Vaccaro</option>
-                        <option value="2">Campos Salles</option>
-                    </select>
+                    <input class="inputCadastrarProfessor" placeholder="*******" id="input_senha" type="password">
                 </div>
                 <div class="divisaoInput"> 
                     <span id="titulo_disciplina">
@@ -177,8 +182,10 @@
 <script src="../js/sessao.js"></script>
 
 <script>
-    function gotoAtribuicao(){
-        window.location.href = "atribuirTurmas.html"
+
+    function gotoAtribuicao(id, fkMateria){
+        window.location.href = `atribuirTurmas.html?id=${id}&materia=${fkMateria}`;    
+
     }
 
     function gotoDashDiretor(){
@@ -199,27 +206,27 @@
         input_sobrenome.classList.remove("inputErro");
         input_email.classList.remove("inputErro");
         input_telefone.classList.remove("inputErro");
-        select_instituicao.classList.remove("selectErro");
+        input_senha.classList.remove("inputErro");
         select_disciplina.classList.remove("selectErro");
 
         titulo_nome.innerHTML = 'Nome';
         titulo_sobrenome.innerHTML = 'Sobrenome';
         titulo_email.innerHTML = 'Email';
         titulo_telefone.innerHTML = 'Telefone';
-        titulo_instituicao.innerHTML = 'Instituição';
+        titulo_senha.innerHTML = 'Senha';
         titulo_disciplina.innerHTML = 'Disciplina';
 
         let nome = input_nome.value
         let sobrenome = input_sobrenome.value
         let email = input_email.value
         let telefone = input_telefone.value
-        let instituicao = select_instituicao.value
+        let senha = input_senha.value
         let disciplina = select_disciplina.value
         
         let inputs = document.querySelector(".inputCadastrarProfessor")
         let selects = document.querySelector(".selectCadastrarProfessor")
 
-        if (!nome || !sobrenome || !email || !telefone || instituicao == 0 || disciplina == 0 || email.indexOf("@") == -1 || !/^\d+$/.test(telefone)) {
+        if (!nome || !sobrenome || !email || !telefone || !senha || disciplina == 0 || email.indexOf("@") == -1 || !/^\d+$/.test(telefone)) {
             tituloCadastro.innerHTML = `
             <span style="color: #a11919;">Preencha todos os campos antes de prosseguir</span>
             `
@@ -251,10 +258,10 @@
                 `
             } 
 
-            if (instituicao == 0) {
-                select_instituicao.classList.add("selectErro")
-                titulo_instituicao.innerHTML = `
-                <span style="color: #a11919;">Selecione uma instituição</span>
+            if (!senha) {
+                input_senha.classList.add("inputErro")
+                titulo_senha.innerHTML = `
+                <span style="color: #a11919;">Senha inválida</span>
                 `
             }
 
@@ -266,8 +273,40 @@
             }
         
         } else {
-            gotoAtribuicao()
+            cadastrar(nome, sobrenome, email, telefone, senha, disciplina)
         }
+    }
+
+    function cadastrar(nome, sobrenome, email, telefone, senha, disciplina){
+        var nomeVar = nome+" "+sobrenome;
+        var emailVar = email;
+        var senhaVar = senha;
+        var telefoneVar = telefone;
+        var fkEscolaVar = sessionStorage.FK_ESCOLA;
+        var fkMateriaVar = disciplina;
+
+        fetch("/diretor/cadastrarProfessor", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                telefoneServer: telefoneVar,
+                fkEscolaServer: fkEscolaVar,
+                fkMateriaServer: fkMateriaVar
+            }),
+        }).then(function (resposta) {
+            if(resposta.ok){
+                return resposta.json();
+            }else{throw "Houve um erro ao tentar realizar o cadastro!"}
+        }).then(function (dados) {
+            gotoAtribuicao(dados.id, disciplina)
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
     }
 
     function abrirModais(codigoModal) {
@@ -292,4 +331,8 @@ function SairDaDash(){
     limparSessao();
     window.location.href = "../index.html"
 }
+
+
 </script>
+
+<script src="../js/alertaDiretor.js"></script>

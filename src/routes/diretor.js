@@ -39,4 +39,16 @@ router.get("/conteudoMaisDificuldade/:fkTurma", function (req, res){
     diretorController.conteudoMaisDificuldade(req, res);
 });
 
+router.post("/cadastrarProfessor", function (req, res) {
+    diretorController.cadastrarProfessor(req, res);
+});
+
+router.get("/turmasSemProfessor/:fkEscola/:fkMateria", function (req,res){
+    diretorController.turmasSemProfessor(req,res);
+});
+
+router.post("/atribuirTurmas", function (req,res) {
+    diretorController.atribuirTurmas(req,res);
+});
+
 module.exports = router;
