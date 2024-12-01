@@ -14,6 +14,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.json.JSONObject;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
@@ -27,12 +28,28 @@ public class ApachePOI {
     String WARN = "\u001B[33mWARN" + RESET;
     String INFO = "\u001B[34mINFO" + RESET;
 
-    public List<Questao> extrairQuestoes(String filename, InputStream file) {
+    public List<Questao> extrairQuestoes(String filename, InputStream file) throws Exception {
+        JSONObject json = new JSONObject();
+
         try {
             Connection dbConnection = new Connection();
             JdbcTemplate connection = dbConnection.getConnection();
 
+            json.put("text", """
+                    ========================= :small_orange_diamond: *AVISO* :small_orange_diamond: ========================= 
+                    
+                    :small_orange_diamond: Novas informações foram adicionadas!
+                    """);
+
+            Slack.sendMessage(json);
+
             System.out.printf("\n%s - %s: Iniciando leitura do arquivo %s", getDataHora(), INFO, filename);
+
+            json.put("text", " ========================= :small_blue_diamond: *INFO* :small_blue_diamond: ========================= ");
+            Slack.sendMessage(json);
+
+            json.put("text", ":small_blue_diamond: Iniciando leitura do arquivo '%s'".formatted(filename));
+            Slack.sendMessage(json);
 
             connection.update("INSERT IGNORE INTO alerta (dataAlerta, mensagemAlerta, fkCargo, fkTurma, tipoAlerta) VALUES(?, ?, ?, ?, ?)", getDataHoraBD(), "Novas informações foram adicionadas", null, 0000000, "Aviso");
 
@@ -80,11 +97,14 @@ public class ApachePOI {
                     }
                 }
             }
-
-            workbook.close();
-
             System.out.printf("\n%s - %s: Leitura de arquivo finalizada", getDataHora(), INFO);
+            workbook.close();
+            json.put("text", ":small_blue_diamond: Leitura do arquivo finalizada");
+            Slack.sendMessage(json);
+
             System.out.printf("\n%s - %s: Iniciando inserção no banco de dados", getDataHora(), INFO);
+            json.put("text", ":small_blue_diamond: Iniciando inserção no banco de dados");
+            Slack.sendMessage(json);
 
             for (Questao questao : questoesExtraidas) {
                 if (questao.getIdQuestao() == 0) {
@@ -94,6 +114,8 @@ public class ApachePOI {
             }
 
             System.out.printf("\n%s - %s: Inserção finalizada", getDataHora(), INFO);
+            json.put("text", ":small_blue_diamond: Inserção finalizada");
+            Slack.sendMessage(json);
 
             return questoesExtraidas;
         } catch (IOException e) {
@@ -102,6 +124,7 @@ public class ApachePOI {
     }
 
     public void extrairDadosEM(String filename, InputStream file, List<Questao> questoes) {
+        JSONObject json = new JSONObject();
         IOUtils.setByteArrayMaxOverride(1600000000);
         int seed = 1;
         try {
@@ -110,6 +133,9 @@ public class ApachePOI {
 
             System.out.printf("\n%s - %s: Iniciando leitura do arquivo %s", getDataHora(), INFO, filename);
             Workbook workbook = StreamingReader.builder().rowCacheSize(500).bufferSize(6144).open(file);
+
+            json.put("text", ":small_blue_diamond: Iniciando leitura do arquivo '%s'".formatted(filename));
+            Slack.sendMessage(json);
 
             Sheet sheet = workbook.getSheetAt(0);
 
@@ -251,7 +277,12 @@ public class ApachePOI {
             workbook.close();
 
             System.out.printf("\n%s - %s: Leitura de arquivo finalizada", getDataHora(), INFO);
+            json.put("text", ":small_blue_diamond: Leitura de arquivo finalizada");
+            Slack.sendMessage(json);
+
             System.out.printf("\n%s - %s: Iniciando inserção no banco de dados", getDataHora(), INFO);
+            json.put("text", ":small_blue_diamond: Iniciando inserção no banco de dados");
+            Slack.sendMessage(json);
 
             for (Escola escola : escolasExtraidas) {
                 if (escola.getIdEscola() == 0) {
@@ -294,8 +325,13 @@ public class ApachePOI {
             consultarQtdAlunosAbaixoN5(turmasExtraidas);
 
             System.out.printf("\n%s - %s: Inserção finalizada", getDataHora(), INFO);
+            json.put("text", ":small_blue_diamond: Inserção finalizada");
+            Slack.sendMessage(json);
+
         } catch (IOException e) {
             System.out.printf("\n%s - %s", getDataHora(), ERROR);
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
@@ -340,11 +376,6 @@ public class ApachePOI {
                             int quantidadeErros = rs.getInt("quantidadeErros");
                             int fkMateria = rs.getInt("fkMateria");  // Agora estamos acessando fkMateria diretamente
 
-                            // Verificando se os dados estão sendo lidos corretamente
-                            System.out.println("Dentro do RowMapper:");
-                            System.out.println("Descritor: " + descritor);
-                            System.out.println("Quantidade de Erros: " + quantidadeErros);
-                            System.out.println("ID da Matéria: " + fkMateria);
 
                             String mensagem = "Alunos da turma " + turma.getNome() + " erraram mais questões baseadas no descritor: " + descritor;
 
@@ -390,12 +421,6 @@ public class ApachePOI {
                             String descritor = rs.getString("descritor");
                             int quantidadeErros = rs.getInt("quantidadeErros");
                             int fkMateria = rs.getInt("fkMateria");  // Agora estamos acessando fkMateria diretamente
-
-                            // Verificando se os dados estão sendo lidos corretamente
-                            System.out.println("Dentro do RowMapper:");
-                            System.out.println("Descritor: " + descritor);
-                            System.out.println("Quantidade de Erros: " + quantidadeErros);
-                            System.out.println("ID da Matéria: " + fkMateria);
 
                             String mensagem = "Alunos da turma " + turma.getNome() + " erraram mais questões baseadas no descritor: " + descritor;
 
@@ -614,7 +639,6 @@ public class ApachePOI {
 
         }
     }
-
 }
 
 
