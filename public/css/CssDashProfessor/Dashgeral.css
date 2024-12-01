@@ -452,6 +452,7 @@ body{
 .SinoNotificacao{
     height: 35px;
     width: 35px;
+    cursor: pointer;
 }
 
 .AreaEspacoNotificacao{

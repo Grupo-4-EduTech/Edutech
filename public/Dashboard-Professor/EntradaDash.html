@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/CssDashProfessor/Dashgeral.css">
     <link rel="stylesheet" href="../css/CssDashProfessor/EntradaDash.css">
+    <link rel="stylesheet" href="../css/alertas.css">
     <link rel="icon" sizes="56X56" href="../assets/a 1logo-Educare.svg">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <script src="Modal.js"></script>
@@ -116,7 +117,8 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                 <div class="EspacoKPI">
                 </div>
                 <div class="AreaSinoNotificacao">
-                    <img src="../assets/sinonotificacaoturma.svg" class="SinoNotificacao">
+                    <img src="../assets/sinonotificacaoturma.svg" class="SinoNotificacao" id="sino_alerts">
+                    <span class="bolinha-notificacao" id="bolinha_vermelha"></span>
                 </div>
                 <div class="AreaEspacoNotificacao">
                     <div class="EspacoNotificacao">
@@ -135,6 +137,14 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                 </div>
             </div>
         </div>
+
+        <!-- ALERTAS -->
+        <div class="wrapper" id="wra">
+            <div class="triangle"></div>
+            <div class="base" id="basesinha">
+            </div>
+        </div>
+
         <div class="AreaDeTrabalho" id="AreaDeTrabalhoEntrada">
             <!-- <div class="NomeFileira">
                 Turmas do 3°:
@@ -376,3 +386,5 @@ function gotoTurmas(){
     }
 
 </script>
+
+<script src="../js/alerta.js"></script>

@@ -88,13 +88,6 @@
 
             if (resposta.ok) {
                 resposta.json().then(function (resposta) {
-
-
-                    sessionStorage.NOME_USUARIO = resposta[0].nome;
-                    sessionStorage.ID_USUARIO = resposta[0].idUsuario;
-                    sessionStorage.FK_CARGO = resposta[0].fkCargo;
-                    sessionStorage.FK_ESCOLA = resposta[0].fkEscola;
-
                     console.log("Dados recebidos: INFOPUB ", JSON.stringify(resposta));
                     var cargo = resposta.fkCargo;
                     sessionStorage.setItem("ID_USUARIO", resposta.idUsuario);
