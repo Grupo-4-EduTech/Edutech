@@ -144,6 +144,9 @@ values (default, "Secretário Fulano","secfulano@saopaulo.com","123","1199999999
 insert into usuario values
 (default, "Professor teste", "profT1@escolaa.com", "123", "11999999999", NOW(), 3, 1, 1, 1);
 
+insert into turma values
+(0000000, '000', 00, 1, 1);
+
 /*
 insert into professorTurma values
 (1289313, 3),
