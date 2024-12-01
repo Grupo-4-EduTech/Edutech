@@ -44,7 +44,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
         <div class="containerNavegacao">
             <div class="fileiraSelecionada" onclick="gotoTurmas()">
                 <div class="imgFileira">
-                    <img src="../assets/chapeuBranco.svg"  width="30px" height="30px">
+                    <img src="../assets/chapeuBranco.svg" width="30px" height="30px">
                 </div>
                 <div class="tituloFileira">
                     Turmas
@@ -94,7 +94,8 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 <div class="EspacoKPI">
                 </div>
                 <div class="AreaSinoNotificacao">
-                    <img src="../assets/sinonotificacaoturma.svg" class="SinoNotificacao">
+                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
+                    <span class="bolinha-notificacao" id="bolinha_vermelha"></span>
                 </div>
                 <div class="AreaEspacoNotificacao">
                     <div class="EspacoNotificacao">
@@ -113,6 +114,14 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 </div>
             </div>
         </div>
+
+        <!-- ALERTAS -->
+        <div class="wrapper" id="wra">
+            <div class="triangle"></div>
+            <div class="base" id="basesinha">
+            </div>
+        </div>
+
         <div class="AreaDeTrabalho" id="AreaDetrabalhoAlunos">
             <div class="AreaDePesquisa">
                 <div class="AbasDePesquisa" id="Aba1">
@@ -138,17 +147,17 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 </div>
             </div>
             <div class="AreaTrabalhoAlunos" id="div_pai_alunos">
-           
-                </div>
+
             </div>
         </div>
+    </div>
     </div>
 </body>
 
 </html>
 <script src="../js/sessao.js"></script>
 <script>
-     function gotoMatrizReferencia(){
+    function gotoMatrizReferencia() {
         var url = "https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf";
         window.open(url, '_blank');
     }
@@ -170,9 +179,9 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
             modal1.style.display = 'none'
         }
     }
-  
-function gotoTurmas(){
-        window.location.href = "EntradaDash.html"   
+
+    function gotoTurmas() {
+        window.location.href = "EntradaDash.html"
     }
 
     const idUsuario = sessionStorage.getItem('ID_USUARIO');
@@ -187,31 +196,31 @@ function gotoTurmas(){
     const idMateria = sessionStorage.getItem('ID_MATERIA');
 
 
-    function selecionarOrdemExibicao(){
+    function selecionarOrdemExibicao() {
         let ordenacao = idMateria == 1 ? "mediaMT" : "mediaLP"
 
         const selectOrdenacao = SelecaoDeFiltros.value;
 
-        if(selectOrdenacao == 2){
-            ordenacao += " DESC"; 
+        if (selectOrdenacao == 2) {
+            ordenacao += " DESC";
         }
-        else if(selectOrdenacao == 3){
+        else if (selectOrdenacao == 3) {
             ordenacao = "a.nome";
         }
-        
+
         listarAlunosIndividualmente(ordenacao);
     }
 
     // const ordenacaoFiltrada = selecionarOrdemExibicao()
     // listarAlunosIndividualmente(ordenacaoFiltrada);
-   
+
 
     function listarAlunosIndividualmente(ordenacao) {
         fetch(`/dashboardProfessor/listarAlunosIndividualmente/${idMateria}/${idTurmaSelecionada}/${ordenacao}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     throw "Nenhum resultado encontrado!!";
-                }           
+                }
                 resposta.json().then(function (resposta) {
                     let contadorFileira = 0;
                     let fileira = 0;
@@ -220,23 +229,23 @@ function gotoTurmas(){
                     for (let i = 0; i < resposta.length; i++) {
                         let aluno = resposta[i];
                         id_turma.innerHTML = aluno.nomeTurma;
-                        
+
                         let media = idMateria == 1 ? aluno.mediaMT : aluno.mediaLP;
                         const dificuldadeAluno = verificarDificuldadePorDescritor(aluno.dificuldade, idMateria);
-                       
-                        if(fileira == 0){
+
+                        if (fileira == 0) {
                             div_pai_alunos.innerHTML += `
                                     <div class="FileiraAlunos" id="fileira${contadorFileira}">
                                     </div>
                                 `;
-                           a = contadorFileira;
+                            a = contadorFileira;
                             contadorFileira++;
                         }
-                        
-                        
-                            const idFileira = document.getElementById(`fileira${a}`)
-                            console.log()
-                                idFileira.innerHTML += `
+
+
+                        const idFileira = document.getElementById(`fileira${a}`)
+                        console.log()
+                        idFileira.innerHTML += `
                                 <div class="AreaInfoAlunoEnglobado">
                                     <div class="AreaImagemAluno">
                                         <div class="ImagemAluno">
@@ -264,12 +273,12 @@ function gotoTurmas(){
                                     </div>
                                 </div>
                             `;
-                            fileira++;
+                        fileira++;
 
-                        if(fileira == 3){
-                                fileira = 0;
+                        if (fileira == 3) {
+                            fileira = 0;
                         }
-                            
+
                     }
                 });
             } else {
@@ -322,16 +331,16 @@ function gotoTurmas(){
 
         return dificuldadeTurma;
     }
-    
 
-    function pesquisarAluno(){
+
+    function pesquisarAluno() {
         const pesquisa = InputDePesquisa.value;
 
         fetch(`/dashboardProfessor/pesquisarAluno/${idMateria}/${idTurmaSelecionada}/${pesquisa}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     throw "Nenhum resultado encontrado!!";
-                }           
+                }
                 resposta.json().then(function (resposta) {
                     let contadorFileira = 0;
                     let fileira = 0;
@@ -342,20 +351,20 @@ function gotoTurmas(){
 
                         let media = idMateria == 1 ? aluno.mediaMT : aluno.mediaLP;
                         const dificuldadeAluno = verificarDificuldadePorDescritor(aluno.dificuldade, idMateria);
-                       
-                        if(fileira == 0){
+
+                        if (fileira == 0) {
                             div_pai_alunos.innerHTML += `
                                     <div class="FileiraAlunos" id="fileira${contadorFileira}">
                                     </div>
                                 `;
-                           a = contadorFileira;
+                            a = contadorFileira;
                             contadorFileira++;
                         }
-                        
-                        
-                            const idFileira = document.getElementById(`fileira${a}`)
-                            console.log()
-                                idFileira.innerHTML += `
+
+
+                        const idFileira = document.getElementById(`fileira${a}`)
+                        console.log()
+                        idFileira.innerHTML += `
                                 <div class="AreaInfoAlunoEnglobado">
                                     <div class="AreaImagemAluno">
                                         <div class="ImagemAluno">
@@ -383,12 +392,12 @@ function gotoTurmas(){
                                     </div>
                                 </div>
                             `;
-                            fileira++;
+                        fileira++;
 
-                        if(fileira == 3){
-                                fileira = 0;
+                        if (fileira == 3) {
+                            fileira = 0;
                         }
-                            
+
                     }
                 });
             } else {
@@ -399,7 +408,7 @@ function gotoTurmas(){
         });
     }
 
-    function SairDaDash(){
+    function SairDaDash() {
         limparSessao();
         window.location.href = "../index.html"
     }

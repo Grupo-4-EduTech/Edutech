@@ -4,11 +4,12 @@ let styleBolinhaVermelha = document.getElementById("bolinha_vermelha");
 
 document.getElementById('sino_alerts').addEventListener("click", function() {
 
-    var fkCargo = sessionStorage.getItem('FK_CARGO');
+    const fkCargo = sessionStorage.getItem('FK_CARGO');
+    const fkEscola = sessionStorage.getItem('FK_ESCOLA')
 
     abrirEFecharNotificacoes();
 
-    fetch(`/alert/puxarAlertas/${fkCargo}`, {
+    fetch(`/alert/puxarAlertasDiretor/${fkCargo}/${fkEscola}`, {
         method: "GET",
     }).then(function (resposta) {
         
