@@ -21,66 +21,52 @@
             </span>
         </div>
         <div class="containerNavegacao">
-            <div class="professoresTitulo">
-                <div class="imgMenuLateral">
-                    <img src="../assets/ph_chalkboard-teacher.svg" width="30px" height="30px">
+            <div class="fileiraNavegacao" onclick="gotoDashDiretor()">
+                <div class="imgFileira">
+                    <img src="../assets/ph_chalkboard-teacher.svg" width="28px" height="28px">
                 </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao" onclick="gotoDashDiretor()">
-                        Professores
-                    </span>
+                <div class="tituloFileira">
+                    Professores
                 </div>
             </div>
-            <div class="turmasTitulo">
-                <div class="imgMenuLateral">
-                    <img src="../assets/chapeuBranco.svg" width="32px" height="32px">
+            <div class="fileiraSelecionada" onclick="gotoTurmas()">
+                <div class="imgFileira">
+                    <img src="../assets/chapeuBranco.svg" width="30px" height="30px">
                 </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao" onclick="gotoTurmas()">
-                        Turmas
-                    </span>
+                <div class="tituloFileira">
+                    Turmas
                 </div>
             </div>
-            <div class="dashboardsTitulo">
-                <div class="imgMenuLateral">
-                    <img src="../assets/mdi_graph-box.svg" width="30px" height="30px">
+            <div class="fileiraNavegacao" onclick="gotoDashEscola()">
+                <div class="imgFileira">
+                    <img src="../assets/mdi_graph-box.svg" width="28px" height="28px">
                 </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao" onclick="gotoDashEscola()">
-                        Dashboards
-                    </span>
+                <div class="tituloFileira">
+                    Dashboard
                 </div>
             </div>
-            <div class="descritoresTitulo">
-                <div class="imgMenuLateral">
-                    <img src="../assets/descritores.svg" width="25px" height="25px">
+            <div class="fileiraNavegacao">
+                <div class="imgFileira">
+                    <img src="../assets/descritores.svg" width="23px" height="23px">
                 </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao">
-                        Descritores
-                    </span>
+                <div class="tituloFileira" onclick="mudarTelaDescritores()">
+                    Descritores
                 </div>
             </div>
-            <div class="suporteTitulo">
-                <div class="imgMenuLateral">
+            <div class="fileiraNavegacao">
+                <div class="imgFileira">
                     <img src="../assets/bx_support.svg" width="30px" height="30px">
                 </div>
-                <div class="tituloMenuLateral">
-                    <span class="navegacao" onclick="abrirSuporte()">
-                        Suporte
-                    </span>
+                <div class="tituloFileira" onclick="abrirSuporte()">
+                    Suporte
                 </div>
             </div>
         </div>
-        <div class="sair">
-            <div class="imgSair">
-                <img src="../assets/sair.svg">
-            </div>
-            <div class="tituloSair">
-                <span onclick="SairDaDash()">
-                    Sair
-                </span>
-            </div>
+        <div class="exit" onclick="SairDaDash()">
+            <img src="../assets/sair.svg">
+            <span>
+                Sair
+            </span>
         </div>
     </div>
     <div class="areaCadastro">
@@ -107,13 +93,14 @@
         <div class="kpi">
             <div class="kpiProfessor">
                 <div class="tituloProfessor">
-                    <img src="../assets/ph_chalkboard-teacher.svg">
+                    <img src="../assets/chapeuBranco.svg" width="50px">
                     <span>
-                        Professores
+                        Turmas
                     </span>
                 </div>
                 <div class="areaUsuario">
-                    <img src="../assets/ion_notifications.svg" width="40px" height="40px">
+                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
+                    <span class="bolinha-notificacao" id="bolinha_vermelha"></span>
                     <img src="../assets/Line 96.svg">
                     <img src="../assets/user.svg" width="45px" height="45px">
                     <div class="nomeDiretor">
@@ -126,6 +113,15 @@
                 </div>
             </div>
         </div>
+
+        <!-- ALERTAS -->
+        <div class="wrapper" id="wra">
+            <div class="triangle"></div>
+            <div class="base" id="basesinha">
+            </div>
+        </div>
+
+
         <div class="AreaDeTrabalhoDiretor" id="AreaDeTrabalhoEntrada">
             <div class="Fileira" id="div_exibir_turmas">
 
@@ -246,11 +242,13 @@
                 <div class="nomeTurma">${turma.nome}</div>
                 <div class="media">
                     <div class="imagemPrachetaMedia"></div>
-                    <div class="AreaTextoMedia">Média LP: ${turma.mediaLP.toString().replace('.', ',') }</div>
+
+                    <div class="AreaTextoMedia">Média LP: ${turma.mediaLP!=null?turma.mediaLP.toString().replace('.', ','):"N/A"}</div>
                 </div>
                 <div class="media">
                     <div class="imagemPrachetaMedia"></div>
-                    <div class="AreaTextoMedia">Média MT: ${turma.mediaMT.toString().replace('.', ',') }</div>
+                    <div class="AreaTextoMedia">Média MT: ${turma.mediaMT!=null?turma.mediaMT.toString().replace('.', ','):"N/A"}</div>
+
                 </div>
                 <div class="materiaComDificuldade">
                     <div class="imagemAlerta"></div>
@@ -263,7 +261,7 @@
         div_exibir_turmas.innerHTML = turmaElements.join('');
 
         turmas.forEach((turma) => {
-            const mediaProficiencia = (turma.mediaLP+turma.mediaMT)/2
+            const mediaProficiencia = (turma.mediaLP + turma.mediaMT) / 2
             relacionarCores(mediaProficiencia, turma.idTurma)
         })
     }
@@ -283,3 +281,5 @@
     }
 
 </script>
+
+<script src="../js/alertaDiretor.js"></script>

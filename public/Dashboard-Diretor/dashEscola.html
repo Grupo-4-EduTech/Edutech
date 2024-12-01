@@ -30,7 +30,7 @@
             </div>
             <div class="fileiraNavegacao" onclick="gotoTurmas()">
                 <div class="imgFileira">
-                    <img src="../assets/chapeuBranco.svg"  width="30px" height="30px">
+                    <img src="../assets/chapeuBranco.svg" width="30px" height="30px">
                 </div>
                 <div class="tituloFileira">
                     Turmas
@@ -44,7 +44,7 @@
                     Dashboard
                 </div>
             </div>
-            <div class="fileiraNavegacao">
+            <div class="fileiraNavegacao" onclick="mudarTelaDescritores()">
                 <div class="imgFileira">
                     <img src="../assets/descritores.svg" width="23px" height="23px">
                 </div>
@@ -52,7 +52,7 @@
                     Descritores
                 </div>
             </div>
-            <div class="fileiraNavegacao">
+            <div class="fileiraNavegacao" onclick="abrirSuporte()">
                 <div class="imgFileira">
                     <img src="../assets/bx_support.svg" width="30px" height="30px">
                 </div>
@@ -74,16 +74,16 @@
                 <div class="titleSuporte">Meios de contato</div>
                 <div class="EspacoModalSuporte"></div>
                 <div class="titleSuporte">
-                    <a href="https://wa.me/+5511914821813"  target="_blank">
+                    <a href="https://wa.me/+5511914821813" target="_blank">
                         <img src="../assets/Icon-whatsapp.png" class="iconsModal">
                     </a>
-                    <a
-                        href="https://www.instagram.com/theodorsouza42/?next=%2Fbluegodzi%2Ftagged%2F&locale=在
-                        线定制塔吉克斯坦TEF证书联系%7B威信%2BTG%2F飞机%3A%40buth2788%7DsjwNH%3F%3F%3F%3F%3F%3Fѧ%3F%3FƾSwQuO"  target="_blank">
+                    <a href="https://www.instagram.com/theodorsouza42/?next=%2Fbluegodzi%2Ftagged%2F&locale=在
+                        线定制塔吉克斯坦TEF证书联系%7B威信%2BTG%2F飞机%3A%40buth2788%7DsjwNH%3F%3F%3F%3F%3F%3Fѧ%3F%3FƾSwQuO"
+                        target="_blank">
                         <img src="../assets/icon_insta.webp" class="iconsModal" id="Insta">
                     </a>
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=samukatsouza16@gmail.com&su=
-    Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensagem%20.%20.%20."  target="_blank">
+    Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensagem%20.%20.%20." target="_blank">
                         <img src="../assets/icon_gmail.svg" class="iconsModal" id="google">
                     </a>
                 </div>
@@ -98,7 +98,8 @@
                     </span>
                 </div>
                 <div class="areaUsuario">
-                    <img src="../assets/ion_notifications.svg" width="40px" height="40px">
+                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
+                    <span class="bolinha-notificacao" id="bolinha_vermelha"></span>
                     <img src="../assets/Line 96.svg">
                     <img src="../assets/user.svg" width="45px" height="45px">
                     <div class="nomeDiretor">
@@ -109,6 +110,13 @@
                         </span>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- ALERTAS -->
+        <div class="wrapper" id="wra">
+            <div class="triangle"></div>
+            <div class="base" id="basesinha">
             </div>
         </div>
         <div class="indicadores">
@@ -138,13 +146,12 @@
                         <img src="../assets/operacoes.svg">
                     </div>
                     <span id="abaixoMediaMT">
-                        
+
                     </span>
                 </div>
                 <div class="nivelMedio">
                     <span>
-                        Nível básico < 325
-                    </span>
+                        Nível básico < 325 </span>
                 </div>
             </div>
             <div class="cardIndicador">
@@ -158,13 +165,12 @@
                         <img src="../assets/bxs_book.svg">
                     </div>
                     <span id="abaixoMediaLP">
-                        
+
                     </span>
                 </div>
                 <div class="nivelMedio">
                     <span>
-                        Nível básico < 325
-                    </span>
+                        Nível básico < 325 </span>
                 </div>
             </div>
             <div class="cardIndicador">
@@ -178,7 +184,7 @@
                         <img src="../assets/chapeuBranco.svg" width="45px" height="45px">
                     </div>
                     <span id="turmaMaisDificuldade">
-                        
+
                     </span>
                 </div>
                 <div class="nivelMedio"></div>
@@ -242,10 +248,10 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="script.js"></script>
+        <!-- <script src="script.js"></script> -->
 </body>
 
-<!-- <script src="../js/sessao.js"></script> -->
+<script src="../js/sessao.js"></script>
 
 <script>
     const ctx = document.getElementById('graficoBarras').getContext('2d');
@@ -317,105 +323,202 @@
         }
     });
 
-    function gotoDashDiretor(){
+
+    const ctx1 = document.getElementById('graficoPizza1').getContext('2d');
+    const ctx2 = document.getElementById('graficoPizza2').getContext('2d');
+
+    const graficoPizza1 = new Chart(ctx1, {
+        type: 'pie',
+        data: {
+            labels: ['Professor A', 'Professor B', 'Professor C'],
+            datasets: [{
+                data: [300, 50, 100],
+                backgroundColor: [
+                    'rgba(255, 255, 255)',
+                    'rgba(255, 255, 255)',
+                    'rgba(255, 255, 255)'
+                ],
+                borderColor: [
+                    '#0790C2',
+                    '#0790C2',
+                    '#0790C2'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                datalabels: {
+                    color: '#0790C2',
+                    anchor: 'center',
+                    align: 'center',
+                    formatter: (value, context) => {
+                        const labels = ['Professor A', 'Professor B', 'Professor C'];
+                        return labels[context.dataIndex];
+                    },
+
+                    display: (context) => {
+                        return true;
+                    }
+                }
+            }
+        }
+    });
+
+    const graficoPizza2 = new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: ['Professor A', 'Professor B', 'Professor C'],
+            datasets: [{
+                data: [200, 150, 75],
+                backgroundColor: [
+                    'rgba(255, 255, 255)',
+                    'rgba(255, 255, 255)',
+                    'rgba(255, 255, 255)'
+                ],
+                borderColor: [
+                    '#0790C2',
+                    '#0790C2',
+                    '#0790C2'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                datalabels: {
+                    color: '#0790C2',
+                    anchor: 'center',
+                    align: 'center',
+                    formatter: (value, context) => {
+                        const labels = ['Professor A', 'Professor B', 'Professor C'];
+                        return labels[context.dataIndex];
+                    },
+
+                    display: (context) => {
+                        return true;
+                    }
+                }
+            }
+        }
+    });
+
+    function gotoDashDiretor() {
         window.location.href = "dashDiretor.html"
     }
 
-    function gotoTurmas(){
+    function gotoTurmas() {
         window.location.href = "turmas.html"
     }
 
-    function gotoDashEscola(){
+    function gotoDashEscola() {
         window.location.href = "dashEscola.html"
     }
 
     function abrirModais(codigoModal) {
-    let listamodais = ['.modalSuporte']
-    const modal1 = document.querySelector(listamodais[codigoModal])
-    modal1.style.display = 'block'
-}
-function abrirSuporte() { 
-    let codigoModal = 0
-    abrirModais(codigoModal);
-}
+        let listamodais = ['.modalSuporte']
+        const modal1 = document.querySelector(listamodais[codigoModal])
+        modal1.style.display = 'block'
+    }
+    // function abrirSuporte() {
+    //     let codigoModal = 0
+    //     abrirModais(codigoModal);
+    // }
 
-function fecharmodal(codigoModal){
- let listamodais = ['.modalSuporte']
-        for(let i = 0;i <=listamodais.length;i++) {  
+    function fecharmodal(codigoModal) {
+        let listamodais = ['.modalSuporte']
+        for (let i = 0; i <= listamodais.length; i++) {
             let modal1 = document.querySelector(listamodais[i])
             modal1.style.display = 'none'
-}
-}
+        }
+    }
 
-function SairDaDash(){
-    limparSessao();
-    window.location.href = "../index.html"
-}
+    function SairDaDash() {
+        limparSessao();
+        window.location.href = "../index.html"
+    }
 
-function ranking(){
-    fetch(`/diretor/rank/${sessionStorage.FK_ESCOLA}`, {
-        method: "GET",
-    }).then(function (resposta) {
-        resposta.json().then((ranking) => {
-            rank.innerHTML = ranking[0].ranking+"º";
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    })
-}
+    function ranking() {
+        fetch(`/diretor/rank/${sessionStorage.FK_ESCOLA}`, {
+            method: "GET",
+        }).then(function (resposta) {
+            resposta.json().then((ranking) => {
+                rank.innerHTML = ranking[0].ranking + "º";
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        })
+    }
 
-function abaixoMedia(){
-    let fkEscola = sessionStorage.FK_ESCOLA;
-    fetch(`/diretor/porcentagemAbaixoMediaLP/${fkEscola}`, {
-        method: "GET",
-    }).then(function (resposta) {
-        resposta.json().then((porcentagem) => {
-            abaixoMediaLP.innerHTML = porcentagem[0].porcentagem+"%";
-            if (porcentagem[0].porcentagem > 50) { abaixoMediaLP.style.color = "red" }
-            else if (porcentagem[0].porcentagem >= 30) { abaixoMediaLP.style.color = "#EEAD2D" }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    })
+    function abaixoMedia() {
+        let fkEscola = sessionStorage.FK_ESCOLA;
+        fetch(`/diretor/porcentagemAbaixoMediaLP/${fkEscola}`, {
+            method: "GET",
+        }).then(function (resposta) {
+            resposta.json().then((porcentagem) => {
+                abaixoMediaLP.innerHTML = porcentagem[0].porcentagem + "%";
+                if (porcentagem[0].porcentagem > 50) { abaixoMediaLP.style.color = "red" }
+                else if (porcentagem[0].porcentagem >= 30) { abaixoMediaLP.style.color = "#EEAD2D" }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        })
 
-    fetch(`/diretor/porcentagemAbaixoMediaMT/${fkEscola}`, {
-        method: "GET",
-    }).then(function (resposta) {
-        resposta.json().then((porcentagem) => {
-            abaixoMediaMT.innerHTML = porcentagem[0].porcentagem+"%";
-            if (porcentagem[0].porcentagem > 50) { abaixoMediaMT.style.color = "red" }
-            else if (porcentagem[0].porcentagem >= 30) { abaixoMediaMT.style.color = "#EEAD2D" }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    })
-}
+        fetch(`/diretor/porcentagemAbaixoMediaMT/${fkEscola}`, {
+            method: "GET",
+        }).then(function (resposta) {
+            resposta.json().then((porcentagem) => {
+                abaixoMediaMT.innerHTML = porcentagem[0].porcentagem + "%";
+                if (porcentagem[0].porcentagem > 50) { abaixoMediaMT.style.color = "red" }
+                else if (porcentagem[0].porcentagem >= 30) { abaixoMediaMT.style.color = "#EEAD2D" }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        })
+    }
 
-function maisDificuldade(){
-    fetch(`/diretor/turmaMaisDificuldade/${sessionStorage.FK_ESCOLA}`, {
-        method: "GET",
-    }).then(function (resposta) {
-        resposta.json().then((turma) => {
-            turmaMaisDificuldade.innerHTML = turma[0].nome;
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    })
-}
+    function maisDificuldade() {
+        fetch(`/diretor/turmaMaisDificuldade/${sessionStorage.FK_ESCOLA}`, {
+            method: "GET",
+        }).then(function (resposta) {
+            resposta.json().then((turma) => {
+                turmaMaisDificuldade.innerHTML = turma[0].nome;
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        })
+    }
 
-function turmasProficiencia(){
-    fetch(`/diretor/turmasProficiencia/${sessionStorage.FK_ESCOLA}`, {
-        method: "GET",
-    }).then(function (resposta) {
-        resposta.json().then((turmas) => {
-            turmas.forEach((turma) => {
-                graficoBarras.data.labels.push(turma.nome);
-                graficoBarras.data.datasets[0].data.push(turma.media);
-                graficoBarras.update();
-            })
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    })
-}
+    function turmasProficiencia() {
+        fetch(`/diretor/turmasProficiencia/${sessionStorage.FK_ESCOLA}`, {
+            method: "GET",
+        }).then(function (resposta) {
+            resposta.json().then((turmas) => {
+                turmas.forEach((turma) => {
+                    graficoBarras.data.labels.push(turma.nome);
+                    graficoBarras.data.datasets[0].data.push(turma.media);
+                    graficoBarras.update();
+                })
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        })
+    }
+
+    function mudarTelaDescritores() {
+        window.open('https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/matriz_de_referencia_de_lingua_portuguesa_e_matematica_do_saeb.pdf')
+    }
+    function abrirSuporte() {
+        let codigoModal = 0
+        abrirModais(codigoModal);
+    }
 </script>
+<script src="../js/alertaDiretor.js"></script>

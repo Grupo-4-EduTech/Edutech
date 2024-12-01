@@ -246,7 +246,7 @@ font-family: 'Rubik';
 }
 
 .select_Instituicao{
-    width: 100%;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -256,7 +256,7 @@ font-family: 'Rubik';
 }
 
 .select_Instituicao select{
-    width: 74%;
+    width: 80%;
     height: 43%;
     border-radius: 10vw;
     border: none;
@@ -270,7 +270,7 @@ font-family: 'Rubik';
 
 .select_Instituicao span{
     font-size: 1.59vw;
-    margin-left: -60%;
+    margin-left: -55%;
     }
 
 .Instituicao{

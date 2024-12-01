@@ -8,13 +8,12 @@ CREATE TABLE diretoria(
 );
 
 CREATE TABLE escola(
-	idEscola INT UNIQUE NOT NULL,
+	idEscola INT UNIQUE AUTO_INCREMENT,
     nome VARCHAR(45) NULL,
     logradouro VARCHAR(45) NULL,
     numLogradouro INT NULL,
     idRegiao INT NOT NULL,
     fkDiretoria INT NOT NULL,
-    idRegiao INT NOT NULL,
     FOREIGN KEY (fkDiretoria) REFERENCES diretoria(idDiretoria),
     PRIMARY KEY (idEscola, fkDiretoria)
 );
@@ -25,7 +24,7 @@ CREATE TABLE turma(
     serie INT NOT NULL,
     fkEscola INT NOT NULL,
     fkDiretoria INT NOT NULL,
-    FOREIGN KEY (fkEscola, fkDiretoria) REFERENCES escola(idEscola, fkDiretoria),
+    FOREIGN KEY (fkEscola, fkDiretoria) REFERENCES escola(idEscola, fkDiretoria) ON DELETE CASCADE,
     PRIMARY KEY(idTurma, fkEscola, fkDiretoria)
 );
 
@@ -40,7 +39,7 @@ CREATE TABLE aluno(
     fkTurma INT NOT NULL,
     fkEscola INT NOT NULL,
     fkDiretoria INT NOT NULL,
-    FOREIGN KEY (fkTurma, fkEscola, fkDiretoria) REFERENCES turma(idTurma,fkEscola,fkDiretoria),
+    FOREIGN KEY (fkTurma, fkEscola, fkDiretoria) REFERENCES turma(idTurma,fkEscola,fkDiretoria) ON DELETE CASCADE,
     PRIMARY KEY (idAluno, fkTurma)
 );
 
@@ -66,7 +65,7 @@ CREATE TABLE usuario(
     fkDiretoria INT,
     fkMateria INT,
     FOREIGN KEY (fkCargo) REFERENCES cargo(idCargo),
-    FOREIGN KEY (fkEscola, fkDiretoria) REFERENCES escola(idEscola, fkDiretoria),
+    FOREIGN KEY (fkEscola, fkDiretoria) REFERENCES escola(idEscola, fkDiretoria) ON DELETE CASCADE,
     FOREIGN KEY (fkMateria) REFERENCES materia(idMateria),
     PRIMARY KEY (idUsuario, fkCargo),
     CONSTRAINT secretaria CHECK (fkCargo != 1 OR (fkMateria IS NULL AND fkEscola IS NULL)), -- Se for do secretaria, fkEscola e fkMatéria são nulas
@@ -77,8 +76,8 @@ CREATE TABLE usuario(
 CREATE TABLE professorTurma(
     fkProfessor INT NOT NULL,
     fkTurma INT NOT NULL,
-    FOREIGN KEY (fkProfessor) REFERENCES usuario(idUsuario),
-    FOREIGN KEY (fkTurma) REFERENCES turma(idTurma)
+    FOREIGN KEY (fkProfessor) REFERENCES usuario(idUsuario) ON DELETE CASCADE,
+    FOREIGN KEY (fkTurma) REFERENCES turma(idTurma) ON DELETE CASCADE
 );
 
 CREATE TABLE questao(
@@ -97,7 +96,7 @@ CREATE TABLE respostaAluno(
     resposta CHAR(1),
     fkAluno VARCHAR(20) NOT NULL,
     fkQuestao INT NOT NULL,
-    FOREIGN KEY (fkAluno) REFERENCES aluno(idAluno),
+    FOREIGN KEY (fkAluno) REFERENCES aluno(idAluno) ON DELETE CASCADE,
     FOREIGN KEY (fkQuestao) REFERENCES questao(idQuestao),
 	PRIMARY KEY (idRespostaAluno, fkAluno, fkQuestao)
 );
@@ -112,19 +111,17 @@ CREATE TABLE contato(
 );
 
 CREATE TABLE alerta (
-	idAlerta INT PRIMARY KEY AUTO_INCREMENT,
+	idAlerta INT AUTO_INCREMENT UNIQUE,
     dataAlerta DATETIME,
     mensagemAlerta VARCHAR(100),
     idUsuario INT,
-    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
+    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE,
+    fkCargo INT,
+    fkTurma INT,
+    FOREIGN KEY (fkCargo) REFERENCES cargo(idCargo) ON DELETE CASCADE,
+    FOREIGN KEY (fkTurma) REFERENCES turma(idTurma) ON DELETE CASCADE,
+    PRIMARY KEY(idAlerta, fkTurma),
     tipoAlerta VARCHAR(10) CONSTRAINT tipoAlerta_check CHECK (tipoAlerta IN ('Alerta', 'Atenção', 'Aviso'))
-);
-
-CREATE TABLE professorTurma(
-	fkTurma int,
-    fkProfessor int,
-    FOREIGN KEY(fkTurma) REFERENCES turma(idTurma),
-    FOREIGN KEY(fkProfessor) REFERENCES usuario(idUsuario)
 );
 
 -- Inserts de exemplo
@@ -146,14 +143,11 @@ values (1, "Escola teste 1","00000000", 1, 1, 1),(2, "Escola teste 2", "00000000
 insert into usuario
 values (default, "Secretário Fulano","secfulano@saopaulo.com","123","11999999999",NOW(),1,null,null,null),(default, "Diretor Ciclano","dirciclano@escolaa.com","123","11999999999",NOW(),2,1,1,null),(default, "Professor Beltrano","profbeltrano@escolaa.com","123","11999999999",NOW(),3,1,1,1);
 
-INSERT INTO alerta (dataAlerta, mensagemAlerta, idUsuario, tipoAlerta)
-VALUES 
-    ('2024-10-29 10:15:00', 'Notas mais baixas em Geometria no último ano.', 1, 'Alerta'),
-    ('2024-10-30 09:00:00', 'Desempenho abaixo da média em Matemática.', 2, 'Aviso'),
-    ('2024-11-01 14:30:00', 'Alunos com dificuldades em Português detectados.', 3, 'Atenção');
-    
 insert into usuario values
 (default, "Professor teste", "profT1@escolaa.com", "123", "11999999999", NOW(), 3, 1, 1, 1);
+
+insert into turma values
+(0000000, '000', 00, 1, 1);
 
 /*
 insert into professorTurma values
@@ -169,5 +163,3 @@ insert into professorTurma values
 
 select (select count(idEscola)-3 from escola) qtdEscolas,(select count(idTurma) from turma) qtdTurmas, (select count(idAluno) from aluno) qtdAlunos,(select count(idQuestao) from questao) qtdQuestoes,count(idRespostaAluno) qtdRespostas from respostaAluno;
 
-SELECT * FROM alerta;
-SELECT a.tipoAlerta AS 'Tipo', a.mensagemAlerta AS 'Mensagem Apresentada' , u.nome AS 'Nome de quem recebeu', a.dataAlerta AS 'Data que foi entregue' FROM alerta AS a JOIN usuario AS u ON u.idUsuario = a.idUsuario;

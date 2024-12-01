@@ -8,7 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
-<body class="bodyCadastro" onload="validarSessao()">
+<body class="bodyCadastro" onload="validarSessao(), professor()">
     <div class="menuLateral">
         <div class="logoEduTech"></div>
         <div class="navegacaoTitulo">
@@ -95,8 +95,7 @@
                     </span>
                 </div>
                 <div class="areaUsuario">
-                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
-                    <span class="bolinha-notificacao" id="bolinha_vermelha"></span>
+                    <img src="../assets/ion_notifications.svg" width="40px" height="40px">
                     <img src="../assets/Line 96.svg">
                     <img src="../assets/user.svg" width="45px" height="45px">
                     <div class="nomeDiretor">
@@ -109,18 +108,10 @@
                 </div>
             </div>
         </div>
-
-          <!-- ALERTAS -->
-          <div class="wrapper" id="wra">
-            <div class="triangle"></div>
-            <div class="base" id="basesinha">
-            </div>
-        </div>
-
         <div class="containerCadastrarProfessor">
             <div class="tituloCadastrar" id="tituloCadastro">
                 <span>
-                    Cadastro de professor
+                    Edição de professor
                 </span>
             </div>
             <div class="fileiraInput">
@@ -151,31 +142,20 @@
                     <input class="inputCadastrarProfessor" placeholder="(XX) XXXXX - XXXX" id="input_telefone" maxlength="11">
                 </div>
             </div>
-            <div class="fileiraInput">
-                <div class="divisaoInput">
-                    <span id="titulo_senha">
-                        Senha
-                    </span>
-                    <input class="inputCadastrarProfessor" placeholder="*******" id="input_senha" type="password">
-                </div>
-                <div class="divisaoInput"> 
-                    <span id="titulo_disciplina">
-                        Disciplina
-                    </span>
-                    <select class="selectCadastrarProfessor" id="select_disciplina">
-                        <option value="0">Selecione...</option>
-                        <option value="1">Matemática</option>
-                        <option value="2">Português</option>
-                    </select>
-                </div>
-            </div>
             <div class="proximo">
-                <button class="proximo" onclick="validacaoCadastro()">
-                    Próximo
+                <button class="proximo" onclick="editarModal()">
+                    Editar
                 </button>
             </div>
         </div>
     </div>
+    <dialog close id="modalEditar">
+        <div id="textoModalExcluir">Tem certeza que deseja editar esse professor?</div>
+        <div style="display: flex; justify-content: end; gap: 10px; margin: 5px 5px;">
+            <button id="cancelarEditar" onclick="cancelarEditar()">Cancelar</button>
+            <button id="confirmarEditar" onclick="confirmarEditar()">Editar</button>
+        </div>
+    </dialog>
 </body>
 </html>
 
@@ -206,27 +186,21 @@
         input_sobrenome.classList.remove("inputErro");
         input_email.classList.remove("inputErro");
         input_telefone.classList.remove("inputErro");
-        input_senha.classList.remove("inputErro");
-        select_disciplina.classList.remove("selectErro");
 
         titulo_nome.innerHTML = 'Nome';
         titulo_sobrenome.innerHTML = 'Sobrenome';
         titulo_email.innerHTML = 'Email';
         titulo_telefone.innerHTML = 'Telefone';
-        titulo_senha.innerHTML = 'Senha';
-        titulo_disciplina.innerHTML = 'Disciplina';
 
         let nome = input_nome.value
         let sobrenome = input_sobrenome.value
         let email = input_email.value
         let telefone = input_telefone.value
-        let senha = input_senha.value
-        let disciplina = select_disciplina.value
         
         let inputs = document.querySelector(".inputCadastrarProfessor")
         let selects = document.querySelector(".selectCadastrarProfessor")
 
-        if (!nome || !sobrenome || !email || !telefone || !senha || disciplina == 0 || email.indexOf("@") == -1 || !/^\d+$/.test(telefone)) {
+        if (!nome || !sobrenome || !email || !telefone || email.indexOf("@") == -1 || !/^\d+$/.test(telefone)) {
             tituloCadastro.innerHTML = `
             <span style="color: #a11919;">Preencha todos os campos antes de prosseguir</span>
             `
@@ -257,57 +231,60 @@
                 <span style="color: #a11919;">Telefone inválido</span>
                 `
             } 
-
-            if (!senha) {
-                input_senha.classList.add("inputErro")
-                titulo_senha.innerHTML = `
-                <span style="color: #a11919;">Senha inválida</span>
-                `
-            }
-
-            if (disciplina == 0) {
-                select_disciplina.classList.add("selectErro")
-                titulo_disciplina.innerHTML = `
-                <span style="color: #a11919;">Selecione uma disciplina</span>
-                `
-            }
         
         } else {
-            cadastrar(nome, sobrenome, email, telefone, senha, disciplina)
+            editar(nome, sobrenome, email, telefone);
         }
     }
 
-    function cadastrar(nome, sobrenome, email, telefone, senha, disciplina){
-        var nomeVar = nome+" "+sobrenome;
-        var emailVar = email;
-        var senhaVar = senha;
-        var telefoneVar = telefone;
-        var fkEscolaVar = sessionStorage.FK_ESCOLA;
-        var fkMateriaVar = disciplina;
+function editarModal(){
+    modalEditar.showModal();
+}
 
-        fetch("/diretor/cadastrarProfessor", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-                telefoneServer: telefoneVar,
-                fkEscolaServer: fkEscolaVar,
-                fkMateriaServer: fkMateriaVar
-            }),
-        }).then(function (resposta) {
-            if(resposta.ok){
-                return resposta.json();
-            }else{throw "Houve um erro ao tentar realizar o cadastro!"}
-        }).then(function (dados) {
-            gotoAtribuicao(dados.id, disciplina)
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    }
+function cancelarEditar() {
+    modalEditar.close();
+}
+
+function confirmarEditar() {
+    modalEditar.innerHTML = "<span>Insira sua senha para confirmar</span><br><input id='senhaConfirmar' type='password'><button onclick='validacaoCadastro()'>Confirmar</button>"
+}
+
+function editar(nome, sobrenome, email, telefone){
+    let params = new URLSearchParams(document.location.search);
+    let idUsuario = params.get("idProfessor");
+    let senha = senhaConfirmar.value;
+    var nomeVar = nome+" "+sobrenome;
+    var emailVar = email;
+    var telefoneVar = telefone;
+
+    fetch(`/diretor/confirmarOperacao/${sessionStorage.ID_USUARIO}/${senha}`, {
+        method: "GET",
+    }).then(function (resposta) {
+        if (resposta.ok) { 
+            fetch(`/diretor/editarProfessor/${idUsuario}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    telefoneServer: telefoneVar,
+                }),
+            }).then(function (resposta) {
+                if(resposta.ok){
+                    alert("Edição realizada com sucesso!");
+                    window.location.href = "perfilProfessor.html?idProfessor="+idUsuario;
+                    return resposta.json();
+                }else{throw "Houve um erro ao tentar realizar o update!"}
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        } else {
+            alert("Falha em validar usuário.")
+        }
+    });
+}
 
     function abrirModais(codigoModal) {
     let listamodais = ['.modalSuporte']
@@ -332,7 +309,23 @@ function SairDaDash(){
     window.location.href = "../index.html"
 }
 
+function professor() {
+    let params = new URLSearchParams(document.location.search);
+    let idUsuario = params.get("idProfessor")
 
+    fetch(`/diretor/infoProfessor/${idUsuario}`, {
+        method: "GET",
+    }).then(function (resposta) {
+        resposta.json().then((professor) => {
+            nome = professor[0].nome.substr(0,professor[0].nome.indexOf(" "));
+            sobrenome = professor[0].nome.substr(professor[0].nome.indexOf(" ")).trim();
+            input_nome.value = nome;
+            input_sobrenome.value = sobrenome;
+            input_email.value = professor[0].email;
+            input_telefone.value = professor[0].telefone;
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    })
+}
 </script>
-
-<script src="../js/alertaDiretor.js"></script>

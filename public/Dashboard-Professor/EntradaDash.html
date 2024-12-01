@@ -68,7 +68,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
         <div class="containerNavegacao">
             <div class="fileiraSelecionada" onclick="gotoTurmas()">
                 <div class="imgFileira">
-                    <img src="../assets/chapeuBranco.svg"  width="30px" height="30px">
+                    <img src="../assets/chapeuBranco.svg" width="30px" height="30px">
                 </div>
                 <div class="tituloFileira">
                     Turmas
@@ -92,7 +92,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                 </div>
             </div>
         </div>
-        <div class="exit">
+        <div class="exit" onclick="SairDaDash()">
             <img src="../assets/sair.svg">
             <span>
                 Sair
@@ -116,7 +116,8 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                 <div class="EspacoKPI">
                 </div>
                 <div class="AreaSinoNotificacao">
-                    <img src="../assets/sinonotificacaoturma.svg" class="SinoNotificacao">
+                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
+                    <span class="bolinha-notificacao" id="bolinha_vermelha"></span>
                 </div>
                 <div class="AreaEspacoNotificacao">
                     <div class="EspacoNotificacao">
@@ -135,26 +136,34 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
                 </div>
             </div>
         </div>
+
+        <!-- ALERTAS -->
+        <div class="wrapper" id="wra">
+            <div class="triangle"></div>
+            <div class="base" id="basesinha">
+            </div>
+        </div>
+
         <div class="AreaDeTrabalho" id="AreaDeTrabalhoEntrada">
             <!-- <div class="NomeFileira">
                 Turmas do 3°:
             </div> -->
             <div class="Fileira" id="div_exibir_turmas">
-                
+
             </div>
         </div>
     </div>
 </body>
 
 </html>
-
+<script src="../js/sessao.js"></script>
 <script>
-  function gotoMatrizReferencia(){
+    function gotoMatrizReferencia() {
         var url = "https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf";
-            // Abre a URL em uma nova aba
-            window.open(url, '_blank');
+        // Abre a URL em uma nova aba
+        window.open(url, '_blank');
     }
-  
+
     function abrirModais(codigoModal) {
         let listamodais = ['.modalSuporte', '.painel']
         const modal1 = document.querySelector(listamodais[codigoModal])
@@ -176,7 +185,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Turmas!&body=Mensagem%20.%20.%20.
 
         }
     }
-function gotoTurmas(){
+    function gotoTurmas() {
         window.location.href = "EntradaDash.html"
     }
 
@@ -206,7 +215,7 @@ function gotoTurmas(){
                         let materia = turma.materia == "MT" ? "Matemática" : "Português";
                         let media = turma.materia == "MT" ? turma.mediaMT : turma.mediaLP;
 
-                        if(media == null){
+                        if (media == null) {
                             media = "N/A"
                         }
 
@@ -265,7 +274,7 @@ function gotoTurmas(){
                             })
                             .catch(function (erro) {
                                 console.error(`Erro ao obter dificuldade da turma ${turma.idTurma}:`, erro);
-                                
+
                             });
                     }
 
@@ -351,7 +360,7 @@ function gotoTurmas(){
     function relacionarCores(mediaProficiencia, turma) {
         const cardTurma = document.getElementById(`turma${turma}`);
         console.log(mediaProficiencia)
-        
+
         if (mediaProficiencia < 275) {
             cardTurma.classList.add('cardVermelho');
         }
@@ -360,7 +369,7 @@ function gotoTurmas(){
         }
         else if (mediaProficiencia >= 350) {
             cardTurma.classList.add('cardVerde');
-        } 
+        }
 
         console.log(cardTurma)
     }
@@ -370,4 +379,10 @@ function gotoTurmas(){
         window.location = './DashboardsProfessor.html';
     }
 
+    function SairDaDash() {
+        limparSessao();
+        window.location.href = "../index.html"
+    }
+
 </script>
+<script src="../js/alertaProfessor.js"></script>

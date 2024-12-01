@@ -13,7 +13,7 @@ body {
 .areaProfessores {
     margin-left: 15vw; 
     width:85vw;
-    overflow: auto; 
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
     /* background-color: aquamarine; */
@@ -348,4 +348,12 @@ box-shadow: 0.3vw 0.3vw 10px rgba(0, 0, 0, 0.2); /* Suaviza a sombra */
 #OpcaoSelecionada{
  border-radius: 6PX;
  background-color: #18b4ed;
+}
+
+.editarExcluir {
+    width: 100px;
+    height: 30px;
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-end;
 }

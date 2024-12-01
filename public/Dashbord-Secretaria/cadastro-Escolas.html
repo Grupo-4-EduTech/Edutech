@@ -74,11 +74,11 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     Descritores
                 </div>
             </div>
-            <div class="fileiraNavegacao">
+            <div class="fileiraNavegacao" onclick="abrirSuporte()">
                 <div class="imgFileira">
                     <img src="../assets/bx_support.svg" width="30px" height="30px">
                 </div>
-                <div class="tituloFileira">
+                <div class="tituloFileira" >
                     Suporte
                 </div>
             </div>
@@ -99,6 +99,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 </div>
                 <div class="kpi_direita">
                     <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
+                    <span class="bolinha-notificacao" id="bolinha_vermelha"></span>
                     <img src="../assets/linha-kpi.svg" class="barra_kpi">
                     <img src="../assets/icone_usuario.svg" class="icone_usuario">
                     <div class="nome_titulo">
@@ -126,17 +127,24 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 </div>
                 <div class="sessao_nome">
                     <span><b>Nome</b></span>
-                    <input type="text" placeholder="Nome">
+                    <input type="text" placeholder="Nome" id="nomeEscola">
                 </div>
                 <div class="sesssao_regiao_cidade">
                     <div class="sessao_regiao">
                         <span><b>Região</b></span>
-                        <input type="text" placeholder="Região">
+                        <select id="selectRegiao" class="selectCadastrar">
+                            <option value="0">Selecione...</option>
+                            <option value="1">Centro</option>
+                            <option value="2">Zona Leste</option>
+                            <option value="3">Zona Norte</option>
+                            <option value="4">Zona Oeste</option>
+                            <option value="5">Zona Sul</option>
+                        </select>
                     </div>
                     <div class="sessao_cidade">
 
                         <span><b>Cidade</b></span>
-                        <input type="text" placeholder="Cidade">
+                        <input type="text" value="São Paulo" disabled id="cidadeEscola">
                     </div>
                 </div>
 
@@ -144,16 +152,16 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 <div class="sessao_logradouro_numero">
                     <div class="sessao_logradouro">
                         <span><b>Logradouro</b></span>
-                        <input type="text" placeholder="Região">
+                        <input type="text" placeholder="Logradouro" id="logradouroEscola">
                     </div>
                     <div class="sessao_numero">
 
                         <span><b>Numero</b></span>
-                        <input type="text" placeholder="Cidade">
+                        <input type="text" placeholder="290" id="numeroEscola">
                     </div>
                 </div>
                 <div class="botao_cadastrar">
-                        <button type="submit">Cadastrar</button>
+                        <button onclick="cadastroEscola()">Cadastrar</button>
                 </div>
             </div>
         </div>
@@ -175,7 +183,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
         window.location = "dashbord-Escolas.html"
     }
     function mudarTelaDescritores() {
-        window.open('https://download.inep.gov.br/educacao_basica/saeb/matriz-de-referencia-de-matematica_2001.pdf')
+        window.open('https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/matriz_de_referencia_de_lingua_portuguesa_e_matematica_do_saeb.pdf')
     }
 
     function SairDaDash(){
@@ -199,6 +207,41 @@ function fecharmodal(codigoModal){
             let modal1 = document.querySelector(listamodais[i])
             modal1.style.display = 'none'
 }
+}
+
+function cadastroEscola(){
+    let nomeVar = nomeEscola.value;
+    let regiaoVar = selectRegiao.value;
+    let cidadeVar = cidadeEscola.value;
+    let logradouroVar = logradouroEscola.value;
+    let numeroVar = numeroEscola.value;
+
+    if(!nomeVar||regiaoVar == 0||!cidadeVar||!logradouroVar||!numeroVar){
+        alert("Preencha todos os campos");
+    }else{
+        fetch("/secretaria/cadastroEscola", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                regiaoServer: regiaoVar,
+                cidadeServer: cidadeVar,
+                logradouroServer: logradouroVar,
+                numeroServer: numeroVar
+            }),
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                alert("Escola cadastrada com sucesso");
+                mudarTelaEscola();
+                return resposta.json();
+            } else { throw "Houve um erro ao tentar realizar o cadastro!" }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
 }
 </script>
 

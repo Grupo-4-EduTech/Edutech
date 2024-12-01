@@ -12,7 +12,7 @@
     <title>Edu Tech | Dashboard</title>
 </head>
 
-<body onload="listarTurmas()">
+<body onload="listarTurmas(), obterDadosgrafico()">
 
     <div class="modalSuporte" onclick="fecharmodal()">
         <div class="contentSuporte">
@@ -67,7 +67,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
                 </div>
             </div>
         </div>
-        <div class="exit">
+        <div class="exit" onclick="SairDaDash()">
             <img src="../assets/sair.svg">
             <span>
                 Sair
@@ -94,7 +94,8 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
                 <div class="EspacoKPI">
                 </div>
                 <div class="AreaSinoNotificacao">
-                    <img src="../assets/sinonotificacaoturma.svg" class="SinoNotificacao">
+                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
+                    <span class="bolinha-notificacao" id="bolinha_vermelha"></span>
                 </div>
                 <div class="AreaEspacoNotificacao">
                     <div class="EspacoNotificacao">
@@ -111,6 +112,12 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
                         <div class="CargoDoUsuario" id="cargo_usuario">Cargo</div>
                     </div>
                 </div>
+            </div>
+        </div>
+          <!-- ALERTAS -->
+          <div class="wrapper" id="wra">
+            <div class="triangle"></div>
+            <div class="base" id="basesinha">
             </div>
         </div>
         <div class="AreaDeTrabalho" id="AreaDetrabalhoDash">
@@ -226,16 +233,16 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Graficos(dashboard)!&body=Mensage
                         </a>
                     </div>
                 </div>
-                <a href="./Sugestoes.html" class="IconLupaParaDescritores">
+                <!-- <a href="./Sugestoes.html" class="IconLupaParaDescritores">
                     <img src="../assets/IconLupaDashProfe.svg" class="IconLupa">
-                </a>
+                </a> -->
             </div>
         </div>
     </div>
 </body>
 
 </html>
-
+<script src="../js/sessao.js"></script>
 <script>
 
     function obterDadosgrafico() {
@@ -550,5 +557,10 @@ function gotoTurmas(){
             KPI.style.color = 'black';
         }
     }
-    obterDadosgrafico()
+
+    function SairDaDash(){
+        limparSessao();
+        window.location.href = "../index.html"
+    }
 </script>
+<script src="../js/alertaProfessor.js"></script>

@@ -27,6 +27,18 @@ router.get("/professores/:fkEscola", function (req,res) {
     diretorController.professores(req,res);
 });
 
+router.get("/professorPesquisa/:fkEscola/:pesquisa", function (req,res) {
+    diretorController.professorPesquisa(req,res);
+});
+
+router.get("/professorFiltroMateria/:fkEscola/:fkMateria", function (req, res) {
+    diretorController.professorFiltroMateria(req,res);
+});
+
+router.get("/professorFiltroAlfabetica/:fkEscola", function (req, res) {
+    diretorController.professorFiltroAlfabetica(req,res);
+});
+
 router.get("/infoProfessor/:idUsuario", function (req, res) {
     diretorController.infoProfessor(req, res);
 });
@@ -37,6 +49,30 @@ router.get("/turmas/:fkEscola", function (req,res){
 
 router.get("/conteudoMaisDificuldade/:fkTurma", function (req, res){
     diretorController.conteudoMaisDificuldade(req, res);
+});
+
+router.post("/cadastrarProfessor", function (req, res) {
+    diretorController.cadastrarProfessor(req, res);
+});
+
+router.get("/turmasSemProfessor/:fkEscola/:fkMateria", function (req,res){
+    diretorController.turmasSemProfessor(req,res);
+});
+
+router.post("/atribuirTurmas", function (req,res) {
+    diretorController.atribuirTurmas(req,res);
+});
+
+router.get("/confirmarOperacao/:idUsuario/:senha", function (req,res){
+    diretorController.confirmarOperacao(req,res);
+});
+
+router.put("/editarProfessor/:idUsuario", function(req,res){
+    diretorController.editarProfessor(req,res);
+});
+
+router.delete("/excluirProfessor/:idProfessor", function (req, res) {
+    diretorController.excluirProfessor(req, res);
 });
 
 module.exports = router;
