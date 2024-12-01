@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/cssDashSecretaria/cssDashDiretores.css">
     <link rel="stylesheet" href="../css/cssDashSecretaria/inicioSecrretaria.css">
     <link rel="icon" sizes="56X56" href="../assets/a 1logo-Educare.svg">
+    <link rel="stylesheet" href="../css/modal.css">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
@@ -150,12 +151,15 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
         
        </div>
     </div>
-    <dialog close id="modalExcluir">
-        <span id="textoModalExcluir">Tem certeza que deseja excluir essa diretor?</span>
-    
-        <div style="display: flex; justify-content: end; gap: 10px; margin: 5px 5px;">
-            <button id="cancelarExcluir" onclick="cancelarExcluir()">Cancelar</button>
-            <button id="confirmarExcluir" onclick="confirmarExcluir()">Excluir</button>
+    <dialog close id="modalExcluir" class="modal_editar">
+        <div class="div_modal_container">  
+            <div class="div_edicao">Confirmar Exclusão</div>
+            <span id="textoModalExcluir" class="div_modal_titulo">Tem certeza que deseja excluir essa diretor?</span>
+        
+            <div style="display: flex; justify-content: end; gap: 10px; margin: 5px 5px;" class="div_botao">
+                <button id="cancelarExcluir" onclick="cancelarExcluir()" class="bt_modal">Cancelar</button>
+                <button id="confirmarExcluir" onclick="confirmarExcluir()" class="bt_modal">Excluir</button>
+            </div>
         </div>
     </dialog>
 </body>

@@ -333,3 +333,37 @@
 
 
 /* -- PADRÃO -- */
+
+/* ALERTAS */
+.wrapper {
+    display: none;
+    position: relative;
+    left: 74.65%;
+    top: -3%;
+}
+
+.base {
+    display: none;
+    width: 22%;
+    height: 450px;
+    max-height: 450px; 
+    background-color: #F0F0F0;
+    overflow-y: auto; 
+    overflow-x: hidden;
+    color: black;
+    position: absolute;
+    z-index: 1;
+    top: 130px;
+}
+
+.triangle {
+    position: absolute;
+    top: 120px;
+    left: 160px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #F0F0F0;
+    z-index: 2;
+}
