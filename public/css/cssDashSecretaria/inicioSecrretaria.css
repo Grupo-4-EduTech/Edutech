@@ -120,7 +120,7 @@ body {
 .areaProfessores {
     margin-left: 15vw; 
     width:85vw;
-    overflow: auto; 
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
     /* background-color: aquamarine; */

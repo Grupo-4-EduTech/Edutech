@@ -185,3 +185,15 @@
     width: 100%;
 
 }
+
+.triangle {
+    position: absolute;
+    top: -20px;
+    left: 190px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #F0F0F0;
+    z-index: 2;
+}

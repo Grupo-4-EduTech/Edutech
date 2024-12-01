@@ -29,7 +29,7 @@
             </div>
             <div class="fileiraNavegacao" onclick="gotoTurmas()">
                 <div class="imgFileira">
-                    <img src="../assets/chapeuBranco.svg"  width="30px" height="30px">
+                    <img src="../assets/chapeuBranco.svg" width="30px" height="30px">
                 </div>
                 <div class="tituloFileira">
                     Turmas
@@ -97,7 +97,8 @@
                     </span>
                 </div>
                 <div class="areaUsuario">
-                    <img src="../assets/ion_notifications.svg" width="40px" height="40px">
+                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
+                    <span class="bolinha-notificacao" id="bolinha_vermelha"></span>
                     <img src="../assets/Line 96.svg">
                     <img src="../assets/user.svg" width="45px" height="45px">
                     <div class="nomeDiretor">
@@ -110,6 +111,14 @@
                 </div>
             </div>
         </div>
+
+        <!-- ALERTAS -->
+        <div class="wrapper" id="wra">
+            <div class="triangle"></div>
+            <div class="base" id="basesinha">
+            </div>
+        </div>
+
         <div class="areaAdicaoPesquisa">
             <div class="pesquisa">
                 <div class="tituloPesquisar">
@@ -141,7 +150,7 @@
             </div>
         </div>
         <div class="areaProfessoresAdicionados" id="areaProfessoresAdicionados">
-            
+
         </div>
     </div>
 </body>
@@ -156,7 +165,7 @@
     }
 
     function gotoPerfilProfessor(idProfessor) {
-        window.location.href = "perfilProfessor.html?idProfessor="+idProfessor
+        window.location.href = "perfilProfessor.html?idProfessor=" + idProfessor
     }
 
     function gotoDashDiretor() {
@@ -196,17 +205,17 @@
 
     function mudarTelaDescritores() {
         window.open('https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/matriz_de_referencia_de_lingua_portuguesa_e_matematica_do_saeb.pdf')
-    } 
+    }
 
     function professores() {
-        fetch(`/diretor/professores/${sessionStorage.FK_ESCOLA}`,{
+        fetch(`/diretor/professores/${sessionStorage.FK_ESCOLA}`, {
             method: "GET",
-        }).then(function (resposta){
+        }).then(function (resposta) {
             resposta.json().then((professores) => {
                 professores.forEach((professor) => {
                     let turmas = professor.turmas;
 
-                    if(turmas == null){
+                    if (turmas == null) {
                         turmas = "Sem dados";
                     }
                     areaProfessoresAdicionados.innerHTML += `
@@ -222,7 +231,7 @@
                             <div class="disciplina">
                                 <img src="../assets/oi_book.svg">
                                 <span>
-                                    Disciplina: ${professor.fkMateria==1?"Matemática":"Português"}
+                                    Disciplina: ${professor.fkMateria == 1 ? "Matemática" : "Português"}
                                 </span>
                             </div>
                             <div class="turma">
@@ -379,3 +388,6 @@
         }
     }
 </script>
+
+<script src="../js/alertaDiretor.js"></script>
+

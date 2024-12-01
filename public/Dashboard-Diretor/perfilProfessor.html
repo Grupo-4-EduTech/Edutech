@@ -98,7 +98,8 @@
                     </span>
                 </div>
                 <div class="areaUsuario">
-                    <img src="../assets/ion_notifications.svg" width="40px" height="40px">
+                    <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
+                    <span class="bolinha-notificacao" id="bolinha_vermelha"></span>
                     <img src="../assets/Line 96.svg">
                     <img src="../assets/user.svg" width="45px" height="45px">
                     <div class="nomeDiretor">
@@ -111,6 +112,14 @@
                 </div>
             </div>
         </div>
+
+         <!-- ALERTAS -->
+    <div class="wrapper" id="wra">
+        <div class="triangle"></div>
+        <div class="base" id="basesinha">
+        </div>
+    </div>
+
         <div class="containerPerfil">
             <div class="nomeEmail">
                 <div class="fotoProfessor">
@@ -209,6 +218,7 @@ function professor(){
     })
 }
 
+
 function edit(){
     let params = new URLSearchParams(document.location.search);
     let idUsuario = params.get("idProfessor");
@@ -252,3 +262,6 @@ function excluir(){
 }
 
 </script>
+
+<script src="../js/alertaDiretor.js"></script>
+
