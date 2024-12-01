@@ -1,8 +1,6 @@
 let ultimoID = null;
 let styleBolinhaVermelha = document.getElementById("bolinha_vermelha");
 
-setInterval(cadastrarAlerta, 240000 ); 
-
 document.getElementById('sino_alerts').addEventListener("click", function() {
 
     var idUsuario = sessionStorage.getItem('ID_USUARIO');
@@ -99,32 +97,4 @@ function novasNotificacoes() {
                 }
             })
         })
-}
-
-function cadastrarAlerta() {
-    var idUsuario = sessionStorage.ID_USUARIO;
-    var mensagem =  "Escola XYZ caiu 2 posições no ranking após a última prova";
-
-    console.log(idUsuario, mensagem)
-    fetch(`/alert/cadastrarAlerta/${idUsuario}`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            mensagemServer: mensagem
-        })
-    })
-        .then(function (resposta) {
-            console.log("resposta: ", resposta);
-            if (resposta.ok) {
-                novasNotificacoes();
-            } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
-            }
-        })
-        .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    return false;
 }

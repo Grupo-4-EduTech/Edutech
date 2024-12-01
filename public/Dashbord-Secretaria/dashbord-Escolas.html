@@ -99,6 +99,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 </div>
                 <div class="kpi_direita">
                     <img src="../assets/sino.svg" class="icone_notificacao" id="sino_alerts">
+                    <span class="bolinha-notificacao" id="bolinha_vermelha"></span>
                     <img src="../assets/linha-kpi.svg" class="barra_kpi">
                     <img src="../assets/icone_usuario.svg" class="icone_usuario">
                     <div class="nome_titulo">
@@ -267,6 +268,7 @@ const myChart = new Chart(ctx, {
 </script>
 
 <script>
+    setInterval(cadastrarAlerta, 240000);
     function mudarTelaDiretor() {
         window.location = "lista-Diretores.html"
     }
@@ -397,6 +399,34 @@ function rankingEscolas() {
         });
     })
 }
+
+function cadastrarAlerta() {
+    var idUsuario = sessionStorage.ID_USUARIO;
+    var mensagem =  "Escola XYZ caiu 2 posições no ranking após a última prova";
+
+    console.log(idUsuario, mensagem)
+    fetch(`/alert/cadastrarAlerta/${idUsuario}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            mensagemServer: mensagem
+        })
+    })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+            if (resposta.ok) {
+                novasNotificacoes();
+            } else {
+                throw "Houve um erro ao tentar realizar o cadastro!";
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    return false;
+} 
 </script>
 <script src="../js/alerta.js"></script>
 
