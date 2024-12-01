@@ -1,0 +1,63 @@
+.modal_editar{
+    width: 30%;
+    height: 22%;
+    border-radius: 1vw;
+    border-color: #0791C2;
+}
+
+.div_edicao{
+    /* background-color: blue; */
+    margin-bottom: 2%;
+    font-size: 1.5vw;
+}
+
+.bt_modal{
+    width: 6vw;
+    height: 4vh;
+    cursor: pointer;
+    border-radius: 0.5vw;
+    font-size: 1vw;
+
+}
+
+#confirmarEditar{
+    background-color: #0791C2;
+    font-weight: bold;
+    color: white;
+}
+
+#confirmarEditar:hover{
+    background-color: #1fb1e6;
+}
+
+#confirmarExcluir{
+    background-color: #0791C2;
+    font-weight: bold;
+    color: white;
+}
+
+#confirmarExcluir{
+    background-color: #1fb1e6;
+}
+
+#cancelarEditar:hover{
+    background-color: rgb(255, 255, 255);
+}
+
+.div_modal_container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    gap: 1vw;
+}
+
+.div_modal_titulo{
+    font-size: 1vw;
+}
+
+.div_container2{
+    display: flex;
+    flex-direction: column;
+
+}

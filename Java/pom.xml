@@ -68,6 +68,19 @@
             <version>2.27.21</version>
         </dependency>
 
+       <!-- Dependência para o Slack-->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240303</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.slack.api</groupId>
+            <artifactId>slack-api-client</artifactId>
+            <version>1.29.0</version>
+        </dependency>
+
     </dependencies>
 
     <!--Construção arquivo executável-->

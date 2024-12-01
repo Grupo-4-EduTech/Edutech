@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/cssDashDiretor/cssDahsDiretor.css">
     <link rel="icon" sizes="56X56" href="../assets/a 1logo-Educare.svg">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/modal.css">
     <title>Edu Tech | Dashboard</title>
 </head>
 <body class="bodyCadastro" onload="validarSessao(), professor()">
@@ -149,11 +150,14 @@
             </div>
         </div>
     </div>
-    <dialog close id="modalEditar">
-        <div id="textoModalExcluir">Tem certeza que deseja editar esse professor?</div>
-        <div style="display: flex; justify-content: end; gap: 10px; margin: 5px 5px;">
-            <button id="cancelarEditar" onclick="cancelarEditar()">Cancelar</button>
-            <button id="confirmarEditar" onclick="confirmarEditar()">Editar</button>
+    <dialog close id="modalEditar" class="modal_editar">
+        <div class="div_modal_container"> 
+            <div class="div_edicao">Confirmar Edição</div>
+            <div id="textoModalExcluir" class="div_modal_titulo">Tem certeza que deseja editar esse professor?</div>
+            <div style="display: flex; justify-content: end; gap: 10px; margin: 5px 5px;" class="div_botao">
+                <button id="cancelarEditar" onclick="cancelarEditar()" class="bt_modal">Cancelar</button>
+                <button id="confirmarEditar" onclick="confirmarEditar()" class="bt_modal">Editar</button>
+            </div>
         </div>
     </dialog>
 </body>
