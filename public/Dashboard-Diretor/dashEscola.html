@@ -208,16 +208,42 @@
                     </span>
                 </div>
                 <div class="areaGrafico">
-                    <canvas id="graficoPizza1" class="graficoPizza"></canvas>
-                    <canvas id="graficoPizza2" class="graficoPizza"></canvas>
-                </div>
-                <div class="legendaGrafico">
-                    <span>
-                        Matemática
-                    </span>
-                    <span>
-                        Português
-                    </span>
+                    <div class="cabecalho">
+                        <span>Turma</span>
+                        <span>Professor</span>
+                        <span>Matéria</span>
+                        <span>Média</span>
+                    </div>
+                    <div class="areaComparacao">
+                        <span>3ºB</span>
+                        <span>Professor Ciclano</span>
+                        <span>LP</span>
+                        <span>320</span>
+                    </div>
+                    <div class="areaComparacao">
+                        <span>3ºA</span>
+                        <span>Professor Ciclano</span>
+                        <span>MT</span>
+                        <span style="color: red;">200</span>
+                    </div>
+                    <div class="areaComparacao">
+                        <span>3ºC</span>
+                        <span>Professor Ciclano</span>
+                        <span>LP</span>
+                        <span>320</span>
+                    </div>
+                    <div class="areaComparacao">
+                        <span>3ºA</span>
+                        <span>Professor Ciclano</span>
+                        <span>MT</span>
+                        <span>330</span>
+                    </div>
+                    <div class="areaComparacao">
+                        <span>3ºB</span>
+                        <span>Professor Ciclano</span>
+                        <span>LP</span>
+                        <span>310</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -296,6 +322,7 @@
             }
         }
     });
+
 
     const ctx1 = document.getElementById('graficoPizza1').getContext('2d');
     const ctx2 = document.getElementById('graficoPizza2').getContext('2d');
