@@ -524,6 +524,7 @@ body {
     width: calc(100% - 230px);
     display: flex;
     flex-direction: column;
+    overflow: auto;
 }
 
 .containerCadastrarProfessor {
