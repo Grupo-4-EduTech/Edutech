@@ -829,11 +829,34 @@ body {
 }
 
 .areaGrafico {
-    width: 95%; 
-    height: 55%; 
+    width: 85%; 
+    height: 77%; 
     display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: flex-start;  
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.cabecalho {
+    width: 480px;
+    height: 28px;
+    background-color: #078FC1;
+    border: solid 2px #0790C2;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #FFF;
+}
+
+.areaComparacao {
+    width: 480px;
+    height: 28px;
+    border: solid 2px #0790C2;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .legendaGrafico {

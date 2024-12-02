@@ -23,6 +23,10 @@ router.get("/turmasProficiencia/:fkEscola", function (req,res){
     diretorController.turmasProficiencia(req,res);
 });
 
+router.get("/turmasProfessores/:fkEscola", function (req,res){
+    diretorController.turmasProfessores(req,res);
+});
+
 router.get("/professores/:fkEscola", function (req,res) {
     diretorController.professores(req,res);
 });

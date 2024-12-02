@@ -292,6 +292,8 @@ public class ApachePOI {
                 connection.update("INSERT IGNORE INTO escola (idEscola, nome, logradouro, numLogradouro, fkDiretoria, idRegiao) VALUES(?, ?, ?, ?, ?, ?)", escola.getIdEscola(), escola.getNome(), escola.getLogradouro(), escola.getNumLogradouro(), escola.getDiretoria().getIdDiretoria(), escola.getIdRegiao());
             }
 
+            connection.update("INSERT IGNORE INTO usuario VALUES (?,?,?,?,?,?,?,?,?,?)", null, "Alessandro Goulart","alessandro.gourlart@sptech.school","123","11999999999",getDataHoraBD(),2,61326420,1,null);
+
             for (Turma turma : turmasExtraidas) {
                 if (turma.getIdTurma() == 0) {
                     continue;
