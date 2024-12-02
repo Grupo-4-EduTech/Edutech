@@ -41,7 +41,11 @@ public class Main {
         InputStream fileQ = Files.newInputStream(pathQ);
 
         ApachePOI apachePOI = new ApachePOI();
-        apachePOI.extrairDadosEM(filenameEM,fileEM, apachePOI.extrairQuestoes(filenameQ,fileQ));
+        try {
+            apachePOI.extrairDadosEM(filenameEM,fileEM, apachePOI.extrairQuestoes(filenameQ,fileQ));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }
