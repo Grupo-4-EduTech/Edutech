@@ -35,6 +35,13 @@ function turmasProficiencia(req,res){
     });
 }
 
+function turmasProfessores(req,res){
+    var fkEscola = req.params.fkEscola;
+    diretorModel.turmasProfessores(fkEscola).then((resultado) => {
+        res.status(200).json(resultado);
+    });
+}
+
 function professores(req, res) {
     var fkEscola = req.params.fkEscola;
     diretorModel.professores(fkEscola).then((resultado) => {
@@ -64,7 +71,6 @@ function professorFiltroAlfabetica(req, res){
         res.status(200).json(resultado);
     });
 }
-
 
 function infoProfessor(req, res) {
     var idUsuario = req.params.idUsuario;
@@ -154,6 +160,7 @@ module.exports = {
     porcentagemAbaixoMediaMT,
     turmaMaisDificuldade,
     turmasProficiencia,
+    turmasProfessores,
     professores,
     professorPesquisa,
     professorFiltroMateria,
