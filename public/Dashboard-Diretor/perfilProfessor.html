@@ -241,7 +241,13 @@
     }
 
     function confirmarExcluir() {
-        modalExcluir.innerHTML = "<span>Insira sua senha para confirmar</span><br><input id='senhaConfirmar' type='password'><button onclick='excluir()'>Confirmar</button>"
+        modalExcluir.innerHTML = `<div class="div_modal_container, div_container2">
+    <div class="div_edicao">Confirmar Exclusão</div>
+    <span class="div_modal_titulo">Insira sua senha para confirmar</span><br><input id='senhaConfirmar' type='password'>
+    <div style="display: flex; justify-content: end; gap: 10px; margin: 5px 5px;" class="div_botao">
+        <button onclick='excluir(${modalExcluir.value})' class="bt_modal" style="background-color: #1fb1e6; color:white; font-weight: bold">Confirmar</button>
+    </div>
+ </div>`
     }
 
     function excluir() {
