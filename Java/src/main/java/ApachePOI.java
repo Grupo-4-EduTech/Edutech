@@ -51,9 +51,9 @@ public class ApachePOI {
             json.put("text", ":small_blue_diamond: Iniciando leitura do arquivo '%s'".formatted(filename));
             Slack.sendMessage(json);
 
-            connection.update("INSERT INTO escola (idEscola, idRegiao, fkDiretoria) VALUES(?, ?, ?)",  0, 1, 1);
+            connection.update("INSERT INTO escola (idEscola, idRegiao, fkDiretoria) VALUES(?, ?, ?)", 0, 1, 1);
 
-            connection.update("INSERT IGNORE INTO alerta (dataAlerta, mensagemAlerta, fkCargo, fkTurma, fkEscola, fkDiretoria, tipoAlerta) VALUES(?, ?, ?, ?, ?, ?, ?)", getDataHoraBD(), "Novas informações foram adicionadas", null, 0000000, 0, 1,"Aviso");
+            connection.update("INSERT IGNORE INTO alerta (dataAlerta, mensagemAlerta, fkCargo, fkTurma, fkEscola, fkDiretoria, tipoAlerta) VALUES(?, ?, ?, ?, ?, ?, ?)", getDataHoraBD(), "Novas informações foram adicionadas", null, 0000000, 0, 1, "Aviso");
 
             Workbook workbook = new XSSFWorkbook(file);
 
@@ -148,7 +148,7 @@ public class ApachePOI {
 
             List<Integer> relevante = List.of(5, 8, 9, 10, 22, 23, 24, 25, 33, 38, 43, 45, 46);
             List<String> listaNomeTurmas = new ArrayList<>(Arrays.asList(
-                    "3ºA", "3ºB", "3ºC", "3ºD", "3ºE", "3ºF", "3ºG", "3ºH"
+                    "3ºA", "3ºB", "3ºC", "3ºD", "3ºE", "3ºF", "3ºG", "3ºH", "3ºI", "3ºJ", "3ºK", "3ºL", "3ºM", "3ºN", "3ºO", "3ºP", "3ºQ", "3ºR", "3ºS", "3ºT", "3ºU", "3ºV", "3ºW", "3ºX", "3ºY", "3ºZ"
             ));
             List<Integer> listaIdEscolas = new ArrayList<>();
 
@@ -263,7 +263,11 @@ public class ApachePOI {
                         contador = 0;
                         turma.setNome(listaNomeTurmas.get(contador));
                     } else {
-                        turma.setNome(listaNomeTurmas.get(contador));
+                        if (contador < listaNomeTurmas.size()) {
+                            turma.setNome(listaNomeTurmas.get(contador)); // Acesso seguro com verificação
+                        } else {
+
+                        }
                     }
                     contador++;
 
@@ -294,7 +298,7 @@ public class ApachePOI {
                 connection.update("INSERT IGNORE INTO escola (idEscola, nome, logradouro, numLogradouro, fkDiretoria, idRegiao) VALUES(?, ?, ?, ?, ?, ?)", escola.getIdEscola(), escola.getNome(), escola.getLogradouro(), escola.getNumLogradouro(), escola.getDiretoria().getIdDiretoria(), escola.getIdRegiao());
             }
 
-            connection.update("INSERT IGNORE INTO usuario VALUES (?,?,?,?,?,?,?,?,?,?)", null, "Alessandro Goulart","alessandro.gourlart@sptech.school","123","11999999999",getDataHoraBD(),2,61326420,1,null);
+            connection.update("INSERT IGNORE INTO usuario VALUES (?,?,?,?,?,?,?,?,?,?)", null, "Alessandro Goulart", "alessandro.gourlart@sptech.school", "123", "11999999999", getDataHoraBD(), 2, 61326420, 1, null);
 
             for (Turma turma : turmasExtraidas) {
                 if (turma.getIdTurma() == 0) {
@@ -384,20 +388,12 @@ public class ApachePOI {
                             String mensagem = "Alunos da turma " + turma.getNome() + " erraram mais questões baseadas no descritor: " + descritor;
 
                             if (turma.getIdTurma() != idTurmaAnterior[0]) {
-                                try {
-                                    // Adiciona um delay de 1 segundo (1000 milissegundos)
-                                    Thread.sleep(1000);
 
-                                    // Executa a inserção no banco de dados
-                                    connection.update("INSERT IGNORE INTO alerta (dataAlerta, mensagemAlerta, fkCargo, fkTurma, fkEscola, fkDiretoria, tipoAlerta) VALUES(?, ?, ?, ?, ?, ?, ?)",
-                                            getDataHoraBD(), mensagem, 3, turma.getIdTurma(), turma.getEscola().getIdEscola(), 1,"Alerta");
+                                // Executa a inserção no banco de dados
+                                connection.update("INSERT IGNORE INTO alerta (dataAlerta, mensagemAlerta, fkCargo, fkTurma, fkEscola, fkDiretoria, tipoAlerta) VALUES(?, ?, ?, ?, ?, ?, ?)",
+                                        getDataHoraBD(), mensagem, 3, turma.getIdTurma(), turma.getEscola().getIdEscola(), 1, "Alerta");
 
-                                    idTurmaAnterior[0] = turma.getIdTurma();
-
-                                } catch (InterruptedException e) {
-                                    // Trata a exceção caso o thread seja interrompido
-                                    e.printStackTrace();
-                                }
+                                idTurmaAnterior[0] = turma.getIdTurma();
                             }
 
 
@@ -429,22 +425,14 @@ public class ApachePOI {
                             String mensagem = "Alunos da turma " + turma.getNome() + " erraram mais questões baseadas no descritor: " + descritor;
 
                             if (turma.getIdTurma() != idTurmaAnterior[0]) {
-                                try {
-                                    // Adiciona um delay de 1 segundo (1000 milissegundos)
-                                    Thread.sleep(1000);
 
-                                    // Executa a inserção no banco de dados
-                                    connection.update("INSERT INTO alerta (dataAlerta, mensagemAlerta, fkCargo, fkTurma, fkEscola, fkDiretoria,tipoAlerta) VALUES(?, ?, ?, ?, ?, ?, ?)",
-                                            getDataHoraBD(), mensagem, 3, turma.getIdTurma(), turma.getEscola().getIdEscola(), 1,"Alerta");
+                                // Executa a inserção no banco de dados
+                                connection.update("INSERT INTO alerta (dataAlerta, mensagemAlerta, fkCargo, fkTurma, fkEscola, fkDiretoria,tipoAlerta) VALUES(?, ?, ?, ?, ?, ?, ?)",
+                                        getDataHoraBD(), mensagem, 3, turma.getIdTurma(), turma.getEscola().getIdEscola(), 1, "Alerta");
 
-                                    idTurmaAnterior[0] = turma.getIdTurma();
+                                idTurmaAnterior[0] = turma.getIdTurma();
 
-                                } catch (InterruptedException e) {
-                                    // Trata a exceção caso o thread seja interrompido
-                                    e.printStackTrace();
-                                }
                             }
-
 
                             return new Object[]{descritor, quantidadeErros, fkMateria};
                         }
@@ -561,7 +549,7 @@ public class ApachePOI {
                             if (turma.getEscola().getIdEscola() != escolaAnterior[0]) {
                                 // Executa a inserção no banco de dados
                                 connection.update("INSERT IGNORE INTO alerta (dataAlerta, mensagemAlerta, fkCargo, fkTurma, fkEscola, fkDiretoria, tipoAlerta) VALUES(?, ?, ?, ?, ?, ?, ?)",
-                                        getDataHoraBD(), mensagem, 2, turma.getIdTurma(), turma.getEscola().getIdEscola(), 1,"Aviso");
+                                        getDataHoraBD(), mensagem, 2, turma.getIdTurma(), turma.getEscola().getIdEscola(), 1, "Aviso");
 
                                 escolaAnterior[0] = turma.getEscola().getIdEscola();
                             }
@@ -594,7 +582,7 @@ public class ApachePOI {
                             if (turma.getEscola().getIdEscola() != escolaAnterior[0]) {
                                 // Executa a inserção no banco de dados
                                 connection.update("INSERT IGNORE INTO alerta (dataAlerta, mensagemAlerta, fkCargo, fkTurma,fkEscola, fkDiretoria, tipoAlerta) VALUES(?, ?, ?, ?, ?, ?,?)",
-                                        getDataHoraBD(), mensagem, 2, turma.getIdTurma(), turma.getEscola().getIdEscola(),1,"Alerta");
+                                        getDataHoraBD(), mensagem, 2, turma.getIdTurma(), turma.getEscola().getIdEscola(), 1, "Alerta");
 
                                 escolaAnterior[0] = turma.getEscola().getIdEscola();
                             }
@@ -629,10 +617,10 @@ public class ApachePOI {
                             if (turma.getEscola().getIdEscola() != escolaAnterior[0]) {
                                 // Executa a inserção no banco de dados
                                 connection.update("INSERT IGNORE INTO alerta (dataAlerta, mensagemAlerta, fkCargo, fkTurma, fkEscola, fkDiretoria, tipoAlerta) VALUES(?, ?, ?, ?, ?, ?,?)",
-                                        getDataHoraBD(), mensagem1, 3, turma.getIdTurma(),turma.getEscola().getIdEscola(),1,"Atenção");
+                                        getDataHoraBD(), mensagem1, 3, turma.getIdTurma(), turma.getEscola().getIdEscola(), 1, "Atenção");
 
                                 connection.update("INSERT IGNORE INTO alerta (dataAlerta, mensagemAlerta, fkCargo, fkTurma, fkEscola, fkDiretoria,tipoAlerta) VALUES(?, ?, ?, ?, ?, ?,?)",
-                                        getDataHoraBD(), mensagem2, 3, turma.getIdTurma(), turma.getEscola().getIdEscola(),1,"Atenção");
+                                        getDataHoraBD(), mensagem2, 3, turma.getIdTurma(), turma.getEscola().getIdEscola(), 1, "Atenção");
 
                             }
                             return new Object[]{qtdAbaixoMT, qtdAbaixoLP};
