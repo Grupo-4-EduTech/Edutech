@@ -122,8 +122,10 @@ CREATE TABLE alerta (
     FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE,
     fkCargo INT,
     fkTurma INT,
+    fkEscola INT NOT NULL,
+    fkDiretoria INT NOT NULL,
     FOREIGN KEY (fkCargo) REFERENCES cargo(idCargo) ON DELETE CASCADE,
-    FOREIGN KEY (fkTurma) REFERENCES turma(idTurma) ON DELETE CASCADE,
+    FOREIGN KEY (fkTurma, fkEscola, fkDiretoria) REFERENCES turma(idTurma, fkEscola, fkDiretoria) ON DELETE CASCADE,
     PRIMARY KEY(idAlerta, fkTurma),
     tipoAlerta VARCHAR(10) CONSTRAINT tipoAlerta_check CHECK (tipoAlerta IN ('Alerta', 'Atenção', 'Aviso'))
 );
