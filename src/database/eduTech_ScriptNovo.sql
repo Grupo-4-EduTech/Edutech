@@ -77,8 +77,10 @@ CREATE TABLE professorTurma(
 	idProfessorTurma INT PRIMARY KEY AUTO_INCREMENT,
     fkProfessor INT NOT NULL,
     fkTurma INT NOT NULL,
+    fkEscola INT NOT NULL,
+    fkDiretoria INT NOT NULL,
     FOREIGN KEY (fkProfessor) REFERENCES usuario(idUsuario) ON DELETE CASCADE,
-    FOREIGN KEY (fkTurma) REFERENCES turma(idTurma) ON DELETE CASCADE
+    FOREIGN KEY (fkTurma, fkEscola, fkDiretoria) REFERENCES turma(idTurma, fkEscola, fkDiretoria) ON DELETE CASCADE
 );
 
 CREATE TABLE questao(

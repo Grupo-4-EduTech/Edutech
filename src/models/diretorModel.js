@@ -108,8 +108,8 @@ function turmasSemProfessor(fkEscola, fkMateria){
     return database.executar(instrucaoSql);
 }
 
-function atribuirTurmas(fkProfessor, fkTurma){
-    var instrucaoSql = `INSERT INTO professorTurma (fkProfessor, fkTurma) VALUES (${fkProfessor},${fkTurma})`;
+function atribuirTurmas(fkProfessor, fkTurma, fkEscola){
+    var instrucaoSql = `INSERT INTO professorTurma (fkProfessor, fkTurma, fkEscola, fkDiretoria) VALUES (${fkProfessor},${fkTurma}, ${fkEscola}, 1)`;
 
     return database.executar(instrucaoSql);
 }

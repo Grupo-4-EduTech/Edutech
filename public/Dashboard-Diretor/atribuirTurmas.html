@@ -216,6 +216,7 @@ function atribuirTurmas(){
     let params = new URLSearchParams(document.location.search);
     let varFkProfessor = params.get("id");
     let varFkTurmas = turmasAdicionadasListaId
+
     for(i=0;i<varFkTurmas.length;i++){
         fetch("/diretor/atribuirTurmas", {
             method: "POST",
@@ -224,7 +225,8 @@ function atribuirTurmas(){
             },
             body: JSON.stringify({
                 fkProfessorServer: varFkProfessor,
-                fkTurmaServer: varFkTurmas[i]
+                fkTurmaServer: varFkTurmas[i],
+                fkEscolaServer: sessionStorage.FK_ESCOLA
             }),
         }).then(function (resposta) {
             if (resposta.ok) {

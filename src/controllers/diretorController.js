@@ -120,7 +120,8 @@ function turmasSemProfessor(req, res) {
 function atribuirTurmas(req, res) {
     var fkProfessor = req.body.fkProfessorServer
     var fkTurma = req.body.fkTurmaServer
-    diretorModel.atribuirTurmas(fkProfessor, fkTurma).then((resultado) => {
+    var fkEscola = req.body.fkEscolaServer
+    diretorModel.atribuirTurmas(fkProfessor, fkTurma, fkEscola).then((resultado) => {
         res.status(200).json(resultado);
     });
 }
