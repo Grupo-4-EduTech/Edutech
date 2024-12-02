@@ -133,6 +133,11 @@
 <script src="../js/sessao.js"></script>
 
 <script>
+
+    function mudarTelaDescritores() {
+        window.open('https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/matriz_de_referencia_de_lingua_portuguesa_e_matematica_do_saeb.pdf')
+    }
+
     function gotocadastroProfessor() {
         window.location.href = "adicionarProfessor.html"
     }
@@ -243,11 +248,11 @@
                 <div class="media">
                     <div class="imagemPrachetaMedia"></div>
 
-                    <div class="AreaTextoMedia">Média LP: ${turma.mediaLP!=null?turma.mediaLP.toString().replace('.', ','):"N/A"}</div>
+                    <div class="AreaTextoMedia">Média LP: ${turma.mediaLP != null ? turma.mediaLP.toString().replace('.', ',') : "N/A"}</div>
                 </div>
                 <div class="media">
                     <div class="imagemPrachetaMedia"></div>
-                    <div class="AreaTextoMedia">Média MT: ${turma.mediaMT!=null?turma.mediaMT.toString().replace('.', ','):"N/A"}</div>
+                    <div class="AreaTextoMedia">Média MT: ${turma.mediaMT != null ? turma.mediaMT.toString().replace('.', ',') : "N/A"}</div>
 
                 </div>
                 <div class="materiaComDificuldade">

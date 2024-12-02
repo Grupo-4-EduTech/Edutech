@@ -670,3 +670,7 @@ margin-right: 4%;
     display: flex;
     align-items: flex-end;
 }
+
+.editarExcluir span:hover{
+    cursor: pointer;
+}
