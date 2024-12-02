@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/cssDashSecretaria/cssDashDiretores.css">
     <link rel="stylesheet" href="../css/cssDashSecretaria/inicioSecrretaria.css">
     <link rel="icon" sizes="56X56" href="../assets/a 1logo-Educare.svg">
+    <link rel="stylesheet" href="../css/modal.css">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
@@ -127,8 +128,8 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 </div>
                 <div class="barras">
                     <div class="barraPesquisa">
-                        <input class="inputPesquisa">
-                        <button class="botao_pesquisar"><img src="../assets/lupa_pesquisar.svg" alt=""></button>
+                        <input class="inputPesquisa" id="pesquisaInput">
+                        <button class="botao_pesquisar" onclick="pesquisa()"><img src="../assets/lupa_pesquisar.svg" alt=""></button>
                     </div>
                     <div class="filtro">
                         <select class="inputFiltro">
@@ -150,6 +151,17 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
         
        </div>
     </div>
+    <dialog close id="modalExcluir" class="modal_editar">
+        <div class="div_modal_container">  
+            <div class="div_edicao">Confirmar Exclusão</div>
+            <span id="textoModalExcluir" class="div_modal_titulo">Tem certeza que deseja excluir essa diretor?</span>
+        
+            <div style="display: flex; justify-content: end; gap: 10px; margin: 5px 5px;" class="div_botao">
+                <button id="cancelarExcluir" onclick="cancelarExcluir()" class="bt_modal">Cancelar</button>
+                <button id="confirmarExcluir" onclick="confirmarExcluir()" class="bt_modal">Excluir</button>
+            </div>
+        </div>
+    </dialog>
 </body>
 </html>
 
@@ -210,6 +222,11 @@ function diretores(){
                         <div class="regiao_diretor">
                             <span>${diretor.email}</span>
                         </div>
+                        <div class="editarExcluir">
+                            <span onclick="edit(${diretor.idUsuario})">Editar&nbsp;</span>
+                            <span>|</span>
+                            <span onclick="excluirModal(${diretor.idUsuario})">&nbsp;Excluir</span>
+                        </div>
                     </div>
                 `
             })
@@ -218,5 +235,89 @@ function diretores(){
         });
     })
 }
+
+function pesquisa() {
+    let pesquisaVar = pesquisaInput.value;
+    if(pesquisaVar.trim()!=""){
+        cards_diretores.innerHTML = "";
+        fetch(`/secretaria/diretoresPesquisa/${pesquisaVar}`, {
+            method: "GET",
+        }).then(function (resposta) {
+            resposta.json().then((diretores) => {
+                diretores.forEach((diretor) => {
+                    cards_diretores.innerHTML += `
+                <div class="cards">
+                    <div class="foto_diretor"><img src="../assets/icone_diretor.svg" alt=""></div>
+                    <div class="nome_diretor"><h2>${diretor.diretor}</h2></div>
+                    <div class="diretor_diretor"><span>Escola: ${diretor.escola}</div></span>
+                    <div class="regiao_diretor">
+                        <span>${diretor.email}</span>
+                    </div>
+                    <div class="editarExcluir">
+                        <span onclick="edit(${diretor.idUsuario})">Editar&nbsp;</span>
+                        <span>|</span>
+                        <span onclick="excluirModal(${diretor.idUsuario})">&nbsp;Excluir</span>
+                    </div>
+                </div>
+            `
+                })
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        })
+    }else{
+        cards_diretores.innerHTML = "";
+        diretores();
+    }
+}
+
+function edit(idDiretor) {
+    window.location.href = "editarDiretor.html?idDiretor=" + idDiretor
+}
+
+function excluirModal(idUsuario) {
+    modalExcluir.showModal();
+    modalExcluir.value = idUsuario;
+}
+
+function cancelarExcluir() {
+    modalExcluir.close();
+}
+
+function confirmarExcluir(idUsuario) {
+    modalExcluir.innerHTML = `
+    <div class="div_modal_container, div_container2">
+    <div class="div_edicao">Confirmar Exclusão</div>
+    <span class="div_modal_titulo">Insira sua senha para confirmar</span><br><input id='senhaConfirmar' type='password'>
+    <div style="display: flex; justify-content: end; gap: 10px; margin: 5px 5px;" class="div_botao">
+        <button onclick='excluir(${modalExcluir.value})' class="bt_modal" style="background-color: #1fb1e6; color:white; font-weight: bold">Confirmar</button>
+    </div>
+ </div>    
+   
+        `
+   
+}
+
+function excluir(idUsuario) {
+    let senha = senhaConfirmar.value;
+
+    fetch(`/secretaria/confirmarOperacao/${sessionStorage.ID_USUARIO}/${senha}`, {
+        method: "GET",
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            fetch(`/secretaria/excluirDiretor/${idUsuario}`, {
+                method: "DELETE",
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    alert("Diretor removido com sucesso!");
+                    mudarTelaDiretor();
+                }
+            });
+        } else {
+            alert("Falha em validar usuário.")
+        }
+    });
+}
+
 </script>
 <script src="../js/alerta.js"></script>

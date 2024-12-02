@@ -30,8 +30,40 @@ function turmasProficiencia(fkEscola) {
     return database.executar(instrucaoSql);
 }
 
+function turmasProfessores(fkEscola) {
+    var instrucaoSql = `
+        SELECT turma.nome turma, usuario.nome professor, fkMateria, SUBSTRING(AVG(CASE WHEN fkMateria = 1 THEN proficienciaMT ELSE proficienciaLP END),1,4)/10 media FROM escola
+        JOIN usuario ON fkEscola = idEscola
+        JOIN professorTurma ON fkProfessor = idUsuario
+        JOIN turma ON professorTurma.fkTurma = idTurma
+        JOIN aluno ON aluno.fkTurma = idTurma
+        WHERE idEscola = ${fkEscola}
+        GROUP BY turma.nome, usuario.nome, fkMateria;
+    `;
+
+    return database.executar(instrucaoSql);
+}
+
 function professores(fkEscola) {
     var instrucaoSql = `SELECT idUsuario, usuario.nome, fkMateria, GROUP_CONCAT(turma.nome SEPARATOR ', ') turmas  FROM usuario LEFT JOIN professorTurma ON fkProfessor = idUsuario LEFT JOIN turma ON professorTurma.fkTurma = idTurma WHERE usuario.fkEscola = ${fkEscola} AND fkCargo = 3 GROUP BY idUsuario`;
+
+    return database.executar(instrucaoSql);
+}
+
+function professorPesquisa(fkEscola, pesquisa) {
+    var instrucaoSql = `SELECT idUsuario, usuario.nome, fkMateria, GROUP_CONCAT(turma.nome SEPARATOR ', ') turmas  FROM usuario LEFT JOIN professorTurma ON fkProfessor = idUsuario LEFT JOIN turma ON professorTurma.fkTurma = idTurma WHERE usuario.fkEscola = ${fkEscola} AND fkCargo = 3 AND usuario.nome LIKE '%${pesquisa}%' GROUP BY idUsuario`;
+
+    return database.executar(instrucaoSql);
+}
+
+function professorFiltroMateria(fkEscola, fkMateria) {
+    var instrucaoSql = `SELECT idUsuario, usuario.nome, fkMateria, GROUP_CONCAT(turma.nome SEPARATOR ', ') turmas  FROM usuario LEFT JOIN professorTurma ON fkProfessor = idUsuario LEFT JOIN turma ON professorTurma.fkTurma = idTurma WHERE usuario.fkEscola = ${fkEscola} AND fkCargo = 3 AND fkMateria = ${fkMateria} GROUP BY idUsuario`;
+
+    return database.executar(instrucaoSql);
+}
+
+function professorFiltroAlfabetica(fkEscola) {
+    var instrucaoSql = `SELECT idUsuario, usuario.nome, fkMateria, GROUP_CONCAT(turma.nome SEPARATOR ', ') turmas  FROM usuario LEFT JOIN professorTurma ON fkProfessor = idUsuario LEFT JOIN turma ON professorTurma.fkTurma = idTurma WHERE usuario.fkEscola = ${fkEscola} AND fkCargo = 3 GROUP BY idUsuario ORDER BY usuario.nome`;
 
     return database.executar(instrucaoSql);
 }
@@ -82,17 +114,42 @@ function atribuirTurmas(fkProfessor, fkTurma){
     return database.executar(instrucaoSql);
 }
 
+function confirmarOperacao(idUsuario, senha){
+    var instrucaoSql = `SELECT * FROM usuario WHERE idUsuario = ${idUsuario} AND senha = '${senha}'`;
+
+    return database.executar(instrucaoSql);
+}
+
+function editarProfessor(nome, email, telefone, idUsuario){
+    var instrucaoSql = `UPDATE usuario SET nome = '${nome}', email = '${email}', telefone = '${telefone}' WHERE idUsuario = ${idUsuario}`;
+
+    return database.executar(instrucaoSql);
+}
+
+function excluirProfessor(idUsuario){
+    var instrucaoSql = `DELETE FROM usuario WHERE idUsuario = ${idUsuario}`;
+
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     rank,
     porcentagemAbaixoMediaLP,
     porcentagemAbaixoMediaMT,
     turmaMaisDificuldade,
     turmasProficiencia,
+    turmasProfessores,
     professores,
+    professorPesquisa,
+    professorFiltroMateria,
+    professorFiltroAlfabetica,
     infoProfessor,
     turmas,
     conteudoMaisDificuldade,
     cadastrarProfessor,
     turmasSemProfessor,
     atribuirTurmas,
+    confirmarOperacao,
+    editarProfessor,
+    excluirProfessor,
 }

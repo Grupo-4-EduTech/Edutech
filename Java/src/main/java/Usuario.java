@@ -7,9 +7,6 @@ public class Usuario {
     private String telefone;
     private String dtCadastro;
     private Cargo cargo;
-    private Escola escola;
-    private Diretoria diretoria;
-    private Materia materia;
 
     public Usuario(){};
 
@@ -21,9 +18,6 @@ public class Usuario {
         this.telefone = telefone;
         this.dtCadastro = dtCadastro;
         this.cargo = cargo;
-        this.escola = escola;
-        this.diretoria = diretoria;
-        this.materia = materia;
     }
 
     public Integer getIdUsuario() {
@@ -82,29 +76,6 @@ public class Usuario {
         this.cargo = cargo;
     }
 
-    public Escola getEscola() {
-        return escola;
-    }
-
-    public void setEscola(Escola escola) {
-        this.escola = escola;
-    }
-
-    public Diretoria getDiretoria() {
-        return diretoria;
-    }
-
-    public void setDiretoria(Diretoria diretoria) {
-        this.diretoria = diretoria;
-    }
-
-    public Materia getMateria() {
-        return materia;
-    }
-
-    public void setMateria(Materia materia) {
-        this.materia = materia;
-    }
     //    @Override
 //    public String toString(){
 //        return "";

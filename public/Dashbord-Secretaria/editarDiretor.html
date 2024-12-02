@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="../css/cssDashSecretaria/inicioSecrretaria.css">
     <link rel="stylesheet" href="../css/cssDashSecretaria/cadastro-diretores.css">
     <link rel="icon" sizes="56X56" href="../assets/a 1logo-Educare.svg">
+    <link rel="stylesheet" href="../css/modal.css">
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     <title>Edu Tech | Dashboard</title>
 </head>
 
-<body onload="validarSessao(), escolasSemDiretor()">
+<body onload="validarSessao(), escolasSemDiretor(), diretor()">
 
     <div class="modalSuporte" onclick="fecharmodal()">
         <div class="contentSuporte">
@@ -123,7 +124,7 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
 
             <div class="form_cadastro">
                 <div class="titulo_cadastro">
-                    <h1>Cadastro de Diretores</h1>
+                    <h1>Edição de Diretores</h1>
                 </div>
                 <!-- <div class="sessao_nome">
                     <span><b>Nome</b></span>
@@ -155,10 +156,6 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                     </div>
                 </div>
                 <div class="sessao_logradouro_numero">
-                    <div class="sessao_logradouro">
-                        <span><b>Senha</b></span>
-                        <input type="password" placeholder="*******" id="senha">
-                    </div>
                     <div class="select_Instituicao">
                         <span><b>Instituição</b></span>
                         <select class="Instituicao" id="instituicao">
@@ -168,13 +165,21 @@ Necessito%20De%20apoio%20com%20a%20tela%20de%20Alunos!&body=Mensagem%20.%20.%20.
                 </div>
                     
                 <div class="botao_cadastrar">
-                        <button type="submit" onclick="cadastrarDiretor()">Cadastrar</button>
+                        <button type="submit" onclick="editarModal()">Editar</button>
                 </div>
-
-                
             </div>
         </div>
     </div>
+    <dialog close id="modalEditar" class="modal_editar">
+        <div class="div_modal_container"> 
+            <div class="div_edicao">Confirmar Edição</div>
+            <div id="textoModalExcluir" class="div_modal_titulo">Tem certeza que deseja editar esse diretor?</div>
+            <div style="display: flex; justify-content: end; gap: 10px; margin: 5px 5px;">
+                <button id="cancelarEditar" onclick="cancelarEditar()" class="bt_modal">Cancelar</button>
+                <button id="confirmarEditar" onclick="confirmarEditar()" class="bt_modal">Editar</button>
+            </div>
+        </div>
+    </dialog>
 </body>
 
 </html>
@@ -218,7 +223,7 @@ function fecharmodal(codigoModal){
     }
 }
 
-function escolasSemDiretor(){
+function escolasSemDiretor() {
     fetch("/secretaria/escolasSemDiretor", {
         method: "GET",
     }).then(function (resposta) {
@@ -230,39 +235,88 @@ function escolasSemDiretor(){
     })
 }
 
-function cadastrarDiretor(){
-    var nomeVar = nome.value+" "+sobrenome.value;
-    var emailVar = email.value;
-    var telefoneVar = telefone.value;
-    var senhaVar = senha.value;
-    var instituicaoVar = instituicao.value;
+function diretor(){
+    let params = new URLSearchParams(document.location.search);
+    let idUsuario = params.get("idDiretor");
+    fetch(`/secretaria/diretor/${idUsuario}`, {
+        method: "GET",
+    }).then(function (resposta) {
+        resposta.json().then((diretor) => {
+            nomeDiretor = diretor[0].nomeDiretor.substr(0,diretor[0].nomeDiretor.indexOf(" "));
+            sobrenomeDiretor = diretor[0].nomeDiretor.substr(diretor[0].nomeDiretor.indexOf(" ")).trim();
+            nome.value = nomeDiretor;
+            sobrenome.value = sobrenomeDiretor;
+            email.value = diretor[0].email;
+            telefone.value = diretor[0].telefone;
+            instituicao.innerHTML += `<option value=${diretor[0].fkEscola}>${diretor[0].nomeEscola}</option>`
+            instituicao.value = diretor[0].fkEscola;
+        })
+    })
+}
 
-    if(!nomeVar||!emailVar||!telefoneVar||!senhaVar||instituicaoVar==0){
-        alert("Preencha todos os campos!");
-    }else{
-        fetch("/secretaria/cadastrarDiretor", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                telefoneServer: telefoneVar,
-                senhaServer: senhaVar,
-                instituicaoServer: instituicaoVar
-            }),
-        }).then(function (resposta) {
-            if (resposta.ok) {
-                alert("Diretor cadastrado com sucesso");
-                mudarTelaDiretor();
-                return resposta.json();
-            } else { throw "Houve um erro ao tentar realizar o cadastro!" }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
+function editarModal() {
+    modalEditar.showModal();
+}
+
+function cancelarEditar() {
+    modalEditar.close();
+}
+
+function confirmarEditar() {
+    let nomeVar = nome.value;
+    let sobrenomeVar = sobrenome.value;
+    let emailVar = email.value;
+    let telefoneVar = telefone.value;
+    let instituicaoVar = instituicao.value;
+
+    if (!nomeVar||!sobrenomeVar||!emailVar||!telefoneVar||instituicaoVar==0) {
+        alert("Preencha todos os campos");
+    } else {
+        modalEditar.innerHTML = "<span>Insira sua senha para confirmar</span><br><input id='senhaConfirmar' type='password'><button onclick='editarDiretor()'>Confirmar</button>"
     }
 }
+
+function editarDiretor(){
+    let nomeVar = nome.value;
+    let sobrenomeVar = sobrenome.value;
+    let emailVar = email.value;
+    let telefoneVar = telefone.value;
+    let instituicaoVar = instituicao.value;
+    let params = new URLSearchParams(document.location.search);
+    let idUsuario = params.get("idDiretor");
+    let senha = senhaConfirmar.value;
+    
+    fetch(`/secretaria/confirmarOperacao/${sessionStorage.ID_USUARIO}/${senha}`, {
+        method: "GET",
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            fetch(`/secretaria/editarDiretor/${idUsuario}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nomeServer: nomeVar+" "+sobrenomeVar,
+                    emailServer: emailVar,
+                    telefoneServer: telefoneVar,
+                    instituicaoServer: instituicaoVar
+                    
+                }),
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    alert("Diretor editado com sucesso");
+                    mudarTelaDiretor();
+                    return resposta.json();
+                } else { throw "Houve um erro ao tentar realizar a edição!" }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        } else {
+            alert("Falha em validar usuário.")
+        }
+    });
+}
+
 </script>
 
 <script src="../js/alerta.js"></script>

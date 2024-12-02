@@ -276,7 +276,7 @@
     height: 75%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    gap: 1.5vw;
     align-items: center;
 }
 

@@ -402,7 +402,7 @@ body {
 .inputPesquisa {
     width: 300px;
     height: 25px;
-    border:solid 1px #0790C2;
+    border:solid 2px #0790C2;
     border-radius: 10px;
     font-family: 'Rubik';
 }
@@ -415,7 +415,7 @@ body {
 .inputFiltro {
     width: 200px;
     height: 30px;
-    border:solid 1px #0790C2;
+    border:solid 2px #0790C2;
     border-radius: 10px;
     background-color: #FFF;
     font-family: 'Rubik';
@@ -470,6 +470,10 @@ body {
     align-items: center;
     justify-content: space-evenly;
     margin: 1.5vw;
+}
+
+.cardProfessor:hover{
+    cursor: pointer;
 }
 
 .fotoProfessor {
@@ -742,6 +746,10 @@ body {
     align-items: flex-end;
 }
 
+.editarExcluir span:hover{
+    cursor: pointer;
+}
+
 /* -- DASHBOARD ESCOLA -- */
 
 .indicadores {
@@ -821,11 +829,34 @@ body {
 }
 
 .areaGrafico {
-    width: 95%; 
-    height: 55%; 
+    width: 85%; 
+    height: 77%; 
     display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: flex-start;  
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.cabecalho {
+    width: 480px;
+    height: 28px;
+    background-color: #078FC1;
+    border: solid 2px #0790C2;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #FFF;
+}
+
+.areaComparacao {
+    width: 480px;
+    height: 28px;
+    border: solid 2px #0790C2;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .legendaGrafico {
