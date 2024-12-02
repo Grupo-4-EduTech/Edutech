@@ -74,6 +74,7 @@ CREATE TABLE usuario(
 );
 
 CREATE TABLE professorTurma(
+	idProfessorTurma INT PRIMARY KEY AUTO_INCREMENT,
     fkProfessor INT NOT NULL,
     fkTurma INT NOT NULL,
     FOREIGN KEY (fkProfessor) REFERENCES usuario(idUsuario) ON DELETE CASCADE,
@@ -162,4 +163,3 @@ insert into professorTurma values
 */
 
 select (select count(idEscola)-3 from escola) qtdEscolas,(select count(idTurma) from turma) qtdTurmas, (select count(idAluno) from aluno) qtdAlunos,(select count(idQuestao) from questao) qtdQuestoes,count(idRespostaAluno) qtdRespostas from respostaAluno;
-
