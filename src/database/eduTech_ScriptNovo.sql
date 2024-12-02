@@ -25,7 +25,8 @@ CREATE TABLE turma(
     fkEscola INT NOT NULL,
     fkDiretoria INT NOT NULL,
     FOREIGN KEY (fkEscola, fkDiretoria) REFERENCES escola(idEscola, fkDiretoria) ON DELETE CASCADE,
-    PRIMARY KEY(idTurma, fkEscola, fkDiretoria)
+    PRIMARY KEY(idTurma, fkEscola, fkDiretoria),
+    UNIQUE (idTurma, fkEscola, fkDiretoria) 
 );
 
 CREATE TABLE aluno(
