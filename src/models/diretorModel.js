@@ -30,6 +30,20 @@ function turmasProficiencia(fkEscola) {
     return database.executar(instrucaoSql);
 }
 
+function turmasProfessores(fkEscola) {
+    var instrucaoSql = `
+        SELECT turma.nome turma, usuario.nome professor, fkMateria, SUBSTRING(AVG(CASE WHEN fkMateria = 1 THEN proficienciaMT ELSE proficienciaLP END),1,4)/10 media FROM escola
+        JOIN usuario ON fkEscola = idEscola
+        JOIN professorTurma ON fkProfessor = idUsuario
+        JOIN turma ON professorTurma.fkTurma = idTurma
+        JOIN aluno ON aluno.fkTurma = idTurma
+        WHERE idEscola = ${fkEscola}
+        GROUP BY turma.nome, usuario.nome, fkMateria;
+    `;
+
+    return database.executar(instrucaoSql);
+}
+
 function professores(fkEscola) {
     var instrucaoSql = `SELECT idUsuario, usuario.nome, fkMateria, GROUP_CONCAT(turma.nome SEPARATOR ', ') turmas  FROM usuario LEFT JOIN professorTurma ON fkProfessor = idUsuario LEFT JOIN turma ON professorTurma.fkTurma = idTurma WHERE usuario.fkEscola = ${fkEscola} AND fkCargo = 3 GROUP BY idUsuario`;
 
@@ -124,6 +138,7 @@ module.exports = {
     porcentagemAbaixoMediaMT,
     turmaMaisDificuldade,
     turmasProficiencia,
+    turmasProfessores,
     professores,
     professorPesquisa,
     professorFiltroMateria,
