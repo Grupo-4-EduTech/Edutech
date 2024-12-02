@@ -41,7 +41,7 @@
                     Dashboard
                 </div>
             </div>
-            <div class="fileiraNavegacao">
+            <div class="fileiraNavegacao" onclick="mudarTelaDescritores()">
                 <div class="imgFileira">
                     <img src="../assets/descritores.svg" width="23px" height="23px">
                 </div>
@@ -49,7 +49,7 @@
                     Descritores
                 </div>
             </div>
-            <div class="fileiraNavegacao">
+            <div class="fileiraNavegacao" onclick="abrirSuporte()">
                 <div class="imgFileira">
                     <img src="../assets/bx_support.svg" width="30px" height="30px">
                 </div>
@@ -110,8 +110,8 @@
             </div>
         </div>
 
-          <!-- ALERTAS -->
-          <div class="wrapper" id="wra">
+        <!-- ALERTAS -->
+        <div class="wrapper" id="wra">
             <div class="triangle"></div>
             <div class="base" id="basesinha">
             </div>
@@ -130,7 +130,7 @@
                     </span>
                     <input class="inputCadastrarProfessor" placeholder="Nome" id="input_nome">
                 </div>
-                <div class="divisaoInput"> 
+                <div class="divisaoInput">
                     <span id="titulo_sobrenome">
                         Sobrenome
                     </span>
@@ -144,7 +144,7 @@
                     </span>
                     <input class="inputCadastrarProfessor" placeholder="Email" id="input_email">
                 </div>
-                <div class="divisaoInput"> 
+                <div class="divisaoInput">
                     <span id="titulo_telefone">
                         Telefone
                     </span>
@@ -158,7 +158,7 @@
                     </span>
                     <input class="inputCadastrarProfessor" placeholder="*******" id="input_senha" type="password">
                 </div>
-                <div class="divisaoInput"> 
+                <div class="divisaoInput">
                     <span id="titulo_disciplina">
                         Disciplina
                     </span>
@@ -183,8 +183,13 @@
 
 <script>
 
-    function gotoAtribuicao(id, fkMateria){
-        window.location.href = `atribuirTurmas.html?id=${id}&materia=${fkMateria}`;    
+
+    function mudarTelaDescritores() {
+        window.open('https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/matriz_de_referencia_de_lingua_portuguesa_e_matematica_do_saeb.pdf')
+    }
+
+    function gotoAtribuicao(id, fkMateria) {
+        window.location.href = `atribuirTurmas.html?id=${id}&materia=${fkMateria}`;
 
     }
 
@@ -222,7 +227,7 @@
         let telefone = input_telefone.value
         let senha = input_senha.value
         let disciplina = select_disciplina.value
-        
+
         let inputs = document.querySelector(".inputCadastrarProfessor")
         let selects = document.querySelector(".selectCadastrarProfessor")
 
@@ -235,28 +240,28 @@
                 titulo_nome.innerHTML = `
                 <span style="color: #a11919;">Nome inválido</span>
                 `
-            }  
-            
+            }
+
             if (!sobrenome) {
                 input_sobrenome.classList.add("inputErro")
                 titulo_sobrenome.innerHTML = `
                 <span style="color: #a11919;">Sobrenome inválido</span>
                 `
-            } 
-            
+            }
+
             if (!email || email.indexOf("@") == -1) {
                 input_email.classList.add("inputErro")
                 titulo_email.innerHTML = `
                     <span style="color: #a11919;">Email inválido</span>
                     `
-            } 
-            
+            }
+
             if (!telefone || !/^\d+$/.test(telefone)) {
                 input_telefone.classList.add("inputErro")
                 titulo_telefone.innerHTML = `
                 <span style="color: #a11919;">Telefone inválido</span>
                 `
-            } 
+            }
 
             if (!senha) {
                 input_senha.classList.add("inputErro")
@@ -271,7 +276,7 @@
                 <span style="color: #a11919;">Selecione uma disciplina</span>
                 `
             }
-        
+
         } else {
             cadastrar(nome, sobrenome, email, telefone, senha, disciplina)
         }
@@ -310,27 +315,27 @@
     }
 
     function abrirModais(codigoModal) {
-    let listamodais = ['.modalSuporte']
-    const modal1 = document.querySelector(listamodais[codigoModal])
-    modal1.style.display = 'block'
-}
-function abrirSuporte() { 
-    let codigoModal = 0
-    abrirModais(codigoModal);
-}
+        let listamodais = ['.modalSuporte']
+        const modal1 = document.querySelector(listamodais[codigoModal])
+        modal1.style.display = 'block'
+    }
+    function abrirSuporte() {
+        let codigoModal = 0
+        abrirModais(codigoModal);
+    }
 
 function fecharmodal(codigoModal){
- let listamodais = ['.modalSuporte']
+        let listamodais = ['.modalSuporte']
         for(let i = 0;i <=listamodais.length;i++) {  
             let modal1 = document.querySelector(listamodais[i])
             modal1.style.display = 'none'
-}
-}
+        }
+    }
 
 function SairDaDash(){
-    limparSessao();
-    window.location.href = "../index.html"
-}
+        limparSessao();
+        window.location.href = "../index.html"
+    }
 
 
 </script>

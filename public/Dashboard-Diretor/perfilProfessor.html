@@ -45,7 +45,7 @@
                     Dashboard
                 </div>
             </div>
-            <div class="fileiraNavegacao">
+            <div class="fileiraNavegacao" onclick="mudarTelaDescritores()">
                 <div class="imgFileira">
                     <img src="../assets/descritores.svg" width="23px" height="23px">
                 </div>
@@ -53,7 +53,7 @@
                     Descritores
                 </div>
             </div>
-            <div class="fileiraNavegacao">
+            <div class="fileiraNavegacao" onclick="abrirSuporte()">
                 <div class="imgFileira">
                     <img src="../assets/bx_support.svg" width="30px" height="30px">
                 </div>
@@ -238,6 +238,10 @@
 
     function cancelarExcluir() {
         modalExcluir.close();
+    }
+
+    function mudarTelaDescritores() {
+        window.open('https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/matriz_de_referencia_de_lingua_portuguesa_e_matematica_do_saeb.pdf')
     }
 
     function confirmarExcluir() {
